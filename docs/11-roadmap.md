@@ -35,6 +35,7 @@ Portado con **paridad exacta** respecto a JS:
 | `fauna` | registro (21 especies), pools, actividad y sprites | ✅ spawns exactos |
 | `moments` | 18sep, Leo Rey, Kung Leo, cóndor, bandada, manada | ✅ eventos exactos |
 | `views` | `encodeView`/`decodeView`, favoritos y parser | ✅ exacta |
+| `activity` | `activityMultiplier`: densidad de fauna según actividad del equipo | ✅ exacta |
 | `scene` | orquestador completo (cámara, día/noche, clima, orden de render, reloj real) | completo |
 
 ## Fase 3 — Frontends ✅ (completada)
@@ -55,8 +56,11 @@ Portado con **paridad exacta** respecto a JS:
 
 ## Pendientes transversales
 
-- [ ] **Antialias de las nubes**: acercar la paridad de píxeles (mayor fuente de diferencia).
-- [ ] **Export de tira larga** en PNG (D-040 JS).
+- [x] **Reactividad del sistema** en el frontend nativo: sensores del SO + switch y HUD
+      ([17 · Reactividad del sistema](17-reactividad-sistema.md)).
+- [x] **Export de tira larga** en PNG (D-040 JS) en el panel nativo
+      ([10 · UI y exportación](10-ui-y-export.md)).
+- [~] **Antialias de las nubes**: borde con supermuestreo dirigido (mejora la paridad; resta afinar).
 - [ ] **Modo información al clic** sobre flora y fauna (D-051 JS).
 - [ ] Portar utilidades restantes de `pixel.js` si el rasterizador las necesita.
 - [ ] Probar el fondo Wayland en un compositor real (wlroots).
@@ -65,6 +69,5 @@ Portado con **paridad exacta** respecto a JS:
 ## Backlog / ideas
 
 - [ ] Igualar la UI web con el panel del original (vistas favoritas, copiar enlace, kiosco).
-- [ ] Reactividad del sistema (actividad del equipo) en el frontend nativo
-      ([17 · Reactividad del sistema](17-reactividad-sistema.md)).
+- [ ] Persistir la preferencia del switch de actividad en el frontend nativo (no hay `localStorage`).
 - [ ] Referencias fotográficas PD/CC0 para el redibujo de sprites ([18 · Referencias](18-referencias.md)).

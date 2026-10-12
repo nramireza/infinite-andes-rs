@@ -105,3 +105,40 @@ siguiente número.
 - **Decisión:** la tabla de [14 · Paleta maestra](14-paleta-maestra.md) se emite desde
   `scripts/gen-parity.mjs` (que ya lee la paleta JS), en vez de un binario Rust aparte.
 - **Motivo:** menos código; los datos de paleta ya se generan en ese mismo script.
+
+## D-011 · Reactividad del sistema con sensores del SO (frontend nativo)
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** portar `activityMultiplier` al núcleo (`activity.rs`, sin dependencias) y, en el
+  frontend nativo, leer la actividad del equipo **directamente de `/proc` y `/sys`** en un hilo de
+  fondo (CPU, RAM, temperatura y `load`), en vez del puente HTTP del original (D-052 JS).
+- **Motivo:** el nativo no puede reusar el puente de navegador; los sensores del SO evitan una
+  dependencia de red y mantienen `andes-core` sin dependencias. El switch es **off por defecto**, así
+  que el paisaje y los dorados no cambian mientras está apagado.
+- **Alternativas:** añadir un cliente HTTP (`ureq`) para hablar con el puente de `activity.js`
+  (descartado: dependencia y proceso externo innecesarios en el nativo).
+- **Consecuencia:** la preferencia del switch aún no se persiste (el nativo no tiene `localStorage`);
+  documentado en [17](17-reactividad-sistema.md).
+
+## D-012 · Export de tira larga en el frontend nativo
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** portar `exportStrip` (D-040 JS) al nativo: redimensionar la escena de forma temporal
+  a `w·n`, renderizar una sola vez en un lienzo ancho y restaurar el tamaño, guardando
+  `infinite-andes_<seed>_strip<n>_x<x0>.png`.
+- **Motivo:** replicar el export del original sin costuras (cielo y parallax continúan) y sin
+  reescribir el render.
+- **Consecuencia:** el ancho de la tira se acota a 1–40 pantallas; el uso de memoria crece con `n`.
+
+## D-013 · Antialias de nubes con supermuestreo dirigido al borde
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** en `Framebuffer::fill_ellipse`, resolver interior/exterior de forma exacta por
+  distancia normalizada y supermuestrear solo la banda de borde (`≈1 px`), con `N = 16`.
+- **Motivo:** mejora la cobertura del antialias de Canvas a bajo coste (el interior no muestrea) y
+  acelera las elipses grandes del terreno.
+- **Consecuencia:** la paridad de píxeles de las nubes mejora de forma marginal; sigue pendiente
+  afinar la diferencia de AA de Canvas (D-003).

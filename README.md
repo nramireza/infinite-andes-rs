@@ -10,7 +10,8 @@ mientras dure la migración.
 
 ## Estado
 
-Fase 1 completada: núcleo matemático portado con **paridad exacta** respecto a JS.
+Fases 1–4 del [roadmap](docs/11-roadmap.md) completadas: núcleo matemático y rasterizador con
+**paridad exacta** respecto a JS, frontends (nativo, fondo y WASM) y documentación.
 
 | Módulo | Contenido | Paridad |
 |--------|-----------|---------|
@@ -20,24 +21,25 @@ Fase 1 completada: núcleo matemático portado con **paridad exacta** respecto a
 | `andes-core::viewport` | `BASE_H`, presets, `widthForRatio`, `ratioFromString`, `labelForRatio` | ✅ exacta |
 | `andes-core::palette` | `getPalette`, `lerpColor`, `shade`, `applyWeather`, `applyBiome`, `nightAmount` | ✅ exacta |
 | `andes-core::pixel` | `radixDither` (el resto llega con el rasterizador) | ✅ exacta |
-
-Fase 2 en curso: rasterizador y capa de simulación/dibujo del terreno.
-
-| Módulo | Contenido | Paridad |
-|--------|-----------|---------|
 | `andes-core::framebuffer` | lienzo RGBA8, `fill_rect`, `fill_rect_f` (cobertura fraccionaria), `blend`, `fill_ellipse`, `vgradient` | razonable |
 | `andes-core::clock` | `localHour`, `dayOfYear`, fase de estación, fase lunar | ✅ exacta (calendario UTC) |
 | `andes-core::sun` | `solarDeclination`, `solarTimes`, `solarClock` | ✅ exacta |
 | `andes-core::seasons` | `seasonState`, tinte, sesgo de clima, `applySeason`, `seasonGlowTint` | ✅ exacta |
-| `andes-core::biomes` | pesos, geometría, tinte y floración (pools pendientes) | ✅ exacta |
+| `andes-core::biomes` | pesos, geometría, tinte y floración (pools incluidos) | ✅ exacta |
 | `andes-core::terrain` | `LAYERS`, alturas, influencia de ríos/fiordos, dibujo de capas y mar | ✅ alturas exactas |
 | `andes-core::sky` | gradiente, Vía Láctea, estrellas, aurora, astros y nubes | ✅ init/astros exactos |
 | `andes-core::weather` | partículas, niebla, relámpagos y crossfade de climas | ✅ spawn exacto |
 | `andes-core::flora` | registro, pools, colocación por chunk y 22 dibujos | ✅ spawns exactos |
-| `andes-core::fauna` | registro (22 especies), pools, actividad y sprites | ✅ spawns exactos |
+| `andes-core::fauna` | registro (21 especies), pools, actividad y sprites | ✅ spawns exactos |
 | `andes-core::moments` | 18sep, Leo Rey, Kung Leo, cóndor, bandada, manada | ✅ eventos exactos |
 | `andes-core::views` | `encodeView`/`decodeView`, favoritos y parser JSON | ✅ exacta |
+| `andes-core::activity` | `activityMultiplier` (densidad de fauna según actividad del equipo) | ✅ exacta |
 | `andes-core::scene` | orquestador: cámara, ciclo día/noche, clima, orden de render, reloj real | completo |
+
+Pendientes transversales (detalle en el [roadmap](docs/11-roadmap.md)): refinar el
+**antialias de las nubes** para acercar la paridad de píxeles, el **modo información al clic**
+(D-051 JS), portar utilidades restantes de `pixel.js`, probar el fondo Wayland en un compositor
+real y ampliar la cobertura de tests a los dibujos.
 
 El binario nativo ya renderiza la escena completa (cielo + clima + terreno + flora
 + fauna + momentos) y ofrece una ventana con panel de control:
@@ -50,7 +52,8 @@ cargo run -p andes-native andes 12 clear condor  # sin ventana: PPM a /tmp
 
 En la ventana: semilla, relación de aspecto, **reloj real** (hora local del
 equipo + sol de Chile) o rápido determinista, auto-scroll, clima, bioma, momento,
-estación, floración, ajuste cubrir/contener, **Exportar PNG** y modo fondo.
+estación, floración, **actividad del equipo** (densidad de fauna, off por defecto),
+ajuste cubrir/contener, **Exportar PNG**, **Exportar tira** y modo fondo.
 
 ### Fondo de pantalla del escritorio
 
@@ -87,8 +90,9 @@ Los datos de fauna (`fauna_data.rs`) se **generan** desde `fauna.js`; el registr
 de flora está portado a mano. `andes-core` no tiene dependencias; solo los
 frontends (`andes-native` usa `eframe`/`image`) las necesitan.
 
-Pendiente: probar el fondo Wayland en un compositor real (wlroots) y refinar el
-antialias de las nubes para acercar aún más la paridad de píxeles.
+Pendiente: probar el fondo Wayland en un compositor real (wlroots), afinar el
+antialias de las nubes para acercar aún más la paridad de píxeles y el modo
+información al clic (D-051 JS).
 
 ## Cómo trabajar
 
@@ -139,7 +143,7 @@ El arnés renderiza la misma escena en Chrome headless (vía
 canal (cielo/suelo), máximo e histograma. Escribe `/tmp/ia-rust.ppm`,
 `/tmp/ia-js.png`, `/tmp/ia-diff.png` y `/tmp/ia-diff8.png`.
 
-Resultado actual (varias escenas): `|Δ|` medio ≈ **0.25**, máximo ≈ **37**, y
+Resultado actual (varias escenas): `|Δ|` medio ≈ **0.25**, máximo ≈ **38**, y
 **<0.5%** de píxeles con `Δ≥8` (bordes de nube, por el antialias analítico de
 Canvas frente a nuestro supermuestreo). El resto son diferencias de redondeo
 de ±1 en el degradado del cielo y el compositing alfa.

@@ -23,7 +23,7 @@ El rasterizador propio vive en [`framebuffer.rs`](../crates/andes-core/src/frame
 | `set` / `blend` | Píxel opaco / mezcla alfa |
 | `fill_rect` | Rectángulo de píxeles enteros (sprites, bandas) |
 | `fill_rect_f` | Rectángulo con **cobertura fraccionaria** (bordes suaves, p. ej. astros) |
-| `fill_ellipse` / `fill_disc` | Elipses y discos (nubes, astros) |
+| `fill_ellipse` / `fill_disc` | Elipses y discos (nubes, astros). La elipse resuelve interior/exterior exacto y supermuestrea solo el borde (`N=16`) para aproximar el antialias de Canvas |
 | `vgradient` | Gradiente vertical (cielo) |
 
 Es la pieza que sustituye al `CanvasRenderingContext2D` del original y lo que hace el núcleo
@@ -89,11 +89,12 @@ testeable sin navegador.
 ## Paridad de píxeles
 
 El rasterizador Rust se compara contra el render real de JS (Canvas) píxel a píxel con
-`./scripts/pixel-check.sh` (Chrome headless). Resultado actual: `|Δ|` medio ≈ **0.25**, máximo ≈ 37 y
+`./scripts/pixel-check.sh` (Chrome headless). Resultado actual: `|Δ|` medio ≈ **0.25**, máximo ≈ 38 y
 **<0.5 %** de píxeles con `Δ≥8` (bordes de nube por el antialias de Canvas frente a nuestro
 supermuestreo); el resto son diferencias de redondeo de ±1. Ver [11 · Roadmap](11-roadmap.md).
 
 ## Pendiente
 
-- Refinar el **antialias de las nubes** para acercar aún más la paridad (mayor fuente de diferencia).
+- **Afilar el antialias de las nubes**: con el supermuestreo dirigido al borde (D-013) la paridad
+  mejoró, pero resta afinar la diferencia de AA de Canvas (mayor fuente de diferencia).
 - Portar a `pixel.rs` las utilidades restantes si el rasterizador las necesita.

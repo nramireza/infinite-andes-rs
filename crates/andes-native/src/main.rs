@@ -5,8 +5,12 @@
 //! - `infinite-andes wall`       → pantalla completa sin paneles (fondo de pantalla)
 //! - `infinite-andes <seed> ...` → sin ventana, renderiza a PPM (capturas/CI)
 
-use std::time::Instant;
+mod activity;
 
+use std::time::{Duration, Instant};
+
+use activity::ActivityPoller;
+use andes_core::activity::activity_multiplier;
 use andes_core::clock::DateTime;
 use andes_core::framebuffer::Framebuffer;
 use andes_core::rng::seed_to_int;
@@ -69,7 +73,7 @@ fn write_ppm(path: &str, fb: &Framebuffer) -> std::io::Result<()> {
     std::fs::write(path, out)
 }
 
-fn export_png(fb: &Framebuffer, seed: &str, hour: f64) {
+fn fb_to_image(fb: &Framebuffer) -> image::RgbaImage {
     let mut img = image::RgbaImage::new(fb.w as u32, fb.h as u32);
     for (i, px) in fb.px.chunks(4).enumerate() {
         img.put_pixel(
@@ -78,10 +82,38 @@ fn export_png(fb: &Framebuffer, seed: &str, hour: f64) {
             image::Rgba([px[0], px[1], px[2], 255]),
         );
     }
+    img
+}
+
+fn export_png(fb: &Framebuffer, seed: &str, hour: f64) {
     let hh = hour.floor() as i32;
     let mm = (hour.fract() * 60.0).floor() as i32;
     let name = format!("infinite-andes_{seed}_{hh:02}{mm:02}.png");
-    match img.save(&name) {
+    match fb_to_image(fb).save(&name) {
+        Ok(()) => println!("exportado {name}"),
+        Err(e) => eprintln!("no se pudo exportar: {e}"),
+    }
+}
+
+/// Renderiza una tira de `tiles` pantallas (D-040 JS) en un lienzo ancho, para
+/// que cielo y parallax continúen sin costuras, y restaura el tamaño de la
+/// escena. Devuelve el framebuffer resultante.
+fn render_strip(scene: &mut Scene, tiles: usize) -> Framebuffer {
+    let n = tiles.clamp(1, 40);
+    let (w, h) = (scene.w, scene.h);
+    scene.resize(w * n, h);
+    let mut fb = Framebuffer::new(w * n, h);
+    scene.render(&mut fb);
+    scene.resize(w, h);
+    fb
+}
+
+fn export_strip(scene: &mut Scene, seed: &str, tiles: usize) {
+    let n = tiles.clamp(1, 40);
+    let x0 = scene.camera_x.round() as i64;
+    let fb = render_strip(scene, n);
+    let name = format!("infinite-andes_{seed}_strip{n}_x{x0}.png");
+    match fb_to_image(&fb).save(&name) {
         Ok(()) => println!("exportado {name}"),
         Err(e) => eprintln!("no se pudo exportar: {e}"),
     }
@@ -174,6 +206,11 @@ struct App {
     bloom: usize,
     fit_cover: bool,
     wall: bool,
+    tiles: usize,
+    activity_on: bool,
+    activity_online: Option<bool>,
+    activity_mul: f64,
+    activity_poller: Option<ActivityPoller>,
     last: Instant,
     fps_acc: f64,
     fps_frames: u32,
@@ -203,10 +240,58 @@ impl App {
             bloom: 0,
             fit_cover: wall,
             wall,
+            tiles: 8,
+            activity_on: false,
+            activity_online: None,
+            activity_mul: 1.0,
+            activity_poller: None,
             last: Instant::now(),
             fps_acc: 0.0,
             fps_frames: 0,
             fps: 0.0,
+        }
+    }
+
+    fn set_activity(&mut self, on: bool) {
+        self.activity_on = on;
+        if on {
+            if self.activity_poller.is_none() {
+                self.activity_poller = Some(ActivityPoller::start(Duration::from_secs(5)));
+                self.activity_online = None;
+            }
+        } else {
+            self.activity_poller = None;
+            self.activity_online = None;
+            self.activity_mul = 1.0;
+            self.scene.set_activity_mul(1.0);
+        }
+    }
+
+    fn poll_activity(&mut self) {
+        let sample = self.activity_poller.as_ref().and_then(ActivityPoller::poll);
+        if let Some(sample) = sample {
+            match sample {
+                Some(signals) => {
+                    self.activity_online = Some(true);
+                    self.activity_mul = activity_multiplier(Some(signals));
+                }
+                None => {
+                    self.activity_online = Some(false);
+                    self.activity_mul = 1.0;
+                }
+            }
+            self.scene.set_activity_mul(self.activity_mul);
+        }
+    }
+
+    fn activity_status(&self) -> String {
+        if !self.activity_on {
+            return "off".into();
+        }
+        match self.activity_online {
+            None => "sondeando…".into(),
+            Some(true) => format!("act {:.2}", self.activity_mul),
+            Some(false) => "sin sensores".into(),
         }
     }
 
@@ -230,6 +315,7 @@ impl App {
         scene.set_moment(forced(MOMENTS[self.moment]));
         scene.set_season(SEASONS[self.season]);
         scene.set_bloom(BLOOMS[self.bloom]);
+        scene.set_activity_mul(self.activity_mul);
         self.scene = scene;
     }
 
@@ -343,9 +429,29 @@ impl App {
         );
 
         ui.separator();
+        let mut activity = self.activity_on;
+        if ui
+            .checkbox(&mut activity, "Actividad del equipo (densidad de fauna)")
+            .changed()
+        {
+            self.set_activity(activity);
+        }
+        ui.label(format!("Estado: {}", self.activity_status()));
+
+        ui.separator();
         if ui.button("Exportar PNG").clicked() {
             export_png(&self.fb, &self.seed_text, self.hour);
         }
+        ui.horizontal(|ui| {
+            if ui.button("Exportar tira").clicked() {
+                export_strip(&mut self.scene, &self.seed_text, self.tiles);
+            }
+            ui.add(
+                eframe::egui::Slider::new(&mut self.tiles, 1..=40)
+                    .integer()
+                    .text("pantallas"),
+            );
+        });
         if ui
             .button(if self.wall {
                 "Salir del modo fondo"
@@ -403,6 +509,7 @@ impl eframe::App for App {
         let (dt_now, tz) = local_now();
         self.scene.set_now(dt_now, tz);
         self.scene.set_clock_fast(self.clock_fast);
+        self.poll_activity();
         self.scene.update(dt);
         if !self.clock_fast {
             self.hour = self.scene.hour;
@@ -448,8 +555,45 @@ impl eframe::App for App {
                 ui.painter()
                     .image(t.id(), img_rect, uv, eframe::egui::Color32::WHITE);
             }
+            if self.activity_on {
+                let text = match self.activity_online {
+                    None => "act …".to_string(),
+                    Some(true) => format!("act {:.2}", self.activity_mul),
+                    Some(false) => "act sin sensores".to_string(),
+                };
+                ui.painter().text(
+                    rect.left_top() + eframe::egui::vec2(8.0, 8.0),
+                    eframe::egui::Align2::LEFT_TOP,
+                    text,
+                    eframe::egui::FontId::monospace(14.0),
+                    eframe::egui::Color32::from_black_alpha(200),
+                );
+            }
         });
 
         ctx.request_repaint();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn render_strip_is_wide_and_restores_size() {
+        let mut scene = Scene::new(seed_to_int("andes"), 320, HEIGHT);
+        scene.auto_scroll = false;
+        scene.set_weather_type("clear");
+        let fb = render_strip(&mut scene, 3);
+        assert_eq!((fb.w, fb.h), (960, HEIGHT));
+        assert_eq!((scene.w, scene.h), (320, HEIGHT));
+        assert!(fb.px.iter().any(|p| *p != 0));
+    }
+
+    #[test]
+    fn render_strip_clamps_tiles() {
+        let mut scene = Scene::new(seed_to_int("andes"), 320, HEIGHT);
+        assert_eq!(render_strip(&mut scene, 0).w, 320);
+        assert_eq!(render_strip(&mut scene, 999).w, 320 * 40);
     }
 }

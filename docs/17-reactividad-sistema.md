@@ -25,34 +25,35 @@ candidato se deciden por hash de chunk ([09 · Arquitectura](09-arquitectura.md)
 - El núcleo **no lee sensores**: solo consume un multiplicador, de modo que sigue sin dependencias y
   determinista. La lectura del sistema es responsabilidad del frontend.
 
-## Frontend (pendiente)
+## Frontend nativo (implementado)
 
-En el original, un proceso local sin dependencias expone un JSON por HTTP:
+En el original, un proceso local sin dependencias expone un JSON por HTTP
+(`{ cpu, ram, temp, load }`). El port **lee los sensores del SO directamente** en un hilo de fondo
+(`crates/andes-native/src/activity.rs`), sin red ni dependencias:
 
-```json
-{ "cpu": 0.42, "ram": 0.71, "temp": 63, "load": 1.8 }
-```
+| Señal | Origen (Linux) | Efecto |
+|-------|----------------|--------|
+| `cpu` | delta de `/proc/stat` | + (más actividad general) |
+| `ram` | `/proc/meminfo` (`MemAvailable`/`MemTotal`) | + (más bandadas) |
+| temperatura | máx. de `/sys/class/thermal/thermal_zone*/temp` | − (menos actividad) |
+| `load` | `/proc/loadavg` (1 min) | − (menos especies esquivas) |
 
-El mapeo (D-052 JS) produce un **multiplicador global** acotado a `[0.5, 1.8]`:
+El sondeo (cada 5 s) publica la última muestra por canal; `poll_activity` la convierte con
+`activity_multiplier` y llama a `set_activity_mul`. El switch del panel está **off por defecto**
+(al apagarlo no se lee ningún sensor y el multiplicador vuelve a 1) y el HUD muestra el estado
+(`act …` · `act <m>` · `act sin sensores`).
 
-| Señal | Efecto |
-|-------|--------|
-| `cpu` alta | + (más actividad general) |
-| `ram` alta | + (más bandadas) |
-| Temperatura alta | − (menos actividad) |
-| `load` alto | − (menos especies esquivas) |
-
-En Rust **falta** implementar el puente (p. ej. `sysinfo` o lectura de `loadavg`/`/sys` en Linux) y
-el control en el panel nativo. Mientras tanto, `set_activity_mul` permite inyectar el valor desde
-cualquier frontend o test.
+El mapeo (D-052 JS) produce un **multiplicador global** acotado a `[0.5, 1.8]`. Mientras no haya
+sensores disponibles se usa `1.0` (paisaje idéntico).
 
 ## Criterios de aceptación
 
 - [x] Hook `activity_mul` en el núcleo, con multiplicador 1 por defecto.
-- [ ] Puente local en el frontend nativo y control (switch) en el panel.
-- [ ] Indicador visible del estado (equivalente al `act <m>` del HUD original).
+- [x] Puente de sensores del SO en el frontend nativo y switch en el panel (off por defecto).
+- [x] Indicador visible del estado (equivalente al `act <m>` del HUD original).
 - [x] El multiplicador no altera identidad ni posición, solo la densidad.
+- [ ] Persistir la preferencia del switch (el nativo no tiene `localStorage`).
 
 ## Referencias
 
-- D-052, D-055 (repo JS) · [06 · Fauna](06-fauna.md) · [09 · Arquitectura](09-arquitectura.md).
+- D-052, D-055 (repo JS) · D-011 (port) · [06 · Fauna](06-fauna.md) · [09 · Arquitectura](09-arquitectura.md).

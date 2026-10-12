@@ -52,6 +52,7 @@ crates/
 | `fauna.rs` (+`fauna_data.rs`) | `fauna.js` | registro `SPECIES`, pools, actividad y sprites |
 | `moments.rs` | `moments.js` | 18sep, Leo Rey, Kung Leo, cóndor, bandada, manada |
 | `views.rs` | `views.js` | `decode_view`/`encode_view`, favoritos |
+| `activity.rs` | `activity.js` | `activity_multiplier`: densidad de fauna según actividad |
 | `scene.rs` | `scene.js` | orquestador: cámara, día/noche, clima, orden de render, reloj real |
 
 ## Pipeline de render (`Scene::render`)

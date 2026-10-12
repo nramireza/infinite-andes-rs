@@ -6,6 +6,7 @@
 //!
 //! Regla de oro: nada de aleatoriedad no reproducible. Todo deriva de la semilla.
 
+pub mod activity;
 pub mod biomes;
 pub mod clock;
 pub mod fauna;

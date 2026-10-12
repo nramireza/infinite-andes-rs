@@ -95,3 +95,5 @@ pub const FLORA_SPAWNS: &[(f64, f64, i32, f64, &str, bool, i32)] = &[(54.4385979
 
 pub const FAUNA_SPAWNS: &[(f64, f64, Option<f64>, Option<f64>, &str, f64, f64)] = &[(536.5373103995807, 440.53731039958075, Some(192.96570332444904), None, "culpeo", 0.5143272743097219, 1.0)];
 
+pub const ACTIVITY: &[(Option<(f64, f64, f64, f64)>, f64)] = &[(None, 1.0), (Some((f64::NAN, f64::NAN, f64::NAN, f64::NAN)), 1.0), (Some((1.0, 1.0, f64::NAN, f64::NAN)), 1.8), (Some((0.0, 0.0, 55.0, 0.0)), 1.0), (Some((f64::NAN, f64::NAN, 100.0, 4.0)), 0.5), (Some((0.42, 0.71, 63.0, 1.8)), 1.2651666666666668), (Some((2.0, -1.0, -500.0, 1000000.0)), 1.35), (Some((f64::NAN, f64::NAN, f64::NAN, 0.0)), 1.0), (Some((0.5, 0.5, f64::NAN, f64::NAN)), 1.4)];
+

@@ -21,6 +21,7 @@ use andes_core::pixel::radix_dither;
 use andes_core::rng::{hash1, hash_int, hash_string, seed_to_int, Mulberry32};
 use andes_core::viewport::{label_for_ratio, ratio_from_string, width_for_ratio};
 
+use andes_core::activity::{activity_multiplier, ActivitySignals};
 use andes_core::biomes::{biome_at, biome_geometry, biome_weights, bloom_at, resolve_bloom};
 use andes_core::clock::{moon_phase_for_date, DateTime};
 use andes_core::seasons::{
@@ -580,6 +581,23 @@ fn parity_moment_events() {
     for (g, e) in got.iter().zip(MOMENT_EVENTS) {
         assert_eq!(g.type_, e.0);
         assert!(approx(g.wx, e.1));
+    }
+}
+
+#[test]
+fn parity_activity_multiplier() {
+    for (signals, expected) in ACTIVITY {
+        let sig = signals.map(|(cpu, ram, temp, load)| ActivitySignals {
+            cpu,
+            ram,
+            temp,
+            load,
+        });
+        let got = activity_multiplier(sig);
+        assert!(
+            approx(got, *expected),
+            "activityMultiplier: {got} != {expected}"
+        );
     }
 }
 

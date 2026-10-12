@@ -26,7 +26,9 @@ control. Binarios/argumentos ([`src/main.rs`](../crates/andes-native/src/main.rs
 | Región | `auto`, `altiplano`, `norte`, `centro`, `sur`, `patagonia`, `austral` |
 | Floración | `auto`, `on`, `off` |
 | Ajuste | Cubrir (`cover`) / contener (`contain`) |
+| Actividad | Densidad de fauna según la actividad real del equipo (`off` por defecto; ver [17](17-reactividad-sistema.md)) |
 | Exportar PNG | Descargar la vista actual (`export_png`) |
+| Exportar tira | Tira larga de varias pantallas hacia la derecha (1–40, def. 8) |
 | Fondo | Modo fondo de pantalla (pantalla completa) |
 
 ## Estado de la escena (`Scene`)
@@ -49,8 +51,10 @@ control. Binarios/argumentos ([`src/main.rs`](../crates/andes-native/src/main.rs
 `infinite-andes_<seed>_<HHMM>.png` con la vista actual (al tamaño interno vigente, p. ej. 960×270 a
 32:9). El render *headless* escribe además un **PPM** a `/tmp` para inspección y CI.
 
-El original ofrece además **export de tira larga** (`exportStrip`, D-040 JS); en Rust **queda
-pendiente** ([11 · Roadmap](11-roadmap.md)).
+`export_strip(scene, seed, tiles)` (D-040 JS) renderiza una **tira larga** de `tiles` pantallas
+hacia la derecha: redimensiona la escena temporalmente a `w·n`, renderiza una sola vez en un lienzo
+ancho (cielo y parallax continúan sin costuras como en el original) y restaura el tamaño. Guarda
+`infinite-andes_<seed>_strip<n>_x<x0>.png`.
 
 ## Web (WASM) y URLs
 
@@ -103,6 +107,6 @@ sur** de la fecha (`clock.rs`); el amanecer/atardecer se calculan para Chile cen
 
 ## Pendiente
 
-- Export de **tira larga** en PNG (D-040 JS).
 - Paridad de UI web con el panel del original (vistas favoritas, botón copiar enlace).
 - Refinar el antialias de las nubes ([08 · Arte pixel](08-arte-pixel.md)).
+- Persistir la preferencia del switch de actividad (el nativo no tiene `localStorage`).

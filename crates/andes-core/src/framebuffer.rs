@@ -116,26 +116,44 @@ impl Framebuffer {
 
     /// Elipse rellena con cobertura por supermuestreo (aproxima el antialias de
     /// `ctx.ellipse(...).fill()` de Canvas).
+    ///
+    /// Los píxeles interiores/exteriores se resuelven exactamente; solo la banda
+    /// de borde (≈1 px) se supermuestrea, con lo que se puede usar un `N` alto
+    /// sin que el coste crezca con el área.
     pub fn fill_ellipse(&mut self, cx: f64, cy: f64, rx: f64, ry: f64, c: Rgb, a: f64) {
         if a <= 0.0 || rx <= 0.0 || ry <= 0.0 {
             return;
         }
-        const N: i32 = 8;
+        const N: i32 = 16;
         let x0 = (cx - rx).floor().max(0.0) as i32;
         let y0 = (cy - ry).floor().max(0.0) as i32;
         let x1 = ((cx + rx).ceil() as i32).min(self.w as i32);
         let y1 = ((cy + ry).ceil() as i32).min(self.h as i32);
         let inv = 1.0 / (N * N) as f64;
+        // Media diagonal del píxel en coordenadas normalizadas: si la distancia
+        // del centro al borde supera esta cota, el píxel está entero dentro o
+        // fuera y no hace falta supermuestrear.
+        let edge = 0.5 * (1.0 / (rx * rx) + 1.0 / (ry * ry)).sqrt();
         for py in y0..y1 {
             for px in x0..x1 {
+                let dx = (px as f64 + 0.5 - cx) / rx;
+                let dy = (py as f64 + 0.5 - cy) / ry;
+                let d = (dx * dx + dy * dy).sqrt();
+                if d <= 1.0 - edge {
+                    self.blend(px, py, c, a);
+                    continue;
+                }
+                if d >= 1.0 + edge {
+                    continue;
+                }
                 let mut inside = 0;
                 for sy in 0..N {
                     for sx in 0..N {
                         let fx = px as f64 + (sx as f64 + 0.5) / N as f64;
                         let fy = py as f64 + (sy as f64 + 0.5) / N as f64;
-                        let dx = (fx - cx) / rx;
-                        let dy = (fy - cy) / ry;
-                        if dx * dx + dy * dy <= 1.0 {
+                        let ex = (fx - cx) / rx;
+                        let ey = (fy - cy) / ry;
+                        if ex * ex + ey * ey <= 1.0 {
                             inside += 1;
                         }
                     }
@@ -206,6 +224,19 @@ mod tests {
         fb.fill_rect(-2, -2, 3, 3, [255, 0, 0], 1.0);
         assert_eq!(&fb.px[0..3], &[255, 0, 0]);
         assert_eq!(&fb.px[(4 + 1) * 4..(4 + 1) * 4 + 3], &[0, 0, 0]);
+    }
+
+    #[test]
+    fn fill_ellipse_interior_edges_and_outside() {
+        let mut fb = Framebuffer::new(20, 20);
+        fb.fill_ellipse(10.0, 10.0, 5.0, 5.0, [255, 255, 255], 1.0);
+        assert_eq!(
+            &fb.px[(10 * 20 + 10) * 4..(10 * 20 + 10) * 4 + 3],
+            &[255, 255, 255]
+        );
+        assert_eq!(&fb.px[0..3], &[0, 0, 0]);
+        let edge = fb.px[(10 * 20 + 5) * 4];
+        assert!(edge > 0 && edge < 255, "borde parcial, no {edge}");
     }
 
     #[test]

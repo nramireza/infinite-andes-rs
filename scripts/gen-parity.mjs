@@ -37,6 +37,7 @@ const flora = await import(js("src/flora.js"));
 const moments = await import(js("src/moments.js"));
 const views = await import(js("src/views.js"));
 const references = await import(js("src/references.js"));
+const activity = await import(js("src/activity.js"));
 
 // Referencias fotográficas de edición (manifiesto del repo JS; ver docs/18).
 const MANIFEST = js("docs/referencias/manifiesto.csv");
@@ -493,6 +494,26 @@ const fa = faSpawns
   })
   .join(", ");
 p += `pub const FAUNA_SPAWNS: &[(f64, f64, Option<f64>, Option<f64>, &str, f64, f64)] = &[${fa}];\n\n`;
+
+// ---------------------------------------------------------- actividad (D-052)
+const SIGNAL_KEYS = ["cpu", "ram", "temp", "load"];
+const act = [
+  null,
+  {},
+  { cpu: 1, ram: 1 },
+  { cpu: 0, ram: 0, temp: 55, load: 0 },
+  { temp: 100, load: 4 },
+  { cpu: 0.42, ram: 0.71, temp: 63, load: 1.8 },
+  { cpu: 2, ram: -1, temp: -500, load: 1e6 },
+  { cpu: NaN, ram: "x", temp: "y", load: null },
+  { cpu: "0.5", ram: "0.5" },
+].map((c) => {
+  const exp = activity.activityMultiplier(c);
+  if (c == null) return `(None, ${f(exp)})`;
+  const vals = SIGNAL_KEYS.map((k) => (k in c ? Number(c[k]) : NaN));
+  return `(Some((${vals.map(f).join(", ")})), ${f(exp)})`;
+});
+p += `pub const ACTIVITY: &[(Option<(f64, f64, f64, f64)>, f64)] = &[${act.join(", ")}];\n\n`;
 
 // ---------------------------------------------------------------- fauna data
 const rarityEntries = Object.keys(fauna.RARITY_WEIGHT).map((k) => `(${s(k)}, ${f(fauna.RARITY_WEIGHT[k])})`).join(", ");
