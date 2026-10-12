@@ -30,17 +30,17 @@ D-016)**. Frontends nativo, fondo de pantalla y WASM completos.
 | `andes-core::terrain` | `LAYERS`, alturas, influencia de ríos/fiordos, dibujo de capas y mar | ✅ alturas exactas |
 | `andes-core::sky` | gradiente, Vía Láctea, estrellas, aurora, astros y nubes | ✅ init/astros exactos |
 | `andes-core::weather` | partículas, niebla, relámpagos y crossfade de climas | ✅ spawn exacto |
-| `andes-core::flora` | registro, pools, colocación por chunk y 22 dibujos | ✅ spawns exactos |
+| `andes-core::flora` | registro (especies endémicas nuevas), pools, colocación por chunk y dibujos | propia |
 | `andes-core::fauna` | registro (21 especies), pools, actividad y sprites | ✅ spawns exactos |
 | `andes-core::moments` | 18sep, Leo Rey, Kung Leo, cóndor, bandada, manada | ✅ eventos exactos |
 | `andes-core::views` | `encodeView`/`decodeView`, favoritos y parser JSON | ✅ exacta |
 | `andes-core::activity` | `activityMultiplier` (densidad de fauna según actividad del equipo) | ✅ exacta |
 | `andes-core::scene` | orquestador: cámara, ciclo día/noche, clima, orden de render, reloj real | completo |
 
-Pendientes (detalle en el [roadmap](docs/11-roadmap.md)): más contenido (estaciones más marcadas,
-flora endémica, fauna marina, biomas, momentos), features (atajos, timelapse/GIF, multi-monitor de
-mundo continuo), el **modo información al clic** (D-051 JS), probar el fondo Wayland en un
-compositor real y ampliar la cobertura de tests a los dibujos.
+Pendientes (detalle en el [roadmap](docs/11-roadmap.md)): más contenido (fauna marina, biomas,
+momentos), features (atajos, timelapse/GIF, multi-monitor de mundo continuo), el **modo información
+al clic** (D-051 JS), probar el fondo Wayland en un compositor real y ampliar la cobertura de tests
+a los dibujos.
 
 El binario nativo ya renderiza la escena completa (cielo + clima + terreno + flora
 + fauna + momentos) y ofrece una ventana con panel de control:

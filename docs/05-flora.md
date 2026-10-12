@@ -38,6 +38,16 @@ escala y contorno oscuro de 1 px (D-056 JS).
 | Cultivos / campos | — | — | `crop` | Norte, Centro (valle) | — | Hileras de cultivo; refuerza el valle agrícola. |
 | Pasto / duna | — | — | `grass` | Altiplano, Norte, Centro, Sur, Patagonia, Austral (precordillera, valle, costa, playa) | — | Matas pequeñas de pasto. |
 | Rocas | — | — | `rock` | Altiplano, Norte, Centro, Sur, Patagonia, Austral (precordillera, valle, costa, playa) | — | Pedreros sueltos. |
+| Espino | *Acacia caven* | No (Chile/Argentina) | `espino` | Norte, Centro (valle, costa) | 2–4 m | Matorral espinoso del valle y la costa en clima seco; flores amarillas. |
+| Litre | *Lithraea caustica* | Sí (Chile) | `litre` | Centro (valle, costa) | 3–8 m | Esclerófilo de copa redonda; savia irritante. |
+| Boldo | *Peumus boldus* | Sí (Chile) | `boldo` | Centro (precordillera, costa) | 5–12 m | Copa redondeada y aromática; hojas medicinales. |
+| Peumo | *Cryptocarya alba* | Sí (Chile) | `peumo` | Centro, Sur (valle, costa) | 10–18 m | Siempreverde denso del bosque esclerófilo. |
+| Maitén | *Maytenus boaria* | No (Chile/Argentina) | `maiten` | Centro, Sur (valle) | 6–15 m | Ramas colgantes que le dan un aire llorón. |
+| Ciprés de la cordillera | *Austrocedrus chilensis* | No (Chile/Argentina) | `cipres` | Centro, Sur (precordillera) | 10–20 m | Conífera columnar de la precordillera. |
+| Puya | *Puya chilensis* | Sí (Chile) | `puya` | Altiplano, Norte (precordillera, costa) | 1–3 m (con el tallo) | Roseta espinosa del Norte y el altiplano. |
+| Llareta | *Azorella compacta* | No (Chile/Perú/Bolivia) | `llareta` | Altiplano (precordillera) | 0,3–0,5 m | Cojín compacto de la puna; crecimiento lentísimo. |
+| Amancay | *Alstroemeria aurea* | No (Chile/Argentina) | `amancay` | Sur, Patagonia (valle, costa) | 0,5–1 m | Flores amarillas de los claros del sur. |
+| Junquillo | *Juncus spp.* | No | `junquillo` | Centro, Sur, Patagonia, Austral (valle, costa) | 0,5–1 m | Juncos de humedales y bordes de agua. |
 | Flor del desierto | — | — | `flower` | — | — | Parche del desierto florido; entra solo con la floración. |
 <!-- END:flora-tabla -->
 

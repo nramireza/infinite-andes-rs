@@ -12,7 +12,7 @@ pub struct FloraMeta {
     pub refs: &'static [RefRow],
 }
 
-pub const FLORA_META: &[FloraMeta; 22] = &[
+pub const FLORA_META: &[FloraMeta; 32] = &[
     FloraMeta { name: "araucaria", common: "Araucaria / Pehuén", sci: "Araucaria araucana", endemism: "Sí (Chile/Argentina)", height_m: "30–40 m", notes: "Árbol emblema; silueta de paraguas; la copa se bambolea.", refs: &[RefRow { encuadre: "detalle", fuente: "https://commons.wikimedia.org/wiki/File:Araucaria_araucana_cones_at_Hulda_Klager_Lilac_Gardens.jpg", autor: "Dcoetzee", licencia: "CC0", archivo: "araucaria-01.jpg" }] },
     FloraMeta { name: "lenga", common: "Lenga / Ñire", sci: "Nothofagus pumilio / N. antarctica", endemism: "No (Patagonia)", height_m: "15–25 m", notes: "Caducifolio: pierde hojas en otoño, queda desnudo en invierno y brota en primavera.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Nothofagus_pumilio.jpg", autor: "s/a", licencia: "PD", archivo: "lenga-01.jpg" }] },
     FloraMeta { name: "copihue", common: "Copihue", sci: "Lapageria rosea", endemism: "Sí (Chile)", height_m: "trepadora (hasta ~10 m)", notes: "Enredadera y flor nacional; campanas rojas en primavera/verano.", refs: &[RefRow { encuadre: "detalle", fuente: "https://commons.wikimedia.org/wiki/File:Lapageria_rosea_-_Copihues_blancos.jpg", autor: "Juliairene", licencia: "PD", archivo: "copihue-01.jpg" }] },
@@ -35,4 +35,14 @@ pub const FLORA_META: &[FloraMeta; 22] = &[
     FloraMeta { name: "grass", common: "Pasto / duna", sci: "", endemism: "", height_m: "", notes: "Matas pequeñas de pasto.", refs: &[] },
     FloraMeta { name: "rock", common: "Rocas", sci: "", endemism: "", height_m: "", notes: "Pedreros sueltos.", refs: &[] },
     FloraMeta { name: "flower", common: "Flor del desierto", sci: "", endemism: "", height_m: "", notes: "Parche del desierto florido; entra solo con la floración.", refs: &[] },
+    FloraMeta { name: "espino", common: "Espino", sci: "Acacia caven", endemism: "No (Chile/Argentina)", height_m: "2–4 m", notes: "Matorral espinoso del valle y la costa en clima seco; flores amarillas.", refs: &[] },
+    FloraMeta { name: "litre", common: "Litre", sci: "Lithraea caustica", endemism: "Sí (Chile)", height_m: "3–8 m", notes: "Esclerófilo de copa redonda; savia irritante.", refs: &[] },
+    FloraMeta { name: "boldo", common: "Boldo", sci: "Peumus boldus", endemism: "Sí (Chile)", height_m: "5–12 m", notes: "Copa redondeada y aromática; hojas medicinales.", refs: &[] },
+    FloraMeta { name: "peumo", common: "Peumo", sci: "Cryptocarya alba", endemism: "Sí (Chile)", height_m: "10–18 m", notes: "Siempreverde denso del bosque esclerófilo.", refs: &[] },
+    FloraMeta { name: "maiten", common: "Maitén", sci: "Maytenus boaria", endemism: "No (Chile/Argentina)", height_m: "6–15 m", notes: "Ramas colgantes que le dan un aire llorón.", refs: &[] },
+    FloraMeta { name: "cipres", common: "Ciprés de la cordillera", sci: "Austrocedrus chilensis", endemism: "No (Chile/Argentina)", height_m: "10–20 m", notes: "Conífera columnar de la precordillera.", refs: &[] },
+    FloraMeta { name: "puya", common: "Puya", sci: "Puya chilensis", endemism: "Sí (Chile)", height_m: "1–3 m (con el tallo)", notes: "Roseta espinosa del Norte y el altiplano.", refs: &[] },
+    FloraMeta { name: "llareta", common: "Llareta", sci: "Azorella compacta", endemism: "No (Chile/Perú/Bolivia)", height_m: "0,3–0,5 m", notes: "Cojín compacto de la puna; crecimiento lentísimo.", refs: &[] },
+    FloraMeta { name: "amancay", common: "Amancay", sci: "Alstroemeria aurea", endemism: "No (Chile/Argentina)", height_m: "0,5–1 m", notes: "Flores amarillas de los claros del sur.", refs: &[] },
+    FloraMeta { name: "junquillo", common: "Junquillo", sci: "Juncus spp.", endemism: "No", height_m: "0,5–1 m", notes: "Juncos de humedales y bordes de agua.", refs: &[] },
 ];

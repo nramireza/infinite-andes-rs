@@ -24,6 +24,16 @@ Una ficha por especie (flora y fauna), generada desde los registros `FLORA` y `S
 - [Canelo](flora-canelo.md)
 - [Arrayán](flora-arrayan.md)
 - [Notro / Ciruelillo](flora-notro.md)
+- [Espino](flora-espino.md)
+- [Litre](flora-litre.md)
+- [Boldo](flora-boldo.md)
+- [Peumo](flora-peumo.md)
+- [Maitén](flora-maiten.md)
+- [Ciprés de la cordillera](flora-cipres.md)
+- [Puya](flora-puya.md)
+- [Llareta](flora-llareta.md)
+- [Amancay](flora-amancay.md)
+- [Junquillo](flora-junquillo.md)
 
 ## Fauna
 

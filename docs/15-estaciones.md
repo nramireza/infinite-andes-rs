@@ -4,19 +4,20 @@
 
 El paisaje tiene un **ciclo estacional** que tiñe la paleta, mueve la **línea de nieve** y sesga el
 **clima**. Implementado en [`crates/andes-core/src/seasons.rs`](../crates/andes-core/src/seasons.rs) y
-compuesto en `Scene::render` (D-019 JS). Tiene **paridad exacta** con JS.
+compuesto en `Scene::render`. Contraste reforzado en Rust (D-018).
 
 ## Las cuatro estaciones
 
 | Estación | Carácter | `snow_shift` | Clima favorecido |
 |----------|----------|--------------|------------------|
-| **verano** | base actual, cálido y despejado | −0.18 (nieve más alta) | despejado |
+| **verano** | seco y dorado en el valle (Chile central), despejado | −0.18 (nieve más alta) | despejado |
 | **otoño** | ámbar/rojo en flora y Costa, horizonte cálido | +0.12 | viento, lluvia |
-| **invierno** | frío y desaturado | +0.32 (nieve más baja) | nieve, lluvia, niebla, tormenta |
+| **invierno** | frío, verde oscuro y lluvioso | +0.32 (nieve más baja) | nieve, lluvia, niebla, tormenta |
 | **primavera** | verdes frescos | −0.05 | despejado |
 
-- `season_snow_shift` se **suma** al desplazamiento del bioma ([02 · Mundo](02-mundo.md)); solo actúa
-  en capas que ya tienen nieve. El verano **no tiñe**: es la referencia base.
+- Convención única: un `snow_shift` **positivo = más nieve** (línea más baja), tanto en estaciones
+  como en biomas ([02 · Mundo](02-mundo.md), D-017). Solo actúa en capas que ya tienen nieve.
+- El **verano sí tiñe** (valle/arena/flora hacia ocre) para diferenciarse de la primavera verde.
 - `SEASON_IDS` fija el orden (`verano`, `otono`, `invierno`, `primavera`).
 
 ## Ciclo y mezcla
@@ -43,7 +44,7 @@ get_palette(hora, clima)  →  apply_season(estación)  →  apply_biome(bioma)
 - El **resplandor del astro** se tiñe aparte con `season_glow_tint` (cálido en otoño/primavera, frío
   en invierno), aplicado en el cielo sin pasar por la paleta global.
 - La fuerza del tinte se **atenúa de noche** (`strength · (1 − 0.85·night_amount)`), para no lavar el
-  cielo nocturno (`SEASON_STRENGTH = 0.5`).
+  cielo nocturno (`SEASON_STRENGTH = 0.62`).
 - El **bioma** se aplica al final: manda en lo regional.
 
 ## Clima por estación

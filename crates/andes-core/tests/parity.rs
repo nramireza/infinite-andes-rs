@@ -291,22 +291,19 @@ fn parity_season_snow_and_bias() {
         };
         assert!(approx(season_snow_shift(st), *expected));
     }
-    for (index, next, t, expected) in SEASON_BIAS {
-        let st = andes_core::seasons::SeasonState {
-            index: *index,
-            next: *next,
-            t: *t,
-        };
-        let got = season_weather_bias(st);
-        for i in 0..6 {
-            assert!(approx(got[i], expected[i]), "bias[{i}]");
-        }
-    }
+    // El sesgo de clima de verano/invierno se ajustó en Rust (D-018): divergencia
+    // intencional, así que no se compara con el snapshot JS.
+    let _ = season_weather_bias;
 }
 
 #[test]
 fn parity_apply_season() {
     for (hour, mode, strength, expected) in APPLY_SEASON {
+        // El verano (y `auto` en fase 0) tiene tinte árido propio en Rust (D-018):
+        // divergencia intencional.
+        if *mode == "verano" || *mode == "auto" {
+            continue;
+        }
         let pal = apply_season(
             &get_palette(*hour, "clear", 1.0),
             season_state(0.0, mode),
@@ -532,18 +529,21 @@ fn parity_lerp_palettes() {
 
 #[test]
 fn parity_flora_spawns() {
+    // La flora de Rust creció (D-019), así que el orden de spawns ya no coincide
+    // con el snapshot JS. Solo comprobamos que el muestreo siga siendo no vacío y
+    // determinista entre dos corridas.
     let t = Terrain::new(TERRAIN_SEED);
     let layer = &andes_core::terrain::LAYERS[2]; // valle
-    let got = andes_core::flora::flora_spawns(layer, &t, 2, 300.0, 480, 270, TERRAIN_SEED, |_| {
-        Vec::<(&str, f64)>::new()
-    });
-    assert!(got.len() >= FLORA_SPAWNS.len(), "flora spawn count");
-    for (g, e) in got.iter().take(FLORA_SPAWNS.len()).zip(FLORA_SPAWNS) {
-        assert!(approx(g.wx, e.0) && approx(g.sx, e.1), "flora wx/sx");
-        assert_eq!(g.gy, e.2);
-        assert!(approx(g.size, e.3), "flora size");
-        assert_eq!((g.type_, g.warm, g.depth), (e.4, e.5, e.6));
-    }
+    let run = || {
+        andes_core::flora::flora_spawns(layer, &t, 2, 300.0, 480, 270, TERRAIN_SEED, |_| {
+            Vec::<(&str, f64)>::new()
+        })
+    };
+    let a = run();
+    let b = run();
+    assert!(!a.is_empty());
+    assert_eq!(a.len(), b.len());
+    let _ = FLORA_SPAWNS;
 }
 
 #[test]

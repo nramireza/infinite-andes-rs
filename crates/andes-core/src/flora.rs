@@ -200,6 +200,76 @@ pub const FLORA: &[FloraEntry] = &[
         },
     },
     FloraEntry {
+        name: "espino",
+        kind: "especie",
+        height: 0.8,
+        bloom_only: false,
+        zones: zone! { "norte" => "valle":1, "costa":1; "centro" => "valle":2, "costa":2 },
+    },
+    FloraEntry {
+        name: "litre",
+        kind: "especie",
+        height: 0.75,
+        bloom_only: false,
+        zones: zone! { "centro" => "valle":2, "costa":2 },
+    },
+    FloraEntry {
+        name: "boldo",
+        kind: "especie",
+        height: 0.85,
+        bloom_only: false,
+        zones: zone! { "centro" => "precordillera":1, "costa":2 },
+    },
+    FloraEntry {
+        name: "peumo",
+        kind: "especie",
+        height: 1.0,
+        bloom_only: false,
+        zones: zone! { "centro" => "valle":1, "costa":1; "sur" => "valle":1, "costa":1 },
+    },
+    FloraEntry {
+        name: "maiten",
+        kind: "especie",
+        height: 1.1,
+        bloom_only: false,
+        zones: zone! { "centro" => "valle":1; "sur" => "valle":1 },
+    },
+    FloraEntry {
+        name: "cipres",
+        kind: "especie",
+        height: 1.6,
+        bloom_only: false,
+        zones: zone! { "centro" => "precordillera":1; "sur" => "precordillera":1 },
+    },
+    FloraEntry {
+        name: "puya",
+        kind: "especie",
+        height: 0.9,
+        bloom_only: false,
+        zones: zone! { "altiplano" => "precordillera":2, "costa":1; "norte" => "precordillera":1, "costa":1 },
+    },
+    FloraEntry {
+        name: "llareta",
+        kind: "especie",
+        height: 0.4,
+        bloom_only: false,
+        zones: zone! { "altiplano" => "precordillera":2 },
+    },
+    FloraEntry {
+        name: "amancay",
+        kind: "especie",
+        height: 0.6,
+        bloom_only: false,
+        zones: zone! { "sur" => "valle":1, "costa":1; "patagonia" => "valle":1 },
+    },
+    FloraEntry {
+        name: "junquillo",
+        kind: "especie",
+        height: 0.7,
+        bloom_only: false,
+        zones: zone! { "centro" => "valle":1, "costa":1; "sur" => "valle":1, "costa":1; "patagonia" => "valle":1, "costa":1; "austral" => "valle":1, "costa":1 },
+    },
+    FloraEntry {
         name: "flower",
         kind: "efecto",
         height: 1.0,
@@ -265,6 +335,16 @@ pub fn draw_plant(
         "canelo" => draw_canelo(fb, x, base_y, size, pal, season),
         "arrayan" => draw_arrayan(fb, x, base_y, size, pal, season),
         "notro" => draw_notro(fb, x, base_y, size, pal, season),
+        "espino" => draw_espino(fb, x, base_y, size, pal, season),
+        "litre" => draw_litre(fb, x, base_y, size, pal),
+        "boldo" => draw_boldo(fb, x, base_y, size, pal),
+        "peumo" => draw_peumo(fb, x, base_y, size, pal),
+        "maiten" => draw_maiten(fb, x, base_y, size, pal),
+        "cipres" => draw_cipres(fb, x, base_y, size, pal),
+        "puya" => draw_puya(fb, x, base_y, size, pal),
+        "llareta" => draw_llareta(fb, x, base_y, size, pal),
+        "amancay" => draw_amancay(fb, x, base_y, size, pal, sway),
+        "junquillo" => draw_junquillo(fb, x, base_y, size, pal),
         _ => draw_grass(fb, x, base_y, size, pal),
     }
 }
@@ -1023,6 +1103,272 @@ fn draw_notro(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
         let fy = base_y - r(2.0 + hh * crown_h as f64);
         dr(fb, fx, fy, 1, 1, [0xd1, 0x40, 0x1e]);
         dr(fb, fx + 1, fy - (i % 2), 1, 1, [0xf2, 0x6a, 0x2a]);
+    }
+}
+
+fn draw_espino(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, season: i32) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let h = (size * 0.85).round().max(5.0) as i32;
+    let trunk_h = (size * 0.2).round().max(2.0) as i32;
+    let top = base_y - h;
+    let dark = outline(pal);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    dr(fb, x - 1, base_y - trunk_h, 2, trunk_h, get(pal, "trunk"));
+    let crown_h = h - trunk_h;
+    let ry = crown_h as f64 / 2.0;
+    let rx = (size * 0.4).round().max(3.0) as i32;
+    let cy = top as f64 + ry;
+    let mut dy = -ry;
+    while dy <= ry {
+        let span = (rx as f64 * (1.0 - (dy / ry).powi(2)).max(0.0).sqrt()).floor() as i32;
+        if span > 0 {
+            let yy = r(cy + dy);
+            dr(fb, x - span, yy, 1, 1, dark);
+            dr(fb, x + span, yy, 1, 1, dark);
+            dr(fb, x - span, yy, span * 2 + 1, 1, flora_d);
+            if dy < -ry * 0.35 {
+                dr(fb, x - span, yy, span * 2 + 1, 1, flora_l);
+            }
+        }
+        dy += 1.0;
+    }
+    if season == 0 || season == 3 {
+        let n = 2 + (size * 0.3).floor() as i32;
+        for i in 0..n {
+            let hh = hash1(i * 53 + x, 0x0e5);
+            dr(
+                fb,
+                x + r((hh - 0.5) * rx as f64 * 1.9),
+                top + 1 + r(hh * (crown_h - 1).max(1) as f64),
+                1,
+                1,
+                FLOWER_COLORS[1],
+            );
+        }
+    }
+}
+
+fn draw_litre(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let h = (size * 0.9).round().max(5.0) as i32;
+    let trunk_h = (size * 0.18).round().max(2.0) as i32;
+    let top = base_y - h;
+    let dark = outline(pal);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    dr(fb, x - 1, base_y - trunk_h, 2, trunk_h, get(pal, "trunk"));
+    let crown_h = h - trunk_h;
+    let ry = crown_h as f64 / 2.0;
+    let rx = (size * 0.42).round().max(3.0) as i32;
+    let cy = top as f64 + ry;
+    let mut dy = -ry;
+    while dy <= ry {
+        let span = (rx as f64 * (1.0 - (dy / ry).powi(2)).max(0.0).sqrt()).floor() as i32;
+        if span > 0 {
+            let yy = r(cy + dy);
+            dr(fb, x - span, yy, 1, 1, dark);
+            dr(fb, x + span, yy, 1, 1, dark);
+            dr(fb, x - span, yy, span * 2 + 1, 1, flora_d);
+            dr(fb, x - span + 1, yy, (span * 2 - 1).max(1), 1, flora_l);
+            if hash1(x * 7 + yy, 0x117) < 0.4 {
+                dr(fb, x + r(span as f64 * 0.3), yy, 1, 1, flora_d);
+            }
+        }
+        dy += 1.0;
+    }
+}
+
+fn draw_boldo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let h = (size * 0.85).round().max(5.0) as i32;
+    let trunk_h = (size * 0.24).round().max(2.0) as i32;
+    let top = base_y - h;
+    dr(fb, x - 1, base_y - trunk_h, 2, trunk_h, get(pal, "trunk"));
+    let crown_h = h - trunk_h;
+    let ry = crown_h as f64 / 2.0;
+    let rx = (size * 0.36).round().max(2.0) as i32;
+    let cy = top as f64 + ry;
+    let dark = outline(pal);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    let mut dy = -ry;
+    while dy <= ry {
+        let span = (rx as f64 * (1.0 - (dy / ry).powi(2)).max(0.0).sqrt()).floor() as i32;
+        if span > 0 {
+            let yy = r(cy + dy);
+            dr(fb, x - span, yy, 1, 1, dark);
+            dr(fb, x + span, yy, 1, 1, dark);
+            dr(fb, x - span, yy, span * 2 + 1, 1, flora_l);
+            if hash1(x * 3 + yy, 0xb01) < 0.5 {
+                dr(
+                    fb,
+                    x + r((hash1(yy, 0xb02) - 0.5) * span as f64),
+                    yy,
+                    1,
+                    1,
+                    flora_d,
+                );
+            }
+        }
+        dy += 1.0;
+    }
+}
+
+fn draw_peumo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let h = (size * 0.95).round().max(6.0) as i32;
+    let trunk_h = (size * 0.22).round().max(2.0) as i32;
+    let top = base_y - h;
+    dr(fb, x - 1, base_y - trunk_h, 2, trunk_h, get(pal, "trunk"));
+    let crown_h = h - trunk_h;
+    let ry = crown_h as f64 / 2.0;
+    let rx = (size * 0.4).round().max(3.0) as i32;
+    let cy = top as f64 + ry;
+    let dark = outline(pal);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    let mut dy = -ry;
+    while dy <= ry {
+        let span = (rx as f64 * (1.0 - (dy / ry).powi(2)).max(0.0).sqrt()).floor() as i32;
+        if span > 0 {
+            let yy = r(cy + dy);
+            dr(fb, x - span, yy, span * 2 + 1, 1, flora_d);
+            dr(fb, x - span, yy, 1, 1, dark);
+            dr(fb, x + span, yy, 1, 1, dark);
+            if dy < -ry * 0.2 {
+                dr(fb, x - span + 1, yy, (span * 2 - 1).max(1), 1, flora_l);
+            }
+        }
+        dy += 1.0;
+    }
+}
+
+fn draw_maiten(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let h = (size * 1.0).round().max(6.0) as i32;
+    let trunk_h = (size * 0.3).round().max(3.0) as i32;
+    let top = base_y - h;
+    let (trunk, flora_l, flora_d) = (get(pal, "trunk"), get(pal, "floraL"), get(pal, "floraD"));
+    dr(fb, x - 1, base_y - trunk_h, 2, trunk_h, trunk);
+    let crown_h = h - trunk_h;
+    let rx = (size * 0.4).round().max(3.0) as i32;
+    let dome = (crown_h / 2).max(1);
+    for i in 0..dome {
+        let t = i as f64 / dome as f64;
+        let half = (rx as f64 * (1.0 - t * t).max(0.1).sqrt()).round().max(1.0) as i32;
+        dr(fb, x - half, top + i, half * 2, 1, flora_l);
+    }
+    for (i, k) in [-1.0f64, 1.0, -0.5, 0.5].iter().enumerate() {
+        let lx = x + r(*k * rx as f64);
+        let len = (crown_h as f64 * 0.6) as i32 - (i as i32 / 2);
+        dr(
+            fb,
+            lx,
+            top + dome,
+            1,
+            len.max(2),
+            if i % 2 == 0 { flora_d } else { flora_l },
+        );
+    }
+}
+
+fn draw_cipres(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let h = (size * 1.15).round().max(9.0) as i32;
+    let trunk_h = (size * 0.14).round().max(2.0) as i32;
+    let top = base_y - h;
+    let half_max = (size * 0.22).round().max(2.0) as i32;
+    let (trunk, flora_l, flora_d) = (get(pal, "trunk"), get(pal, "floraL"), get(pal, "floraD"));
+    dr(fb, x - 1, base_y - trunk_h, 2, trunk_h, trunk);
+    let n = h - trunk_h;
+    for i in 0..n {
+        let t = i as f64 / n as f64;
+        let half = (half_max as f64 * (0.25 + 0.75 * t.powf(0.8)))
+            .round()
+            .max(1.0) as i32;
+        let yy = top + i;
+        dr(fb, x - half, yy, half * 2 + 1, 1, flora_d);
+        if i % 2 == 0 {
+            dr(fb, x - half, yy, half * 2 + 1, 1, flora_l);
+        }
+    }
+}
+
+fn draw_puya(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let (flora_l, flora_d, sand_d) = (get(pal, "floraL"), get(pal, "floraD"), get(pal, "sandD"));
+    let w = (size * 0.9).round().max(4.0) as i32;
+    for i in 0..=w {
+        let s = i as f64 / w as f64;
+        let lh = (size * 0.7 * (1.0 - s)).round().max(1.0) as i32;
+        dr(fb, x - i, base_y - lh, 1, lh, flora_d);
+        dr(fb, x + i, base_y - lh, 1, lh, flora_d);
+    }
+    let inner = (w / 2).max(1);
+    for i in 0..=inner {
+        let lh = (size * 0.9).round().max(2.0) as i32 - i;
+        dr(fb, x - i, base_y - lh.max(1), 1, lh.max(1), flora_l);
+        dr(fb, x + i, base_y - lh.max(1), 1, lh.max(1), flora_l);
+    }
+    let sh = (size * 0.8).round().max(3.0) as i32;
+    dr(fb, x, base_y - sh, 1, sh, sand_d);
+    dr(fb, x, base_y - sh - 1, 3, 1, [0x8a, 0x6a, 0x3a]);
+}
+
+fn draw_llareta(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    let w = (size * 1.1).round().max(3.0) as i32;
+    let h = (size * 0.5).round().max(2.0) as i32;
+    for rr in 0..h {
+        let t = (rr + 1) as f64 / h as f64;
+        let half = (w as f64 * 0.5 * (1.0 - (1.0 - t).powi(2)).max(0.05).sqrt())
+            .round()
+            .max(1.0) as i32;
+        let yy = base_y - h + rr;
+        dr(fb, x - half, yy, half * 2, 1, flora_d);
+        if rr % 2 == 0 {
+            dr(fb, x - half, yy, half, 1, flora_l);
+        }
+    }
+}
+
+fn draw_amancay(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, sway: f64) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    let n = 2 + (size * 0.6).floor() as i32;
+    for i in 0..n {
+        let sx = x + i - (n >> 1);
+        let lean = r(sway * (3.0 + i as f64 * 0.5));
+        let h = (size * 0.9).round().max(3.0) as i32 + (i % 2);
+        dr(fb, sx, base_y - h, 1, h, flora_d);
+        dr(fb, sx - 1, base_y - 2, 1, 1, flora_l);
+        let fx = sx + lean;
+        dr(fb, fx, base_y - h - 1, 1, 1, FLOWER_COLORS[1]);
+        dr(fb, fx - 1, base_y - h - 1, 1, 1, FLOWER_COLORS[1]);
+        dr(fb, fx, base_y - h - 2, 1, 1, [0xf7, 0xd9, 0x70]);
+    }
+}
+
+fn draw_junquillo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    let n = 3 + (size * 0.8).floor() as i32;
+    for i in 0..n {
+        let gx = x + i - (n >> 1);
+        let h = (size * 1.0).round().max(3.0) as i32 + ((i * 3 + x) % 2);
+        let c = if i % 3 == 0 { flora_l } else { flora_d };
+        dr(fb, gx, base_y - h, 1, h, c);
+        if i % 2 == 0 {
+            dr(fb, gx, base_y - h - 1, 1, 1, flora_l);
+        }
     }
 }
 

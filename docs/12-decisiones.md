@@ -194,3 +194,28 @@ siguiente número.
 - **Consecuencia:** invierno y otoño muestran más nieve que verano y primavera, como corresponde al
   hemisferio sur. Se retira la puerta `snow_thr > 0` para que un shift alto no apague la nieve de las
   capas lejanas.
+
+## D-018 · Estaciones más marcadas (tinte árido de verano)
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** subir `SEASON_STRENGTH` a `0.62` y dar al **verano** un tinte propio hacia ocre
+  (valle, arena, flora y horizonte), reforzando el contraste con la primavera verde. Ajustar el sesgo
+  de clima (verano más despejado; invierno más lluvia/nieve).
+- **Motivo:** que la estación se lea de un vistazo y que Chile central se vea seco en verano, no
+  indistinguible de la primavera.
+- **Consecuencia:** la paridad opcional de `applySeason` y `seasonWeatherBias` con JS diverge a
+  propósito; el verano deja de ser "la base sin tinte".
+
+## D-019 · Flora endémica nueva (10 especies)
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** añadir al registro de flora diez especies chilenas con identidad regional: **espino,
+  litre, boldo, peumo, maitén, ciprés de la cordillera, puya, llareta, amancay y junquillo**, con
+  dibujo propio y metadata en `flora_data.rs`.
+- **Motivo:** enriquecer cada región (matorral esclerófilo del centro, bosque templado del sur, puna
+  del altiplano) más allá del catálogo heredado del JS.
+- **Consecuencia:** el orden de spawns de flora cambia (la paridad de spawns con JS diverge a
+  propósito); las fichas se regeneran con `gen-species`. Al correr `gen-parity.mjs` se
+  **sobrescribiría** `flora_data.rs`, así que es solo referencia.

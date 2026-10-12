@@ -5,7 +5,7 @@ use crate::palette::{field_index, lerp_color, Palette, Rgb};
 
 pub const SEASON_IDS: [&str; 4] = ["verano", "otono", "invierno", "primavera"];
 pub const SEASON_DURATION: f64 = 120.0;
-pub const SEASON_STRENGTH: f64 = 0.5;
+pub const SEASON_STRENGTH: f64 = 0.62;
 const HOLD: f64 = 0.6;
 
 /// Orden de las claves de clima (el mismo de `seasons.js`).
@@ -60,9 +60,18 @@ const fn g(hexv: u32, amount: f64) -> Glow {
 
 const SEASONS: [Season; 4] = [
     Season {
-        tint: &[],
+        // Chile central en verano: seco y dorado (no tiñe el cielo bajo de noche).
+        tint: &[
+            ("floraL", hex(0xb2a057)),
+            ("floraD", hex(0x8a763c)),
+            ("valleyL", hex(0xc9ab6a)),
+            ("valleyD", hex(0xa3854a)),
+            ("sand", hex(0xe8cf9c)),
+            ("sandD", hex(0xc6a978)),
+            ("skyHorizon", hex(0xefd9a6)),
+        ],
         snow_shift: -0.18,
-        weather_bias: [2.2, 0.2, 0.5, 0.6, 1.0, 0.15],
+        weather_bias: [2.5, 0.15, 0.35, 0.5, 1.0, 0.1],
         glow: None,
     },
     Season {
@@ -94,7 +103,7 @@ const SEASONS: [Season; 4] = [
             ("skyHorizon", hex(0xcfd8e0)),
         ],
         snow_shift: 0.32,
-        weather_bias: [0.8, 2.2, 1.4, 1.2, 1.2, 1.0],
+        weather_bias: [0.7, 2.4, 1.6, 1.3, 1.2, 1.1],
         glow: Some(g(0xb8c8f0, 0.4)),
     },
     Season {
@@ -323,10 +332,11 @@ mod tests {
     }
 
     #[test]
-    fn apply_season_zero_or_summer_keeps_palette() {
+    fn apply_season_zero_keeps_and_summer_tints() {
         let base = get_palette(12.0, "clear", 1.0);
         assert_eq!(apply_season(&base, season_state(0.0, "otono"), 0.0), base);
-        assert_eq!(apply_season(&base, season_state(0.0, "verano"), 0.5), base);
+        // El verano ya tiene su propio tinte árido (D-018).
+        assert_ne!(apply_season(&base, season_state(0.0, "verano"), 0.5), base);
     }
 
     #[test]

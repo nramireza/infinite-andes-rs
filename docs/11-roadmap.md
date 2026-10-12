@@ -64,8 +64,9 @@ Portado con **paridad exacta** respecto a JS:
 ## Fase 6 — Contenido ✅/en curso
 
 - [x] **Línea de nieve estacional coherente** (D-017): el invierno ya no se ve árido.
-- [ ] Estaciones más marcadas (tinte, sequía estival, clima).
-- [ ] Flora endémica nueva y variaciones de dibujo.
+- [x] **Estaciones más marcadas** (D-018): verano árido, más contraste y clima.
+- [x] **Flora endémica nueva** (D-019): espino, litre, boldo, peumo, maitén, ciprés, puya, llareta,
+      amancay y junquillo.
 - [ ] Fauna marina (costa/mar) y aves.
 - [ ] Momentos/sorpresas nuevas (eclipse, migraciones…).
 - [ ] Biomas nuevos (islas, humedales, fiordos más marcados).
