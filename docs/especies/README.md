@@ -58,3 +58,8 @@ Una ficha por especie (flora y fauna), generada desde los registros `FLORA` y `S
 - [Choique / Ñandú petizo](fauna-choique.md)
 - [Chucao](fauna-chucao.md)
 - [Huillín](fauna-huillin.md)
+- [Lobo marino común](fauna-lobo-marino.md)
+- [Delfín chileno](fauna-delfin.md)
+- [Gaviota dominicana](fauna-gaviota.md)
+- [Albatros de ceja negra](fauna-albatros.md)
+- [Pelícano](fauna-pelicano.md)

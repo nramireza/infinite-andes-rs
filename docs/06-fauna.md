@@ -34,6 +34,11 @@ con JS ([11 · Roadmap](11-roadmap.md)).
 | `choique` | Choique / Ñandú petizo | Precordillera, Valle | `walk` | día |
 | `chucao` | Chucao | Costa | `hop` | día |
 | `huillin` | Huillín | Valle, Costa (borde del cauce) | `swim` | día |
+| `lobo-marino` | Lobo marino común | Mar | `swim` | día |
+| `delfin` | Delfín chileno | Mar | `swim` | día |
+| `gaviota` | Gaviota dominicana | Playa, Mar | `fly` | día |
+| `albatros` | Albatros de ceja negra | Mar | `fly` | día |
+| `pelicano` | Pelícano | Mar, Playa | `fly` | día |
 <!-- END:fauna-implementado -->
 
 ### Especificación de sprites
@@ -103,18 +108,23 @@ con qué frecuencia relativa). Pesos en `RARITY_WEIGHT` (`fauna_data.rs`).
 | Choroy | LC | endémica, estable | común | 3 |
 | Chucao | LC | común, sotobosque | común | 3 |
 | Cóndor | NT | amplia | común | 3 |
+| Gaviota dominicana | LC | costera | común | 3 |
 | Güiña / Kodkod | LC | común, esquiva | común | 3 |
+| Pingüino de Humboldt | VU | colonias | común | 3 |
+| Albatros de ceja negra | LC | oceánico | poco-común | 1.2 |
 | Choique / Ñandú petizo | NT | decreciente | poco-común | 1.2 |
 | Flamenco chileno | NT | localizado | poco-común | 1.2 |
 | Guanaco | LC | VU centro/norte | poco-común | 1.2 |
+| Lobo marino común | LC | costero | poco-común | 1.2 |
 | Monito del monte | NT | localizado | poco-común | 1.2 |
+| Pelícano | NT | costero | poco-común | 1.2 |
 | Pudú | NT | decreciente | poco-común | 1.2 |
 | Puma | LC (NT nacional) | NT nacional | poco-común | 1.2 |
 | Vicuña | LC | localizada | poco-común | 1.2 |
+| Chungungo | EN | costero | rara | 0.5 |
+| Delfín chileno | NT | endémico | rara | 0.5 |
 | Huillín | EN | ríos del sur | rara | 0.5 |
-| Pingüino de Humboldt | VU | colonias | rara | 0.5 |
 | Chinchilla de cola larga | EN | casi extinta | muy-rara | 0.12 |
-| Chungungo | EN | costero | muy-rara | 0.12 |
 | Huemul | EN | ~1.000 ind. | muy-rara | 0.12 |
 | Rana de Darwin | EN | endémica, en declive | muy-rara | 0.12 |
 <!-- END:fauna-densidad -->
@@ -158,6 +168,11 @@ y se refuerzan aves y zorros (`BLOOM_FAUNA`).
 | Choique / Ñandú petizo | *Rhea pennata* | No | Sur, Patagonia (precordillera, valle) | día | Ñandú de la estepa; camina y deja huellas. |
 | Chucao | *Scelorchilus rubecula* | No (Chile/Argentina) | Sur, Patagonia, Austral (costa) | día | Ave de sotobosque; pecho rojizo. |
 | Huillín | *Lontra provocax* | No (Chile/Argentina) | Centro, Sur, Patagonia, Austral (valle, costa) | día | Nutria de río del sur; nada en el borde del cauce. |
+| Lobo marino común | *Otaria flavescens* | No | Altiplano, Norte, Centro, Sur, Patagonia, Austral (mar) | día | Macho con melena; se asolea en roqueríos y nada cerca de la costa. |
+| Delfín chileno | *Cephalorhynchus eutropia* | Sí (Chile) | Altiplano, Norte, Centro, Sur, Patagonia, Austral (mar) | día | Delfín endémico, pequeño y sin pico; salta en grupos. |
+| Gaviota dominicana | *Larus dominicanus* | No | Altiplano, Norte, Centro, Sur, Patagonia, Austral (playa, mar) | día | Ave costera abundante; planea sobre la playa y el mar. |
+| Albatros de ceja negra | *Thalassarche melanophris* | No | Altiplano, Norte, Centro, Sur, Patagonia, Austral (mar) | día | Planea con las alas rígidas sobre el oleaje. |
+| Pelícano | *Pelecanus thagus* | No (Chile/Perú) | Altiplano, Norte, Centro, Sur, Patagonia, Austral (mar, playa) | día | Vuela en fila bordeando la costa; pico largo. |
 <!-- END:fauna-objetivo -->
 
 > Los nombres científicos y la condición de endemismo son una aproximación: varias especies son

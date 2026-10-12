@@ -219,3 +219,15 @@ siguiente número.
 - **Consecuencia:** el orden de spawns de flora cambia (la paridad de spawns con JS diverge a
   propósito); las fichas se regeneran con `gen-species`. Al correr `gen-parity.mjs` se
   **sobrescribiría** `flora_data.rs`, así que es solo referencia.
+
+## D-020 · Fauna marina y aves costeras
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** reforzar la vida del mar: añadir **lobo marino común, delfín chileno, gaviota
+  dominicana, albatros de ceja negra y pelícano**, y subir la frecuencia de `chungungo` y `pinguino`
+  (rareza y peso de zona).
+- **Motivo:** la capa `mar` existía pero casi no se veía fauna; las aves y mamíferos marinos le dan
+  vida a la costa y al océano.
+- **Consecuencia:** nuevas fichas en `docs/fauna-*.md` (regeneradas con `gen-species`). El orden del
+  catálogo crece; `gen-parity.mjs` sobrescribiría `fauna_data.rs` (solo referencia).

@@ -11,7 +11,7 @@
 | Tipo en código | `chungungo` (fauna) |
 | Movimiento | `swim` |
 | Actividad | día |
-| Rareza (juego) | muy-rara |
+| Rareza (juego) | rara |
 | Anclaje | pies |
 | Colocación | por chunk |
 | Sprite | 12×5 px · 2 frames |

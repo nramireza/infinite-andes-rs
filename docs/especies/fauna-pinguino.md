@@ -11,7 +11,7 @@
 | Tipo en código | `pinguino` (fauna) |
 | Movimiento | `swim` |
 | Actividad | día |
-| Rareza (juego) | rara |
+| Rareza (juego) | común |
 | Anclaje | pies |
 | Colocación | por chunk |
 | Sprite | 7×10 px · 2 frames |

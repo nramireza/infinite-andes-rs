@@ -67,7 +67,8 @@ Portado con **paridad exacta** respecto a JS:
 - [x] **Estaciones más marcadas** (D-018): verano árido, más contraste y clima.
 - [x] **Flora endémica nueva** (D-019): espino, litre, boldo, peumo, maitén, ciprés, puya, llareta,
       amancay y junquillo.
-- [ ] Fauna marina (costa/mar) y aves.
+- [x] **Fauna marina y aves** (D-020): lobo marino, delfín chileno, gaviota, albatros y pelícano;
+      `chungungo` y `pinguino` más frecuentes.
 - [ ] Momentos/sorpresas nuevas (eclipse, migraciones…).
 - [ ] Biomas nuevos (islas, humedales, fiordos más marcados).
 
