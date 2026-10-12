@@ -135,10 +135,62 @@ siguiente número.
 ## D-013 · Antialias de nubes con supermuestreo dirigido al borde
 
 - **Fecha:** 2026-10-12
-- **Estado:** aceptada
+- **Estado:** **superada por D-016**
 - **Decisión:** en `Framebuffer::fill_ellipse`, resolver interior/exterior de forma exacta por
   distancia normalizada y supermuestrear solo la banda de borde (`≈1 px`), con `N = 16`.
 - **Motivo:** mejora la cobertura del antialias de Canvas a bajo coste (el interior no muestrea) y
   acelera las elipses grandes del terreno.
-- **Consecuencia:** la paridad de píxeles de las nubes mejora de forma marginal; sigue pendiente
-  afinar la diferencia de AA de Canvas (D-003).
+- **Consecuencia:** la paridad de píxeles de las nubes mejora de forma marginal; se abandona al
+  adoptar la estética pixel-art sin antialias (D-016).
+
+## D-014 · El repositorio Rust es la fuente de verdad
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada (**supera D-001 y D-004**)
+- **Decisión:** este repositorio deja de ser una réplica del proyecto JS. El diseño y los datos del
+  núcleo (`palette_data.rs`, `fauna_data.rs`, `flora_data.rs`) viven aquí y **se pueden editar y
+  mejorar**. El proyecto JS queda como **referencia e inspiración**.
+- **Motivo:** continuar el paisaje hacia una visión propia y mejorada, sin quedar atado a la paridad
+  exacta.
+- **Consecuencia:** `scripts/gen-parity.mjs` pasa a ser una herramienta de referencia opcional que
+  sobrescribe los datos; ya no es un paso obligatorio ni se corre en el flujo normal. Las fichas y
+  la tabla de la paleta se regeneran con binarios Rust (`gen-species`, `gen-palette`), así que el
+  repo ya no necesita Node.
+
+## D-015 · Paridad con JS como test opcional
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada (**supera D-005**)
+- **Decisión:** los tests de paridad (`crates/andes-core/tests/parity.rs` y `tests/generated/`) se
+  compilan solo con la feature `parity` (`cargo test --features parity`). El `cargo test` normal es
+  autocontenido y no depende del proyecto JS.
+- **Motivo:** permitir que Rust evolucione y diverja sin romper la compilación de los tests, sin
+  perder el arnés de comparación como referencia.
+- **Consecuencia:** donde Rust diverge a propósito, `--features parity` reporta diferencias (es
+  informativo, no un fallo de calidad). El criterio visual pasa a ser snapshots PNG propios.
+
+## D-016 · Estética pixel-art nítida (sin antialias)
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada (**supera D-003/D-013**)
+- **Decisión:** el rasterizador dibuja **sin antialias**: `fill_ellipse` se rasteriza a píxeles
+  enteros (nubes, penachos) y se elimina `fill_rect_f` (los bordes del terreno se cuantizan). Se
+  mantiene el degradado suave del cielo.
+- **Motivo:** el antialias difumina los bordes y rompe la estética pixel-art; el objetivo es una
+  imagen nítida, no clonar el suavizado de Canvas.
+- **Consecuencia:** la paridad de píxeles con Canvas empeora a propósito; las decisiones de estilo
+  pasan a evaluarse por capturas propias.
+
+## D-017 · Línea de nieve estacional coherente
+
+- **Fecha:** 2026-10-12
+- **Estado:** aceptada
+- **Decisión:** el desplazamiento de nieve (estacional y de bioma) usa una única convención:
+  **positivo = más nieve** (línea más baja). En `terrain.rs` la altura de nieve es
+  `a · (snow_frac − shift)`, y los `snow_shift` de bioma se reajustaron para conservar su
+  comportamiento.
+- **Motivo:** corregir el invierno "árido": con `snow_frac + shift` el invierno (shift positivo)
+  subía la línea de nieve y se veía menos nevado que el verano.
+- **Consecuencia:** invierno y otoño muestran más nieve que verano y primavera, como corresponde al
+  hemisferio sur. Se retira la puerta `snow_thr > 0` para que un shift alto no apague la nieve de las
+  capas lejanas.

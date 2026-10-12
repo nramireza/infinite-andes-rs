@@ -108,5 +108,5 @@ sur** de la fecha (`clock.rs`); el amanecer/atardecer se calculan para Chile cen
 ## Pendiente
 
 - Paridad de UI web con el panel del original (vistas favoritas, botón copiar enlace).
-- Refinar el antialias de las nubes ([08 · Arte pixel](08-arte-pixel.md)).
+- Atajos de teclado, ocultar panel y timelapse/GIF.
 - Persistir la preferencia del switch de actividad (el nativo no tiene `localStorage`).

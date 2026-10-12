@@ -22,12 +22,11 @@ El rasterizador propio vive en [`framebuffer.rs`](../crates/andes-core/src/frame
 |--------|-----|
 | `set` / `blend` | Píxel opaco / mezcla alfa |
 | `fill_rect` | Rectángulo de píxeles enteros (sprites, bandas) |
-| `fill_rect_f` | Rectángulo con **cobertura fraccionaria** (bordes suaves, p. ej. astros) |
-| `fill_ellipse` / `fill_disc` | Elipses y discos (nubes, astros). La elipse resuelve interior/exterior exacto y supermuestrea solo el borde (`N=16`) para aproximar el antialias de Canvas |
+| `fill_ellipse` / `fill_disc` | Elipses y discos rasterizados a píxel entero (**sin antialias**, nubes y astros) |
 | `vgradient` | Gradiente vertical (cielo) |
 
 Es la pieza que sustituye al `CanvasRenderingContext2D` del original y lo que hace el núcleo
-testeable sin navegador.
+testeable sin navegador. Todo se dibuja **nítido** (D-016): no hay cobertura fraccionaria.
 
 ## Paleta
 
@@ -86,15 +85,14 @@ testeable sin navegador.
   flora, penachos de volcán, parpadeo de estrellas, partículas de clima.
 - Los animales usan **frames discretos** (2) con *frame rate* fijo por especie.
 
-## Paridad de píxeles
+## Comparación con el original
 
-El rasterizador Rust se compara contra el render real de JS (Canvas) píxel a píxel con
-`./scripts/pixel-check.sh` (Chrome headless). Resultado actual: `|Δ|` medio ≈ **0.25**, máximo ≈ 38 y
-**<0.5 %** de píxeles con `Δ≥8` (bordes de nube por el antialias de Canvas frente a nuestro
-supermuestreo); el resto son diferencias de redondeo de ±1. Ver [11 · Roadmap](11-roadmap.md).
+`./scripts/pixel-check.sh` (Chrome headless) sigue disponible como **diagnóstico manual** contra el
+render JS, pero ya no es un criterio: Rust es pixel-art **sin antialias** (D-016), así que las
+diferencias en los bordes de nube son esperadas. El criterio propio son snapshots PNG
+(`cargo run -p andes-native --bin infinite-andes -- ...`). Ver [11 · Roadmap](11-roadmap.md).
 
 ## Pendiente
 
-- **Afilar el antialias de las nubes**: con el supermuestreo dirigido al borde (D-013) la paridad
-  mejoró, pero resta afinar la diferencia de AA de Canvas (mayor fuente de diferencia).
 - Portar a `pixel.rs` las utilidades restantes si el rasterizador las necesita.
+- Más variedad de siluetas de nube (hoy son la misma forma a distintas escalas).

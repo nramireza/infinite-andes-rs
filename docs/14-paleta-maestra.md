@@ -2,12 +2,12 @@
 
 > Estado: estable · Actualizado: 2026-10-12
 
-Tabla de colores por franja horaria, derivada de las claves de la paleta del proyecto original.
-**Generada** con `scripts/gen-parity.mjs` (no editar a mano): el script lee `palette.js` y emite los
-datos de `palette_data.rs`; la tabla de abajo se inyecta entre marcadores.
+Tabla de colores por franja horaria, derivada de las claves de `palette_data.rs` (fuente del núcleo).
+**Generada** con `cargo run -p andes-core --bin gen-palette`; la tabla de abajo se inyecta entre
+marcadores.
 
-Los colores son los mismos del proyecto JS (la paleta tiene **paridad exacta**). Para editarla, se
-toca `palette.js` en el repo original y se regenera.
+`palette_data.rs` es **fuente de este repo** (snapshot inicial derivado del JS). Para cambiar los
+colores se edita allí y se regenera la tabla.
 
 ## Formato
 
@@ -16,7 +16,7 @@ toca `palette.js` en el repo original y se regenera.
 - El clima y el bioma se aplican después (`apply_weather`, `apply_biome`), como interpolaciones hacia
   sus tonos de destino.
 
-<!-- BEGIN:paleta-tabla (generado con `node scripts/gen-parity.mjs`) -->
+<!-- BEGIN:paleta-tabla (generado con `cargo run -p andes-core --bin gen-palette`) -->
 | Campo | 00:00 | 05:17 | 06:00 | 07:55 | 12:00 | 16:48 | 18:14 | 20:10 |
 |-------|------|------|------|------|------|------|------|------|
 | `skyTop` | #04060e | #24305a | #3f5288 | #3a8ecf | #3d97d6 | #3f8fca | #26407e | #141f45 |
@@ -73,7 +73,8 @@ toca `palette.js` en el repo original y se regenera.
 ## Cómo regenerar
 
 ```bash
-TZ=UTC node scripts/gen-parity.mjs
+cargo run -p andes-core --bin gen-palette
 ```
 
-El script necesita el repo JS hermano (`../infinite-andes`, o `ANDES_JS_DIR`).
+(El `scripts/gen-parity.mjs` del repo sigue pudiendo refrescar `palette_data.rs` desde el JS, pero es
+una herramienta de referencia y sobrescribe los datos editados a mano.)

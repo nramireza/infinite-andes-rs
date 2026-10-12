@@ -10,8 +10,9 @@ mientras dure la migración.
 
 ## Estado
 
-Fases 1–4 del [roadmap](docs/11-roadmap.md) completadas: núcleo matemático y rasterizador con
-**paridad exacta** respecto a JS, frontends (nativo, fondo y WASM) y documentación.
+Este repositorio es la **fuente de verdad** (D-014): el paisaje nació del proyecto JS, pero aquí
+evoluciona hacia una visión propia y mejorada, con estética **pixel-art nítida (sin antialias,
+D-016)**. Frontends nativo, fondo de pantalla y WASM completos.
 
 | Módulo | Contenido | Paridad |
 |--------|-----------|---------|
@@ -21,7 +22,7 @@ Fases 1–4 del [roadmap](docs/11-roadmap.md) completadas: núcleo matemático y
 | `andes-core::viewport` | `BASE_H`, presets, `widthForRatio`, `ratioFromString`, `labelForRatio` | ✅ exacta |
 | `andes-core::palette` | `getPalette`, `lerpColor`, `shade`, `applyWeather`, `applyBiome`, `nightAmount` | ✅ exacta |
 | `andes-core::pixel` | `radixDither` (el resto llega con el rasterizador) | ✅ exacta |
-| `andes-core::framebuffer` | lienzo RGBA8, `fill_rect`, `fill_rect_f` (cobertura fraccionaria), `blend`, `fill_ellipse`, `vgradient` | razonable |
+| `andes-core::framebuffer` | lienzo RGBA8 nítido: `fill_rect`, `blend`, `fill_ellipse`, `fill_disc`, `vgradient` | propia |
 | `andes-core::clock` | `localHour`, `dayOfYear`, fase de estación, fase lunar | ✅ exacta (calendario UTC) |
 | `andes-core::sun` | `solarDeclination`, `solarTimes`, `solarClock` | ✅ exacta |
 | `andes-core::seasons` | `seasonState`, tinte, sesgo de clima, `applySeason`, `seasonGlowTint` | ✅ exacta |
@@ -36,10 +37,10 @@ Fases 1–4 del [roadmap](docs/11-roadmap.md) completadas: núcleo matemático y
 | `andes-core::activity` | `activityMultiplier` (densidad de fauna según actividad del equipo) | ✅ exacta |
 | `andes-core::scene` | orquestador: cámara, ciclo día/noche, clima, orden de render, reloj real | completo |
 
-Pendientes transversales (detalle en el [roadmap](docs/11-roadmap.md)): refinar el
-**antialias de las nubes** para acercar la paridad de píxeles, el **modo información al clic**
-(D-051 JS), portar utilidades restantes de `pixel.js`, probar el fondo Wayland en un compositor
-real y ampliar la cobertura de tests a los dibujos.
+Pendientes (detalle en el [roadmap](docs/11-roadmap.md)): más contenido (estaciones más marcadas,
+flora endémica, fauna marina, biomas, momentos), features (atajos, timelapse/GIF, multi-monitor de
+mundo continuo), el **modo información al clic** (D-051 JS), probar el fondo Wayland en un
+compositor real y ampliar la cobertura de tests a los dibujos.
 
 El binario nativo ya renderiza la escena completa (cielo + clima + terreno + flora
 + fauna + momentos) y ofrece una ventana con panel de control:
@@ -90,76 +91,67 @@ Los datos de fauna (`fauna_data.rs`) se **generan** desde `fauna.js`; el registr
 de flora está portado a mano. `andes-core` no tiene dependencias; solo los
 frontends (`andes-native` usa `eframe`/`image`) las necesitan.
 
-Pendiente: probar el fondo Wayland en un compositor real (wlroots), afinar el
-antialias de las nubes para acercar aún más la paridad de píxeles y el modo
-información al clic (D-051 JS).
+Pendiente: probar el fondo Wayland en un compositor real (wlroots), el modo
+información al clic (D-051 JS), multi-monitor de mundo continuo y más contenido
+(flora, fauna marina, estaciones más marcadas).
 
 ## Cómo trabajar
 
 ```bash
-cargo test         # unitarios + paridad JS
-cargo run -p andes-native   # renderiza el terreno a /tmp/infinite-andes-terrain.ppm
+cargo test         # unitarios + regresión (autocontenido, sin Node)
+cargo run -p andes-native   # ventana con panel
 ```
 
-### Paridad con JavaScript
+### Referencia con JavaScript (opcional)
 
-Los tests de paridad (`crates/andes-core/tests/parity.rs`) se comparan contra
-vectores generados ejecutando **el código JS real** del repositorio hermano:
+Este repo es la fuente de verdad (D-014); la paridad con JS es un test de
+referencia apagado por defecto:
 
 ```bash
-TZ=UTC node scripts/gen-parity.mjs
+cargo test --features parity   # compara contra vectores del JS
 ```
 
-El script lee `../infinite-andes` (configurable con `ANDES_JS_DIR`) y regenera:
-
-- `crates/andes-core/src/palette_data.rs` — datos de paleta, clima y bioma.
-- `crates/andes-core/tests/generated/parity_data.rs` — vectores de paridad.
-
-**No editar esos archivos a mano.** Si cambia el JS, regenerar y volver a
-`cargo test`: cualquier divergencia rompe la compilación de los tests.
+Los datos del núcleo (`palette_data.rs`, `fauna_data.rs`, `flora_data.rs`) son
+**fuente de este repo** (editables). `scripts/gen-parity.mjs` solo los refresca
+desde `../infinite-andes` (`ANDES_JS_DIR`) y no forma parte del flujo normal.
 
 > Los vectores de fecha se generan en `TZ=UTC` para que el calendario civil de
 > Rust coincida con el `Date` local de JS.
 
 ## Determinismo
 
-La regla de oro del proyecto original se mantiene: nada de aleatoriedad no
-reproducible. Todo deriva de la semilla. La migración replica la semántica exacta
-de JS (`Math.round`, `ToUint32`, `Math.imul`, aritmética `f64`) para que el
-paisaje sea idéntico al de la versión web.
+Nada de aleatoriedad no reproducible: todo deriva de la semilla. Se conserva la
+semántica numérica del original (`Math.round`, `ToUint32`, `Math.imul`, `f64`)
+donde ayuda a portar, pero el paisaje evoluciona aquí.
 
-## Paridad de píxeles vs Canvas
+## Pixel-art y comparación con el original
 
-El rasterizador Rust se compara contra el render real de JS (Canvas) píxel a
-píxel:
+La estética es pixel-art **nítido, sin antialias** (D-016): nubes y bordes del
+terreno se dibujan a píxel entero. `./scripts/pixel-check.sh` sigue disponible
+como diagnóstico manual contra el render JS (Canvas):
 
 ```bash
 ./scripts/pixel-check.sh [seed] [hour] [weather] [biome] [moment] [bloom] [season] [aspect] [x]
 ```
 
-El arnés renderiza la misma escena en Chrome headless (vía
-`scripts/pixel-harness/capture.html`, que importa el `src/` del repo JS) y con
-`andes-core` (`bin/pixelcheck`), y reporta: píxeles distintos, `|Δ|` medio por
-canal (cielo/suelo), máximo e histograma. Escribe `/tmp/ia-rust.ppm`,
-`/tmp/ia-js.png`, `/tmp/ia-diff.png` y `/tmp/ia-diff8.png`.
-
-Resultado actual (varias escenas): `|Δ|` medio ≈ **0.25**, máximo ≈ **38**, y
-**<0.5%** de píxeles con `Δ≥8` (bordes de nube, por el antialias analítico de
-Canvas frente a nuestro supermuestreo). El resto son diferencias de redondeo
-de ±1 en el degradado del cielo y el compositing alfa.
+Reporta píxeles distintos, `|Δ|` medio por canal, máximo e histograma. Como el
+antialias es una decisión estética propia, las diferencias en los bordes con
+Canvas son esperadas. El criterio visual propio son snapshots PNG
+(`cargo run -p andes-native --bin infinite-andes -- andes 12 clear`).
 
 ## Documentación
 
-La documentación del port vive en [`docs/`](docs/README.md) (índice y convenciones) y refleja el
-diseño del proyecto original adaptado a Rust: arquitectura, paridad, mundo, cielo, clima,
-flora/fauna, estaciones y modos de visualización. Las **fichas de especies** de `docs/especies/` y
-las tablas de `docs/05-flora.md`/`docs/06-fauna.md` se generan en Rust:
+La documentación vive en [`docs/`](docs/README.md) (índice y convenciones). Las
+**fichas de especies** de `docs/especies/` y las tablas de
+`docs/05-flora.md`/`docs/06-fauna.md` se generan en Rust, igual que la tabla de
+la paleta maestra:
 
 ```bash
 cargo run -p andes-core --bin gen-species
+cargo run -p andes-core --bin gen-palette
 ```
 
-Convenciones de trabajo (comandos, determinismo, paridad, publicación) en [`AGENTS.md`](AGENTS.md).
+Convenciones de trabajo (comandos, determinismo, publicación) en [`AGENTS.md`](AGENTS.md).
 
 ## Estructura
 
@@ -170,9 +162,9 @@ crates/
   andes-native/  # ventana eframe/egui + export PNG + bin `wallpaper` (X11 EWMH / Wayland layer-shell)
   andes-web/     # WebAssembly (ABI C + reproductor JS en `web/`)
 scripts/
-  gen-parity.mjs # genera datos y vectores desde el JS (+ paleta maestra en docs/14)
+  gen-parity.mjs # referencia: refresca datos/vectores desde el JS (opcional)
   build-web.sh   # compila andes-web (wasm32) y copia el módulo
-  pixel-check.sh # arnés de paridad de píxeles vs Canvas (Chrome headless)
+  pixel-check.sh # diagnóstico de píxeles vs Canvas (Chrome headless)
   pixel-harness/ # capture.html (render JS determinista para capturas)
 web/             # index.html + main.js (reproductor del .wasm)
 docs/            # documentación del port (ver docs/README.md; fichas en docs/especies/)

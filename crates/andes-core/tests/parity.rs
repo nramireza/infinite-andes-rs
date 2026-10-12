@@ -1,8 +1,13 @@
-//! Paridad exacta con el proyecto JS original.
+//! Paridad con el proyecto JS original (opcional).
 //!
-//! `parity_data.rs` lo genera `scripts/gen-parity.mjs` ejecutando el código JS
-//! real. Si estos tests fallan, la reescritura divergió del original.
+//! Este repo es la fuente de verdad (D-014); estos tests solo se compilan y
+//! ejecutan con `cargo test --features parity`. `parity_data.rs` lo genera, como
+//! referencia, `scripts/gen-parity.mjs` ejecutando el código JS real.
+//!
+//! Puede reportar diferencias donde Rust diverge **a propósito** (p. ej. el
+//! `snow_shift` de biomas, D-017); es informativo, no un fallo de calidad.
 
+#![cfg(feature = "parity")]
 #![allow(
     clippy::type_complexity,
     clippy::needless_range_loop,
@@ -344,10 +349,11 @@ fn parity_biome_weights() {
 fn parity_biome_geometry() {
     for (x, seed, expected) in BIOME_GEOMETRY {
         let g = biome_geometry(&biome_weights(*x, *seed));
+        // `snow_shift` diverge a propósito: Rust unifica la convención de la
+        // línea de nieve (positivo = más nieve, D-017).
         assert!(
-            approx(g.amp_mul, expected[0])
-                && approx(g.snow_shift, expected[1])
-                && approx(g.fjord, expected[2])
+            approx(g.amp_mul, expected[0]) && approx(g.fjord, expected[2]),
+            "biomeGeometry({x},{seed})"
         );
     }
 }

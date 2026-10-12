@@ -518,13 +518,15 @@ impl Terrain {
             let wx = camera_x * p + sx as f64;
             let col = self.column_at(layer_idx, wx);
             let a = col.a;
+            // Un `snow_shift` positivo (más nieve) baja la línea, así que se
+            // resta: `snow_thr` es la altura mínima de la cumbre para nevar.
             let sf = if layer.snow_frac < 1.4 {
-                layer.snow_frac + self.snow_shift_at(wx)
+                layer.snow_frac - self.snow_shift_at(wx)
             } else {
                 layer.snow_frac
             };
             let snow_thr = a * sf;
-            let band = (a * 0.22).max(2.0);
+            let band = (a * 0.22).max(2.0).round() as i32;
             let mut y = col.y;
             if y > h as i64 {
                 y = h as i64;
@@ -533,24 +535,18 @@ impl Terrain {
             let sxi = sx as i32;
 
             fb.fill_rect(sxi, yi, 1, h as i32 - yi, dark, alpha);
-            fb.fill_rect_f(sxi as f64, yi as f64, 1.0, band, light, alpha);
+            fb.fill_rect(sxi, yi, 1, band, light, alpha);
 
             let tx = hash1((wx.floor()) as i32, s);
             if tx > 0.82 {
-                fb.fill_rect_f(
-                    sxi as f64,
-                    yi as f64 + band + (tx * 9.0).floor(),
-                    1.0,
-                    2.0,
-                    light,
-                    alpha,
-                );
+                let dy = band + (tx * 9.0).floor() as i32;
+                fb.fill_rect(sxi, yi + dy, 1, 2, light, alpha);
             } else if tx < 0.14 {
-                fb.fill_rect_f(sxi as f64, yi as f64 + band + 2.0, 1.0, 3.0, dark, alpha);
+                fb.fill_rect(sxi, yi + band + 2, 1, 3, dark, alpha);
             }
 
             let mut snow_bottom = 0i64;
-            if snow_thr > 0.0 && sf < 1.4 {
+            if sf < 1.4 {
                 let hgt = layer.base_y - y as f64;
                 if hgt > snow_thr {
                     let depth = (a * 0.36).min((hgt - snow_thr) * 0.9 + 2.0);

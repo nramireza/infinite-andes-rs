@@ -24,6 +24,8 @@ const BLOOM_CHANCE: f64 = 0.28;
 #[derive(Clone, Copy)]
 pub struct Geometry {
     pub amp_mul: f64,
+    /// Desplazamiento de la línea de nieve: **positivo = más nieve** (línea más
+    /// baja), igual que en las estaciones.
     pub snow_shift: f64,
     pub fjord: f64,
 }
@@ -61,7 +63,7 @@ const BIOMES: [Biome; 6] = [
             ("snow", hex(0xffffff)),
             ("snowD", hex(0xe4eaf0)),
         ],
-        geometry: geo(1.12, -0.1, 0.0),
+        geometry: geo(1.12, 0.1, 0.0),
     },
     Biome {
         palette: &[
@@ -78,7 +80,7 @@ const BIOMES: [Biome; 6] = [
             ("snow", hex(0xfff6e6)),
             ("snowD", hex(0xe0d2b8)),
         ],
-        geometry: geo(0.92, 0.3, 0.0),
+        geometry: geo(0.92, -0.3, 0.0),
     },
     Biome {
         palette: &[],
@@ -99,7 +101,7 @@ const BIOMES: [Biome; 6] = [
             ("snow", hex(0xffffff)),
             ("snowD", hex(0xd8e6f0)),
         ],
-        geometry: geo(1.06, -0.3, 0.0),
+        geometry: geo(1.06, 0.3, 0.0),
     },
     Biome {
         palette: &[
@@ -116,7 +118,7 @@ const BIOMES: [Biome; 6] = [
             ("snow", hex(0xffffff)),
             ("snowD", hex(0xdbe8f2)),
         ],
-        geometry: geo(1.02, -0.45, 0.0),
+        geometry: geo(1.02, 0.45, 0.0),
     },
     Biome {
         palette: &[
@@ -133,7 +135,7 @@ const BIOMES: [Biome; 6] = [
             ("snow", hex(0xffffff)),
             ("snowD", hex(0xdbe8f2)),
         ],
-        geometry: geo(1.08, -0.5, 1.0),
+        geometry: geo(1.08, 0.5, 1.0),
     },
 ];
 

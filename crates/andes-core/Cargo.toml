@@ -6,3 +6,9 @@ license.workspace = true
 description = "Núcleo determinista y sin I/O: simulación y rasterizado del paisaje."
 
 [dependencies]
+
+[features]
+# Paridad con el proyecto JS: test opcional (`cargo test --features parity`).
+# Los `*_data.rs` son fuente de este repo; los vectores se regeneran, si hace
+# falta, con `TZ=UTC node scripts/gen-parity.mjs`.
+parity = []

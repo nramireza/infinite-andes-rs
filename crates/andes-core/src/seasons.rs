@@ -45,6 +45,7 @@ const SEASON_KEYS: [&str; 12] = [
 
 struct Season {
     tint: &'static [(&'static str, Rgb)],
+    /// Desplazamiento de la línea de nieve: **positivo = más nieve** (invierno).
     snow_shift: f64,
     weather_bias: [f64; 6],
     glow: Option<Glow>,

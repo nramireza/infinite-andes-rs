@@ -1,6 +1,6 @@
 //! Paletas del paisaje: interpolación por hora + modificadores de clima y bioma.
-//! (puerto exacto de `src/palette.js`). Los datos viven en `palette_data.rs`,
-//! generado desde el proyecto JS por `scripts/gen-parity.mjs`.
+//! Los datos viven en `palette_data.rs`, que es **fuente de este repo** (snapshot
+//! inicial derivado del proyecto JS).
 
 #![allow(clippy::type_complexity)]
 

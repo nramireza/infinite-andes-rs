@@ -85,82 +85,25 @@ impl Framebuffer {
         }
     }
 
-    /// Rectángulo con bordes fraccionarios: aproxima la cobertura de `fillRect`
-    /// de Canvas (la opacidad efectiva es `a` por el área cubierta del píxel).
-    pub fn fill_rect_f(&mut self, x: f64, y: f64, w: f64, h: f64, c: Rgb, a: f64) {
-        if w <= 0.0 || h <= 0.0 || a <= 0.0 {
-            return;
-        }
-        let x0 = x.max(0.0);
-        let y0 = y.max(0.0);
-        let x1 = (x + w).min(self.w as f64);
-        let y1 = (y + h).min(self.h as f64);
-        let px0 = x0.floor() as i32;
-        let py0 = y0.floor() as i32;
-        let px1 = x1.ceil() as i32;
-        let py1 = y1.ceil() as i32;
-        for py in py0..py1 {
-            let cov_y = ((py + 1) as f64).min(y1) - (py as f64).max(y0);
-            if cov_y <= 0.0 {
-                continue;
-            }
-            for px in px0..px1 {
-                let cov_x = ((px + 1) as f64).min(x1) - (px as f64).max(x0);
-                if cov_x <= 0.0 {
-                    continue;
-                }
-                self.blend(px, py, c, a * cov_x * cov_y);
-            }
-        }
-    }
-
-    /// Elipse rellena con cobertura por supermuestreo (aproxima el antialias de
-    /// `ctx.ellipse(...).fill()` de Canvas).
-    ///
-    /// Los píxeles interiores/exteriores se resuelven exactamente; solo la banda
-    /// de borde (≈1 px) se supermuestrea, con lo que se puede usar un `N` alto
-    /// sin que el coste crezca con el área.
+    /// Elipse rellena rasterizada a píxeles (sin antialias), al estilo pixel-art:
+    /// para cada fila entera se calcula la semianchura y se pinta con `fill_rect`.
     pub fn fill_ellipse(&mut self, cx: f64, cy: f64, rx: f64, ry: f64, c: Rgb, a: f64) {
         if a <= 0.0 || rx <= 0.0 || ry <= 0.0 {
             return;
         }
-        const N: i32 = 16;
-        let x0 = (cx - rx).floor().max(0.0) as i32;
-        let y0 = (cy - ry).floor().max(0.0) as i32;
-        let x1 = ((cx + rx).ceil() as i32).min(self.w as i32);
-        let y1 = ((cy + ry).ceil() as i32).min(self.h as i32);
-        let inv = 1.0 / (N * N) as f64;
-        // Media diagonal del píxel en coordenadas normalizadas: si la distancia
-        // del centro al borde supera esta cota, el píxel está entero dentro o
-        // fuera y no hace falta supermuestrear.
-        let edge = 0.5 * (1.0 / (rx * rx) + 1.0 / (ry * ry)).sqrt();
-        for py in y0..y1 {
-            for px in x0..x1 {
-                let dx = (px as f64 + 0.5 - cx) / rx;
-                let dy = (py as f64 + 0.5 - cy) / ry;
-                let d = (dx * dx + dy * dy).sqrt();
-                if d <= 1.0 - edge {
-                    self.blend(px, py, c, a);
-                    continue;
-                }
-                if d >= 1.0 + edge {
-                    continue;
-                }
-                let mut inside = 0;
-                for sy in 0..N {
-                    for sx in 0..N {
-                        let fx = px as f64 + (sx as f64 + 0.5) / N as f64;
-                        let fy = py as f64 + (sy as f64 + 0.5) / N as f64;
-                        let ex = (fx - cx) / rx;
-                        let ey = (fy - cy) / ry;
-                        if ex * ex + ey * ey <= 1.0 {
-                            inside += 1;
-                        }
-                    }
-                }
-                if inside > 0 {
-                    self.blend(px, py, c, a * inside as f64 * inv);
-                }
+        let y0 = (cy - ry).ceil() as i32;
+        let y1 = (cy + ry).floor() as i32;
+        for y in y0..=y1 {
+            let dy = (y as f64 + 0.5 - cy) / ry;
+            let t = 1.0 - dy * dy;
+            if t <= 0.0 {
+                continue;
+            }
+            let span = rx * t.sqrt();
+            let x0 = (cx - span).round() as i32;
+            let x1 = (cx + span).round() as i32;
+            if x1 >= x0 {
+                self.fill_rect(x0, y, x1 - x0 + 1, 1, c, a);
             }
         }
     }
@@ -227,7 +170,7 @@ mod tests {
     }
 
     #[test]
-    fn fill_ellipse_interior_edges_and_outside() {
+    fn fill_ellipse_is_crisp() {
         let mut fb = Framebuffer::new(20, 20);
         fb.fill_ellipse(10.0, 10.0, 5.0, 5.0, [255, 255, 255], 1.0);
         assert_eq!(
@@ -235,8 +178,9 @@ mod tests {
             &[255, 255, 255]
         );
         assert_eq!(&fb.px[0..3], &[0, 0, 0]);
-        let edge = fb.px[(10 * 20 + 5) * 4];
-        assert!(edge > 0 && edge < 255, "borde parcial, no {edge}");
+        for px in fb.px.chunks(4) {
+            assert!(px[0] == 0 || px[0] == 255, "cobertura parcial en pixel-art");
+        }
     }
 
     #[test]

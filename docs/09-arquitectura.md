@@ -6,9 +6,11 @@
 
 - **Núcleo sin dependencias**: `andes-core` no depende de terceros (solo `std`); es portable a
   `wasm32-unknown-unknown` y testeable con `cargo test`.
-- **Paridad con JS**: la reescritura replicas la semántica exacta de JavaScript (`Math.round`,
-  `ToUint32`, `Math.imul`, aritmética `f64`) para que el paisaje sea idéntico al de la versión web.
-- **Determinismo por semilla**: nada de aleatoriedad no reproducible para generar paisaje.
+- **Determinismo por semilla**: nada de aleatoriedad no reproducible para generar paisaje; la misma
+  semilla reproduce el mismo paisaje.
+- **Pixel-art nítido**: el rasterizador dibuja a píxel entero, sin antialias (D-016).
+- **JS como referencia**: se conserva la semántica (`Math.round`, `ToUint32`, `Math.imul`, aritmética
+  `f64`) donde ayuda a portar, pero la paridad exacta ya no es un requisito (D-014/D-015).
 - **Baja resolución + escalado pixelado**: altura fija 270 px y ancho por relación de aspecto. Ver
   [08 · Arte pixel](08-arte-pixel.md).
 - **Todo derivado de funciones**: el mundo no se almacena; la altura es una función de `x`.
@@ -118,56 +120,47 @@ dibujan después y ocultan a las traseras.
 
 - `FLORA` (`flora.rs`): una entrada por tipo dibujable
   (`kind`, `height`, `bloom_only`, `zones`, + metadata de identidad).
-- `SPECIES` (`fauna_data.rs`, **generado**): `movement`, `active`, `speed`, `range`, `fps`, `rarity`,
+- `SPECIES` (`fauna_data.rs`, **fuente**): `movement`, `active`, `speed`, `range`, `fps`, `rarity`,
   `tracks`, `bloom`, `chunk_ok`, `river`, `zones`, `palette`, `frames` (+ metadata de identidad).
 
 **Zonas (pools).** `zones[bioma][capa]` da el peso con que la especie aparece en ese bioma y capa.
 `biome_flora_pool`/`biome_fauna_pool` (`biomes.rs`) construyen el pool efectivo a partir de las zonas.
 `river` coloca la especie en el borde del cauce y `bloom` la suma al desierto florido.
 
-**Metadatos generados.** `scripts/gen-parity.mjs` lee `palette.js`, `flora.js` y `fauna.js` y emite
-`palette_data.rs`, `fauna_data.rs` y la metadata de identidad de flora/fauna. **No editar esos
-archivos a mano**: si cambia el JS, regenerar y volver a `cargo test`.
+**Metadatos del núcleo.** `palette_data.rs`, `fauna_data.rs` y la metadata de identidad de
+flora/fauna son **fuente de este repo** (D-014). `scripts/gen-parity.mjs` los puede refrescar desde
+el JS (herramienta de referencia, no flujo normal).
 
-## Paridad con JavaScript
+## Referencia con JavaScript (opcional)
 
-La paridad se verifica en varios frentes:
+### 1. Paridad matemática (`cargo test --features parity`)
 
-### 1. Paridad matemática (`crates/andes-core/tests/parity.rs`)
+`crates/andes-core/tests/parity.rs` compara contra vectores generados del JS
+(`scripts/gen-parity.mjs`). Está detrás de la feature `parity` (D-015): no corre en `cargo test` ni
+bloquea la evolución de Rust. Cubre `rng`, `noise`, `pixel`, `viewport`, `palette`, `clock`, `sun`,
+`seasons`, `biomes`, alturas de `terrain`, `meteor`, `celestial`, clima, spawns, momentos y vistas.
 
-Vectores generados ejecutando **el código JS real** con `scripts/gen-parity.mjs`:
+### 2. Paridad de píxeles (`scripts/pixel-check.sh`, manual)
 
-```bash
-TZ=UTC node scripts/gen-parity.mjs   # regenera palette_data.rs, fauna_data.rs y parity_data.rs
-cargo test
-```
+Renderiza la misma escena en Chrome headless (vía `scripts/pixel-harness/capture.html`) y con
+`andes-core` (`bin/pixelcheck`), y reporta píxeles distintos, `|Δ|` medio, máximo e histograma. Como
+Rust es pixel-art sin antialias (D-016), las diferencias en bordes son esperadas; es un diagnóstico,
+no un criterio.
 
-Cubre `rng`, `noise`, `pixel`, `viewport`, `palette`, `clock`, `sun`, `seasons`, `biomes`, alturas
-de `terrain`, `meteor`, `celestial`, spawn de clima, spawns de flora/fauna, momentos y vistas. Si
-cualquier valor diverge, el test falla y rompe la compilación.
+### Estado
 
-### 2. Paridad de píxeles (`scripts/pixel-check.sh`)
-
-El arnés renderiza la misma escena en Chrome headless (vía `scripts/pixel-harness/capture.html`, que
-importa el `src/` del repo JS) y con `andes-core` (`bin/pixelcheck`), y reporta píxeles distintos,
-`|Δ|` medio por canal, máximo e histograma. Resultado actual: `|Δ|` medio ≈ **0.25**, máximo ≈ 37 y
-**<0.5 %** con `Δ≥8` (bordes de nube). El resto son redondeos de ±1.
-
-### Estado por módulo
-
-Ver la tabla de paridad en [11 · Roadmap](11-roadmap.md) y en el [`README`](../README.md).
-Resumen: matemática/alturas/spawns **exactos**; rasterizado **razonable** (nubes y algún redondeo);
-frontends **completos**.
+Ver el [11 · Roadmap](11-roadmap.md) y el [`README`](../README.md). La matemática y los spawns siguen
+la semántica del JS; el rasterizado es **propio** (nítido) y puede divergir a propósito.
 
 ## Tests
 
-`cargo test` ejecuta los tests unitarios (dentro de cada módulo) y los de paridad
-(`tests/parity.rs`). Los tests de render usan un `Framebuffer` real (no hace falta navegador), así
-que el pipeline completo se puede ejercitar en CI con:
+`cargo test` ejecuta los tests unitarios (dentro de cada módulo) y la regresión propia; los tests de
+paridad son opcionales (`--features parity`). Los tests de render usan un `Framebuffer` real (no hace
+falta navegador), así que el pipeline completo se puede ejercitar sin entorno gráfico:
 
 ```bash
 cargo test
-cargo run -p andes-native andes 12 clear   # render sin ventana a /tmp (PPM)
+cargo run -p andes-native --bin infinite-andes -- andes 12 clear   # render sin ventana a /tmp (PPM)
 ```
 
 ## Limitaciones conocidas

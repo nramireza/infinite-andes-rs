@@ -2,9 +2,10 @@
 
 > Estado: en progreso · Actualizado: 2026-10-12
 
-El port avanza **por fases**, siempre con el repo JS como fuente de verdad. El objetivo de cada fase
-es igualar el comportamiento del original y verificarlo (paridad exacta o de píxel según el caso)
-antes de pasar a la siguiente.
+El proyecto avanzó **por fases** portando el original JS con paridad. Desde D-014/D-015, **este repo
+es la fuente de verdad** y la paridad con JS es un test de referencia opcional
+(`cargo test --features parity`); el paisaje evoluciona hacia una visión propia (D-016, estética
+pixel-art nítida).
 
 ## Fase 1 — Núcleo matemático ✅ (completada)
 
@@ -51,20 +52,40 @@ Portado con **paridad exacta** respecto a JS:
 
 - [x] Documentación `00`–`18` adaptada al port.
 - [x] Fichas de especies generadas **en Rust** con `gen-species` ([05](05-flora.md), [06](06-fauna.md)).
-- [x] Paleta maestra generada con `gen-parity.mjs` ([14](14-paleta-maestra.md)).
+- [x] Paleta maestra generada **en Rust** con `gen-palette` ([14](14-paleta-maestra.md)).
 - [x] `AGENTS.md` del repo Rust y enlace al índice desde el `README`.
+
+## Fase 5 — Reorientación y pixel-art ✅ (completada)
+
+- [x] **Rust canónico**: paridad como test opcional (D-014/D-015).
+- [x] **Estética pixel-art nítida**: nubes y bordes de terreno sin antialias (D-016).
+- [x] **Reorientación**: docs y ADRs alineados con la fuente de verdad de este repo.
+
+## Fase 6 — Contenido ✅/en curso
+
+- [x] **Línea de nieve estacional coherente** (D-017): el invierno ya no se ve árido.
+- [ ] Estaciones más marcadas (tinte, sequía estival, clima).
+- [ ] Flora endémica nueva y variaciones de dibujo.
+- [ ] Fauna marina (costa/mar) y aves.
+- [ ] Momentos/sorpresas nuevas (eclipse, migraciones…).
+- [ ] Biomas nuevos (islas, humedales, fiordos más marcados).
+
+## Fase 7 — Features ✅/en curso
+
+- [x] Export de tira larga en PNG ([10](10-ui-y-export.md)).
+- [x] Actividad del sistema con sensores del SO ([17](17-reactividad-sistema.md)).
+- [ ] Atajos de teclado y ocultar panel.
+- [ ] Timelapse/GIF (rango de horas).
+- [ ] **Multi-monitor de mundo continuo**: lo generado en el monitor derecho persiste al pasar al
+      izquierdo (mismo mundo, `camera_x` compartido).
 
 ## Pendientes transversales
 
-- [x] **Reactividad del sistema** en el frontend nativo: sensores del SO + switch y HUD
-      ([17 · Reactividad del sistema](17-reactividad-sistema.md)).
-- [x] **Export de tira larga** en PNG (D-040 JS) en el panel nativo
-      ([10 · UI y exportación](10-ui-y-export.md)).
-- [~] **Antialias de las nubes**: borde con supermuestreo dirigido (mejora la paridad; resta afinar).
 - [ ] **Modo información al clic** sobre flora y fauna (D-051 JS).
 - [ ] Portar utilidades restantes de `pixel.js` si el rasterizador las necesita.
 - [ ] Probar el fondo Wayland en un compositor real (wlroots).
 - [ ] Cobertura de tests Rust ampliada a los dibujos (más allá de spawns y alturas).
+- [ ] Rendimiento: límite de FPS configurable, cache de capas, perfilado.
 
 ## Backlog / ideas
 

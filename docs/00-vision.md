@@ -14,15 +14,15 @@ pensada para quedar corriendo en pantalla sin interacción.
 
 ## Relación con el proyecto original
 
-El proyecto original en JavaScript ([`../../infinite-andes`](../../infinite-andes)) es la **fuente
-de verdad** mientras dure la migración:
+Este repositorio es la **fuente de verdad** (D-014). El proyecto original en JavaScript
+([`../../infinite-andes`](../../infinite-andes)) es **referencia e inspiración**:
 
-- El **diseño** (geografía, paleta, flora, fauna, clima, estaciones) es el del original. Este repo
-  no rediseña: **replica**.
-- La **paridad** se persigue de forma **exacta** en lo matemático y **de píxel** en el
-  rasterizado ([09 · Arquitectura](09-arquitectura.md), [11 · Roadmap](11-roadmap.md)).
-- Los **datos** que el original declara en código (paleta, fauna) se **generan** desde el JS con
-  `scripts/gen-parity.mjs`; no se editan a mano.
+- El paisaje nació allí (geografía, paleta, flora, fauna, clima, estaciones), pero aquí evoluciona
+  hacia una **visión propia y mejorada**: se puede rediseñar y ampliar.
+- La **paridad** con JS dejó de ser un requisito: queda como **test de referencia opcional**
+  (`cargo test --features parity`, D-015).
+- Los **datos** del núcleo (`palette_data.rs`, `fauna_data.rs`, `flora_data.rs`) son fuente de este
+  repo y se editan aquí; `scripts/gen-parity.mjs` solo los refresca desde el JS si hace falta.
 
 ## Inspiración
 
@@ -35,10 +35,10 @@ de verdad** mientras dure la migración:
 
 - **Fondo de pantalla nativo real**: una ventana sin bordes que vive detrás de los iconos del
   escritorio (X11 vía EWMH, Wayland vía `wlr-layer-shell`), ligera y sin dependencias en el núcleo.
-- **Núcleo determinista y portable**: `andes-core` sin dependencias, testeable en Node-like
-  (Rust) y compilable a `wasm32-unknown-unknown`.
-- **Paridad exacta** con JS: la misma semilla reproduce el mismo paisaje, píxel a píxel en lo
-  posible.
+- **Núcleo determinista y portable**: `andes-core` sin dependencias, testeable sin navegador y
+  compilable a `wasm32-unknown-unknown`.
+- **Determinismo propio**: la misma semilla reproduce el mismo paisaje. La estética es pixel-art
+  **nítido, sin antialias** (D-016).
 - Representar el **perfil oeste→este** de Chile central: Mar · Playa · Cordillera de la Costa ·
   Valle central · Precordillera · Cordillera de los Andes.
 - **Sincronía con Chile**: por defecto la hora, la estación y el amanecer/atardecer reales
@@ -48,7 +48,7 @@ de verdad** mientras dure la migración:
 
 - Gameplay, puntaje, niveles ni personaje jugable.
 - **Audio**: es una pieza solo visual.
-- Rediseñar el paisaje: se porta el del proyecto original.
+- Antialias: la imagen se mantiene nítida pixel-art (D-016).
 - Dependencias en el núcleo: solo los **frontends** (`eframe`/`egui`, `image`, `chrono`,
   `smithay-client-toolkit`) pueden depender de terceros.
 
@@ -58,6 +58,7 @@ Personas que disfrutan de arte generativo, pixel art y paisajes; sin instruccion
 
 ## Preguntas abiertas
 
-- [ ] Refinar el antialias de las nubes para acercar aún más la paridad de píxeles con Canvas.
 - [ ] Probar el fondo Wayland en un compositor real (wlroots).
-- [x] Núcleo matemático con paridad exacta (Fase 1, ver [11 · Roadmap](11-roadmap.md)).
+- [ ] Multi-monitor con **mundo continuo** (el contenido generado a la derecha persiste al pasar al
+      monitor izquierdo).
+- [x] Núcleo determinista y rasterizador pixel-art (sin antialias) del port.

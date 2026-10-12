@@ -2,11 +2,11 @@
 
 Índice y convenciones de la documentación del **gemelo Rust** de Infinite Andes.
 
-Este repositorio es la reescritura en Rust del proyecto original en JavaScript
-([`../../infinite-andes`](../../infinite-andes)), que sigue siendo la **fuente de verdad**
-durante la migración. La documentación de diseño (mundo, flora, fauna, estaciones…) describe
-el **mismo paisaje** que el original; lo propio de este repo es la **arquitectura Rust**, la
-**paridad** con JS y los **frontends** (nativo y WASM).
+Este repositorio es la **fuente de verdad** (D-014) del paisaje en Rust; el proyecto original en
+JavaScript ([`../../infinite-andes`](../../infinite-andes)) es **referencia e inspiración**. La
+documentación describe el paisaje propio de este repo: la arquitectura Rust, la estética pixel-art,
+el mundo (mundo, flora, fauna, estaciones…) y los **frontends** (nativo y WASM). La paridad con JS
+es un test de referencia opcional (D-015).
 
 ## Índice
 
@@ -46,8 +46,8 @@ Plantillas en [`templates/`](templates/). Fichas de flora y fauna en [`especies/
 - Títulos en español, frases concisas, tablas para datos repetibles.
 - Los **placeholders** se marcan con `TODO:` en una lista.
 - Las especies se documentan con nombre común, nombre científico y si son endémicas de Chile.
-- Las decisiones del **port** se registran en `12-decisiones.md`; las decisiones de **diseño** del
-  proyecto original viven en `12-decisiones.md` del repo JS y se citan como `D-XXX (JS)`.
+- Las decisiones de **diseño y arquitectura** se registran en `12-decisiones.md` (las del repo JS
+  se citan como `D-XXX (JS)`).
 - Referencias al código con la ruta (`crates/andes-core/src/terrain.rs`) y, cuando aporte,
   `archivo.rs:línea`.
 
