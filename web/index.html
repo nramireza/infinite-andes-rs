@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infinite Andes (Rust · WASM)</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #05070c; overflow: hidden; }
+  #wrap { position: fixed; inset: 0; display: grid; place-items: center; }
+  canvas#scene {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    display: block;
+  }
+  #err { position: fixed; left: 8px; bottom: 8px; z-index: 30; max-width: 90vw;
+         font: 12px/1.4 monospace; color: #ffb4b4; background: rgba(30,6,10,.92);
+         border: 1px solid #7a2b2b; border-radius: 4px; padding: 8px 10px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+  <div id="wrap"><canvas id="scene"></canvas></div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

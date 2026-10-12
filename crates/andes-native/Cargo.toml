@@ -1,0 +1,22 @@
+[package]
+name = "andes-native"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Frontend nativo (fondo de pantalla vivo)."
+
+[[bin]]
+name = "infinite-andes"
+path = "src/main.rs"
+
+[dependencies]
+andes-core = { path = "../andes-core" }
+andes-app = { path = "../andes-app" }
+eframe = { version = "0.28", default-features = false, features = ["glow", "default_fonts", "wayland", "x11"] }
+image = { version = "0.25.10", default-features = false, features = ["png"] }
+chrono = { version = "0.4.45", default-features = false, features = ["clock", "std"] }
+winit = "0.30"
+softbuffer = "0.4"
+x11rb = "0.13"
+raw-window-handle = "0.6"
+smithay-client-toolkit = { version = "0.19", default-features = false }

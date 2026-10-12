@@ -1,0 +1,28 @@
+# Araucaria / Pehuén (`araucaria`)
+
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+
+| Campo | Valor |
+|-------|-------|
+| Nombre común | Araucaria / Pehuén |
+| Nombre científico | *Araucaria araucana* |
+| Endémica de Chile | Sí (Chile/Argentina) |
+| Tipo en código | `araucaria` (flora) |
+| Zona / capa | Centro, Sur (precordillera, valle, costa) |
+| Altura relativa (juego) | ×1.9 |
+| Altura real típica | 30–40 m |
+
+## Notas
+
+Árbol emblema; silueta de paraguas; la copa se bambolea.
+
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| detalle | https://commons.wikimedia.org/wiki/File:Araucaria_araucana_cones_at_Hulda_Klager_Lilac_Gardens.jpg | Dcoetzee | CC0 | `araucaria-01.jpg` |
+
+## Referencias
+
+- [05 · Flora](../../05-flora.md)
+- [`crates/andes-core/src/flora.rs`](../../../crates/andes-core/src/flora.rs)

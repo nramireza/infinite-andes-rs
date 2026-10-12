@@ -1,0 +1,26 @@
+# Huillín (`huillin`)
+
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+
+| Campo | Valor |
+|-------|-------|
+| Nombre común | Huillín |
+| Nombre científico | *Lontra provocax* |
+| Endémica de Chile | No (Chile/Argentina) |
+| Estado UICN | EN |
+| Tipo en código | `huillin` (fauna) |
+| Movimiento | `swim` |
+| Actividad | día |
+| Rareza (juego) | rara |
+| Anclaje | pies |
+| Colocación | borde del cauce |
+| Sprite | 12×5 px · 2 frames |
+
+## Notas
+
+Nutria de río del sur; nada en el borde del cauce.
+
+## Referencias
+
+- [06 · Fauna](../../06-fauna.md)
+- [`crates/andes-core/src/fauna.rs`](../../../crates/andes-core/src/fauna.rs)

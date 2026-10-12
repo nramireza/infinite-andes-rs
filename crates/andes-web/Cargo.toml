@@ -1,0 +1,13 @@
+[package]
+name = "andes-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Frontend WebAssembly (navegador)."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+andes-core = { path = "../andes-core" }
+andes-app = { path = "../andes-app" }

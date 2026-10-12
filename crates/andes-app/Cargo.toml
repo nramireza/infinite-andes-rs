@@ -1,0 +1,9 @@
+[package]
+name = "andes-app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Estado de la aplicación compartido por los frontends nativo y web."
+
+[dependencies]
+andes-core = { path = "../andes-core" }

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>capture</title>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #000; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script type="module">
+// Página de captura: renderiza la escena JS de forma determinista (sin auto-scroll,
+// sin reloj real, tSec=0) para comparar píxel a píxel con el rasterizador Rust.
+import { Scene } from "../../../infinite-andes/src/scene.js";
+import { seedToInt } from "../../../infinite-andes/src/rng.js";
+import { ratioFromString, widthForRatio, BASE_H } from "../../../infinite-andes/src/viewport.js";
+
+const p = new URLSearchParams(location.search);
+const ratio = ratioFromString(p.get("aspect")) || 32 / 9;
+const W = widthForRatio(ratio);
+const H = BASE_H;
+
+const c = document.getElementById("c");
+c.width = W;
+c.height = H;
+c.style.width = W + "px";
+c.style.height = H + "px";
+
+const scene = new Scene(c, seedToInt(p.get("seed") || "andes"));
+scene.autoScroll = false;
+scene.timeAuto = false;
+scene.weatherAuto = false;
+scene.setClock("fast");
+scene.camera.x = parseFloat(p.get("x") || "0");
+scene.hour = parseFloat(p.get("hour") || "12");
+scene.tSec = 0;
+scene.setBiome(p.get("biome") || "auto");
+scene.setMoment(p.get("moment") || "none");
+scene.setBloom(p.get("bloom") || "auto");
+scene.setSeason(p.get("season") || "auto");
+scene.setWeatherType(p.get("weather") || "clear");
+scene.render();
+document.title = "ready";
+</script>
+</body>
+</html>

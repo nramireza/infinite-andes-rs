@@ -1,0 +1,32 @@
+# Rana de Darwin (`rana`)
+
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+
+| Campo | Valor |
+|-------|-------|
+| Nombre común | Rana de Darwin |
+| Nombre científico | *Rhinoderma darwinii* |
+| Endémica de Chile | Sí (Chile/Argentina) |
+| Estado UICN | EN |
+| Tipo en código | `rana` (fauna) |
+| Movimiento | `sit` |
+| Actividad | día |
+| Rareza (juego) | muy-rara |
+| Anclaje | pies |
+| Colocación | borde del cauce |
+| Sprite | 6×4 px · 2 frames |
+
+## Notas
+
+Anfibio endémico estático en el borde del cauce.
+
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Rhinoderma_darwinii00.jpg | George Bond Howes | PD | `rana-01.jpg` |
+
+## Referencias
+
+- [06 · Fauna](../../06-fauna.md)
+- [`crates/andes-core/src/fauna.rs`](../../../crates/andes-core/src/fauna.rs)
