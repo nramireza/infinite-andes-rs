@@ -111,18 +111,19 @@ fn draw_matrix(
             color_of(colors, ch)
         }
     };
-    // Primero el contorno: celdas vacías con un vecino ocupado (4-dir), una
-    // celda más allá del borde para despegar la silueta.
+    // Primero el contorno: celdas vacías con **dos o más** vecinos ocupados, una
+    // celda más allá del borde. Así se contornea el bulto pero no se engordan los
+    // apéndices de 1 px (cuellos, patas, colas).
     for ry in -1..=h {
         for rx in -1..=w {
             if cell(rx, ry).is_some() {
                 continue;
             }
-            let neigh = cell(rx - 1, ry).is_some()
-                || cell(rx + 1, ry).is_some()
-                || cell(rx, ry - 1).is_some()
-                || cell(rx, ry + 1).is_some();
-            if !neigh {
+            let n = (cell(rx - 1, ry).is_some() as u8)
+                + (cell(rx + 1, ry).is_some() as u8)
+                + (cell(rx, ry - 1).is_some() as u8)
+                + (cell(rx, ry + 1).is_some() as u8);
+            if n < 2 {
                 continue;
             }
             let dx = if flip { w - 1 - rx } else { rx };

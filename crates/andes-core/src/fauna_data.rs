@@ -203,7 +203,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Ñandú de la estepa; camina y deja huellas.", refs: &[RefRow { encuadre: "silueta", fuente: "https://www.phylopic.org/images/40f348ce-a217-4f4b-8c6d-550d5ebabe70/rhea-pennata", autor: "Kai Caspar", licencia: "CC0", archivo: "choique-01.png" }],
         zones: &[("sur", "precordillera", 1.0), ("sur", "valle", 1.0), ("patagonia", "precordillera", 1.0), ("patagonia", "valle", 1.0)],
         palette: &[("d", "trunk"), ("l", "sand"), ("k", "#2e2e38")],
-        frames: &[&["..kd.....", "..dd.....", "..dd.....", "..dd.....", "..dddd...", ".dddddd..", "dddddddd.", "dllllldd.", ".dddddd..", "..dddd...", "..d..d...", "..d..d...", "..d..d...", "..d..d...", ".ll.ll..."], &["..kd.....", "..dd.....", "..dd.....", "..dd.....", "..dddd...", ".dddddd..", "dddddddd.", "dllllldd.", ".dddddd..", "..dddd...", "..d..d...", "..d..d...", "..d..d...", ".d....d..", "ll....ll."]],
+        frames: &[&["...dd........", "..dddd.......", "...dd........", "....d........", "....d........", "....d........", "..ddddd......", ".ddddddd.....", "dddddddddd...", "ddllllllddd..", "dddddddddd...", "..d.....d....", "..d.....d....", ".ll.....ll..."], &["...dd........", "..dddd.......", "...dd........", "....d........", "....d........", "....d........", "..ddddd......", ".ddddddd.....", "dddddddddd...", "ddllllllddd..", "dddddddddd...", "..d.....d....", ".d.......d...", "ll.......ll.."]],
     },
     SpeciesData {
         name: "chucao", wiki: "https://es.wikipedia.org/wiki/Scelorchilus_rubecula", porte: "Ave terrícola de pecho rojizo, dorso pardo oscuro y cola corta; salta en el sotobosque. Silueta: pajarito rechoncho.", movement: "hop", active: "day", speed: 0.9, range: 5.0, fps: 3.0, rarity: "comun",

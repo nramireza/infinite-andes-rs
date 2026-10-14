@@ -65,8 +65,8 @@ testeable sin navegador. Todo se dibuja **nítido** (D-016): no hay cobertura fr
   (D-046, D-048 JS).
 - La fauna (`fauna.rs`) usa matrices de caracteres mapeadas a una clave de `get_palette` (responde a
   hora y clima) o a un hex literal (p. ej. el flamenco o el pingüino). Ver D-010 (JS). Cada sprite
-  recibe un **contorno oscuro de 1 px** automático (`OUTLINE` en `fauna.rs`) que lo despega del
-  fondo.
+  recibe un **contorno oscuro de 1 px** automático (`OUTLINE` en `fauna.rs`) que despega el **bulto**
+  del fondo sin engordar los apéndices finos (cuello, patas, cola).
 - Los **momentos** (`moments.rs`: Leo Rey, Kung Leo) usan el mismo enfoque de matriz y una **fuente
   3×5** propia (`draw_text`) para el destello "MORTAL KUMBIA".
 
