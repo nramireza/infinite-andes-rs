@@ -116,8 +116,9 @@ comparte la misma "copa genérica" (D-023):
 - **Quillay**: **copa ancha y lobulada** sobre horqueta; flores blancas.
 - **Arrayán**: **tronco canela** alto y visible y copa menuda; flor blanca.
 - **Notro**: porte esbelto con **racimos de flores escarlata**.
-- **Litre, boldo y peumo**: copas redondas diferenciadas por textura y tono (moteado, claro,
-  siempreverde oscuro).
+- **Litre, boldo y peumo**: copas redondas diferenciadas por **textura y corteza** (litre con tronco
+  moteado, boldo grisáceo de tronco corto, peumo oscuro con **frutos rojos** en otoño/invierno).
+  El **quillay** lleva corteza pálida; el **canelo**, corteza rojiza.
 - **Espino**: **matorral** de ramas en abanico con **espinas** y flores amarillas (no un árbol).
 - **Michay y chaura**: arbustos bajos y compactos con flores naranjas / bayas rosadas.
 - **Maitén**: copa con **ramas lloronas** que caen.
