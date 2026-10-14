@@ -50,7 +50,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Ciervo andino en peligro; pastorea y deja huellas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Hippocamelus_bisulcus_Werner.JPG", autor: "Jacques Christophe Werner; Christophe Annedouche", licencia: "PD", archivo: "huemul-01.jpg" }],
         zones: &[("centro", "precordillera", 1.0), ("centro", "valle", 1.0), ("sur", "precordillera", 1.0), ("sur", "valle", 1.0), ("patagonia", "precordillera", 1.0), ("patagonia", "valle", 1.0), ("austral", "precordillera", 1.0)],
         palette: &[("d", "trunk"), ("l", "sandD"), ("k", "#2e2e38")],
-        frames: &[&["..k....k..", "..kk..kk..", "...k..k...", "...dddd...", "..dddddd..", ".ddllllld.", ".dddddddd.", "..d....d..", "..d....d.."], &["..k....k..", "..kk..kk..", "...k..k...", "...dddd...", "..dddddd..", ".ddllllld.", ".dddddddd.", "..d....d..", ".d......d."]],
+        frames: &[&["..k....k..", "..kk..kk..", "...kddk...", "..dddddd..", ".ddlllld..", ".dddddddd.", ".d.d..d.d.", ".d.d..d.d."], &["..k....k..", "..kk..kk..", "...kddk...", "..dddddd..", ".ddlllld..", ".dddddddd.", ".d.d..d.d.", ".d......d."]],
     },
     SpeciesData {
         name: "pudu", wiki: "https://es.wikipedia.org/wiki/Pudu_puda", porte: "Cérvido diminuto y compacto, patas cortas, orejas redondeadas y hocico corto; astas mínimas. Silueta: cuerpo redondeado y bajo.", movement: "walk", active: "dusk", speed: 0.8, range: 6.0, fps: 2.0, rarity: "poco-comun",
@@ -59,7 +59,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Uno de los ciervos más pequeños; camina entre arbustos.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Bristol.zoo.southern.pudu.arp.jpg", autor: "Adrian Pingstone", licencia: "PD", archivo: "pudu-01.jpg" }],
         zones: &[("centro", "valle", 1.0), ("centro", "costa", 1.0), ("sur", "precordillera", 1.0), ("sur", "valle", 1.0), ("sur", "costa", 1.0), ("patagonia", "costa", 1.0), ("austral", "valle", 1.0), ("austral", "costa", 1.0)],
         palette: &[("d", "trunk"), ("l", "sandD"), ("k", "#2e2e38")],
-        frames: &[&["..k.....", "..dd....", "dddddl..", "dddddd..", ".dllld..", ".d..d...", ".d..d..."], &["..k.....", "..dd....", "dddddl..", "dddddd..", ".dllld..", ".d..d...", "d....d.."]],
+        frames: &[&[".k....k.", ".dd..dd.", "..dddd..", ".dddddd.", ".dlllld.", ".d.d.d..", "..d...d."], &[".k....k.", ".dd..dd.", "..dddd..", ".dddddd.", ".dlllld.", ".d.d....", ".d....d."]],
     },
     SpeciesData {
         name: "guina", wiki: "https://es.wikipedia.org/wiki/Leopardus_guigna", porte: "Felino pequeño y redondo, pelaje moteado y cola gruesa; hábitos nocturnos. Silueta: gato menudo de cabeza grande.", movement: "hop", active: "night", speed: 1.1, range: 7.0, fps: 3.0, rarity: "comun",
@@ -68,7 +68,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Felino esquivo; se desplaza a saltos de noche.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Leopardus_guigna_585397889.jpg", autor: "Ricardo Barrientos", licencia: "CC0", archivo: "guina-01.jpg" }],
         zones: &[("centro", "valle", 1.0), ("centro", "costa", 1.0), ("sur", "valle", 1.0), ("sur", "costa", 1.0), ("patagonia", "costa", 1.0), ("austral", "valle", 1.0), ("austral", "costa", 1.0)],
         palette: &[("d", "trunk"), ("s", "sandD"), ("l", "sand")],
-        frames: &[&["..d..d...", ".dddddd..", "ddssdddd.", ".ddddddd.", ".d.d.d..."], &["..d..d...", ".dddddd..", "ddssdddd.", ".ddddddd.", "d..d..d.."]],
+        frames: &[&["..d..d...", ".dddddd..", "ddssddddd", ".dddddddd", ".d.d..d.."], &["..d..d...", ".dddddd..", "ddssddddd", ".dddddddd", "d..d..d.."]],
     },
     SpeciesData {
         name: "puma", wiki: "https://es.wikipedia.org/wiki/Puma_concolor", porte: "Felino grande y esbelto de cuerpo largo, cola gruesa y patas fuertes; pelaje leonado uniforme. Silueta: perfil alargado con cola tendida.", movement: "walk", active: "dusk", speed: 0.7, range: 10.0, fps: 2.0, rarity: "poco-comun",
@@ -77,7 +77,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Depredador tope; raro y solitario; deja huellas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Puma_concolor_P-12.jpg", autor: "Santa Monica Mountains National Recreation Area", licencia: "PD", archivo: "puma-01.jpg" }],
         zones: &[("sur", "precordillera", 1.0), ("patagonia", "precordillera", 1.0), ("patagonia", "valle", 1.0), ("austral", "precordillera", 1.0)],
         palette: &[("d", "sandD"), ("l", "sand"), ("k", "trunk")],
-        frames: &[&["..k.......k...", ".dddd..dddddd.", "ddllllldddddd.", ".dddddddddddd.", "..d.d....d.d..", ".............."], &["..k.......k...", ".dddd..dddddd.", "ddllllldddddd.", ".dddddddddddd.", "..d.d...d...d.", ".............."]],
+        frames: &[&["..k....k......", ".dddd..dddddd.", "ddlllllddddddk", ".ddddddddddddd", "..d.d....d.d.."], &["..k....k......", ".dddd..dddddd.", "ddlllllddddddk", ".ddddddddddddd", "..d.d...d...d."]],
     },
     SpeciesData {
         name: "culpeo", wiki: "https://es.wikipedia.org/wiki/Lycalopex_culpaeus", porte: "Zorro grande de hocico puntiagudo, patas rojizas y cola poblada con punta negra; dorso gris-pardo. Silueta: cánido de cola espesa.", movement: "walk", active: "day", speed: 1.0, range: 8.0, fps: 3.0, rarity: "abundante",
@@ -86,7 +86,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Zorro andino de cola rojiza; trota de día.", refs: &[],
         zones: &[("altiplano", "precordillera", 1.0), ("altiplano", "valle", 1.0), ("altiplano", "costa", 1.0), ("norte", "precordillera", 1.0), ("norte", "valle", 1.0), ("norte", "costa", 1.0), ("centro", "valle", 1.0), ("centro", "costa", 1.0), ("sur", "valle", 1.0), ("patagonia", "valle", 1.0), ("patagonia", "costa", 1.0)],
         palette: &[("d", "sandD"), ("l", "sand"), ("t", "#c96a3a"), ("k", "#2e2e38")],
-        frames: &[&["........tt.", "..dddd..t..", ".kdddddtt..", ".dlllddt...", ".d..d......", "..........."], &["........tt.", "..dddd..t..", ".kdddddtt..", ".dlllddt...", "..d..d.....", "..........."]],
+        frames: &[&[".tt....dd..", "ttt..dddddk", "ttt.ddddddd", ".tt..ddddd.", "....d.d..d.", "....d.d..d."], &[".tt....dd..", "ttt..dddddk", "ttt.ddddddd", ".tt..ddddd.", "...d.d...d.", "..d...d..d."]],
     },
     SpeciesData {
         name: "chilla", wiki: "https://es.wikipedia.org/wiki/Lycalopex_griseus", porte: "Zorro gris más pequeño y estilizado, orejas grandes y cola con punta oscura. Silueta: cánido menudo.", movement: "walk", active: "dusk", speed: 1.1, range: 7.0, fps: 3.0, rarity: "abundante",
@@ -95,7 +95,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Zorro gris, más pequeño; activo al crepúsculo.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Lycalopex_griseus.png", autor: "Hermann Burmeister", licencia: "PD", archivo: "chilla-01.png" }],
         zones: &[("altiplano", "costa", 1.0), ("altiplano", "playa", 1.0), ("norte", "valle", 1.0), ("norte", "costa", 1.0), ("norte", "playa", 1.0), ("centro", "costa", 1.0), ("centro", "playa", 1.0), ("sur", "playa", 1.0), ("patagonia", "playa", 1.0), ("austral", "playa", 1.0)],
         palette: &[("d", "sandD"), ("l", "sand"), ("k", "#2e2e38")],
-        frames: &[&["......dd.", "..dddd.d.", "kddlld.d.", ".dddd....", ".d..d....", "........."], &["......dd.", "..dddd.d.", "kddlld.d.", ".dddd....", "..d..d...", "........."]],
+        frames: &[&["....dd...", "..dddddk.", ".ddlllld..", ".dddddd...", ".d.d..d...", ".d.d..d..."], &["....dd...", "..dddddk.", ".ddlllld..", ".dddddd...", "..d.d.....", ".d...d...."]],
     },
     SpeciesData {
         name: "guanaco", wiki: "https://es.wikipedia.org/wiki/Lama_guanicoe", porte: "Camélido esbelto de cuello y patas largos, cabeza pequeña, pelaje leonado y vientre blanco. Silueta: cuello erguido en S suave.", movement: "walk", active: "day", speed: 0.6, range: 12.0, fps: 2.0, rarity: "poco-comun",
@@ -131,7 +131,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Marsupial, fósil viviente; diminuto, en el colihue.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Monito_del_monte_en_estado_de_sopor_invernal._(36391982075).jpg", autor: "nombre_en_pantalla", licencia: "CC0", archivo: "monito-01.jpg" }],
         zones: &[("centro", "costa", 1.0), ("sur", "costa", 1.0)],
         palette: &[("d", "trunk"), ("l", "sandD"), ("k", "#2e2e38")],
-        frames: &[&["..k...k..", ".ddddd...", "ddllldd..", ".ddddd.l.", ".d..d....", ".d..d...."], &["..k...k..", ".ddddd...", "ddllldd..", ".ddddd.l.", "..d.d....", "..d.d...."]],
+        frames: &[&["..k...k..", ".dddddd..", "ddlllld..", ".dddddd..", ".d..d..l.", ".......ll"], &["..k...k..", ".dddddd..", "ddlllld..", ".dddddd..", ".d.d...l.", "......lll"]],
     },
     SpeciesData {
         name: "chinchilla", wiki: "https://es.wikipedia.org/wiki/Chinchilla_lanigera", porte: "Roedor redondeado de pelaje gris muy denso, orejas grandes y cola larga; ágil entre las rocas. Silueta: cuerpo esférico con orejas y cola.", movement: "hop", active: "night", speed: 1.2, range: 5.0, fps: 3.0, rarity: "muy-rara",
@@ -140,7 +140,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Roedor ágil de roqueríos andinos; casi extinto.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Chinchilla_lanigera1.jpg", autor: "Trurl66", licencia: "PD", archivo: "chinchilla-01.jpg" }],
         zones: &[("altiplano", "andes", 1.0), ("altiplano", "precordillera", 1.0), ("norte", "andes", 1.0), ("centro", "andes", 1.0), ("sur", "andes", 1.0), ("patagonia", "andes", 1.0), ("austral", "andes", 1.0)],
         palette: &[("d", "rock"), ("l", "snowD"), ("k", "#2e2e38")],
-        frames: &[&["..k...k..", ".ddddd...", "ddlldd...", ".dddd....", "d..d...l.", "......ll."], &["..k...k..", ".ddddd...", "ddlldd...", ".dddd....", "..d..d.l.", "......ll."]],
+        frames: &[&["..k...k..", ".dddddd..", "ddlldd...", ".dddd....", ".d..d..l.", ".......l."], &["..k...k..", ".dddddd..", "ddlldd...", ".dddd....", ".d.d...l.", "......ll."]],
     },
     SpeciesData {
         name: "choroy", wiki: "https://es.wikipedia.org/wiki/Enicognathus_leptorhynchus", porte: "Loro endémico de cuerpo verde y cola larga con pico grueso; vuela en bandadas ruidosas. Silueta: ave de cola larga en bandada.", movement: "flock", active: "day", speed: 0.55, range: 30.0, fps: 4.0, rarity: "comun",
