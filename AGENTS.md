@@ -21,8 +21,13 @@ cargo run -p andes-native       # ventana con panel (egui)
 cargo run -p andes-native wall  # fondo de pantalla (pantalla completa, sin panel)
 cargo run -p andes-native andes 12 clear condor   # sin ventana: PPM a /tmp
 cargo run --bin wallpaper -- andes                # fondo X11/Wayland
+cargo run -p andes-native --bin gallery -- 12 clear 0 4   # hojas de flora/fauna a PNG
 ```
 
+- El repo define `[profile.dev] opt-level = 1` (y dependencias a `opt-level = 3`): `cargo run`
+  (debug) ya es fluido. Para la máxima velocidad usa `--release`.
+- Mide el núcleo sin ventana con `cargo run --release -p andes-core --example bench` (ms/fotograma
+  a 960×270; ver D-021).
 - **Sin linter configurado por el repo**, pero usa `cargo fmt` y `cargo clippy` si están disponibles.
 - **Web (WASM)**: `./scripts/build-web.sh` y sirve `web/` por HTTP.
 

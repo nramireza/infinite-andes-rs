@@ -1,6 +1,6 @@
 # Chinchilla de cola larga (`chinchilla`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 9×6 px · 2 frames |
 
+## Descripción / porte
+
+Roedor redondeado de pelaje gris muy denso, orejas grandes y cola larga; ágil entre las rocas. Silueta: cuerpo esférico con orejas y cola.
+
 ## Notas
 
 Roedor ágil de roqueríos andinos; casi extinto.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Chinchilla_lanigera)
 
 ## Referencias fotográficas
 

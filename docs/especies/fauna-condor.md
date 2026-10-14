@@ -1,6 +1,6 @@
 # Cóndor (`condor`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 16×7 px · 2 frames |
 
+## Descripción / porte
+
+Ave planeadora enorme de alas anchas y rígidas con primarias digitadas; cuerpo negro con collar blanco y cabeza calva rojiza, cola corta. Silueta: alas desplegadas en planeo.
+
 ## Notas
 
 Ave símbolo de los Andes; planea lento con aleteo ocasional.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Vultur_gryphus)
 
 ## Referencias fotográficas
 

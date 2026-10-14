@@ -239,11 +239,12 @@ pub const LAYERS: [Layer; 6] = [
     },
 ];
 
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 struct Column {
     a: f64,
     y: i64,
     jitter: i64,
+    snow_shift: f64,
     rock: Option<[(i64, bool); 2]>,
 }
 
@@ -434,7 +435,7 @@ impl Terrain {
     fn column_at(&mut self, layer_idx: usize, wx: f64) -> Column {
         let key = wx.round() as i64;
         if let Some(c) = self.col_cache.get(&(layer_idx, key)) {
-            return c.clone();
+            return *c;
         }
         let layer = &LAYERS[layer_idx];
         let s = self.s(layer_idx);
@@ -445,6 +446,11 @@ impl Terrain {
         } else {
             0
         };
+        let snow_shift = if layer.snow_frac < 1.4 {
+            self.snow_shift_at(wx)
+        } else {
+            0.0
+        };
         let rock = if layer.rocky {
             let depth = a * 0.72;
             Some([
@@ -454,11 +460,17 @@ impl Terrain {
         } else {
             None
         };
-        let col = Column { a, y, jitter, rock };
+        let col = Column {
+            a,
+            y,
+            jitter,
+            snow_shift,
+            rock,
+        };
         if self.col_cache.len() >= 4096 {
             self.col_cache.clear();
         }
-        self.col_cache.insert((layer_idx, key), col.clone());
+        self.col_cache.insert((layer_idx, key), col);
         col
     }
 
@@ -521,7 +533,7 @@ impl Terrain {
             // Un `snow_shift` positivo (más nieve) baja la línea, así que se
             // resta: `snow_thr` es la altura mínima de la cumbre para nevar.
             let sf = if layer.snow_frac < 1.4 {
-                layer.snow_frac - self.snow_shift_at(wx)
+                layer.snow_frac - col.snow_shift
             } else {
                 layer.snow_frac
             };
@@ -650,6 +662,14 @@ impl Terrain {
             let head_base = self.ridge_height(layer_idx, ev.xc);
             let head_y = head_base + 1.0 + hash1(ev.seed as i32, 0x51e) * 3.0;
             let run = (bot_ref - head_y).max(2.0);
+            // La altura sólo depende de `sx`; se precalcula una vez por evento
+            // en lugar de evaluar el ruido en cada `(y, sx)` del cauce.
+            let reach = r.width * 2.1 + 3.0;
+            let lo = ((sx0 - reach).floor() as i32).max(0);
+            let hi = ((sx0 + reach).ceil() as i32).min(w as i32 - 1);
+            let heights: Vec<f64> = (lo..=hi)
+                .map(|sx| self.ridge_height(layer_idx, camera_x * p + sx as f64))
+                .collect();
             for y in y0..y1 {
                 if (y as f64) < head_y - 1.0 {
                     continue;
@@ -665,11 +685,10 @@ impl Terrain {
                 let rim = (y as f64 * 0.5 + ev.seed * 8.0).sin() > 0.55;
                 let is_head = (y as f64) < head_y.ceil();
                 for sx in (left - 1)..=(right + 1) {
-                    if sx < 0 || sx >= w as i32 {
+                    if sx < lo || sx > hi {
                         continue;
                     }
-                    let wx = camera_x * p + sx as f64;
-                    if (y as f64) < self.ridge_height(layer_idx, wx) {
+                    if (y as f64) < heights[(sx - lo) as usize] {
                         continue;
                     }
                     let col = if is_head {

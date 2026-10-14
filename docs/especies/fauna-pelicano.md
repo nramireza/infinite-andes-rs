@@ -1,6 +1,6 @@
 # Pelícano (`pelicano`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 9×5 px · 2 frames |
 
+## Descripción / porte
+
+Ave marina grande de pico largo con bolsa y cuerpo gris-blanco; vuela en fila bordeando la costa. Silueta: pico prominente y alas anchas.
+
 ## Notas
 
 Vuela en fila bordeando la costa; pico largo.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Pelecanus_thagus)
 
 ## Referencias
 

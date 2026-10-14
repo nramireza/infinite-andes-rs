@@ -1,6 +1,6 @@
 # Roble (`roble`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.5 |
 | Altura real típica | 25–35 m |
 
+## Descripción / porte
+
+Caducifolio de copa estrecha, erguida y alargada, follaje verde claro; tronco recto. Pierde la hoja en otoño y queda desnudo en invierno.
+
 ## Notas
 
 Caducifolio; copa estrecha y erguida; pierde hojas en otoño.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Nothofagus_obliqua)
 
 ## Referencias fotográficas
 

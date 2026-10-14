@@ -1,6 +1,6 @@
 # Rana de Darwin (`rana`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | borde del cauce |
 | Sprite | 6×4 px · 2 frames |
 
+## Descripción / porte
+
+Anfibio pequeño de hocico puntiagudo y cuerpo triangular, pardo; permanece estático al borde del cauce. Silueta: gota baja.
+
 ## Notas
 
 Anfibio endémico estático en el borde del cauce.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Rhinoderma_darwinii)
 
 ## Referencias fotográficas
 

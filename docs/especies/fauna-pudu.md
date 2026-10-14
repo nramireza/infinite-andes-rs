@@ -1,6 +1,6 @@
 # Pudú (`pudu`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 8×7 px · 2 frames |
 
+## Descripción / porte
+
+Cérvido diminuto y compacto, patas cortas, orejas redondeadas y hocico corto; astas mínimas. Silueta: cuerpo redondeado y bajo.
+
 ## Notas
 
 Uno de los ciervos más pequeños; camina entre arbustos.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Pudu_puda)
 
 ## Referencias fotográficas
 

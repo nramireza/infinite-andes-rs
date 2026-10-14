@@ -1,6 +1,6 @@
 # Chaura (`chaura`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.6 |
 | Altura real típica | 0,5–1,5 m |
 
+## Descripción / porte
+
+Arbusto rastrero y achaparrado de hojas coriáceas; bayas blanco-rosadas abundantes. Silueta: cojín bajo.
+
 ## Notas
 
 Arbusto achaparrado con bayas blanco-rosadas; perenne.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Gaultheria_mucronata)
 
 ## Referencias fotográficas
 

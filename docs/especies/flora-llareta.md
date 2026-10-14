@@ -1,6 +1,6 @@
 # Llareta (`llareta`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.4 |
 | Altura real típica | 0,3–0,5 m |
 
+## Descripción / porte
+
+Cojín compacto y hemisférico de la puna, de miles de rosetas apiñadas, verde-amarillento y crecimiento lentísimo. Silueta: almohadilla baja y redondeada.
+
 ## Notas
 
 Cojín compacto de la puna; crecimiento lentísimo.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Azorella_compacta)
 
 ## Referencias
 

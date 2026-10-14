@@ -1,6 +1,6 @@
 # Copihue (`copihue`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.1 |
 | Altura real típica | trepadora (hasta ~10 m) |
 
+## Descripción / porte
+
+Enredadera perenne de tallo delgado y sinuoso que trepa entre la vegetación; hojas acorazonadas y campanas colgantes rojas (Flor Nacional) de a una o dos por nudo. Silueta: tallo trepador con flores péndulas.
+
 ## Notas
 
 Enredadera y flor nacional; campanas rojas en primavera/verano.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Lapageria_rosea)
 
 ## Referencias fotográficas
 

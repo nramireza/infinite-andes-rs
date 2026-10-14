@@ -1,6 +1,6 @@
 # Canelo (`canelo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.3 |
 | Altura real típica | 15–20 m |
 
+## Descripción / porte
+
+Árbol siempreverde de copa densa y piramidal-redondeada, hojas aromáticas y flores blancas pequeñas; árbol sagrado mapuche.
+
 ## Notas
 
 Siempreverde de copa densa; flor blanca; árbol sagrado mapuche.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Drimys_winteri)
 
 ## Referencias fotográficas
 

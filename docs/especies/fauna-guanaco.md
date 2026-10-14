@@ -1,6 +1,6 @@
 # Guanaco (`guanaco`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 10×14 px · 2 frames |
 
+## Descripción / porte
+
+Camélido esbelto de cuello y patas largos, cabeza pequeña, pelaje leonado y vientre blanco. Silueta: cuello erguido en S suave.
+
 ## Notas
 
 Camélido silvestre; tropillas en la estepa; deja huellas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Lama_guanicoe)
 
 ## Referencias fotográficas
 

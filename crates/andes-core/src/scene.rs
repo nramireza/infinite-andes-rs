@@ -274,6 +274,10 @@ impl Scene {
         );
         self.weather.draw_lightning(fb, &pal);
 
+        // Dirección de luz aproximada por la posición del astro en pantalla
+        // (-1 = izquierda, +1 = derecha); los astros cercanos al cenit dan ~0.
+        let light = ((cel.x / self.w as f64) * 2.0 - 1.0).clamp(-1.0, 1.0);
+
         for (i, layer) in LAYERS.iter().enumerate() {
             if layer.sea {
                 let wind = self.weather.effective_wind();
@@ -305,6 +309,7 @@ impl Scene {
                     &self.bloom_mode,
                     season.index as i32,
                     night,
+                    light,
                 );
             }
             place_fauna(

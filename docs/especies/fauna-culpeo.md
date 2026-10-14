@@ -1,6 +1,6 @@
 # Zorro culpeo (`culpeo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 11×6 px · 2 frames |
 
+## Descripción / porte
+
+Zorro grande de hocico puntiagudo, patas rojizas y cola poblada con punta negra; dorso gris-pardo. Silueta: cánido de cola espesa.
+
 ## Notas
 
 Zorro andino de cola rojiza; trota de día.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Lycalopex_culpaeus)
 
 ## Referencias
 

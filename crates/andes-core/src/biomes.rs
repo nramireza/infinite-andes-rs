@@ -262,13 +262,19 @@ pub struct BiomeContext {
     pub bloom: f64,
 }
 
-pub fn biome_at(world_x: f64, seed: u32, mode: &str) -> BiomeContext {
+/// Pesos de bioma y floración en `world_x`, sin construir el tinte (para
+/// quienes sólo necesitan el pool de flora/fauna).
+pub fn biome_weights_bloom(world_x: f64, seed: u32, mode: &str) -> ([f64; 6], f64) {
     let weights = mode_weights(mode, world_x, seed);
-    let tint = tint_for(&weights);
-    let amount = 1.0 - weights[biome_index("centro").unwrap()];
     let block = (world_x / BLOOM_BLOCK).floor();
     let center = mode_weights(mode, (block + 0.5) * BLOOM_BLOCK, seed);
-    let bloom = bloom_at(world_x, seed, &center);
+    (weights, bloom_at(world_x, seed, &center))
+}
+
+pub fn biome_at(world_x: f64, seed: u32, mode: &str) -> BiomeContext {
+    let (weights, bloom) = biome_weights_bloom(world_x, seed, mode);
+    let tint = tint_for(&weights);
+    let amount = 1.0 - weights[biome_index("centro").unwrap()];
     BiomeContext {
         weights,
         tint,

@@ -1,6 +1,6 @@
 # Chungungo (`chungungo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 12×5 px · 2 frames |
 
+## Descripción / porte
+
+Nutria marina pequeña y alargada de pelaje pardo; nada y se asoma entre los roqueríos. Silueta: cuerpo bajo y estirado sobre el agua.
+
 ## Notas
 
 Nutria marina; nada y se asoma entre roqueríos.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Lontra_felina)
 
 ## Referencias fotográficas
 

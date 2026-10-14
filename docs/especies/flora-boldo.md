@@ -1,6 +1,6 @@
 # Boldo (`boldo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.85 |
 | Altura real típica | 5–12 m |
 
+## Descripción / porte
+
+Árbol siempreverde de copa redondeada, hojas aromáticas grisáceas y flores blancas; tronco corto.
+
 ## Notas
 
 Copa redondeada y aromática; hojas medicinales.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Peumus_boldus)
 
 ## Referencias
 

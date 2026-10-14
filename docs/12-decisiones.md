@@ -1,6 +1,6 @@
 # 12 · Decisiones
 
-> Estado: estable · Actualizado: 2026-10-12
+> Estado: estable · Actualizado: 2026-10-13
 
 Registro de decisiones propias del **port a Rust**. Las decisiones de **diseño** del paisaje
 (geografía, paleta, flora, fauna, estaciones, momentos…) son las del **proyecto original** y viven en
@@ -231,3 +231,85 @@ siguiente número.
   vida a la costa y al océano.
 - **Consecuencia:** nuevas fichas en `docs/fauna-*.md` (regeneradas con `gen-species`). El orden del
   catálogo crece; `gen-parity.mjs` sobrescribiría `fauna_data.rs` (solo referencia).
+
+## D-021 · Rendimiento del rasterizado: perfil dev optimizado y fill por enteros
+
+- **Fecha:** 2026-10-13
+- **Estado:** aceptada
+- **Decisión:** atacar el costo del rasterizado (el cuello era `Framebuffer`/terreno, ~23 ms por
+  fotograma a 960×270 en release):
+  1. `[profile.dev] opt-level = 1` y `[profile.dev.package."*"] opt-level = 3`, para que `cargo run`
+     (debug) sea fluido.
+  2. `Framebuffer` con composición **entera** (alfa a `u8 0..=255`), camino rápido opaco y columnas
+     de 1 px recorridas con paso de fila.
+  3. Cielo en filas completas con un `fill_rect` por fila (no `set` por píxel).
+  4. `Column` `Copy` con `snow_shift` cacheado; `draw_channel` precalcula la altura por columna;
+     pools de flora/fauna por chunk con `biome_weights_bloom` (sin `tint_for`).
+  5. `blit` del wallpaper (X11 y Wayland) con LUT de columnas.
+- **Motivo:** el fondo de pantalla se ejecuta de continuo; un 60% de CPU por fotograma es
+  inaceptable, y en debug el núcleo tardaba ~0.2 s por fotograma (~5 fps).
+- **Consecuencia:** el núcleo baja a ~7 ms/fotograma en release y la ventana/fondo van a 60 fps. La
+  composición entera puede desplazar un color ±1 por redondeo (se renuncia a la identidad de píxel
+  exacta de D-016, pero se conserva el **determinismo** por semilla). Medición reproducible con
+  `cargo run --release -p andes-core --example bench`.
+
+## D-022 · Galería de diagnóstico de flora y fauna
+
+- **Fecha:** 2026-10-13
+- **Estado:** aceptada
+- **Decisión:** añadir una **galería de diagnóstico** pura en `andes-core::gallery` (hojas de flora y
+  fauna con fondo a cuadros, tres tallas por planta, todos los frames/direcciones por animal y
+  rótulo con una fuente 3×5 común en `andes-core::font`), más el binario
+  `cargo run -p andes-native --bin gallery -- [hour] [weather] [season] [scale]`, que la escala por
+  vecino más cercano y exporta `gallery-flora.png` / `gallery-fauna.png`.
+- **Motivo:** el dibujo de flora y fauna se evaluaba solo en el paisaje completo o con paridad de
+  píxeles contra JS; no había forma de **ver una especie aislada** para iterar silhouette, contorno y
+  color. La propia sección `Pendientes` de [06](06-fauna.md) lo listaba.
+- **Consecuencia:** la fuente 3×5 vive ahora en `font.rs` y `moments::draw_text` delega en ella
+  (mismos glifos para "MORTAL KUMBIA"); se añaden tests de cobertura de glifos y de las hojas. La
+  galería es la **base de trabajo** para las mejoras de calidad de flora/fauna. No afecta al
+  paisaje ni al determinismo.
+
+## D-023 · Siluetas de flora propias y luz direccional
+
+- **Fecha:** 2026-10-13
+- **Estado:** aceptada
+- **Decisión:** reescribir el dibujo de las especies de flora que compartían la misma "copa
+  genérica" para darles **porte reconocible sin color**, apoyándose en tres primitivas nuevas
+  (`line`, `crown_blob`, `crown_cone`) y en un trío de tonos de copa. Concretamente:
+  - **Lenga** piramidal; **coihue** copa ancha de tres lóbulos con horqueta; **roble** huso estrecho
+    y erguido; **mañío** conífera austral oscura con ramas colgantes; **ciprés** columna cónica.
+  - **Canelo** copa alta con ápice; **quillay** copa lobulada; **arrayán** tronco canela exagerado;
+    **notro** con racimos escarlata; **litre/boldo/peumo** redondas pero diferenciadas por textura y
+    tono.
+  - **Espino** se dibuja como **matorral** de ramas en abanico con espinas (antes era un árbol);
+    **michay/chaura** arbustos compactos; **maitén** reforzó las ramas lloronas; **copihue** es una
+    **enredadera con campanas colgantes** legible a cualquier talla.
+- **Luz direccional:** `draw_plant`/`place_flora` reciben `light` (−1…+1) calculado en `scene.rs` a
+  partir de `celestial().x` (posición del sol/luna en pantalla); el lado iluminado de cada copa se
+  aclara hacia el tono del sol y el sombrío se oscurece. La galería y los tests usan un valor fijo.
+- **Motivo:** la galería de diagnóstico (D-022) mostró que ~13 especies eran la misma silueta
+  elíptica con matices; el paisaje se veía repetitivo y "clonado".
+- **Consecuencia:** cambia el aspecto de la flora (no los spawns ni el determinismo por semilla). Se
+  añaden tests de que **cada especie pinta** en las cuatro estaciones y a dos tallas. Las siluetas
+  siguen siendo procedurales y sin antialias (D-016).
+
+## D-024 · Referencia estable (Wikipedia) y porte por especie
+
+- **Fecha:** 2026-10-14
+- **Estado:** aceptada
+- **Decisión:** que cada especie real (flora y fauna) declare en su registro dos campos —
+  `wiki` (artículo de **Wikipedia**, referencia estable) y `porte` (**descripción fiel de la
+  silueta/hábito**, en español)—, y que el dibujo se redibuje para ser **fiel al `porte`**,
+  iterando con la galería de diagnóstico (D-022). Las fichas de `docs/especies/` pasan a mostrar
+  *Descripción / porte* y *Referencia*; las fotos PD/CC0 (Commons/PhyloPic) quedan como procedencia
+  opcional en `refs`, sin versionar imágenes en el repositorio.
+- **Motivo:** las siluetas no siempre eran fieles (p. ej. la **araucaria**, dibujada como copa
+  redondeada cuando su porte es de **pisos/verticilos** horizontales tipo pagoda) y las fichas no
+  ofrecían una referencia estable ni una descripción de forma. Se adopta Wikipedia por su
+  estabilidad y cobertura, sobre el manifiesto de Commons del proyecto JS.
+- **Consecuencia:** este repo es dueño de la referencia (ya no se hereda del JS). La araucaria se
+  redibujó con el nuevo criterio; el resto de siluetas se revisa **por lotes** (flora y luego fauna)
+  con la galería, con tolerancia a cambios grandes por fidelidad. Los enlaces de Wikipedia se
+  verifican (resuelven) antes de fijarse. La metadata de identidad se mantiene como **fuente de este
+  repositorio**.

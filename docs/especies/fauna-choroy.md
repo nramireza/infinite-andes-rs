@@ -1,6 +1,6 @@
 # Choroy (`choroy`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 12×6 px · 2 frames |
 
+## Descripción / porte
+
+Loro endémico de cuerpo verde y cola larga con pico grueso; vuela en bandadas ruidosas. Silueta: ave de cola larga en bandada.
+
 ## Notas
 
 Loro endémico; bandada ruidosa del bosque de la Costa.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Enicognathus_leptorhynchus)
 
 ## Referencias fotográficas
 

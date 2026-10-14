@@ -1,6 +1,6 @@
 # Espino (`espino`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.8 |
 | Altura real típica | 2–4 m |
 
+## Descripción / porte
+
+Matorral espinoso de ramas tortuosas que se abre en abanico y hojas pequeñas; flores amarillas y legumbres. Silueta: arbusto ramoso y pinchudo, no un árbol.
+
 ## Notas
 
 Matorral espinoso del valle y la costa en clima seco; flores amarillas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Vachellia_caven)
 
 ## Referencias
 

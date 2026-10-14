@@ -1,6 +1,6 @@
 # Vicuña (`vicuna`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 8×12 px · 2 frames |
 
+## Descripción / porte
+
+Camélido pequeño y grácil de pelaje fino beige, cuello largo y esbelto. Silueta: como el guanaco pero más menuda y erguida.
+
 ## Notas
 
 Camélido del altiplano; grupos muy ágiles.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Vicugna_vicugna)
 
 ## Referencias fotográficas
 

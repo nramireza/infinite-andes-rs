@@ -1,6 +1,6 @@
 # Amancay (`amancay`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.6 |
 | Altura real típica | 0,5–1 m |
 
+## Descripción / porte
+
+Herbácea rizomatosa de tallos con flores amarillas en umbela; brota en claros del bosque sureño. Silueta: manojo de tallos floridos.
+
 ## Notas
 
 Flores amarillas de los claros del sur.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Alstroemeria_aurea)
 
 ## Referencias
 

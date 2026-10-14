@@ -1,6 +1,6 @@
 # Especies
 
-> Fichas generadas con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Fichas generadas con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 Una ficha por especie (flora y fauna), generada desde los registros `FLORA` y `SPECIES`
 (fuente única de identidad, zonas y metadata). Plantilla en [`../templates/especimen.md`](../templates/especimen.md).

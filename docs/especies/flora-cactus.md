@@ -1,6 +1,6 @@
 # Copao / Cactus columnar (`cactus`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.2 |
 | Altura real típica | 3–7 m |
 
+## Descripción / porte
+
+Cactácea columnar (copao) de tallo grueso y acanalado con costillas, brazos laterales en candelabro y espinas; flores en el ápice. Silueta: columna vertical con uno o dos brazos.
+
 ## Notas
 
 Columna con brazos y espinas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Eulychnia)
 
 ## Referencias fotográficas
 

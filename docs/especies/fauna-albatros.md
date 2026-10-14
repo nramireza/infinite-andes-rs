@@ -1,6 +1,6 @@
 # Albatros de ceja negra (`albatros`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 11×4 px · 2 frames |
 
+## Descripción / porte
+
+Ave marina de alas largas y rígidas, dorso negro y ceja negra sobre cabeza blanca; planea sobre el oleaje. Silueta: alas rectas y alargadas.
+
 ## Notas
 
 Planea con las alas rígidas sobre el oleaje.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Thalassarche_melanophris)
 
 ## Referencias
 

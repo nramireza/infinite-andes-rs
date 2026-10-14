@@ -1,6 +1,6 @@
 # Gaviota dominicana (`gaviota`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 7×4 px · 2 frames |
 
+## Descripción / porte
+
+Gaviota grande de dorso negro y vientre blanco, pico y patas amarillos; planea sobre playa y mar. Silueta: alas en arco.
+
 ## Notas
 
 Ave costera abundante; planea sobre la playa y el mar.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Larus_dominicanus)
 
 ## Referencias
 

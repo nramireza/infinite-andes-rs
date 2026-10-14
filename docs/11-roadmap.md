@@ -69,6 +69,12 @@ Portado con **paridad exacta** respecto a JS:
       amancay y junquillo.
 - [x] **Fauna marina y aves** (D-020): lobo marino, delfín chileno, gaviota, albatros y pelícano;
       `chungungo` y `pinguino` más frecuentes.
+- [x] **Galería de diagnóstico** de flora y fauna (D-022): `cargo run -p andes-native --bin gallery`.
+- [x] **Siluetas de flora propias** y luz direccional (D-023).
+- [x] **Referencia Wikipedia + porte** por especie y araucaria fiel a su porte (D-024).
+- [x] Revisión de siluetas de flora por `porte` (lote 1: araucaria, nalca, quillay, michay, chaura, boldo…).
+- [ ] Calidad de dibujo: afinar sprites de fauna por `porte` (lote 2).
+- [ ] Completar fotos `refs` faltantes (10 flora, `culpeo`, `huillin`).
 - [ ] Momentos/sorpresas nuevas (eclipse, migraciones…).
 - [ ] Biomas nuevos (islas, humedales, fiordos más marcados).
 

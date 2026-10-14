@@ -1,6 +1,6 @@
 # Nalca / Pangue (`nalca`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.9 |
 | Altura real típica | 1,5–3 m (hojas) |
 
+## Descripción / porte
+
+Planta herbácea de hojas gigantes orbiculares de borde dentado y pecíolos gruesos, en roseta a ras de suelo húmedo. Silueta: gran paraguas de hojas.
+
 ## Notas
 
 Hojas gigantes junto al agua.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Gunnera_tinctoria)
 
 ## Referencias fotográficas
 

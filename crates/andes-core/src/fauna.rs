@@ -3,7 +3,7 @@
 
 include!("fauna_data.rs");
 
-use crate::biomes::{biome_at, biome_fauna_pool, bloom_chance_mul, resolve_bloom};
+use crate::biomes::{biome_fauna_pool, bloom_chance_mul, resolve_bloom};
 use crate::framebuffer::Framebuffer;
 use crate::math::js_round;
 use crate::palette::{get, shade, Palette, Rgb};
@@ -105,6 +105,35 @@ fn draw_matrix(
             fb.fill_rect(left + dx, top + ry as i32, 1, 1, col, 1.0);
         }
     }
+}
+
+/// Dibuja un frame aislado de una especie (galerías de diagnóstico). Devuelve
+/// `false` si la especie no existe en el registro.
+pub fn draw_species_preview(
+    fb: &mut Framebuffer,
+    name: &str,
+    left: i32,
+    top: i32,
+    frame: usize,
+    flip: bool,
+    pal: &Palette,
+) -> bool {
+    let Some(sp) = species(name) else {
+        return false;
+    };
+    let colors = sprite_colors(sp, pal);
+    let n = sp.frames.len().max(1);
+    let rows = sp.frames.get(frame % n).copied().unwrap_or(sp.frames[0]);
+    draw_matrix(fb, rows, &colors, left, top, flip);
+    true
+}
+
+/// Tamaño (ancho, alto) de la matriz base de una especie, en píxeles.
+pub fn sprite_size(name: &str) -> Option<(i32, i32)> {
+    let sp = species(name)?;
+    let rows = sp.frames.first()?;
+    let w = rows.iter().map(|r| r.chars().count()).max().unwrap_or(0) as i32;
+    Some((w, rows.len() as i32))
 }
 
 pub struct FaunaSpawn {
@@ -391,13 +420,13 @@ pub fn place_fauna(
         return;
     }
     let pool_at = |wx: f64| -> Vec<(&'static str, f64)> {
-        let b = biome_at(wx, seed, biome_mode);
-        let bloom = resolve_bloom(bloom_mode, &b.weights, b.bloom);
-        biome_fauna_pool(layer.name, &b.weights, bloom)
+        let (weights, bloom) = crate::biomes::biome_weights_bloom(wx, seed, biome_mode);
+        let bloom = resolve_bloom(bloom_mode, &weights, bloom);
+        biome_fauna_pool(layer.name, &weights, bloom)
     };
     let chance_at = |wx: f64| -> f64 {
-        let b = biome_at(wx, seed, biome_mode);
-        let bloom = resolve_bloom(bloom_mode, &b.weights, b.bloom);
+        let (weights, bloom) = crate::biomes::biome_weights_bloom(wx, seed, biome_mode);
+        let bloom = resolve_bloom(bloom_mode, &weights, bloom);
         bloom_chance_mul(bloom) * activity_mul
     };
     for s in fauna_spawns(

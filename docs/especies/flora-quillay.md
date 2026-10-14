@@ -1,6 +1,6 @@
 # Quillay (`quillay`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1 |
 | Altura real típica | 10–15 m |
 
+## Descripción / porte
+
+Árbol esclerófilo de copa globosa y redondeada sobre tronco pálido; flores blancas jabonosas. Silueta: copa esférica.
+
 ## Notas
 
 Esclerófilo; flores blancas en primavera/verano.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Quillaja_saponaria)
 
 ## Referencias fotográficas
 

@@ -1,6 +1,6 @@
 # Notro / Ciruelillo (`notro`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.9 |
 | Altura real típica | 5–10 m |
 
+## Descripción / porte
+
+Arbolito esbelto de hojas lanceoladas; racimos de flores rojas escarlata en primavera. Silueta: varas finas con pinceladas rojas.
+
 ## Notas
 
 Ramilletes de flores rojas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Embothrium_coccineum)
 
 ## Referencias fotográficas
 

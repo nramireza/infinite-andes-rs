@@ -1,6 +1,6 @@
 # Monito del monte (`monito`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 9×6 px · 2 frames |
 
+## Descripción / porte
+
+Marsupial diminuto de pelaje denso pardo-grís, orejas redondas y cola larga prensil. Silueta: bolita con cola.
+
 ## Notas
 
 Marsupial, fósil viviente; diminuto, en el colihue.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Dromiciops_gliroides)
 
 ## Referencias fotográficas
 

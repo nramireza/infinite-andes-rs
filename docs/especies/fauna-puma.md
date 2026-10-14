@@ -1,6 +1,6 @@
 # Puma (`puma`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 14×6 px · 2 frames |
 
+## Descripción / porte
+
+Felino grande y esbelto de cuerpo largo, cola gruesa y patas fuertes; pelaje leonado uniforme. Silueta: perfil alargado con cola tendida.
+
 ## Notas
 
 Depredador tope; raro y solitario; deja huellas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Puma_concolor)
 
 ## Referencias fotográficas
 

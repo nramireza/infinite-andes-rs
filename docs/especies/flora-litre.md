@@ -1,6 +1,6 @@
 # Litre (`litre`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.75 |
 | Altura real típica | 3–8 m |
 
+## Descripción / porte
+
+Árbol esclerófilo de copa redondeada y densa, hojas pequeñas y flores blanquecinas; savia irritante.
+
 ## Notas
 
 Esclerófilo de copa redonda; savia irritante.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Lithraea_caustica)
 
 ## Referencias
 

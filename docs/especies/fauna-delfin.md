@@ -1,6 +1,6 @@
 # Delfín chileno (`delfin`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 14×4 px · 2 frames |
 
+## Descripción / porte
+
+Delfín endémico pequeño y robusto, sin pico, dorso gris oscuro y vientre claro; salta en grupos. Silueta: lomo curvo emergiendo.
+
 ## Notas
 
 Delfín endémico, pequeño y sin pico; salta en grupos.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Cephalorhynchus_eutropia)
 
 ## Referencias
 

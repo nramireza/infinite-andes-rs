@@ -1,6 +1,6 @@
 # Choique / Ñandú petizo (`choique`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 9×15 px · 2 frames |
 
+## Descripción / porte
+
+Ñandú petizo de cuello y patas largos y plumaje gris manchado; no vuela, corre. Silueta: ave ratites erguida.
+
 ## Notas
 
 Ñandú de la estepa; camina y deja huellas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Rhea_pennata)
 
 ## Referencias fotográficas
 

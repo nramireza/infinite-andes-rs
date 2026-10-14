@@ -206,10 +206,7 @@ impl Sky {
             } else {
                 lerp_color(sky_mid, sky_horizon, (t - 0.62) / 0.38)
             };
-            fb.set(0, y, c);
-            for x in 1..w as i32 {
-                fb.set(x, y, c);
-            }
+            fb.fill_rect(0, y, w as i32, 1, c, 1.0);
         }
         fb.fill_rect(0, horizon, w as i32, h as i32 - horizon, sky_horizon, 1.0);
 

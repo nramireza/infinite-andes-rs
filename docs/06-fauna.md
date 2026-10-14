@@ -181,12 +181,14 @@ y se refuerzan aves y zorros (`BLOOM_FAUNA`).
 
 ## Modelo de datos de una especie
 
-Cada entrada de `SPECIES` (`fauna_data.rs`) es un **registro generado** con los campos de
+Cada entrada de `SPECIES` (`fauna_data.rs`) es un **registro** con los campos de
 comportamiento (`movement`, `active`, `speed`/`range`, `fps`, `rarity`), el sprite (`palette` y
 `frames`), las **zonas** (`zones[bioma][capa]`, fuente única de los pools) y la colocación
 (`river`, `chunk_ok`, `bloom`). La **metadata de identidad** (`common`, `sci`, `endemism`, `iucn`,
-`notes`, `ref`) se genera también desde el JS y la consume el binario `gen-species`. La flora sigue
-el mismo esquema en `FLORA`. Ver [09 · Arquitectura](09-arquitectura.md).
+`notes`, `wiki`, `porte`, `refs`) es **fuente de este repositorio** (editable a mano) y la consume el
+binario `gen-species`: `wiki` es el artículo de Wikipedia (referencia estable) y `porte` la
+descripción fiel de la silueta que guía el sprite ([18 · Referencias](18-referencias.md), D-024). La
+flora sigue el mismo esquema en `FLORA`. Ver [09 · Arquitectura](09-arquitectura.md).
 
 ## Cómo añadir una especie
 
@@ -203,4 +205,6 @@ cargo run -p andes-core --bin gen-species   # regenera docs/especies y las tabla
 ## Pendientes
 
 - Paridad de **init/astros** exacta y **spawns** exactos; queda refinar el **dibujo** (fuentes de
-  diferencia de píxel) y la galería de diagnóstico del port.
+  diferencia de píxel).
+- Afinar los sprites (contorno y luz normalizados, más frames, mayor tamaño) sobre la **galería de
+  diagnóstico** (`cargo run -p andes-native --bin gallery`, D-022).

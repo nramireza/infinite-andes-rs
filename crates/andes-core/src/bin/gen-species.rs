@@ -149,6 +149,22 @@ fn layers_of(zones: &[(&str, &str, f64)]) -> String {
     }
 }
 
+/// Sección "Descripción / porte" (especificación de la silueta).
+fn porte_section(porte: &str) -> String {
+    if porte.is_empty() {
+        return String::new();
+    }
+    format!("## Descripción / porte\n\n{porte}\n\n")
+}
+
+/// Sección "Referencia" con el artículo estable de Wikipedia.
+fn wiki_section(wiki: &str) -> String {
+    if wiki.is_empty() {
+        return String::new();
+    }
+    format!("## Referencia\n\n- [Wikipedia]({wiki})\n\n")
+}
+
 fn refs_section(refs: &[RefRow]) -> String {
     if refs.is_empty() {
         return String::new();
@@ -199,9 +215,10 @@ fn flora_ficha(name: &str) -> String {
          | Zona / capa | {zone} |\n\
          | Altura relativa (juego) | ×{height} |\n\
          | Altura real típica | {height_m} |\n\n\
+         {porte}\
          ## Notas\n\n\
          {notes}\n\n\
-         {refs}## Referencias\n\n\
+         {wiki}{refs}## Referencias\n\n\
          - [05 · Flora](../../05-flora.md)\n\
          - [`crates/andes-core/src/flora.rs`](../../../crates/andes-core/src/flora.rs)\n",
         common = if d.common.is_empty() { name } else { d.common },
@@ -210,7 +227,9 @@ fn flora_ficha(name: &str) -> String {
         zone = zone_label(e.zones),
         height = num(e.height),
         height_m = if d.height_m.is_empty() { "—" } else { d.height_m },
+        porte = porte_section(d.porte),
         notes = if d.notes.is_empty() { "—" } else { d.notes },
+        wiki = wiki_section(d.wiki),
         refs = refs_section(d.refs),
         today = today(),
     )
@@ -245,9 +264,10 @@ fn fauna_ficha(sp: &andes_core::fauna::SpeciesData) -> String {
          | Anclaje | {anchor} |\n\
          | Colocación | {placement} |\n\
          | Sprite | {w}×{h} px · {frames} frames |\n\n\
+         {porte}\
          ## Notas\n\n\
          {notes}\n\n\
-         {refs}## Referencias\n\n\
+         {wiki}{refs}## Referencias\n\n\
          - [06 · Fauna](../../06-fauna.md)\n\
          - [`crates/andes-core/src/fauna.rs`](../../../crates/andes-core/src/fauna.rs)\n",
         common = sp.common,
@@ -260,7 +280,9 @@ fn fauna_ficha(sp: &andes_core::fauna::SpeciesData) -> String {
         rarity = rarity_name(sp.rarity),
         h = base.len(),
         frames = sp.frames.len(),
+        porte = porte_section(sp.porte),
         notes = if sp.notes.is_empty() { "—" } else { sp.notes },
+        wiki = wiki_section(sp.wiki),
         refs = refs_section(sp.refs),
         today = today(),
     )

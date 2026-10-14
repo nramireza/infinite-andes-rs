@@ -50,14 +50,14 @@ fn blit(fb: &Framebuffer, out: &mut [u32], w: usize, h: usize) {
     if fb.w == 0 || fb.h == 0 || w == 0 || h == 0 {
         return;
     }
-    for y in 0..h {
+    // LUT de columnas: la división se hace una vez por columna, no por píxel.
+    let cols: Vec<usize> = (0..w).map(|x| (x * fb.w / w).min(fb.w - 1)).collect();
+    for (y, row_out) in out.chunks_mut(w).enumerate().take(h) {
         let sy = (y * fb.h / h).min(fb.h - 1);
-        let row = sy * fb.w;
-        for x in 0..w {
-            let sx = (x * fb.w / w).min(fb.w - 1);
-            let i = (row + sx) * 4;
-            out[y * w + x] =
-                ((fb.px[i] as u32) << 16) | ((fb.px[i + 1] as u32) << 8) | (fb.px[i + 2] as u32);
+        let src = &fb.px[sy * fb.w * 4..];
+        for (x, dst) in row_out.iter_mut().enumerate() {
+            let i = cols[x] * 4;
+            *dst = ((src[i] as u32) << 16) | ((src[i + 1] as u32) << 8) | (src[i + 2] as u32);
         }
     }
 }

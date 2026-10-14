@@ -1,6 +1,6 @@
 # Ciprés de la cordillera (`cipres`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.6 |
 | Altura real típica | 10–20 m |
 
+## Descripción / porte
+
+Conífera columnar estrecha de follaje denso verde oscuro y tronco recto. Silueta: columna afilada.
+
 ## Notas
 
 Conífera columnar de la precordillera.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Austrocedrus_chilensis)
 
 ## Referencias
 

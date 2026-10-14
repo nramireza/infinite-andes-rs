@@ -1,6 +1,6 @@
 # Maitén (`maiten`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.1 |
 | Altura real típica | 6–15 m |
 
+## Descripción / porte
+
+Árbol de copa redondeada y ramas delgadas colgantes (porte llorón); hojas menudas verde claro.
+
 ## Notas
 
 Ramas colgantes que le dan un aire llorón.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Maytenus_boaria)
 
 ## Referencias
 

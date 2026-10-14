@@ -1,6 +1,6 @@
 # Michay (`michay`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.7 |
 | Altura real típica | 1–3 m |
 
+## Descripción / porte
+
+Arbusto espinoso y denso de hojas pequeñas y brillantes; flores naranjas colgantes y bayas azuladas. Silueta: mata compacta y pinchuda.
+
 ## Notas
 
 Arbusto espinoso; flores naranjas en primavera/verano.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Berberis_darwinii)
 
 ## Referencias fotográficas
 

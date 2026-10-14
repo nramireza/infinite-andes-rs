@@ -1,6 +1,6 @@
 # Peumo (`peumo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1 |
 | Altura real típica | 10–18 m |
 
+## Descripción / porte
+
+Árbol siempreverde de copa amplia, densa y oscura; tronco grueso; frutos rojos comestibles.
+
 ## Notas
 
 Siempreverde denso del bosque esclerófilo.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Cryptocarya_alba)
 
 ## Referencias
 

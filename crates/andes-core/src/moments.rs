@@ -219,45 +219,9 @@ fn draw_matrix(
     }
 }
 
-fn glyph(ch: char) -> Option<[&'static str; 5]> {
-    Some(match ch {
-        'A' => ["###", "#.#", "###", "#.#", "#.#"],
-        'B' => ["##.", "#.#", "##.", "#.#", "##."],
-        'I' => ["###", ".#.", ".#.", ".#.", "###"],
-        'K' => ["#.#", "#.#", "##.", "#.#", "#.#"],
-        'L' => ["#..", "#..", "#..", "#..", "###"],
-        'M' => ["#.#", "###", "###", "#.#", "#.#"],
-        'O' => ["###", "#.#", "#.#", "#.#", "###"],
-        'R' => ["##.", "#.#", "##.", "#.#", "#.#"],
-        'T' => ["###", ".#.", ".#.", ".#.", ".#."],
-        'U' => ["#.#", "#.#", "#.#", "#.#", "###"],
-        ' ' => ["...", "...", "...", "...", "..."],
-        _ => return None,
-    })
-}
-
+/// Rótulo pixel 3×5; delega en la fuente común (`font.rs`).
 pub fn draw_text(fb: &mut Framebuffer, text: &str, left: i32, top: i32, color: Rgb, scale: i32) {
-    let mut cx = left;
-    for raw in text.to_uppercase().chars() {
-        if let Some(g) = glyph(raw) {
-            for (ry, row) in g.iter().enumerate() {
-                for (rx, c) in row.chars().enumerate() {
-                    if c != '#' {
-                        continue;
-                    }
-                    fb.fill_rect(
-                        cx + rx as i32 * scale,
-                        top + ry as i32 * scale,
-                        scale,
-                        scale,
-                        color,
-                        1.0,
-                    );
-                }
-            }
-        }
-        cx += 4 * scale;
-    }
+    crate::font::draw_text(fb, text, left, top, color, scale);
 }
 
 fn draw_character(

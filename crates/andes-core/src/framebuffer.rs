@@ -4,7 +4,6 @@
 //! Todo se dibuja en coordenadas enteras y sin antialias. El canal alfa se
 //! compone en espacio directo (`src·a + dst·(1-a)`), sin premultiplicar.
 
-use crate::math::js_round;
 use crate::palette::Rgb;
 
 pub struct Framebuffer {
@@ -29,14 +28,19 @@ impl Framebuffer {
     }
 
     pub fn clear(&mut self) {
-        for b in self.px.iter_mut() {
-            *b = 0;
-        }
+        self.px.fill(0);
     }
 
     #[inline]
     fn idx(&self, x: usize, y: usize) -> usize {
         (y * self.w + x) * 4
+    }
+
+    /// Opacidad `a` (0..1) a un alfa entero `0..=255` con redondeo a la mitad
+    /// hacia arriba.
+    #[inline]
+    fn alpha8(a: f64) -> u32 {
+        (a.clamp(0.0, 1.0) * 255.0 + 0.5) as u32
     }
 
     #[inline]
@@ -51,25 +55,38 @@ impl Framebuffer {
         self.px[i + 3] = 255;
     }
 
+    /// Compone un píxel ya recortado con alfa entero `0..=255` (source-over).
+    #[inline]
+    fn blend_at(&mut self, i: usize, c: Rgb, a8: u32) {
+        if a8 >= 255 {
+            self.px[i] = c[0];
+            self.px[i + 1] = c[1];
+            self.px[i + 2] = c[2];
+        } else {
+            let inv = 255 - a8;
+            for (ch, &src) in c.iter().enumerate() {
+                let dst = self.px[i + ch] as u32 * inv;
+                self.px[i + ch] = ((src as u32 * a8 + dst + 127) / 255) as u8;
+            }
+        }
+        self.px[i + 3] = 255;
+    }
+
     /// Compone `c` con opacidad `a` sobre el píxel existente (source-over).
     #[inline]
     pub fn blend(&mut self, x: i32, y: i32, c: Rgb, a: f64) {
         if a <= 0.0 || x < 0 || y < 0 || x >= self.w as i32 || y >= self.h as i32 {
             return;
         }
-        if a >= 1.0 {
-            self.set(x, y, c);
-            return;
-        }
+        let a8 = Self::alpha8(a);
         let i = self.idx(x as usize, y as usize);
-        for (ch, dst) in self.px[i..i + 3].iter_mut().enumerate() {
-            let d = *dst as f64;
-            *dst = js_round(c[ch] as f64 * a + d * (1.0 - a)).clamp(0.0, 255.0) as u8;
-        }
-        self.px[i + 3] = 255;
+        self.blend_at(i, c, a8);
     }
 
     /// Rectángulo de color `c` con opacidad `a`, recortado al lienzo.
+    ///
+    /// Es el camino caliente del rasterizado (columnas de 1 px de ancho por la
+    /// altura del terreno). Se compone con enteros sobre el `slice` de cada fila.
     pub fn fill_rect(&mut self, x: i32, y: i32, w: i32, h: i32, c: Rgb, a: f64) {
         if w <= 0 || h <= 0 || a <= 0.0 {
             return;
@@ -78,9 +95,57 @@ impl Framebuffer {
         let y0 = y.max(0);
         let x1 = (x + w).min(self.w as i32);
         let y1 = (y + h).min(self.h as i32);
+        if x1 <= x0 || y1 <= y0 {
+            return;
+        }
+        let a8 = Self::alpha8(a);
+        if a8 == 0 {
+            return;
+        }
+        let cols = (x1 - x0) as usize;
+        let stride = self.w * 4;
+        let inv = 255 - a8;
+        let (sr, sg, sb) = (c[0] as u32 * a8, c[1] as u32 * a8, c[2] as u32 * a8);
+
+        // Columnas de 1 px: el patrón caliente del terreno. Se recorre con paso
+        // de fila sin trocear el slice en cada fila.
+        if cols == 1 {
+            let mut i = self.idx(x0 as usize, y0 as usize);
+            let end = self.idx(x0 as usize, y1 as usize);
+            while i < end {
+                if a8 >= 255 {
+                    self.px[i] = c[0];
+                    self.px[i + 1] = c[1];
+                    self.px[i + 2] = c[2];
+                } else {
+                    self.px[i] = ((sr + self.px[i] as u32 * inv + 127) / 255) as u8;
+                    self.px[i + 1] = ((sg + self.px[i + 1] as u32 * inv + 127) / 255) as u8;
+                    self.px[i + 2] = ((sb + self.px[i + 2] as u32 * inv + 127) / 255) as u8;
+                }
+                self.px[i + 3] = 255;
+                i += stride;
+            }
+            return;
+        }
+
+        let span = cols * 4;
         for yy in y0..y1 {
-            for xx in x0..x1 {
-                self.blend(xx, yy, c, a);
+            let base = self.idx(x0 as usize, yy as usize);
+            let row = &mut self.px[base..base + span];
+            if a8 >= 255 {
+                for px in row.as_chunks_mut::<4>().0 {
+                    px[0] = c[0];
+                    px[1] = c[1];
+                    px[2] = c[2];
+                    px[3] = 255;
+                }
+            } else {
+                for px in row.as_chunks_mut::<4>().0 {
+                    px[0] = ((sr + px[0] as u32 * inv + 127) / 255) as u8;
+                    px[1] = ((sg + px[1] as u32 * inv + 127) / 255) as u8;
+                    px[2] = ((sb + px[2] as u32 * inv + 127) / 255) as u8;
+                    px[3] = 255;
+                }
             }
         }
     }
@@ -188,7 +253,6 @@ mod tests {
         let mut fb = Framebuffer::new(1, 1);
         fb.set(0, 0, [0, 0, 0]);
         fb.blend(0, 0, [255, 255, 255], 0.5);
-        assert_eq!(js_round(255.0 * 0.5) as u8, fb.px[0]);
         assert_eq!(fb.px[0], 128);
     }
 }

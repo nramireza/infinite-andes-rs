@@ -15,9 +15,11 @@
 - **Actividad (fauna):** <día / noche / crepúsculo / continua>
 - **Tipo en código:** `<tipo>`
 
-### Descripción
+### Descripción / porte
 
-<Qué es y por qué se incluye. Rasgos distintivos.>
+<Descripción fiel de la silueta/hábito, que es la especificación de dibujo: porte general,
+proporciones, rasgos distintivos. En las fichas generadas sale del campo `porte` de
+`flora_data.rs`/`fauna_data.rs`.
 
 ### Especificación de sprite
 
@@ -40,6 +42,11 @@
 
 - TODO: <pendientes>
 
+### Referencia
+
+- **Wikipedia (estable):** <https://es.wikipedia.org/wiki/Especie>
+- **Foto PD/CC0 (forma):** <enlace a Commons/PhyloPic>
+
 ### Referencias
 
-- <enlaces o imágenes de referencia PD/CC0>
+- <enlaces internos>

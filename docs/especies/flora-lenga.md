@@ -1,6 +1,6 @@
 # Lenga / Ñire (`lenga`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.3 |
 | Altura real típica | 15–25 m |
 
+## Descripción / porte
+
+Caducifolio de copa piramidal que se redondea con la edad, follaje verde claro que vira a ocre-rojo en otoño; tronco esbelto. En invierno queda desnudo, solo con ramas finas.
+
 ## Notas
 
 Caducifolio: pierde hojas en otoño, queda desnudo en invierno y brota en primavera.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Nothofagus_pumilio)
 
 ## Referencias fotográficas
 

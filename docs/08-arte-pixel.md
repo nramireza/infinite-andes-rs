@@ -70,14 +70,35 @@ testeable sin navegador. Todo se dibuja **nítido** (D-016): no hay cobertura fr
 
 ### Guía de estilo para sprites nuevos
 
-- **Silueta primero:** la forma debe leerse como la especie real antes que el color.
+- **Silueta primero:** la forma debe leerse como la especie real antes que el color. Cada especie
+  declara `wiki` (Wikipedia) y `porte` (silueta) en su registro; el dibujo debe ser **fiel al
+  `porte`** ([18 · Referencias](18-referencias.md), D-024).
 - **Tamaño por especie:** escala relativa; la fauna con su matriz (ver [06 · Fauna](06-fauna.md)) y
   la flora con un **multiplicador `height`** sobre el rango de la capa (ver [05 · Flora](05-flora.md)).
 - **Anclaje**: `ground`/pies o `center` (voladores).
 - **Contorno:** 1 px de un tono oscuro para despegarlo del fondo.
-- **Luz:** un tono claro en el lomo/pecho; evita más de 3–4 tonos por sprite.
+- **Luz:** un tono claro en el lomo/pecho; evita más de 3–4 tonos por sprite. La **flora** recibe
+  además una dirección de luz (`light`, −1…+1) derivada de la posición del sol/luna, y aclara el
+  lado iluminado de cada copa (D-023).
 - **Paleta:** cada carácter debe existir en `palette` (clave de `get_palette` o `#hex`).
 - **Frames:** 2 bastan; el vaivén lateral es senoidal sobre `t_sec` (determinista).
+
+### Galería de diagnóstico
+
+Para inspeccionar una especie **aislada** (sin el paisaje) existe la galería
+([`gallery.rs`](../crates/andes-core/src/gallery.rs)):
+
+```bash
+cargo run -p andes-native --bin gallery -- [hour] [weather] [season] [scale]
+# genera gallery-flora.png y gallery-fauna.png en el directorio actual
+```
+
+- **Flora**: una celda por entrada de `FLORA`, con **tres tallas** por porte (`FLORA_SIZES`).
+- **Fauna**: una celda por especie, con **todos los frames** y su versión **volteada**.
+- Fondo a cuadros y rótulo (fuente 3×5 común en [`font.rs`](../crates/andes-core/src/font.rs));
+  el binario la escala por **vecino más cercano** (×4 por defecto) para juzgar píxeles (D-022).
+- La composición es **pura** en `andes-core` (sin I/O) y tiene tests; el binario solo exporta.
+
 
 ## Animación
 
@@ -96,3 +117,5 @@ diferencias en los bordes de nube son esperadas. El criterio propio son snapshot
 
 - Portar a `pixel.rs` las utilidades restantes si el rasterizador las necesita.
 - Más variedad de siluetas de nube (hoy son la misma forma a distintas escalas).
+- **Reescribir las siluetas de flora** (hoy muchas comparten la misma copa) y afinar los sprites de
+  fauna (contorno, luz, frames), iterando con la galería de diagnóstico (D-022).

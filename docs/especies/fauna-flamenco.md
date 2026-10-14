@@ -1,6 +1,6 @@
 # Flamenco chileno (`flamenco`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 7×15 px · 2 frames |
 
+## Descripción / porte
+
+Ave zancuda de cuello largo en S, patas finas y pico curvado hacia abajo; plumaje rosado con negro en las alas. Silueta: cuello en S y patas largas.
+
 ## Notas
 
 Filtra en lagunas y marismas costeras.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Phoenicopterus_chilensis)
 
 ## Referencias fotográficas
 

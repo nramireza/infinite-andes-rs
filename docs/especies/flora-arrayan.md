@@ -1,6 +1,6 @@
 # Arrayán (`arrayan`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1 |
 | Altura real típica | 10–15 m |
 
+## Descripción / porte
+
+Árbol siempreverde de tronco liso color canela-rojizo muy visible y copa menuda y redondeada; flores blancas; a menudo multicaules.
+
 ## Notas
 
 Tronco canela rojizo y copa menuda; flor blanca.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Luma_apiculata)
 
 ## Referencias fotográficas
 

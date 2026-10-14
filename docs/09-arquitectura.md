@@ -1,6 +1,6 @@
 # 09 · Arquitectura
 
-> Estado: estable · Actualizado: 2026-10-12
+> Estado: estable · Actualizado: 2026-10-13
 
 ## Principios técnicos
 
@@ -162,6 +162,18 @@ falta navegador), así que el pipeline completo se puede ejercitar sin entorno g
 cargo test
 cargo run -p andes-native --bin infinite-andes -- andes 12 clear   # render sin ventana a /tmp (PPM)
 ```
+
+## Rendimiento
+
+El rasterizado es el camino caliente. `Framebuffer` compone con **enteros** (alfa a `0..=255`),
+escribe columnas de 1 px con paso de fila y trocea las filas anchas; el cielo se pinta con un
+`fill_rect` por fila. El terreno cachea por columna (`Column` `Copy`, `snow_shift` incluido),
+precalcula las alturas del cauce por columna y resuelve los pools de flora/fauna por chunk. El
+`blit` de los fondos usa una LUT de columnas.
+
+Medición: `cargo run --release -p andes-core --example bench` (~7 ms/fotograma a 960×270, 60 fps en
+ventana y fondo). El perfil `dev` va optimizado para que `cargo run` (debug) también sea fluido. Ver
+D-021.
 
 ## Limitaciones conocidas
 

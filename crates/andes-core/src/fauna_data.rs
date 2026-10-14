@@ -17,6 +17,10 @@ pub struct SpeciesData {
     pub chunk_ok: bool,
     pub river: Option<(f64, f64, u32)>,
     pub anchor: &'static str,
+    /// Artículo de Wikipedia (referencia estable).
+    pub wiki: &'static str,
+    /// Descripción fiel de la silueta/proporción (especificación del sprite).
+    pub porte: &'static str,
     pub common: &'static str,
     pub sci: &'static str,
     pub endemism: &'static str,
@@ -31,7 +35,7 @@ pub struct SpeciesData {
 
 pub const SPECIES: &[SpeciesData; 26] = &[
     SpeciesData {
-        name: "condor", movement: "fly", active: "day", speed: 0.35, range: 26.0, fps: 3.0, rarity: "comun",
+        name: "condor", wiki: "https://es.wikipedia.org/wiki/Vultur_gryphus", porte: "Ave planeadora enorme de alas anchas y rígidas con primarias digitadas; cuerpo negro con collar blanco y cabeza calva rojiza, cola corta. Silueta: alas desplegadas en planeo.", movement: "fly", active: "day", speed: 0.35, range: 26.0, fps: 3.0, rarity: "comun",
         tracks: false, bloom: true, chunk_ok: true, river: None,
         anchor: "center", common: "Cóndor", sci: "Vultur gryphus", endemism: "No (Andes)", iucn: "NT", chile: "amplia",
         notes: "Ave símbolo de los Andes; planea lento con aleteo ocasional.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Andean_condor_at_the_Bergen_County_Zoo.jpg", autor: "FossilDS", licencia: "CC0", archivo: "condor-01.jpg" }],
@@ -40,7 +44,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&[".k............k.", ".kk...bbbb...kk.", "..kkkbbbbbbkkk..", "...kbbwwbbwwbbk.", ".....kbbbbbbk...", ".......kbbk.....", "................"], &["..k..........k..", "..kk........kk..", "...kkkbbbbkkk...", "....kbbwwbbk....", ".....kbbbbk.....", "......kbbk......", "................"]],
     },
     SpeciesData {
-        name: "huemul", movement: "walk", active: "day", speed: 0.9, range: 9.0, fps: 2.0, rarity: "muy-rara",
+        name: "huemul", wiki: "https://es.wikipedia.org/wiki/Hippocamelus_bisulcus", porte: "Cérvido robusto de patas cortas, orejas grandes y hocico oscuro; el macho lleva astas bifurcadas cortas. Pelaje pardo; crías moteadas. Silueta: cuerpo macizo con astas en horqueta.", movement: "walk", active: "day", speed: 0.9, range: 9.0, fps: 2.0, rarity: "muy-rara",
         tracks: true, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Huemul", sci: "Hippocamelus bisulcus", endemism: "Sí (Chile/Argentina)", iucn: "EN", chile: "~1.000 ind.",
         notes: "Ciervo andino en peligro; pastorea y deja huellas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Hippocamelus_bisulcus_Werner.JPG", autor: "Jacques Christophe Werner; Christophe Annedouche", licencia: "PD", archivo: "huemul-01.jpg" }],
@@ -49,7 +53,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..k....k..", "..kk..kk..", "...k..k...", "...dddd...", "..dddddd..", ".ddllllld.", ".dddddddd.", "..d....d..", "..d....d.."], &["..k....k..", "..kk..kk..", "...k..k...", "...dddd...", "..dddddd..", ".ddllllld.", ".dddddddd.", "..d....d..", ".d......d."]],
     },
     SpeciesData {
-        name: "pudu", movement: "walk", active: "dusk", speed: 0.8, range: 6.0, fps: 2.0, rarity: "poco-comun",
+        name: "pudu", wiki: "https://es.wikipedia.org/wiki/Pudu_puda", porte: "Cérvido diminuto y compacto, patas cortas, orejas redondeadas y hocico corto; astas mínimas. Silueta: cuerpo redondeado y bajo.", movement: "walk", active: "dusk", speed: 0.8, range: 6.0, fps: 2.0, rarity: "poco-comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Pudú", sci: "Pudu puda", endemism: "Sí (Chile/Argentina)", iucn: "NT", chile: "decreciente",
         notes: "Uno de los ciervos más pequeños; camina entre arbustos.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Bristol.zoo.southern.pudu.arp.jpg", autor: "Adrian Pingstone", licencia: "PD", archivo: "pudu-01.jpg" }],
@@ -58,7 +62,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..k.....", "..dd....", "dddddl..", "dddddd..", ".dllld..", ".d..d...", ".d..d..."], &["..k.....", "..dd....", "dddddl..", "dddddd..", ".dllld..", ".d..d...", "d....d.."]],
     },
     SpeciesData {
-        name: "guina", movement: "hop", active: "night", speed: 1.1, range: 7.0, fps: 3.0, rarity: "comun",
+        name: "guina", wiki: "https://es.wikipedia.org/wiki/Leopardus_guigna", porte: "Felino pequeño y redondo, pelaje moteado y cola gruesa; hábitos nocturnos. Silueta: gato menudo de cabeza grande.", movement: "hop", active: "night", speed: 1.1, range: 7.0, fps: 3.0, rarity: "comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Güiña / Kodkod", sci: "Leopardus guigna", endemism: "Sí (Chile/Argentina)", iucn: "LC", chile: "común, esquiva",
         notes: "Felino esquivo; se desplaza a saltos de noche.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Leopardus_guigna_585397889.jpg", autor: "Ricardo Barrientos", licencia: "CC0", archivo: "guina-01.jpg" }],
@@ -67,7 +71,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..d..d...", ".dddddd..", "ddssdddd.", ".ddddddd.", ".d.d.d..."], &["..d..d...", ".dddddd..", "ddssdddd.", ".ddddddd.", "d..d..d.."]],
     },
     SpeciesData {
-        name: "puma", movement: "walk", active: "dusk", speed: 0.7, range: 10.0, fps: 2.0, rarity: "poco-comun",
+        name: "puma", wiki: "https://es.wikipedia.org/wiki/Puma_concolor", porte: "Felino grande y esbelto de cuerpo largo, cola gruesa y patas fuertes; pelaje leonado uniforme. Silueta: perfil alargado con cola tendida.", movement: "walk", active: "dusk", speed: 0.7, range: 10.0, fps: 2.0, rarity: "poco-comun",
         tracks: true, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Puma", sci: "Puma concolor", endemism: "No", iucn: "LC (NT nacional)", chile: "NT nacional",
         notes: "Depredador tope; raro y solitario; deja huellas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Puma_concolor_P-12.jpg", autor: "Santa Monica Mountains National Recreation Area", licencia: "PD", archivo: "puma-01.jpg" }],
@@ -76,7 +80,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..k.......k...", ".dddd..dddddd.", "ddllllldddddd.", ".dddddddddddd.", "..d.d....d.d..", ".............."], &["..k.......k...", ".dddd..dddddd.", "ddllllldddddd.", ".dddddddddddd.", "..d.d...d...d.", ".............."]],
     },
     SpeciesData {
-        name: "culpeo", movement: "walk", active: "day", speed: 1.0, range: 8.0, fps: 3.0, rarity: "abundante",
+        name: "culpeo", wiki: "https://es.wikipedia.org/wiki/Lycalopex_culpaeus", porte: "Zorro grande de hocico puntiagudo, patas rojizas y cola poblada con punta negra; dorso gris-pardo. Silueta: cánido de cola espesa.", movement: "walk", active: "day", speed: 1.0, range: 8.0, fps: 3.0, rarity: "abundante",
         tracks: true, bloom: true, chunk_ok: true, river: None,
         anchor: "ground", common: "Zorro culpeo", sci: "Lycalopex culpaeus", endemism: "No (Sudamérica)", iucn: "LC", chile: "común",
         notes: "Zorro andino de cola rojiza; trota de día.", refs: &[],
@@ -85,7 +89,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["........tt.", "..dddd..t..", ".kdddddtt..", ".dlllddt...", ".d..d......", "..........."], &["........tt.", "..dddd..t..", ".kdddddtt..", ".dlllddt...", "..d..d.....", "..........."]],
     },
     SpeciesData {
-        name: "chilla", movement: "walk", active: "dusk", speed: 1.1, range: 7.0, fps: 3.0, rarity: "abundante",
+        name: "chilla", wiki: "https://es.wikipedia.org/wiki/Lycalopex_griseus", porte: "Zorro gris más pequeño y estilizado, orejas grandes y cola con punta oscura. Silueta: cánido menudo.", movement: "walk", active: "dusk", speed: 1.1, range: 7.0, fps: 3.0, rarity: "abundante",
         tracks: true, bloom: true, chunk_ok: true, river: None,
         anchor: "ground", common: "Zorro chilla", sci: "Lycalopex griseus", endemism: "No", iucn: "LC", chile: "común",
         notes: "Zorro gris, más pequeño; activo al crepúsculo.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Lycalopex_griseus.png", autor: "Hermann Burmeister", licencia: "PD", archivo: "chilla-01.png" }],
@@ -94,7 +98,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["......dd.", "..dddd.d.", "kddlld.d.", ".dddd....", ".d..d....", "........."], &["......dd.", "..dddd.d.", "kddlld.d.", ".dddd....", "..d..d...", "........."]],
     },
     SpeciesData {
-        name: "guanaco", movement: "walk", active: "day", speed: 0.6, range: 12.0, fps: 2.0, rarity: "poco-comun",
+        name: "guanaco", wiki: "https://es.wikipedia.org/wiki/Lama_guanicoe", porte: "Camélido esbelto de cuello y patas largos, cabeza pequeña, pelaje leonado y vientre blanco. Silueta: cuello erguido en S suave.", movement: "walk", active: "day", speed: 0.6, range: 12.0, fps: 2.0, rarity: "poco-comun",
         tracks: true, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Guanaco", sci: "Lama guanicoe", endemism: "No", iucn: "LC", chile: "VU centro/norte",
         notes: "Camélido silvestre; tropillas en la estepa; deja huellas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Lama_guanicoe_-_Museo_Civico_di_Storia_Naturale_Giacomo_Doria_-_Genoa,_Italy_-_DSC02889.JPG", autor: "Daderot", licencia: "CC0", archivo: "guanaco-01.jpg" }],
@@ -103,7 +107,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..kd......", "..dd......", "..dd......", "..dd......", "..dddd....", ".dddddd...", "dddddddd..", "dllllldd..", "dddddddd..", ".dddddd...", ".d..d.....", ".d..d.....", ".d..d.....", ".d..d....."], &["..kd......", "..dd......", "..dd......", "..dd......", "..dddd....", ".dddddd...", "dddddddd..", "dllllldd..", "dddddddd..", ".dddddd...", ".d..d.....", ".d..d.....", "..d.d.....", "..d.d....."]],
     },
     SpeciesData {
-        name: "vicuna", movement: "walk", active: "day", speed: 0.7, range: 10.0, fps: 2.0, rarity: "poco-comun",
+        name: "vicuna", wiki: "https://es.wikipedia.org/wiki/Vicugna_vicugna", porte: "Camélido pequeño y grácil de pelaje fino beige, cuello largo y esbelto. Silueta: como el guanaco pero más menuda y erguida.", movement: "walk", active: "day", speed: 0.7, range: 10.0, fps: 2.0, rarity: "poco-comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Vicuña", sci: "Vicugna vicugna", endemism: "No", iucn: "LC", chile: "localizada",
         notes: "Camélido del altiplano; grupos muy ágiles.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Penny_Magazine_1836_270_The_Vicugna.jpg", autor: "Unknown", licencia: "PD", archivo: "vicuna-01.jpg" }],
@@ -112,7 +116,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..kd....", "..d.....", "..d.....", "..d.....", ".ddd....", "ddddd...", "dllld...", "ddddd...", ".ddd....", ".d.d....", ".d.d....", ".d.d...."], &["..kd....", "..d.....", "..d.....", "..d.....", ".ddd....", "ddddd...", "dllld...", "ddddd...", ".ddd....", ".d.d....", "..dd....", "..dd...."]],
     },
     SpeciesData {
-        name: "chingue", movement: "walk", active: "night", speed: 0.5, range: 6.0, fps: 2.0, rarity: "abundante",
+        name: "chingue", wiki: "https://es.wikipedia.org/wiki/Conepatus_chinga", porte: "Mofeta de cuerpo alargado y patas cortas, pelaje negro con dos franjas blancas dorsales; hocico al suelo. Silueta: baja y alargada.", movement: "walk", active: "night", speed: 0.5, range: 6.0, fps: 2.0, rarity: "abundante",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Chingue", sci: "Conepatus chinga", endemism: "No", iucn: "LC", chile: "común",
         notes: "Mofeta de hocico al suelo; lento, de noche.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Mephitis_chinga_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ22500127.tif", autor: "s/a", licencia: "PD", archivo: "chingue-01.tif" }],
@@ -121,7 +125,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["......ww..", "....dwww..", ".ddddwwdd.", "kdwddddd..", ".d..d.....", ".........."], &["......ww..", "....dwww..", ".ddddwwdd.", "kdwddddd..", "..d..d....", ".........."]],
     },
     SpeciesData {
-        name: "monito", movement: "hop", active: "night", speed: 0.8, range: 5.0, fps: 3.0, rarity: "poco-comun",
+        name: "monito", wiki: "https://es.wikipedia.org/wiki/Dromiciops_gliroides", porte: "Marsupial diminuto de pelaje denso pardo-grís, orejas redondas y cola larga prensil. Silueta: bolita con cola.", movement: "hop", active: "night", speed: 0.8, range: 5.0, fps: 3.0, rarity: "poco-comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Monito del monte", sci: "Dromiciops gliroides", endemism: "Sí (Chile/Argentina)", iucn: "NT", chile: "localizado",
         notes: "Marsupial, fósil viviente; diminuto, en el colihue.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Monito_del_monte_en_estado_de_sopor_invernal._(36391982075).jpg", autor: "nombre_en_pantalla", licencia: "CC0", archivo: "monito-01.jpg" }],
@@ -130,7 +134,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..k...k..", ".ddddd...", "ddllldd..", ".ddddd.l.", ".d..d....", ".d..d...."], &["..k...k..", ".ddddd...", "ddllldd..", ".ddddd.l.", "..d.d....", "..d.d...."]],
     },
     SpeciesData {
-        name: "chinchilla", movement: "hop", active: "night", speed: 1.2, range: 5.0, fps: 3.0, rarity: "muy-rara",
+        name: "chinchilla", wiki: "https://es.wikipedia.org/wiki/Chinchilla_lanigera", porte: "Roedor redondeado de pelaje gris muy denso, orejas grandes y cola larga; ágil entre las rocas. Silueta: cuerpo esférico con orejas y cola.", movement: "hop", active: "night", speed: 1.2, range: 5.0, fps: 3.0, rarity: "muy-rara",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Chinchilla de cola larga", sci: "Chinchilla lanigera", endemism: "Sí (Chile)", iucn: "EN", chile: "casi extinta",
         notes: "Roedor ágil de roqueríos andinos; casi extinto.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Chinchilla_lanigera1.jpg", autor: "Trurl66", licencia: "PD", archivo: "chinchilla-01.jpg" }],
@@ -139,7 +143,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..k...k..", ".ddddd...", "ddlldd...", ".dddd....", "d..d...l.", "......ll."], &["..k...k..", ".ddddd...", "ddlldd...", ".dddd....", "..d..d.l.", "......ll."]],
     },
     SpeciesData {
-        name: "choroy", movement: "flock", active: "day", speed: 0.55, range: 30.0, fps: 4.0, rarity: "comun",
+        name: "choroy", wiki: "https://es.wikipedia.org/wiki/Enicognathus_leptorhynchus", porte: "Loro endémico de cuerpo verde y cola larga con pico grueso; vuela en bandadas ruidosas. Silueta: ave de cola larga en bandada.", movement: "flock", active: "day", speed: 0.55, range: 30.0, fps: 4.0, rarity: "comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "center", common: "Choroy", sci: "Enicognathus leptorhynchus", endemism: "Sí (Chile)", iucn: "LC", chile: "endémica, estable",
         notes: "Loro endémico; bandada ruidosa del bosque de la Costa.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Enicognathus_leptorhynchus_261853480.jpg", autor: "Joaquin Neumann H.", licencia: "CC0", archivo: "choroy-01.jpg" }],
@@ -148,7 +152,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["....rr......", "...gggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."], &["....rr......", "..g.ggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."]],
     },
     SpeciesData {
-        name: "cachana", movement: "flock", active: "day", speed: 0.5, range: 30.0, fps: 4.0, rarity: "comun",
+        name: "cachana", wiki: "https://es.wikipedia.org/wiki/Enicognathus_ferrugineus", porte: "Loro austral de cuerpo verde con vientre rojizo y cola larga; en bandadas. Silueta: como el choroy, con tonos rojizos.", movement: "flock", active: "day", speed: 0.5, range: 30.0, fps: 4.0, rarity: "comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "center", common: "Cachaña", sci: "Enicognathus ferrugineus", endemism: "No (Patagonia)", iucn: "LC", chile: "común",
         notes: "Loro austral; vuela en bandadas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Cacha%C3%B1as-Enicognathus_ferrugineus.jpg", autor: "Ignsal", licencia: "PD", archivo: "cachana-01.jpg" }],
@@ -157,7 +161,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["....rr......", "...gggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."], &["....rr......", "..g.ggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."]],
     },
     SpeciesData {
-        name: "flamenco", movement: "walk", active: "day", speed: 0.3, range: 4.0, fps: 1.0, rarity: "poco-comun",
+        name: "flamenco", wiki: "https://es.wikipedia.org/wiki/Phoenicopterus_chilensis", porte: "Ave zancuda de cuello largo en S, patas finas y pico curvado hacia abajo; plumaje rosado con negro en las alas. Silueta: cuello en S y patas largas.", movement: "walk", active: "day", speed: 0.3, range: 4.0, fps: 1.0, rarity: "poco-comun",
         tracks: false, bloom: true, chunk_ok: true, river: None,
         anchor: "ground", common: "Flamenco chileno", sci: "Phoenicopterus chilensis", endemism: "No", iucn: "NT", chile: "localizado",
         notes: "Filtra en lagunas y marismas costeras.", refs: &[RefRow { encuadre: "silueta", fuente: "https://www.phylopic.org/images/13c0e1b9-e3b2-461d-ba61-1ff8b9daee39/phoenicopterus-chilensis", autor: "Shreyas Arashanapalli", licencia: "CC0", archivo: "flamenco-01.png" }],
@@ -166,7 +170,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..ppk..", "..pp...", ".pp....", ".pp....", "pp.....", ".pp....", "pppp...", "ppppp..", ".ppp...", "..pp...", "..p.p..", "..p.p..", "..p.p..", "..p.p..", "..p.p.."], &["..ppk..", "..pp...", ".pp....", ".pp....", "pp.....", ".pp....", "pppp...", "ppppp..", ".ppp...", "..pp...", ".p...p.", ".p...p.", ".p...p.", ".p...p.", ".p...p."]],
     },
     SpeciesData {
-        name: "chungungo", movement: "swim", active: "day", speed: 0.6, range: 7.0, fps: 2.0, rarity: "rara",
+        name: "chungungo", wiki: "https://es.wikipedia.org/wiki/Lontra_felina", porte: "Nutria marina pequeña y alargada de pelaje pardo; nada y se asoma entre los roqueríos. Silueta: cuerpo bajo y estirado sobre el agua.", movement: "swim", active: "day", speed: 0.6, range: 7.0, fps: 2.0, rarity: "rara",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Chungungo", sci: "Lontra felina", endemism: "Sí (Chile/Perú)", iucn: "EN", chile: "costero",
         notes: "Nutria marina; nada y se asoma entre roqueríos.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Lontra_felina_Werner.JPG", autor: "Jacques Christophe Werner; Christophe Annedouche", licencia: "PD", archivo: "chungungo-01.jpg" }],
@@ -175,7 +179,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["...........d", ".dddddddddd.", "ddlllllllld.", ".d......d...", "............"], &["...........d", ".dddddddddd.", "ddlllllllld.", "..d....d....", "............"]],
     },
     SpeciesData {
-        name: "pinguino", movement: "swim", active: "day", speed: 0.5, range: 6.0, fps: 2.0, rarity: "comun",
+        name: "pinguino", wiki: "https://es.wikipedia.org/wiki/Spheniscus_humboldti", porte: "Pingüino erguido de dorso negro y vientre blanco con banda pectoral, pico y patas oscuras con tonos naranja; nada con las aletas. Silueta: cuerpo en péndulo.", movement: "swim", active: "day", speed: 0.5, range: 6.0, fps: 2.0, rarity: "comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Pingüino de Humboldt", sci: "Spheniscus humboldti", endemism: "No", iucn: "VU", chile: "colonias",
         notes: "Pingüino del Pacífico sur; nada y emerge.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Pinguinos-Humboldt_Isla_Choros_Chile.JPG", autor: "Nyrkx", licencia: "PD", archivo: "pinguino-01.jpg" }],
@@ -184,7 +188,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..kkk..", ".kkkkk.", ".kwwwk.", ".kwwok.", "kkwwwkk", "kwwwwwk", "kwwwwwk", ".kkkkk.", ".ok.ko.", ".o...o."], &["..kkk..", ".kkkkk.", ".kwwwk.", ".kwwok.", "kkwwwkk", "kwwwwwk", "kwwwwwk", ".kkkkk.", ".ok.ko.", "..oo..."]],
     },
     SpeciesData {
-        name: "rana", movement: "sit", active: "day", speed: 0.0, range: 0.0, fps: 1.0, rarity: "muy-rara",
+        name: "rana", wiki: "https://es.wikipedia.org/wiki/Rhinoderma_darwinii", porte: "Anfibio pequeño de hocico puntiagudo y cuerpo triangular, pardo; permanece estático al borde del cauce. Silueta: gota baja.", movement: "sit", active: "day", speed: 0.0, range: 0.0, fps: 1.0, rarity: "muy-rara",
         tracks: false, bloom: false, chunk_ok: false, river: Some((0.3, 2.4, 23066u32)),
         anchor: "ground", common: "Rana de Darwin", sci: "Rhinoderma darwinii", endemism: "Sí (Chile/Argentina)", iucn: "EN", chile: "endémica, en declive",
         notes: "Anfibio endémico estático en el borde del cauce.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Rhinoderma_darwinii00.jpg", autor: "George Bond Howes", licencia: "PD", archivo: "rana-01.jpg" }],
@@ -193,7 +197,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&[".dd...", "ddddd.", "dlddd.", ".d.d.."], &[".dd...", "ddddd.", "dlddd.", "..d.d."]],
     },
     SpeciesData {
-        name: "choique", movement: "walk", active: "day", speed: 0.7, range: 9.0, fps: 2.0, rarity: "poco-comun",
+        name: "choique", wiki: "https://es.wikipedia.org/wiki/Rhea_pennata", porte: "Ñandú petizo de cuello y patas largos y plumaje gris manchado; no vuela, corre. Silueta: ave ratites erguida.", movement: "walk", active: "day", speed: 0.7, range: 9.0, fps: 2.0, rarity: "poco-comun",
         tracks: true, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Choique / Ñandú petizo", sci: "Rhea pennata", endemism: "No", iucn: "NT", chile: "decreciente",
         notes: "Ñandú de la estepa; camina y deja huellas.", refs: &[RefRow { encuadre: "silueta", fuente: "https://www.phylopic.org/images/40f348ce-a217-4f4b-8c6d-550d5ebabe70/rhea-pennata", autor: "Kai Caspar", licencia: "CC0", archivo: "choique-01.png" }],
@@ -202,7 +206,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..kd.....", "..dd.....", "..dd.....", "..dd.....", "..dddd...", ".dddddd..", "dddddddd.", "dllllldd.", ".dddddd..", "..dddd...", "..d..d...", "..d..d...", "..d..d...", "..d..d...", ".ll.ll..."], &["..kd.....", "..dd.....", "..dd.....", "..dd.....", "..dddd...", ".dddddd..", "dddddddd.", "dllllldd.", ".dddddd..", "..dddd...", "..d..d...", "..d..d...", "..d..d...", ".d....d..", "ll....ll."]],
     },
     SpeciesData {
-        name: "chucao", movement: "hop", active: "day", speed: 0.9, range: 5.0, fps: 3.0, rarity: "comun",
+        name: "chucao", wiki: "https://es.wikipedia.org/wiki/Scelorchilus_rubecula", porte: "Ave terrícola de pecho rojizo, dorso pardo oscuro y cola corta; salta en el sotobosque. Silueta: pajarito rechoncho.", movement: "hop", active: "day", speed: 0.9, range: 5.0, fps: 3.0, rarity: "comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Chucao", sci: "Scelorchilus rubecula", endemism: "No (Chile/Argentina)", iucn: "LC", chile: "común, sotobosque",
         notes: "Ave de sotobosque; pecho rojizo.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Scelorchilus_rubecula_rubecula_1847.jpg", autor: "Alcide Dessalines d'Orbigny", licencia: "PD", archivo: "chucao-01.jpg" }],
@@ -211,7 +215,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["...dd...", "..dddd..", ".ddrdd..", "dddddd..", ".rrrdd..", "..dd....", "..l.l..."], &["...dd...", "..dddd..", ".ddrdd..", "dddddd..", ".rrrdd..", "..dd....", ".l...l.."]],
     },
     SpeciesData {
-        name: "huillin", movement: "swim", active: "day", speed: 0.55, range: 6.0, fps: 2.0, rarity: "rara",
+        name: "huillin", wiki: "https://es.wikipedia.org/wiki/Lontra_provocax", porte: "Nutria de río de cuerpo alargado y cola gruesa, pelaje pardo oscuro; nada en el cauce. Silueta: alargada, como el chungungo pero de agua dulce.", movement: "swim", active: "day", speed: 0.55, range: 6.0, fps: 2.0, rarity: "rara",
         tracks: false, bloom: false, chunk_ok: true, river: Some((0.25, 1.6, 31351u32)),
         anchor: "ground", common: "Huillín", sci: "Lontra provocax", endemism: "No (Chile/Argentina)", iucn: "EN", chile: "ríos del sur",
         notes: "Nutria de río del sur; nada en el borde del cauce.", refs: &[],
@@ -220,7 +224,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["..........dd", ".dddddddddd.", "ddllllllld..", ".d......d...", "............"], &["..........dd", ".dddddddddd.", "ddllllllld..", "..d....d....", "............"]],
     },
     SpeciesData {
-        name: "lobo-marino", movement: "swim", active: "day", speed: 0.55, range: 8.0, fps: 2.0, rarity: "poco-comun",
+        name: "lobo-marino", wiki: "https://es.wikipedia.org/wiki/Otaria_flavescens", porte: "Otárido grande de pelaje pardo; el macho desarrolla melena. Se asolea en roqueríos y nada cerca de la costa. Silueta: cuerpo robusto con aletas.", movement: "swim", active: "day", speed: 0.55, range: 8.0, fps: 2.0, rarity: "poco-comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Lobo marino común", sci: "Otaria flavescens", endemism: "No", iucn: "LC", chile: "costero",
         notes: "Macho con melena; se asolea en roqueríos y nada cerca de la costa.", refs: &[],
@@ -229,7 +233,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&[".dddddddd....", "ddllllllllddd", "dlllllllllllk", ".dd.....dd..."], &[".dddddddd....", "ddllllllllddd", "dlllllllllllk", "..dd...dd...."]],
     },
     SpeciesData {
-        name: "delfin", movement: "swim", active: "day", speed: 0.8, range: 10.0, fps: 2.0, rarity: "rara",
+        name: "delfin", wiki: "https://es.wikipedia.org/wiki/Cephalorhynchus_eutropia", porte: "Delfín endémico pequeño y robusto, sin pico, dorso gris oscuro y vientre claro; salta en grupos. Silueta: lomo curvo emergiendo.", movement: "swim", active: "day", speed: 0.8, range: 10.0, fps: 2.0, rarity: "rara",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "ground", common: "Delfín chileno", sci: "Cephalorhynchus eutropia", endemism: "Sí (Chile)", iucn: "NT", chile: "endémico",
         notes: "Delfín endémico, pequeño y sin pico; salta en grupos.", refs: &[],
@@ -238,7 +242,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&[".....dd.......", "...ddllddd....", ".ddlllllllld..", "dd.ddd...ddd.."], &["....dd........", "..ddllddd.....", "dllllllllld...", "ddd..dd..dd..."]],
     },
     SpeciesData {
-        name: "gaviota", movement: "fly", active: "day", speed: 1.2, range: 12.0, fps: 2.0, rarity: "comun",
+        name: "gaviota", wiki: "https://es.wikipedia.org/wiki/Larus_dominicanus", porte: "Gaviota grande de dorso negro y vientre blanco, pico y patas amarillos; planea sobre playa y mar. Silueta: alas en arco.", movement: "fly", active: "day", speed: 1.2, range: 12.0, fps: 2.0, rarity: "comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "center", common: "Gaviota dominicana", sci: "Larus dominicanus", endemism: "No", iucn: "LC", chile: "costera",
         notes: "Ave costera abundante; planea sobre la playa y el mar.", refs: &[],
@@ -247,7 +251,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["k.....k", "kk...kk", ".wwwww.", "..kkk.."], &["k.....k", "kk...kk", ".wwwww.", "...k..."]],
     },
     SpeciesData {
-        name: "albatros", movement: "fly", active: "day", speed: 1.4, range: 16.0, fps: 1.0, rarity: "poco-comun",
+        name: "albatros", wiki: "https://es.wikipedia.org/wiki/Thalassarche_melanophris", porte: "Ave marina de alas largas y rígidas, dorso negro y ceja negra sobre cabeza blanca; planea sobre el oleaje. Silueta: alas rectas y alargadas.", movement: "fly", active: "day", speed: 1.4, range: 16.0, fps: 1.0, rarity: "poco-comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "center", common: "Albatros de ceja negra", sci: "Thalassarche melanophris", endemism: "No", iucn: "LC", chile: "oceánico",
         notes: "Planea con las alas rígidas sobre el oleaje.", refs: &[],
@@ -256,7 +260,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         frames: &[&["k.........k", "kk.......kk", ".kkkkkkkkk.", "....kkk...."], &["k.........k", "kk.......kk", ".kkkkkkkkk.", "...kkkk...."]],
     },
     SpeciesData {
-        name: "pelicano", movement: "fly", active: "day", speed: 1.0, range: 12.0, fps: 1.5, rarity: "poco-comun",
+        name: "pelicano", wiki: "https://es.wikipedia.org/wiki/Pelecanus_thagus", porte: "Ave marina grande de pico largo con bolsa y cuerpo gris-blanco; vuela en fila bordeando la costa. Silueta: pico prominente y alas anchas.", movement: "fly", active: "day", speed: 1.0, range: 12.0, fps: 1.5, rarity: "poco-comun",
         tracks: false, bloom: false, chunk_ok: true, river: None,
         anchor: "center", common: "Pelícano", sci: "Pelecanus thagus", endemism: "No (Chile/Perú)", iucn: "NT", chile: "costero",
         notes: "Vuela en fila bordeando la costa; pico largo.", refs: &[],

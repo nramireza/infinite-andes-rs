@@ -2,7 +2,6 @@
 //! Usa software rendering con `wl_shm` (Argb8888) y vuelca el framebuffer del
 //! núcleo. Se elige automáticamente cuando `WAYLAND_DISPLAY` está definido.
 
-use std::convert::TryInto;
 use std::time::Instant;
 
 use smithay_client_toolkit::{
@@ -57,18 +56,21 @@ fn blit(fb: &Framebuffer, canvas: &mut [u8], width: usize, height: usize) {
     if width == 0 || height == 0 || fb.w == 0 || fb.h == 0 {
         return;
     }
-    for (index, chunk) in canvas.chunks_mut(4).enumerate() {
-        let x = index % width;
-        let y = index / width;
-        let sx = (x * fb.w / width).min(fb.w - 1);
+    // LUT de columnas: la división se hace una vez por columna, no por píxel.
+    let cols: Vec<usize> = (0..width)
+        .map(|x| (x * fb.w / width).min(fb.w - 1))
+        .collect();
+    for (y, row) in canvas.chunks_mut(width * 4).enumerate().take(height) {
         let sy = (y * fb.h / height).min(fb.h - 1);
-        let i = (sy * fb.w + sx) * 4;
-        let color = 0xFF00_0000u32
-            | ((fb.px[i] as u32) << 16)
-            | ((fb.px[i + 1] as u32) << 8)
-            | (fb.px[i + 2] as u32);
-        let array: &mut [u8; 4] = chunk.try_into().unwrap();
-        *array = color.to_le_bytes();
+        let src = &fb.px[sy * fb.w * 4..];
+        for (x, chunk) in row.chunks_mut(4).enumerate() {
+            let i = cols[x] * 4;
+            let color = 0xFF00_0000u32
+                | ((src[i] as u32) << 16)
+                | ((src[i + 1] as u32) << 8)
+                | (src[i + 2] as u32);
+            chunk.copy_from_slice(&color.to_le_bytes());
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 # Chingue (`chingue`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 10×6 px · 2 frames |
 
+## Descripción / porte
+
+Mofeta de cuerpo alargado y patas cortas, pelaje negro con dos franjas blancas dorsales; hocico al suelo. Silueta: baja y alargada.
+
 ## Notas
 
 Mofeta de hocico al suelo; lento, de noche.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Conepatus_chinga)
 
 ## Referencias fotográficas
 

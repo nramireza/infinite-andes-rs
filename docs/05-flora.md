@@ -101,27 +101,67 @@ tipo), de modo que el paisaje sigue siendo reproducible.
 
 ## Silueta y hábito
 
-Las funciones `draw_*` priorizan el **hábito real** de cada planta sobre el color (D-048 JS):
+Las funciones `draw_*` priorizan el **hábito real** de cada planta sobre el color (D-048 JS). La
+silueta es lo primero: debe reconocerse **sin color**. Cada árbol/arbusto tiene porte propio y ya no
+comparte la misma "copa genérica" (D-023):
 
 - **Araucaria**: tronco alto y recto con **copa de paraguas** y ramas punzantes por pisos.
 - **Alerce**: tronco recto visible y copa cónica estrecha con ramas colgantes.
+- **Lenga**: copa **piramidal** (angosta arriba, ancha abajo), distinta del resto de Nothofagus.
+- **Coihue**: **copa ancha de tres lóbulos** sobre tronco recto con **horqueta**.
+- **Roble**: copa **estrecha y erguida** en huso; caducifolio (desnudo en invierno).
+- **Mañío**: **conífera austral oscura** con ramas colgantes (más estrecha que el alerce).
+- **Ciprés**: **columna cónica** de la precordillera.
+- **Canelo**: copa **densa y alta** con **ápice puntiagudo** y flores blancas.
+- **Quillay**: **copa ancha y lobulada** sobre horqueta; flores blancas.
+- **Arrayán**: **tronco canela** alto y visible y copa menuda; flor blanca.
+- **Notro**: porte esbelto con **racimos de flores escarlata**.
+- **Litre, boldo y peumo**: copas redondas diferenciadas por textura y tono (moteado, claro,
+  siempreverde oscuro).
+- **Espino**: **matorral** de ramas en abanico con **espinas** y flores amarillas (no un árbol).
+- **Michay y chaura**: arbustos bajos y compactos con flores naranjas / bayas rosadas.
+- **Maitén**: copa con **ramas lloronas** que caen.
+- **Copihue**: **enredadera** de tallo sinuoso con **campanas rojas colgantes**.
 - **Palma chilena**: tronco con anillos y **frondas radiales** que escalan con el tamaño.
 - **Copao / cactus**: tronco con costilla iluminada, **brazo en candelabro** y espinas.
 - **Nalca**: roseta de **hojas grandes de borde dentado** con nervadura marcada.
 - **Colihue**: cañas con **nudos** visibles y hojas diagonales.
-- **Coihue y roble** (Nothofagus): tronco con ramas que abren hacia la copa y contorno irregular
-  (hash determinista).
+
+Los dibujos se apoyan en tres primitivas compartidas en `flora.rs` —`line` (troncos y ramas),
+`crown_blob` (copa redondeada irregular) y `crown_cone` (coníferas/portes piramidales)— y reciben
+una **dirección de luz** (`light`, −1 izquierda … +1 derecha) derivada de la posición del sol/luna
+en pantalla, de modo que el lado iluminado de cada copa se aclara y el sombrío se oscurece
+([08 · Arte pixel](08-arte-pixel.md), D-023). El borde irregular sigue saliendo de `hash1`
+(determinista).
+
+Para ver cada tipo aislado (tres tallas, sobre fondo a cuadros) usa la **galería de diagnóstico**:
+`cargo run -p andes-native --bin gallery` ([08 · Arte pixel](08-arte-pixel.md), D-022).
+
+## Referencias y porte
+
+Cada especie real de `flora_data.rs` declara `wiki` (artículo de **Wikipedia**, referencia estable) y
+`porte` (descripción fiel de la **silueta/hábito**, que es la especificación de dibujo). Las fichas de
+[`especies/`](especies/README.md) muestran ambas en las secciones *Descripción / porte* y
+*Referencia*. La silueta manda sobre el color: el dibujo debe reconocerse sin color y coincidir con el
+`porte` ([18 · Referencias](18-referencias.md), D-024).
+
+La **araucaria** ilustra el criterio: su `porte` (ver la ficha) describe tronco recto que ramifica a
+varios metros y copa en **pisos/verticilos** de ramas horizontales tipo pagoda, no una copa
+redondeada.
 
 ## Fichas de especies
 
 Cada especie tiene su ficha en [`especies/`](especies/README.md), generada con
-`cargo run -p andes-core --bin gen-species` (nombre científico, endemismo, zona y notas).
+`cargo run -p andes-core --bin gen-species` (nombre científico, endemismo, zona, notas, porte y
+referencia).
 
 ## Cómo añadir una especie
 
-1. Añade la especie al registro `FLORA` en `flora.rs` (`kind`, `common`, `sci`, `endemism`, `notes`,
-   `height`, `ref` y `zones`, donde `zones[bioma][capa]` es su peso en el pool).
-2. Añade su caso a `draw_plant` (misma clave que el tipo) y, si aplica, el color a `palette.rs`.
+1. Añade la especie al registro `FLORA` en `flora.rs` (`kind`, `height`, `zones`; `zones[bioma][capa]`
+   es su peso en el pool) y su metadata en `flora_data.rs` (`common`, `sci`, `endemism`, `height_m`,
+   `wiki`, `porte`, `notes`, `refs`).
+2. Añade su caso a `draw_plant` (misma clave que el tipo) dibujando el `porte` y, si aplica, el color
+   a `palette.rs`.
 3. Ejecuta `cargo run -p andes-core --bin gen-species` para regenerar esta tabla, la de
    [06 · Fauna](06-fauna.md) y su ficha en [`especies/`](especies/README.md).
 4. Documenta en [`12-decisiones.md`](12-decisiones.md) si cambia el diseño del port.

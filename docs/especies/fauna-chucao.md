@@ -1,6 +1,6 @@
 # Chucao (`chucao`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 8×7 px · 2 frames |
 
+## Descripción / porte
+
+Ave terrícola de pecho rojizo, dorso pardo oscuro y cola corta; salta en el sotobosque. Silueta: pajarito rechoncho.
+
 ## Notas
 
 Ave de sotobosque; pecho rojizo.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Scelorchilus_rubecula)
 
 ## Referencias fotográficas
 

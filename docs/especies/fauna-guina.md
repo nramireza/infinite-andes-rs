@@ -1,6 +1,6 @@
 # Güiña / Kodkod (`guina`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 9×5 px · 2 frames |
 
+## Descripción / porte
+
+Felino pequeño y redondo, pelaje moteado y cola gruesa; hábitos nocturnos. Silueta: gato menudo de cabeza grande.
+
 ## Notas
 
 Felino esquivo; se desplaza a saltos de noche.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Leopardus_guigna)
 
 ## Referencias fotográficas
 

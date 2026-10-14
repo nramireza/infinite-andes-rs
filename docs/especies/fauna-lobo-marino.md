@@ -1,6 +1,6 @@
 # Lobo marino común (`lobo-marino`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 13×4 px · 2 frames |
 
+## Descripción / porte
+
+Otárido grande de pelaje pardo; el macho desarrolla melena. Se asolea en roqueríos y nada cerca de la costa. Silueta: cuerpo robusto con aletas.
+
 ## Notas
 
 Macho con melena; se asolea en roqueríos y nada cerca de la costa.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Otaria_flavescens)
 
 ## Referencias
 

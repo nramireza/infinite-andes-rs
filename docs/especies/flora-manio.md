@@ -1,6 +1,6 @@
 # Mañío (`manio`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.4 |
 | Altura real típica | 10–20 m |
 
+## Descripción / porte
+
+Conífera austral de copa estrecha, cónica y oscura, con ramillas colgantes y tronco recto. Silueta: cono alargado oscuro.
+
 ## Notas
 
 Conífera austral oscura y estrecha; perenne.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Podocarpus)
 
 ## Referencias fotográficas
 

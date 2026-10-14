@@ -1,6 +1,6 @@
 # Zorro chilla (`chilla`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 9×6 px · 2 frames |
 
+## Descripción / porte
+
+Zorro gris más pequeño y estilizado, orejas grandes y cola con punta oscura. Silueta: cánido menudo.
+
 ## Notas
 
 Zorro gris, más pequeño; activo al crepúsculo.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Lycalopex_griseus)
 
 ## Referencias fotográficas
 

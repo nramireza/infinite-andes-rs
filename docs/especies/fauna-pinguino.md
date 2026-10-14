@@ -1,6 +1,6 @@
 # Pingüino de Humboldt (`pinguino`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 7×10 px · 2 frames |
 
+## Descripción / porte
+
+Pingüino erguido de dorso negro y vientre blanco con banda pectoral, pico y patas oscuras con tonos naranja; nada con las aletas. Silueta: cuerpo en péndulo.
+
 ## Notas
 
 Pingüino del Pacífico sur; nada y emerge.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Spheniscus_humboldti)
 
 ## Referencias fotográficas
 

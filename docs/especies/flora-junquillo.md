@@ -1,6 +1,6 @@
 # Junquillo (`junquillo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×0.7 |
 | Altura real típica | 0,5–1 m |
 
+## Descripción / porte
+
+Junco rizomatoso de tallos cilíndricos y lisos agrupados en macolla, propio de humedales y bordes de agua. Silueta: manojo vertical de juncos.
+
 ## Notas
 
 Juncos de humedales y bordes de agua.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Juncus)
 
 ## Referencias
 

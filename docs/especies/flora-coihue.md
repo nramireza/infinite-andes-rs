@@ -1,6 +1,6 @@
 # Coihue (`coihue`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.7 |
 | Altura real típica | 35–45 m |
 
+## Descripción / porte
+
+Árbol siempreverde de copa ancha y redondeada (a veces aparasolada) sobre tronco recto y grueso de corteza rugosa. Silueta: cúpula amplia.
+
 ## Notas
 
 Copa ancha y redondeada; tronco recto.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Nothofagus_dombeyi)
 
 ## Referencias fotográficas
 

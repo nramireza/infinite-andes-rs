@@ -1,6 +1,6 @@
 # Huemul (`huemul`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -16,9 +16,17 @@
 | Colocación | por chunk |
 | Sprite | 10×9 px · 2 frames |
 
+## Descripción / porte
+
+Cérvido robusto de patas cortas, orejas grandes y hocico oscuro; el macho lleva astas bifurcadas cortas. Pelaje pardo; crías moteadas. Silueta: cuerpo macizo con astas en horqueta.
+
 ## Notas
 
 Ciervo andino en peligro; pastorea y deja huellas.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Hippocamelus_bisulcus)
 
 ## Referencias fotográficas
 

@@ -1,6 +1,6 @@
 # Araucaria / Pehuén (`araucaria`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-12
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
 
 | Campo | Valor |
 |-------|-------|
@@ -12,9 +12,17 @@
 | Altura relativa (juego) | ×1.9 |
 | Altura real típica | 30–40 m |
 
+## Descripción / porte
+
+Conífera perenne de tronco recto y grueso que ramifica a varios metros del suelo. Copa ordenada en verticilos de ramas horizontales largas (unos 5 por piso) que forman pisos apilados tipo pagoda, de base ancha a ápice redondeado. Acículas duras verde oscuro espinosas (imbricadas) y conos femeninos redondos. Silueta: paraguas apilados sobre tronco desnudo.
+
 ## Notas
 
 Árbol emblema; silueta de paraguas; la copa se bambolea.
+
+## Referencia
+
+- [Wikipedia](https://es.wikipedia.org/wiki/Araucaria_araucana)
 
 ## Referencias fotográficas
 
