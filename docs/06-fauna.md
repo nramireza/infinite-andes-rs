@@ -206,5 +206,6 @@ cargo run -p andes-core --bin gen-species   # regenera docs/especies y las tabla
 
 - Paridad de **init/astros** exacta y **spawns** exactos; queda refinar el **dibujo** (fuentes de
   diferencia de píxel).
-- Afinar los sprites (contorno y luz normalizados, más frames, mayor tamaño) sobre la **galería de
-  diagnóstico** (`cargo run -p andes-native --bin gallery`, D-022).
+- Afinar sprites por `porte`/referencia y revisar frame a frame sobre la **galería de diagnóstico**
+  (`cargo run -p andes-native --bin gallery`, D-022/D-024). El contorno oscuro de 1 px es automático
+  (`OUTLINE` en `fauna.rs`); aves y mamíferos marinos se redibujaron en el lote 2.

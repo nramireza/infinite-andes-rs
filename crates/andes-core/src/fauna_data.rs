@@ -149,7 +149,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Loro endémico; bandada ruidosa del bosque de la Costa.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Enicognathus_leptorhynchus_261853480.jpg", autor: "Joaquin Neumann H.", licencia: "CC0", archivo: "choroy-01.jpg" }],
         zones: &[("centro", "costa", 1.0), ("sur", "costa", 1.0)],
         palette: &[("g", "floraL"), ("d", "trunk"), ("r", "#c62828"), ("k", "#2e2e38")],
-        frames: &[&["....rr......", "...gggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."], &["....rr......", "..g.ggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."]],
+        frames: &[&["...rr.....", "..gggg....", ".gggggg...", "dggggggg..", ".ggggggggg", "....ggggg.", "......ggg."], &["...rr.....", "..gggg....", ".gggggg...", "dggggggg..", ".ggggggggg", ".....gggg.", ".......gg."]],
     },
     SpeciesData {
         name: "cachana", wiki: "https://es.wikipedia.org/wiki/Enicognathus_ferrugineus", porte: "Loro austral de cuerpo verde con vientre rojizo y cola larga; en bandadas. Silueta: como el choroy, con tonos rojizos.", movement: "flock", active: "day", speed: 0.5, range: 30.0, fps: 4.0, rarity: "comun",
@@ -158,7 +158,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Loro austral; vuela en bandadas.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Cacha%C3%B1as-Enicognathus_ferrugineus.jpg", autor: "Ignsal", licencia: "PD", archivo: "cachana-01.jpg" }],
         zones: &[("centro", "costa", 1.0), ("sur", "costa", 1.0)],
         palette: &[("g", "sandD"), ("d", "trunk"), ("r", "#b5533a"), ("k", "#2e2e38")],
-        frames: &[&["....rr......", "...gggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."], &["....rr......", "..g.ggg.....", "..gggggg....", "dgggggggg...", "..gggggggg..", "......gggg.."]],
+        frames: &[&["...rr.....", "..gggg....", ".gggggg...", "dggggggg..", ".ggrrrgggg", "....ggggg.", "......ggg."], &["...rr.....", "..gggg....", ".gggggg...", "dggggggg..", ".ggrrrgggg", ".....gggg.", ".......gg."]],
     },
     SpeciesData {
         name: "flamenco", wiki: "https://es.wikipedia.org/wiki/Phoenicopterus_chilensis", porte: "Ave zancuda de cuello largo en S, patas finas y pico curvado hacia abajo; plumaje rosado con negro en las alas. Silueta: cuello en S y patas largas.", movement: "walk", active: "day", speed: 0.3, range: 4.0, fps: 1.0, rarity: "poco-comun",
@@ -176,7 +176,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Nutria marina; nada y se asoma entre roqueríos.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Lontra_felina_Werner.JPG", autor: "Jacques Christophe Werner; Christophe Annedouche", licencia: "PD", archivo: "chungungo-01.jpg" }],
         zones: &[("altiplano", "mar", 1.5), ("norte", "mar", 1.5), ("centro", "mar", 1.5), ("sur", "mar", 1.5), ("patagonia", "mar", 1.5), ("austral", "mar", 1.5)],
         palette: &[("d", "trunk"), ("l", "sand")],
-        frames: &[&["...........d", ".dddddddddd.", "ddlllllllld.", ".d......d...", "............"], &["...........d", ".dddddddddd.", "ddlllllllld.", "..d....d....", "............"]],
+        frames: &[&["..........dd.", "........ddddd", ".ddddddddddll", "ddlllllllllll", ".d...d.....d."], &["..........dd.", "........ddddd", ".ddddddddddll", "ddlllllllllll", "..d......d..."]],
     },
     SpeciesData {
         name: "pinguino", wiki: "https://es.wikipedia.org/wiki/Spheniscus_humboldti", porte: "Pingüino erguido de dorso negro y vientre blanco con banda pectoral, pico y patas oscuras con tonos naranja; nada con las aletas. Silueta: cuerpo en péndulo.", movement: "swim", active: "day", speed: 0.5, range: 6.0, fps: 2.0, rarity: "comun",
@@ -194,7 +194,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Anfibio endémico estático en el borde del cauce.", refs: &[RefRow { encuadre: "perfil", fuente: "https://commons.wikimedia.org/wiki/File:Rhinoderma_darwinii00.jpg", autor: "George Bond Howes", licencia: "PD", archivo: "rana-01.jpg" }],
         zones: &[("centro", "costa", 1.0), ("sur", "valle", 1.0), ("sur", "costa", 1.0), ("patagonia", "costa", 1.0), ("austral", "valle", 1.0), ("austral", "costa", 1.0)],
         palette: &[("d", "floraD"), ("l", "sandD"), ("e", "trunk")],
-        frames: &[&[".dd...", "ddddd.", "dlddd.", ".d.d.."], &[".dd...", "ddddd.", "dlddd.", "..d.d."]],
+        frames: &[&["..dd..", ".dddd.", "dddddd", "dllld.", ".d.d.."], &["..dd..", ".dddd.", "dddddd", "dllld.", "..dd.."]],
     },
     SpeciesData {
         name: "choique", wiki: "https://es.wikipedia.org/wiki/Rhea_pennata", porte: "Ñandú petizo de cuello y patas largos y plumaje gris manchado; no vuela, corre. Silueta: ave ratites erguida.", movement: "walk", active: "day", speed: 0.7, range: 9.0, fps: 2.0, rarity: "poco-comun",
@@ -220,8 +220,8 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         anchor: "ground", common: "Huillín", sci: "Lontra provocax", endemism: "No (Chile/Argentina)", iucn: "EN", chile: "ríos del sur",
         notes: "Nutria de río del sur; nada en el borde del cauce.", refs: &[],
         zones: &[("centro", "valle", 1.0), ("centro", "costa", 1.0), ("sur", "valle", 1.0), ("sur", "costa", 1.0), ("patagonia", "costa", 1.0), ("austral", "valle", 1.0), ("austral", "costa", 1.0)],
-        palette: &[("d", "trunk"), ("l", "sand")],
-        frames: &[&["..........dd", ".dddddddddd.", "ddllllllld..", ".d......d...", "............"], &["..........dd", ".dddddddddd.", "ddllllllld..", "..d....d....", "............"]],
+        palette: &[("d", "trunk"), ("l", "sandD")],
+        frames: &[&["...........dd", ".........dddd", ".ddddddddddd.", "ddlllllllllll", ".d....d....d."], &["...........dd", ".........dddd", ".ddddddddddd.", "ddlllllllllll", "..d.....d...."]],
     },
     SpeciesData {
         name: "lobo-marino", wiki: "https://es.wikipedia.org/wiki/Otaria_flavescens", porte: "Otárido grande de pelaje pardo; el macho desarrolla melena. Se asolea en roqueríos y nada cerca de la costa. Silueta: cuerpo robusto con aletas.", movement: "swim", active: "day", speed: 0.55, range: 8.0, fps: 2.0, rarity: "poco-comun",
@@ -230,7 +230,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Macho con melena; se asolea en roqueríos y nada cerca de la costa.", refs: &[],
         zones: &[("altiplano", "mar", 1.0), ("norte", "mar", 1.0), ("centro", "mar", 1.0), ("sur", "mar", 1.0), ("patagonia", "mar", 1.0), ("austral", "mar", 1.0)],
         palette: &[("d", "#4a3a2e"), ("l", "#a08a6e"), ("k", "#20202a")],
-        frames: &[&[".dddddddd....", "ddllllllllddd", "dlllllllllllk", ".dd.....dd..."], &[".dddddddd....", "ddllllllllddd", "dlllllllllllk", "..dd...dd...."]],
+        frames: &[&["..dd..........", ".dddd.........", "ddllldd.......", "ddlllllddddddd", ".dlllllllllll.", "..dd..dd...dd."], &["..dd..........", ".dddd.........", "ddllldd.......", "ddlllllddddddd", ".dlllllllllll.", "...dd..dd..dd."]],
     },
     SpeciesData {
         name: "delfin", wiki: "https://es.wikipedia.org/wiki/Cephalorhynchus_eutropia", porte: "Delfín endémico pequeño y robusto, sin pico, dorso gris oscuro y vientre claro; salta en grupos. Silueta: lomo curvo emergiendo.", movement: "swim", active: "day", speed: 0.8, range: 10.0, fps: 2.0, rarity: "rara",
@@ -239,7 +239,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Delfín endémico, pequeño y sin pico; salta en grupos.", refs: &[],
         zones: &[("altiplano", "mar", 1.0), ("norte", "mar", 1.0), ("centro", "mar", 1.0), ("sur", "mar", 1.0), ("patagonia", "mar", 1.0), ("austral", "mar", 1.0)],
         palette: &[("d", "#3a4658"), ("l", "#9fb6c8")],
-        frames: &[&[".....dd.......", "...ddllddd....", ".ddlllllllld..", "dd.ddd...ddd.."], &["....dd........", "..ddllddd.....", "dllllllllld...", "ddd..dd..dd..."]],
+        frames: &[&[".......dd.....", "......dddd....", "..ddddddddd...", ".dddddddddddd.", "ddddlllllllldd", ".dd....dd....."], &[".......dd.....", "......dddd....", "..ddddddddd...", ".dddddddddddd.", "ddddlllllllldd", "...dd...dd...."]],
     },
     SpeciesData {
         name: "gaviota", wiki: "https://es.wikipedia.org/wiki/Larus_dominicanus", porte: "Gaviota grande de dorso negro y vientre blanco, pico y patas amarillos; planea sobre playa y mar. Silueta: alas en arco.", movement: "fly", active: "day", speed: 1.2, range: 12.0, fps: 2.0, rarity: "comun",
@@ -248,7 +248,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Ave costera abundante; planea sobre la playa y el mar.", refs: &[],
         zones: &[("altiplano", "playa", 1.0), ("norte", "playa", 1.0), ("centro", "playa", 1.0), ("sur", "playa", 1.0), ("patagonia", "playa", 1.0), ("austral", "playa", 1.0), ("centro", "mar", 0.8), ("sur", "mar", 0.8)],
         palette: &[("w", "snow"), ("k", "#2a2a2a")],
-        frames: &[&["k.....k", "kk...kk", ".wwwww.", "..kkk.."], &["k.....k", "kk...kk", ".wwwww.", "...k..."]],
+        frames: &[&["k...........k", "kk.........kk", ".kkk.....kkk.", "..kwwwwwwwk..", "...wwwwwww...", "....wwwww...."], &["k...........k", "k...........k", "kk.........kk", ".kkkwwwwwkkk.", "..kwwwwwwwk..", "...wwwwwww..."]],
     },
     SpeciesData {
         name: "albatros", wiki: "https://es.wikipedia.org/wiki/Thalassarche_melanophris", porte: "Ave marina de alas largas y rígidas, dorso negro y ceja negra sobre cabeza blanca; planea sobre el oleaje. Silueta: alas rectas y alargadas.", movement: "fly", active: "day", speed: 1.4, range: 16.0, fps: 1.0, rarity: "poco-comun",
@@ -257,7 +257,7 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Planea con las alas rígidas sobre el oleaje.", refs: &[],
         zones: &[("altiplano", "mar", 0.6), ("norte", "mar", 0.6), ("centro", "mar", 0.6), ("sur", "mar", 0.6), ("patagonia", "mar", 0.6), ("austral", "mar", 0.6)],
         palette: &[("w", "snow"), ("k", "#33333d"), ("o", "#e0a24a")],
-        frames: &[&["k.........k", "kk.......kk", ".kkkkkkkkk.", "....kkk...."], &["k.........k", "kk.......kk", ".kkkkkkkkk.", "...kkkk...."]],
+        frames: &[&["k.............k", "kk...........kk", ".kkkk.....kkkk.", "...kwwwwwwwk...", "....wwwwwww....", ".......o......."], &["k.............k", "kk...........kk", ".kkkkkkkkkkkkk.", "...kwwwwwwwk...", "....wwwwwww....", ".......o......."]],
     },
     SpeciesData {
         name: "pelicano", wiki: "https://es.wikipedia.org/wiki/Pelecanus_thagus", porte: "Ave marina grande de pico largo con bolsa y cuerpo gris-blanco; vuela en fila bordeando la costa. Silueta: pico prominente y alas anchas.", movement: "fly", active: "day", speed: 1.0, range: 12.0, fps: 1.5, rarity: "poco-comun",
@@ -266,6 +266,6 @@ pub const SPECIES: &[SpeciesData; 26] = &[
         notes: "Vuela en fila bordeando la costa; pico largo.", refs: &[],
         zones: &[("altiplano", "mar", 0.8), ("norte", "mar", 0.8), ("centro", "mar", 0.8), ("sur", "mar", 0.8), ("patagonia", "mar", 0.8), ("austral", "mar", 0.8), ("centro", "playa", 0.5), ("sur", "playa", 0.5)],
         palette: &[("w", "snow"), ("k", "#3a3a44"), ("o", "#e8a83a")],
-        frames: &[&["...www...", "..wwwww..", "wwwkkkww.", "wwwwwww.o", ".w...w..."], &["...www...", "..wwwww..", "wwwkkkww.", "wwwwwww.o", "..w.w...."]],
+        frames: &[&["......oo......", ".....wwww.....", "k...wwwwww...k", "kk.wwwwwwww.kk", "kkkwwwwwwwwkkk", "...wwwwwwww..."], &["......oo......", ".....wwww.....", ".k.wwwwwwww.k.", "kkkwwwwwwwwkkk", "kkkwwwwwwwwkkk", "....wwwwww...."]],
     },
 ];

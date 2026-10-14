@@ -14,7 +14,7 @@
 | Rareza (juego) | común |
 | Anclaje | centro |
 | Colocación | por chunk |
-| Sprite | 7×4 px · 2 frames |
+| Sprite | 13×6 px · 2 frames |
 
 ## Descripción / porte
 

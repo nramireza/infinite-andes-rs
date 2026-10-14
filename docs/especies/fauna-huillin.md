@@ -14,7 +14,7 @@
 | Rareza (juego) | rara |
 | Anclaje | pies |
 | Colocación | borde del cauce |
-| Sprite | 12×5 px · 2 frames |
+| Sprite | 13×5 px · 2 frames |
 
 ## Descripción / porte
 

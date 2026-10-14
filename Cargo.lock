@@ -39,18 +39,18 @@ dependencies = [
 
 [[package]]
 name = "andes-app"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "andes-core",
 ]
 
 [[package]]
 name = "andes-core"
-version = "0.6.0"
+version = "0.6.1"
 
 [[package]]
 name = "andes-native"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "andes-app",
  "andes-core",
@@ -66,7 +66,7 @@ dependencies = [
 
 [[package]]
 name = "andes-web"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "andes-app",
  "andes-core",

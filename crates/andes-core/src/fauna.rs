@@ -80,6 +80,9 @@ fn color_of(colors: &[(char, Rgb)], ch: char) -> Option<Rgb> {
     colors.iter().find(|(c, _)| *c == ch).map(|(_, col)| *col)
 }
 
+/// Contorno de los sprites: 1 px oscuro que los despega del fondo.
+const OUTLINE: Rgb = [0x16, 0x16, 0x1c];
+
 fn draw_matrix(
     fb: &mut Framebuffer,
     rows: &[&str],
@@ -88,11 +91,45 @@ fn draw_matrix(
     top: i32,
     flip: bool,
 ) {
+    let h = rows.len() as i32;
     let w = rows
         .iter()
         .map(|row| row.chars().count())
         .max()
         .unwrap_or(0) as i32;
+    if w == 0 || h == 0 {
+        return;
+    }
+    let cell = |rx: i32, ry: i32| -> Option<Rgb> {
+        if rx < 0 || ry < 0 || ry >= h {
+            return None;
+        }
+        let ch = rows[ry as usize].chars().nth(rx as usize)?;
+        if ch == '.' || ch == ' ' {
+            None
+        } else {
+            color_of(colors, ch)
+        }
+    };
+    // Primero el contorno: celdas vacías con un vecino ocupado (4-dir), una
+    // celda más allá del borde para despegar la silueta.
+    for ry in -1..=h {
+        for rx in -1..=w {
+            if cell(rx, ry).is_some() {
+                continue;
+            }
+            let neigh = cell(rx - 1, ry).is_some()
+                || cell(rx + 1, ry).is_some()
+                || cell(rx, ry - 1).is_some()
+                || cell(rx, ry + 1).is_some();
+            if !neigh {
+                continue;
+            }
+            let dx = if flip { w - 1 - rx } else { rx };
+            fb.fill_rect(left + dx, top + ry, 1, 1, OUTLINE, 1.0);
+        }
+    }
+    // Luego el sprite por encima.
     for (ry, row) in rows.iter().enumerate() {
         for (rx, ch) in row.chars().enumerate() {
             if ch == '.' || ch == ' ' {
