@@ -286,10 +286,6 @@ fn height_for(name: &str) -> f64 {
     flora_entry(name).map(|e| e.height).unwrap_or(1.0)
 }
 
-fn outline(pal: &Palette) -> Rgb {
-    shade(get(pal, "floraD"), -0.3)
-}
-
 #[inline]
 fn r(x: f64) -> i32 {
     js_round(x) as i32
@@ -437,6 +433,56 @@ fn crown_cone(
     }
 }
 
+/// Fronda arqueada de palma: nace con ángulo `theta` que crece, así cae en la punta.
+#[allow(clippy::too_many_arguments)]
+fn frond(fb: &mut Framebuffer, x: i32, top: i32, theta: f64, len: i32, mid: Rgb, hi: Rgb, sh: Rgb) {
+    for k in 1..=len {
+        let t = k as f64 / len.max(1) as f64;
+        let ang = theta + t * 0.9;
+        let fx = x + r(ang.sin() * k as f64);
+        let fy = top - r(ang.cos() * k as f64);
+        let c = if k % 3 == 0 { hi } else { mid };
+        dr(fb, fx, fy, 1, 1, c);
+        if k % 2 == 0 {
+            dr(fb, fx + if theta < 0.0 { 1 } else { -1 }, fy, 1, 1, sh);
+        }
+    }
+}
+
+/// Roseta de hojas cortas y rígidas (puya y bultos del cojín de llareta).
+fn rosette(fb: &mut Framebuffer, cx: i32, cy: i32, radius: i32, hi: Rgb, mid: Rgb, sh: Rgb) {
+    if radius < 1 {
+        return;
+    }
+    let dirs = [
+        (0.0f64, -1.0f64),
+        (0.6, -0.9),
+        (-0.6, -0.9),
+        (1.0, -0.4),
+        (-1.0, -0.4),
+        (1.0, 0.3),
+        (-1.0, 0.3),
+        (0.7, 0.7),
+        (-0.7, 0.7),
+        (0.0, 0.9),
+    ];
+    for (i, (ux, uy)) in dirs.iter().enumerate() {
+        let len = (radius as f64 * (0.8 + (i % 3) as f64 * 0.15))
+            .round()
+            .max(1.0) as i32;
+        for k in 1..=len {
+            let c = if k == len {
+                hi
+            } else if k * 2 >= len {
+                mid
+            } else {
+                sh
+            };
+            dr(fb, cx + r(ux * k as f64), cy + r(uy * k as f64), 1, 1, c);
+        }
+    }
+}
+
 #[allow(clippy::too_many_arguments)]
 pub fn draw_plant(
     fb: &mut Framebuffer,
@@ -454,16 +500,16 @@ pub fn draw_plant(
     match type_ {
         "araucaria" => draw_araucaria(fb, x, base_y, size, pal, sway, light),
         "lenga" => draw_lenga(fb, x, base_y, size, pal, warm, season, light),
-        "bush" => draw_bush(fb, x, base_y, size, pal),
+        "bush" => draw_bush(fb, x, base_y, size, pal, light),
         "grass" => draw_grass(fb, x, base_y, size, pal),
         "crop" => draw_crop(fb, x, base_y, size, pal),
         "rock" => draw_rock(fb, x, base_y, size, pal),
         "flower" => draw_flower(fb, x, base_y, size, pal, sway, night),
-        "cactus" => draw_cactus(fb, x, base_y, size, pal),
+        "cactus" => draw_cactus(fb, x, base_y, size, pal, light),
         "alerce" => draw_alerce(fb, x, base_y, size, pal),
         "nalca" => draw_nalca(fb, x, base_y, size, pal, light),
-        "colihue" => draw_colihue(fb, x, base_y, size, pal),
-        "palma" => draw_palma(fb, x, base_y, size, pal),
+        "colihue" => draw_colihue(fb, x, base_y, size, pal, light),
+        "palma" => draw_palma(fb, x, base_y, size, pal, light),
         "coihue" => draw_coihue(fb, x, base_y, size, pal, light),
         "roble" => draw_roble(fb, x, base_y, size, pal, season, light),
         "copihue" => draw_copihue(fb, x, base_y, size, pal, season, light),
@@ -480,10 +526,10 @@ pub fn draw_plant(
         "peumo" => draw_peumo(fb, x, base_y, size, pal, light),
         "maiten" => draw_maiten(fb, x, base_y, size, pal, light),
         "cipres" => draw_cipres(fb, x, base_y, size, pal, light),
-        "puya" => draw_puya(fb, x, base_y, size, pal),
-        "llareta" => draw_llareta(fb, x, base_y, size, pal),
-        "amancay" => draw_amancay(fb, x, base_y, size, pal, sway),
-        "junquillo" => draw_junquillo(fb, x, base_y, size, pal),
+        "puya" => draw_puya(fb, x, base_y, size, pal, light),
+        "llareta" => draw_llareta(fb, x, base_y, size, pal, light),
+        "amancay" => draw_amancay(fb, x, base_y, size, pal, sway, light),
+        "junquillo" => draw_junquillo(fb, x, base_y, size, pal, light),
         _ => draw_grass(fb, x, base_y, size, pal),
     }
 }
@@ -637,28 +683,22 @@ fn draw_lenga(
     }
 }
 
-fn draw_bush(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_bush(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let w = (size * 0.8).round().max(4.0) as i32;
-    let h = (size * 0.5).round().max(3.0) as i32;
-    let dark = outline(pal);
-    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
-    for rr in 0..h {
-        let t = (rr + 1) as f64 / (h + 1) as f64;
-        let mut half = ((w as f64 / 2.0) * (t * std::f64::consts::PI * 0.9).sin() + w as f64 * 0.08)
-            .round()
-            .max(1.0) as i32;
-        if hash1(x * 3 + rr, 0x6b) < 0.35 {
-            half = (half - 1).max(1);
-        }
-        let yy = base_y - h + rr;
-        dr(fb, x - half, yy, half * 2, 1, dark);
-        dr(fb, x - half + 1, yy, (half * 2 - 2).max(1), 1, flora_d);
-        if rr == 0 || rr == h - 1 {
-            dr(fb, x - half + 1, yy, (half * 2 - 2).max(1), 1, flora_l);
-        }
-    }
+    let h = (size * 0.6).round().max(3.0) as i32;
+    let rx = (size * 0.42).round().max(2.0) as i32;
+    let tone = crown_tone(pal, light);
+    crown_blob(
+        fb,
+        x,
+        base_y - h / 2,
+        rx,
+        h / 2,
+        0x0b5,
+        tone,
+        lit_left(light),
+    );
 }
 
 fn draw_grass(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
@@ -709,42 +749,62 @@ fn draw_rock(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette
     }
 }
 
-fn draw_cactus(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_cactus(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
     let h = (size * 1.1).round().max(7.0) as i32;
     let top = base_y - h;
-    let w = (size * 0.34).round().max(3.0) as i32;
-    let half = w >> 1;
-    let dark = outline(pal);
-    let (flora_l, flora_d, sand_d) = (get(pal, "floraL"), get(pal, "floraD"), get(pal, "sandD"));
+    let w = (size * 0.44).round().max(3.0) as i32;
+    let half = w / 2;
+    let (hi, mid, sh) = crown_tone(pal, light);
+    let lit = lit_left(light);
+    let sand_d = get(pal, "sandD");
 
-    dr(fb, x - half, top, w, h, dark);
-    dr(fb, x - half + 1, top, (w - 2).max(1), h, flora_d);
-    dr(fb, x - half + 1, top, 1, h, flora_l);
-
-    let dir = if hash1(x, 0xcac) < 0.5 { -1 } else { 1 };
-    let arm_y = top + r(h as f64 * 0.45);
-    let arm_h = (h as f64 * 0.34).round().max(2.0) as i32;
-    dr(fb, x + dir * half, arm_y, 2, 1, dark);
-    dr(fb, x + dir * (half + 1), arm_y - arm_h, 2, arm_h + 1, dark);
-    dr(fb, x + dir * (half + 1), arm_y - arm_h, 1, arm_h, flora_d);
-    dr(fb, x + dir * (half + 1), arm_y - arm_h, 1, 1, flora_l);
-
-    if hash1(x, 0xca5) < 0.5 {
-        let d2 = -dir;
-        let a_y = top + r(h as f64 * 0.62);
-        dr(fb, x + d2 * half, a_y, 1, 1, flora_d);
-        dr(fb, x + d2 * (half + 1), a_y - 2, 1, 2, flora_d);
+    // Columna gruesa con costillas: luz a un lado, surco al otro.
+    for rr in 0..h {
+        let yy = top + rr;
+        dr(fb, x - half, yy, w, 1, mid);
+        if lit {
+            dr(fb, x - half + 1, yy, 1, 1, hi);
+            dr(fb, x + half - 1, yy, 1, 1, sh);
+        } else {
+            dr(fb, x + half - 1, yy, 1, 1, hi);
+            dr(fb, x - half + 1, yy, 1, 1, sh);
+        }
     }
-    for frac in [0.28, 0.55, 0.8] {
+
+    // Brazos en candelabro (1-2) que suben doblados.
+    let arm_h = (h as f64 * 0.4).round().max(3.0) as i32;
+    let dir = if hash1(x, 0xcac) < 0.5 { -1 } else { 1 };
+    let arm_y = top + r(h as f64 * 0.5);
+    let ax = x + dir * (half + 1);
+    dr(fb, x.min(ax), arm_y, (ax - x).abs() + 1, 1, mid);
+    for rr in 0..=arm_h {
+        let yy = arm_y - rr;
+        dr(fb, ax - 1, yy, 2, 1, mid);
+        dr(fb, if lit { ax - 1 } else { ax }, yy, 1, 1, hi);
+    }
+    if hash1(x, 0xca5) < 0.6 {
+        let a_y = top + r(h as f64 * 0.68);
+        let a2 = x + (-dir) * (half + 1);
+        dr(fb, x.min(a2), a_y, (a2 - x).abs() + 1, 1, mid);
+        for rr in 0..=(arm_h / 2).max(1) {
+            dr(fb, a2 - 1, a_y - rr, 2, 1, mid);
+        }
+    }
+
+    // Espinas dispersas en los bordes.
+    for frac in [0.2, 0.45, 0.7, 0.9] {
         let y = top + r(h as f64 * frac);
         dr(fb, x - half - 1, y, 1, 1, sand_d);
         dr(fb, x + half + 1, y + 1, 1, 1, sand_d);
     }
-    if hash1(x, 0xcaf) < 0.5 {
-        dr(fb, x, top - 1, 1, 1, flora_l);
-    }
+
+    // Flor en el ápice (el copao florece cerca de la punta).
+    dr(fb, x, top - 1, 1, 1, FLOWER_COLORS[3]);
+    dr(fb, x - 1, top - 2, 1, 1, FLOWER_COLORS[0]);
+    dr(fb, x + 1, top - 2, 1, 1, FLOWER_COLORS[0]);
+    dr(fb, x, top - 2, 1, 1, [0xf7, 0xd9, 0x70]);
 }
 
 fn draw_alerce(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
@@ -818,92 +878,74 @@ fn draw_nalca(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
     }
 }
 
-fn draw_colihue(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_colihue(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let dark = outline(pal);
-    let n = 4 + (size * 0.25).floor() as i32;
-    let (trunk, flora_l, flora_d) = (get(pal, "trunk"), get(pal, "floraL"), get(pal, "floraD"));
+    let (hi, mid, sh) = crown_tone(pal, light);
+    let lit = lit_left(light);
+    let n = 5 + (size * 0.25).floor() as i32;
     for i in 0..n {
         let hh = hash1(i * 17 + x, 0xc01);
         let cxp = x + r((i as f64 - (n as f64 - 1.0) / 2.0) * 0.8);
-        let ch = (size * (0.75 + hh * 0.5)).round().max(5.0) as i32;
+        let ch = (size * (0.8 + hh * 0.5)).round().max(5.0) as i32;
         let top = base_y - ch;
-        dr(fb, cxp, top, 1, ch, trunk);
+        // Caña con nudos.
+        for k in 0..ch {
+            let c = if lit && k % 2 == 0 { hi } else { mid };
+            dr(fb, cxp, top + k, 1, 1, c);
+        }
         let mut k = 2;
         while k < ch {
-            dr(fb, cxp, base_y - k, 1, 1, dark);
+            dr(fb, cxp, base_y - k, 1, 1, sh);
             k += 3;
         }
-        let c = if i % 2 != 0 { flora_l } else { flora_d };
+        // Penacho de hojas en la punta.
+        let dir = if lit { -1 } else { 1 };
+        for j in 0..4 {
+            let ly = top + j;
+            let c = if j % 2 == 0 { hi } else { mid };
+            dr(fb, cxp + dir * (1 + j / 2), ly, 1, 1, c);
+            dr(fb, cxp - dir * (1 + j / 2), ly + (j % 2), 1, 1, c);
+        }
+        // Hojas laterales.
         let leaves = 3 + (hh * 3.0).floor() as i32;
         let step = (ch as f64 / leaves as f64).round().max(2.0) as i32;
         for j in 0..leaves {
-            let ly = top + 1 + j * step;
-            let dir = if (j + i) % 2 != 0 { 1 } else { -1 };
-            dr(fb, cxp + dir, ly, 1, 1, c);
-            dr(fb, cxp + dir * 2, ly + 1, 1, 1, c);
-            if j % 2 != 0 {
-                dr(fb, cxp + dir, ly + 2, 1, 1, c);
-            }
+            let ly = top + 2 + j * step;
+            let d = if (j + i) % 2 != 0 { 1 } else { -1 };
+            dr(fb, cxp + d, ly, 1, 1, mid);
+            dr(fb, cxp + d * 2, ly + 1, 1, 1, sh);
         }
     }
 }
 
-fn draw_palma(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_palma(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let trunk_h = (size * 0.46).round().max(4.0) as i32;
+    let trunk_h = (size * 0.5).round().max(4.0) as i32;
     let top = base_y - trunk_h;
-    let (trunk, flora_l, flora_d) = (get(pal, "trunk"), get(pal, "floraL"), get(pal, "floraD"));
+    let trunk = get(pal, "trunk");
+    let td = shade(trunk, -0.22);
+    let (hi, mid, sh) = crown_tone(pal, light);
     dr(fb, x - 1, top, 2, trunk_h, trunk);
-    let trunk_dark = shade(trunk, -0.2);
+    // Anillos del tronco.
     let mut i = 3;
     while i < trunk_h {
-        dr(fb, x - 1, top + i, 2, 1, trunk_dark);
+        dr(fb, x - 1, top + i, 2, 1, td);
         i += 3;
     }
-    let rr = (size * 0.26).round().max(3.0) as i32;
-    let dirs = [
-        (0.0, -1.0),
-        (-0.6, -0.85),
-        (0.6, -0.85),
-        (-0.9, -0.4),
-        (0.9, -0.4),
-        (-1.0, 0.15),
-        (1.0, 0.15),
-        (-0.8, 0.6),
-        (0.8, 0.6),
-    ];
-    for (ux, uy) in dirs {
-        for k in 1..=rr {
-            dr(
-                fb,
-                x + r(ux * k as f64),
-                top + r(uy * k as f64),
-                1,
-                1,
-                flora_d,
-            );
-        }
+    // Penacho de frondas que arquean y caen.
+    let rr = (size * 0.6).round().max(4.0) as i32;
+    let n = 9;
+    for j in 0..n {
+        let f = (j as f64 - (n as f64 - 1.0) / 2.0) / ((n as f64 - 1.0) / 2.0); // -1..1
+        let theta = f * 1.15;
+        let len = (rr as f64 * (1.0 - 0.12 * f.abs())).round().max(2.0) as i32;
+        frond(fb, x, top, theta, len, mid, hi, sh);
     }
-    for (ux, uy) in [
-        (0.0, -1.0),
-        (-1.0, 0.15),
-        (1.0, 0.15),
-        (-0.8, 0.6),
-        (0.8, 0.6),
-    ] {
-        dr(
-            fb,
-            x + r(ux * rr as f64),
-            top + r(uy * rr as f64),
-            1,
-            1,
-            flora_l,
-        );
-    }
-    dr(fb, x, top - 1, 1, 2, trunk);
+    // Cogollo.
+    dr(fb, x - 1, top - 1, 3, 1, hi);
+    dr(fb, x, top - 2, 1, 1, hi);
 }
 
 fn draw_coihue(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
@@ -1114,8 +1156,8 @@ fn draw_michay(
 fn draw_chaura(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let h = (size * 0.6).round().max(3.0) as i32;
-    let rx = (size * 0.48).round().max(2.0) as i32;
+    let h = (size * 0.72).round().max(3.0) as i32;
+    let rx = (size * 0.55).round().max(2.0) as i32;
     let tone = crown_tone(pal, light);
     crown_blob(
         fb,
@@ -1128,7 +1170,7 @@ fn draw_chaura(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
         lit_left(light),
     );
     // Bayas blanco-rosadas (perenne).
-    let n = 2 + (size * 0.16).floor() as i32;
+    let n = 3 + (size * 0.2).floor() as i32;
     for i in 0..n {
         let hh = hash1(i * 29 + x, 0x0c5);
         let fx = x + r((hh - 0.5) * rx as f64 * 1.7);
@@ -1558,78 +1600,115 @@ fn draw_cipres(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
     dr(fb, x - 1, top - 1, 2, 1, get(pal, "floraL"));
 }
 
-fn draw_puya(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_puya(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let (flora_l, flora_d, sand_d) = (get(pal, "floraL"), get(pal, "floraD"), get(pal, "sandD"));
-    let w = (size * 0.9).round().max(4.0) as i32;
-    for i in 0..=w {
-        let s = i as f64 / w as f64;
-        let lh = (size * 0.7 * (1.0 - s)).round().max(1.0) as i32;
-        dr(fb, x - i, base_y - lh, 1, lh, flora_d);
-        dr(fb, x + i, base_y - lh, 1, lh, flora_d);
+    let (hi, mid, sh) = crown_tone(pal, light);
+    // Roseta basal de hojas rígidas y espinosas.
+    let r0 = (size * 0.45).round().max(2.0) as i32;
+    rosette(fb, x, base_y - 1, r0, hi, mid, sh);
+    // Vara floral alta con candelabro de flores.
+    let sh_h = (size * 0.95).round().max(5.0) as i32;
+    let top = base_y - sh_h;
+    dr(fb, x, top, 1, sh_h, mid);
+    let nbr = 3 + (size * 0.15).floor() as i32;
+    for j in 0..nbr {
+        let t = (j + 1) as f64 / (nbr + 1) as f64;
+        let by = top + r(t * sh_h as f64);
+        let bl = ((size * 0.35) * (1.0 - t * 0.6)).round().max(1.0) as i32;
+        for k in 1..=bl {
+            let yy = by - k / 2;
+            dr(fb, x + k, yy, 1, 1, mid);
+            dr(fb, x - k, yy, 1, 1, mid);
+        }
+        dr(fb, x + bl, by - bl / 2, 1, 1, FLOWER_COLORS[1]);
+        dr(fb, x - bl, by - bl / 2, 1, 1, FLOWER_COLORS[0]);
     }
-    let inner = (w / 2).max(1);
-    for i in 0..=inner {
-        let lh = (size * 0.9).round().max(2.0) as i32 - i;
-        dr(fb, x - i, base_y - lh.max(1), 1, lh.max(1), flora_l);
-        dr(fb, x + i, base_y - lh.max(1), 1, lh.max(1), flora_l);
+    for k in (0..sh_h).step_by(3) {
+        dr(fb, x, top + k, 1, 1, FLOWER_COLORS[0]);
     }
-    let sh = (size * 0.8).round().max(3.0) as i32;
-    dr(fb, x, base_y - sh, 1, sh, sand_d);
-    dr(fb, x, base_y - sh - 1, 3, 1, [0x8a, 0x6a, 0x3a]);
+    dr(fb, x, top - 1, 1, 1, FLOWER_COLORS[1]);
 }
 
-fn draw_llareta(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_llareta(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
-    let w = (size * 1.1).round().max(3.0) as i32;
-    let h = (size * 0.5).round().max(2.0) as i32;
+    let (hi, mid, sh) = crown_tone(pal, light);
+    let sun = get(pal, "sun");
+    // Cojín verde-amarillento de la puna.
+    let hi2 = lerp_color(hi, sun, 0.25);
+    let mid2 = lerp_color(mid, sun, 0.25);
+    let w = (size * 1.6).round().max(4.0) as i32;
+    let h = (size * 0.8).round().max(3.0) as i32;
     for rr in 0..h {
-        let t = (rr + 1) as f64 / h as f64;
-        let half = (w as f64 * 0.5 * (1.0 - (1.0 - t).powi(2)).max(0.05).sqrt())
+        let t = rr as f64 / (h - 1).max(1) as f64;
+        let half = (w as f64 * 0.5 * (1.0 - (1.0 - t).powi(2)).max(0.0).sqrt())
             .round()
             .max(1.0) as i32;
         let yy = base_y - h + rr;
-        dr(fb, x - half, yy, half * 2, 1, flora_d);
-        if rr % 2 == 0 {
-            dr(fb, x - half, yy, half, 1, flora_l);
+        dr(fb, x - half, yy, half * 2 + 1, 1, mid2);
+        if rr * 2 < h {
+            dr(fb, x - half, yy, half * 2 + 1, 1, hi2);
         }
     }
-}
-
-fn draw_amancay(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, sway: f64) {
-    let x = r(x);
-    let base_y = r(base_y);
-    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
-    let n = 2 + (size * 0.6).floor() as i32;
+    // Textura: bultos de rosetas apiñadas.
+    let n = 3 + (size * 0.8) as i32;
     for i in 0..n {
-        let sx = x + i - (n >> 1);
-        let lean = r(sway * (3.0 + i as f64 * 0.5));
-        let h = (size * 0.9).round().max(3.0) as i32 + (i % 2);
-        dr(fb, sx, base_y - h, 1, h, flora_d);
-        dr(fb, sx - 1, base_y - 2, 1, 1, flora_l);
-        let fx = sx + lean;
-        dr(fb, fx, base_y - h - 1, 1, 1, FLOWER_COLORS[1]);
-        dr(fb, fx - 1, base_y - h - 1, 1, 1, FLOWER_COLORS[1]);
-        dr(fb, fx, base_y - h - 2, 1, 1, [0xf7, 0xd9, 0x70]);
+        let hh = hash1(i * 19 + x, 0x11a);
+        let bx = x + r((hh - 0.5) * w as f64 * 0.8);
+        let byy = base_y - r(hash1(i, 0x11b) * h as f64);
+        dr(fb, bx, byy, 1, 1, if i % 2 == 0 { hi2 } else { sh });
     }
 }
 
-fn draw_junquillo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_amancay(
+    fb: &mut Framebuffer,
+    x: f64,
+    base_y: f64,
+    size: f64,
+    pal: &Palette,
+    sway: f64,
+    light: f64,
+) {
     let x = r(x);
     let base_y = r(base_y);
-    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
-    let n = 3 + (size * 0.8).floor() as i32;
+    let (hi, mid, _sh) = crown_tone(pal, light);
+    let n = 2 + (size * 0.5).floor() as i32;
+    for i in 0..n {
+        let sx = x + i - (n >> 1);
+        let h = (size * 0.9).round().max(3.0) as i32 + (i % 2);
+        dr(fb, sx, base_y - h, 1, h, mid);
+        dr(fb, sx, base_y - h, 1, h / 2, hi);
+        // Umbela: flores amarillas agrupadas en la punta.
+        let lean = r(sway * (2.0 + i as f64));
+        let fx = sx + lean;
+        let fy = base_y - h - 1;
+        dr(fb, fx, fy, 1, 1, [0xf7, 0xd9, 0x70]);
+        dr(fb, fx - 1, fy, 1, 1, FLOWER_COLORS[1]);
+        dr(fb, fx + 1, fy, 1, 1, FLOWER_COLORS[1]);
+        dr(fb, fx, fy - 1, 1, 1, [0xf7, 0xd9, 0x70]);
+    }
+}
+
+fn draw_junquillo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
+    let x = r(x);
+    let base_y = r(base_y);
+    let (hi, mid, sh) = crown_tone(pal, light);
+    let lit = lit_left(light);
+    let n = 4 + (size * 0.8).floor() as i32;
     for i in 0..n {
         let gx = x + i - (n >> 1);
         let h = (size * 1.0).round().max(3.0) as i32 + ((i * 3 + x) % 2);
-        let c = if i % 3 == 0 { flora_l } else { flora_d };
+        let c = if (gx < x) == lit { hi } else { mid };
         dr(fb, gx, base_y - h, 1, h, c);
-        if i % 2 == 0 {
-            dr(fb, gx, base_y - h - 1, 1, 1, flora_l);
-        }
+        dr(
+            fb,
+            gx,
+            base_y - h - 1,
+            1,
+            1,
+            if i % 2 == 0 { hi } else { sh },
+        );
     }
 }
 

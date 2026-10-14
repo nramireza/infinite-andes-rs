@@ -73,6 +73,7 @@ Portado con **paridad exacta** respecto a JS:
 - [x] **Siluetas de flora propias** y luz direccional (D-023).
 - [x] **Referencia Wikipedia + porte** por especie y araucaria fiel a su porte (D-024).
 - [x] Revisión de siluetas de flora por `porte` (lote 1: araucaria, nalca, quillay, michay, chaura, boldo…).
+- [x] Flora lote 1b: cactus, palma, colihue, puya, llareta, amancay, junquillo y bush; luz normalizada.
 - [x] Fauna por `porte` (lote 2): contorno de 1 px automático y redibujo de aves y mamíferos marinos.
 - [ ] Calidad de dibujo: afinar el resto de sprites de fauna (cánidos, felinos, camélidos).
 - [x] Completar fotos `refs` (Commons/iNaturalist CC0) para todas las especies reales.

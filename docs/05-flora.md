@@ -122,17 +122,23 @@ comparte la misma "copa genérica" (D-023):
 - **Michay y chaura**: arbustos bajos y compactos con flores naranjas / bayas rosadas.
 - **Maitén**: copa con **ramas lloronas** que caen.
 - **Copihue**: **enredadera** de tallo sinuoso con **campanas rojas colgantes**.
-- **Palma chilena**: tronco con anillos y **frondas radiales** que escalan con el tamaño.
-- **Copao / cactus**: tronco con costilla iluminada, **brazo en candelabro** y espinas.
-- **Nalca**: roseta de **hojas grandes de borde dentado** con nervadura marcada.
-- **Colihue**: cañas con **nudos** visibles y hojas diagonales.
+- **Palma chilena**: tronco con anillos y **frondas pinnadas que arquean y caen** (copa redondeada).
+- **Copao / cactus**: **columna gruesa con costillas**, 1–2 **brazos en candelabro** que suben,
+  espinas y **flor apical**.
+- **Nalca**: roseta de **hojas orbiculares gigantes** de borde dentado sobre pecíolos gruesos.
+- **Colihue**: cañas con **nudos** y **penacho** de hojas en la punta.
+- **Puya**: **roseta espinosa** basal con **varas florales altas** en candelabro.
+- **Llareta**: **cojín hemisférico** verde-amarillento con bultos de rosetas.
+- **Amancay**: varillas con **umbela** de flores amarillas; **junquillo**: macolla de juncos.
+- **Bush / grass / crop / rock / flower**: genéricos (mata, briznas, hileras, piedras, flor del
+  desierto).
 
-Los dibujos se apoyan en tres primitivas compartidas en `flora.rs` —`line` (troncos y ramas),
-`crown_blob` (copa redondeada irregular) y `crown_cone` (coníferas/portes piramidales)— y reciben
-una **dirección de luz** (`light`, −1 izquierda … +1 derecha) derivada de la posición del sol/luna
-en pantalla, de modo que el lado iluminado de cada copa se aclara y el sombrío se oscurece
-([08 · Arte pixel](08-arte-pixel.md), D-023). El borde irregular sigue saliendo de `hash1`
-(determinista).
+Los dibujos se apoyan en primitivas compartidas en `flora.rs` —`line` (troncos y ramas), `crown_blob`
+(copa redondeada irregular), `crown_cone` (coníferas/portes piramidales), `frond` (fronda arqueada) y
+`rosette` (estrella de hojas)— y **todas** reciben una **dirección de luz** (`light`, −1 izquierda …
++1 derecha) derivada de la posición del sol/luna en pantalla, de modo que el lado iluminado se aclara
+y el sombrío se oscurece ([08 · Arte pixel](08-arte-pixel.md), D-023). El borde irregular sigue
+saliendo de `hash1` (determinista).
 
 Para ver cada tipo aislado (tres tallas, sobre fondo a cuadros) usa la **galería de diagnóstico**:
 `cargo run -p andes-native --bin gallery` ([08 · Arte pixel](08-arte-pixel.md), D-022).
