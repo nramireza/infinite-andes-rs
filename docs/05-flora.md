@@ -131,8 +131,9 @@ comparte la misma "copa genérica" (D-023):
 - **Puya**: **roseta espinosa** basal con **varas florales altas** en candelabro.
 - **Llareta**: **cojín hemisférico** verde-amarillento con bultos de rosetas.
 - **Amancay**: varillas con **umbela** de flores amarillas; **junquillo**: macolla de juncos.
-- **Bush / grass / crop / rock / flower**: genéricos (mata, briznas, hileras, piedras, flor del
-  desierto).
+- **Bush / grass / crop / rock / flower**: genéricos con textura propia y **luz direccional**: mata
+  redondeada, briznas inclinadas, hileras de espigas, pedreros con faceta iluminada y corolas de
+  5 pétalos del desierto florido.
 
 Los dibujos se apoyan en primitivas compartidas en `flora.rs` —`line` (troncos y ramas), `crown_blob`
 (copa redondeada irregular), `crown_cone` (coníferas/portes piramidales), `frond` (fronda arqueada) y

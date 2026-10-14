@@ -501,9 +501,9 @@ pub fn draw_plant(
         "araucaria" => draw_araucaria(fb, x, base_y, size, pal, sway, light),
         "lenga" => draw_lenga(fb, x, base_y, size, pal, warm, season, light),
         "bush" => draw_bush(fb, x, base_y, size, pal, light),
-        "grass" => draw_grass(fb, x, base_y, size, pal),
-        "crop" => draw_crop(fb, x, base_y, size, pal),
-        "rock" => draw_rock(fb, x, base_y, size, pal),
+        "grass" => draw_grass(fb, x, base_y, size, pal, light),
+        "crop" => draw_crop(fb, x, base_y, size, pal, light),
+        "rock" => draw_rock(fb, x, base_y, size, pal, light),
         "flower" => draw_flower(fb, x, base_y, size, pal, sway, night),
         "cactus" => draw_cactus(fb, x, base_y, size, pal, light),
         "alerce" => draw_alerce(fb, x, base_y, size, pal, light),
@@ -530,7 +530,7 @@ pub fn draw_plant(
         "llareta" => draw_llareta(fb, x, base_y, size, pal, light),
         "amancay" => draw_amancay(fb, x, base_y, size, pal, sway, light),
         "junquillo" => draw_junquillo(fb, x, base_y, size, pal, light),
-        _ => draw_grass(fb, x, base_y, size, pal),
+        _ => draw_grass(fb, x, base_y, size, pal, light),
     }
 }
 
@@ -701,52 +701,80 @@ fn draw_bush(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette
     );
 }
 
-fn draw_grass(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_grass(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let n = 2 + (size * 0.4).floor() as i32;
-    let (flora_l, flora_d) = (get(pal, "floraL"), get(pal, "floraD"));
+    let (hi, mid, _sh) = crown_tone(pal, light);
+    let lit = lit_left(light);
+    let n = 3 + (size * 0.4).floor() as i32;
     for i in 0..n {
         let gx = x + i - (n >> 1);
-        let gh = 1 + ((i * 7 + x) % 2);
-        let c = if i % 2 != 0 { flora_l } else { flora_d };
-        dr(fb, gx, base_y - gh, 1, gh, c);
+        let h = (size * 0.5).round().max(2.0) as i32 + (i * 7 + x).rem_euclid(2);
+        let c = if (gx < x) == lit { hi } else { mid };
+        dr(fb, gx, base_y - h, 1, h, c);
+        // Punta inclinada de la brizna.
+        dr(
+            fb,
+            gx + if i % 2 == 0 { 1 } else { -1 },
+            base_y - h - 1,
+            1,
+            1,
+            c,
+        );
     }
 }
 
-fn draw_crop(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_crop(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
+    let (hi, mid, _sh) = crown_tone(pal, light);
     let w = (size * 0.9).round().max(4.0) as i32;
-    let h = (size * 0.32).round().max(1.0) as i32;
+    let h = (size * 0.3).round().max(1.0) as i32;
+    // Franja de tierra.
     dr(fb, x - (w >> 1), base_y - h, w, h, get(pal, "valleyD"));
+    // Hileras de espigas con punta clara.
     let mut i = 0;
     while i < w {
-        let c = if i % 4 == 0 {
-            get(pal, "valleyL")
-        } else {
-            get(pal, "costaL")
-        };
-        dr(fb, x - (w >> 1) + i, base_y - h - 1, 1, 1, c);
+        let gh = 1 + (i * 7 + x).rem_euclid(2);
+        let c = if i % 4 == 0 { hi } else { mid };
+        dr(fb, x - (w >> 1) + i, base_y - h - gh, 1, gh, c);
         i += 2;
     }
 }
 
-fn draw_rock(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette) {
+fn draw_rock(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
     let x = r(x);
     let base_y = r(base_y);
-    let w = (size * 0.55).round().max(3.0) as i32;
-    let h = (size * 0.32).round().max(2.0) as i32;
-    let profile = [0.45, 0.75, 1.0, 0.95, 0.7];
+    let rk = get(pal, "rock");
+    let rkd = get(pal, "rockD");
+    let hi = shade(rk, 0.2);
+    let lit = lit_left(light);
+    let w = (size * 0.6).round().max(3.0) as i32;
+    let h = (size * 0.34).round().max(2.0) as i32;
+    let profile = [0.4, 0.7, 0.95, 1.0, 0.85, 0.6];
     for rr in 0..h {
-        let f = profile[(rr.min(4)) as usize];
+        let f = profile[(rr as usize).min(profile.len() - 1)];
         let half = ((w as f64 / 2.0) * f).round().max(1.0) as i32;
         let yy = base_y - h + rr;
-        dr(fb, x - half, yy, half * 2, 1, get(pal, "rockD"));
-        if rr == 0 {
-            dr(fb, x - half, yy, half * 2, 1, get(pal, "rock"));
+        dr(
+            fb,
+            x - half,
+            yy,
+            half * 2,
+            1,
+            if rr == 0 { rk } else { rkd },
+        );
+        if rr > 0 && rr + 1 < h {
+            if lit {
+                dr(fb, x - half + 1, yy, (half - 1).max(1), 1, hi);
+            } else {
+                dr(fb, x + 1, yy, (half - 1).max(1), 1, hi);
+            }
         }
     }
+    // Piedritas sueltas al pie.
+    dr(fb, x - w / 2 - 2, base_y - 1, 1, 1, rkd);
+    dr(fb, x + w / 2 + 1, base_y - 1, 1, 1, rkd);
 }
 
 fn draw_cactus(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
@@ -1784,9 +1812,13 @@ fn draw_flower(
         };
         let yy = base_y - back;
         dr(fb, fx, yy - stem_h, 1, stem_h, flora_d);
+        // Corola de 5 pétalos.
         dr(fb, fx, yy - stem_h - 1, 1, 1, col);
+        dr(fb, fx - 1, yy - stem_h - 1, 1, 1, col);
+        dr(fb, fx + 1, yy - stem_h - 1, 1, 1, col);
         dr(fb, fx - 1, yy - stem_h, 1, 1, col);
         dr(fb, fx + 1, yy - stem_h, 1, 1, col);
+        dr(fb, fx, yy - stem_h - 2, 1, 1, [0xf7, 0xd9, 0x70]);
     }
 }
 
