@@ -24,6 +24,12 @@ Juncos de humedales y bordes de agua.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Juncus)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/243289355 | jstarspots | CC0 | `junquillo-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

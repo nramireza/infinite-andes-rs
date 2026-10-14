@@ -23,8 +23,9 @@ Cada especie real declara en su registro (`flora_data.rs` / `fauna_data.rs`) dos
 - El artículo de Wikipedia debe existir y resolver (se verifica con un `curl` antes de fijarlo;
   se usa el **nombre científico** como título, que Wikipedia redirige a la página correcta).
 
-Las **fotos PD/CC0** (Wikimedia Commons, PhyloPic) siguen en el campo `refs` como procedencia
-opcional para la forma; no son obligatorias si el `wiki` + `porte` bastan.
+Las **fotos PD/CC0** (Wikimedia Commons, PhyloPic, iNaturalist con filtro CC0) siguen en el campo
+`refs` como procedencia para la forma; no son obligatorias si el `wiki` + `porte` bastan, pero todas
+las especies reales tienen al menos una.
 
 ## Reglas
 
@@ -54,7 +55,9 @@ opcional para la forma; no son obligatorias si el `wiki` + `porte` bastan.
 - [x] Referencia estable `wiki` en las especies reales (flora y fauna).
 - [x] Campo `porte` (silueta) en todas las entradas y presente en las fichas.
 - [x] Ninguna imagen se carga en runtime ni se versiona.
-- [ ] Completar las **fotos** `refs` que faltan (10 flora y `culpeo`/`huillin`).
+- [x] Completar las **fotos** `refs`: todas las especies reales tienen ≥1 fuente PD/CC0
+  (Wikimedia Commons / PhyloPic / iNaturalist CC0). Los tipos genéricos
+  (`bush/crop/grass/rock/flower`) no llevan refs.
 - [ ] Revisar la fidelidad de todas las siluetas (por lotes, con la galería).
 
 ## Referencias

@@ -24,6 +24,12 @@ Cojín compacto de la puna; crecimiento lentísimo.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Azorella_compacta)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| detalle | https://commons.wikimedia.org/wiki/File:Azorella_compacta_close-up.JPG | Anypodetos | PD | `llareta-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

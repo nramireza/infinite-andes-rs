@@ -28,6 +28,12 @@ Macho con melena; se asolea en roqueríos y nada cerca de la costa.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Otaria_flavescens)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/29390934 | Diego Carús | CC0 | `lobo-marino-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

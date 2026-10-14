@@ -24,6 +24,12 @@ Esclerófilo de copa redonda; savia irritante.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Lithraea_caustica)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/136646708 | Fabian EGL | CC0 | `litre-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

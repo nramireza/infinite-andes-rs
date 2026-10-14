@@ -28,6 +28,12 @@ Nutria de río del sur; nada en el borde del cauce.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Lontra_provocax)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/129861389 | Rolando Díaz Fuentes | CC0 | `huillin-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

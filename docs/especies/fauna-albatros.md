@@ -28,6 +28,12 @@ Planea con las alas rígidas sobre el oleaje.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Thalassarche_melanophris)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/107783260 | steve b | CC0 | `albatros-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

@@ -24,6 +24,12 @@ Copa redondeada y aromática; hojas medicinales.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Peumus_boldus)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Peumus_boldus_-_Ventura_Botanical_Gardens_-_Ventura,_CA_-_01.jpg | Daderot | CC0 | `boldo-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

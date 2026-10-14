@@ -28,6 +28,12 @@ Zorro andino de cola rojiza; trota de día.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Lycalopex_culpaeus)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/193186810 | Diego Carús | CC0 | `culpeo-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

@@ -24,6 +24,12 @@ Ramas colgantes que le dan un aire llorón.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Maytenus_boaria)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Maytenus_boaria_-_San_Francisco_Botanical_Garden.jpg | Daderot | CC0 | `maiten-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

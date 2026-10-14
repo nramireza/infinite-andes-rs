@@ -24,6 +24,12 @@ Siempreverde denso del bosque esclerófilo.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Cryptocarya_alba)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Cryptocarya_alba_-_Jard%C3%ADn_Bot%C3%A1nico_de_Barcelona_-_Barcelona,_Spain_-_DSC09299.JPG | Daderot | CC0 | `peumo-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

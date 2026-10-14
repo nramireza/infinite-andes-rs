@@ -28,6 +28,12 @@ Delfín endémico, pequeño y sin pico; salta en grupos.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Cephalorhynchus_eutropia)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/337481488 | Diego | CC0 | `delfin-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

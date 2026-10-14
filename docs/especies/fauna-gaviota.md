@@ -28,6 +28,12 @@ Ave costera abundante; planea sobre la playa y el mar.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Larus_dominicanus)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/124356992 | Sunita Singh | CC0 | `gaviota-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

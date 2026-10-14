@@ -24,6 +24,12 @@ Conífera columnar de la precordillera.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Austrocedrus_chilensis)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Austrocedrus_chilensis,_Jardin_des_Plantes_de_Nantes,_Juillet_2018.jpg | Zythème | CC0 | `cipres-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

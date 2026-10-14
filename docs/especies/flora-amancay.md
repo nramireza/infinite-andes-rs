@@ -24,6 +24,12 @@ Flores amarillas de los claros del sur.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Alstroemeria_aurea)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| detalle | https://commons.wikimedia.org/wiki/File:WitteHeinrichFlora1868-026-Alstroemeria_aurea.png | Abraham Jacobus Wendel | PD | `amancay-01.png` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

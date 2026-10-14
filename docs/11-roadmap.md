@@ -75,7 +75,7 @@ Portado con **paridad exacta** respecto a JS:
 - [x] Revisión de siluetas de flora por `porte` (lote 1: araucaria, nalca, quillay, michay, chaura, boldo…).
 - [x] Fauna por `porte` (lote 2): contorno de 1 px automático y redibujo de aves y mamíferos marinos.
 - [ ] Calidad de dibujo: afinar el resto de sprites de fauna (cánidos, felinos, camélidos).
-- [ ] Completar fotos `refs` faltantes (10 flora, `culpeo`, `huillin`).
+- [x] Completar fotos `refs` (Commons/iNaturalist CC0) para todas las especies reales.
 - [ ] Momentos/sorpresas nuevas (eclipse, migraciones…).
 - [ ] Biomas nuevos (islas, humedales, fiordos más marcados).
 

@@ -28,6 +28,12 @@ Vuela en fila bordeando la costa; pico largo.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Pelecanus_thagus)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://www.inaturalist.org/observations/226077979 | Henggang Cui | CC0 | `pelicano-01.jpg` |
+
 ## Referencias
 
 - [06 · Fauna](../../06-fauna.md)

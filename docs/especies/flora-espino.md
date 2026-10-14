@@ -24,6 +24,12 @@ Matorral espinoso del valle y la costa en clima seco; flores amarillas.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Vachellia_caven)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Acaciacaven29.jpg | Penarc | PD | `espino-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)

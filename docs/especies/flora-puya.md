@@ -24,6 +24,12 @@ Roseta espinosa del Norte y el altiplano.
 
 - [Wikipedia](https://es.wikipedia.org/wiki/Puya_chilensis)
 
+## Referencias fotográficas
+
+| Encuadre | Fuente | Autor | Licencia | Archivo |
+|----------|--------|-------|----------|---------|
+| perfil | https://commons.wikimedia.org/wiki/File:Puya_chilensis-2.jpg | László Szalai (Beyond silence) | PD | `puya-01.jpg` |
+
 ## Referencias
 
 - [05 · Flora](../../05-flora.md)
