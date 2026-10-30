@@ -335,3 +335,20 @@ siguiente número.
 - **Consecuencia:** cambia el aspecto y la densidad de la flora, no la semilla ni el determinismo.
   La galería usa tallas 9/18/30 en celdas de 200×96; los tests dibujan a tres tallas. Se regeneran
   las fichas con `gen-species` (columna «Origen/endemismo») y se actualizan 05/08/18.
+
+## D-026 · Fondo X11 multi-monitor, reloj real y 10 fps
+
+- **Fecha:** 2026-10-30
+- **Estado:** aceptada
+- **Decisión:** en X11 el binario `wallpaper` crea una ventana *override-redirect* marcada como
+  `_NET_WM_WINDOW_TYPE_DESKTOP` que cubre la **unión de todos los monitores**. La ventana se apila
+  al fondo (`StackMode::BELOW`), deja pasar el cursor (`set_cursor_hittest(false)`) y refresca a
+  **10 fps**. Se renderiza una sola escena 32:9 y se escala a la unión. Sin argumento de hora, el
+  reloj local se captura al arrancar y se actualiza en cada fotograma.
+- **Motivo:** i3 no gestiona `_NET_WM_WINDOW_TYPE_DESKTOP` y no puede mostrar una ventana en dos
+  salidas a la vez; una ventana override-redirect queda fuera del WM y permite un paisaje continuo
+  entre monitores. El reloj real hace que el día/noche coincida con el mundo real.
+- **Consecuencia:** el fondo cubre ambos monitores con una sola escena y bajo uso de CPU. El
+  apilado se reafirma cada segundo porque algunos eventos pueden volver a subir la ventana.
+  Wayland mantiene el backend `wlr-layer-shell`; el límite de FPS podría hacerse configurable más
+  adelante.

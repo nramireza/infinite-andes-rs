@@ -88,8 +88,10 @@ Portado con **paridad exacta** respecto a JS:
 - [x] Actividad del sistema con sensores del SO ([17](17-reactividad-sistema.md)).
 - [ ] Atajos de teclado y ocultar panel.
 - [ ] Timelapse/GIF (rango de horas).
-- [ ] **Multi-monitor de mundo continuo**: lo generado en el monitor derecho persiste al pasar al
-      izquierdo (mismo mundo, `camera_x` compartido).
+- [x] **Fondo X11 multi-monitor**: una sola escena 32:9 cubre la unión de monitores con reloj real
+      y 10 fps (D-026).
+- [ ] **Multi-monitor de mundo continuo** en la ventana nativa: lo generado en el monitor derecho
+      persiste al pasar al izquierdo (mismo mundo, `camera_x` compartido).
 
 ## Pendientes transversales
 

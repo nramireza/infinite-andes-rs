@@ -64,13 +64,17 @@ cargo run --bin wallpaper -- andes 12 clear # hora fija
 
 El binario detecta la sesión automáticamente:
 
-- **X11**: ventana sin bordes a pantalla completa con `_NET_WM_WINDOW_TYPE_DESKTOP`
-  (EWMH), reafirmada tras el mapeo para quedar **detrás de los iconos**.
+- **X11**: ventana *override-redirect* sin bordes que cubre la **unión de todos los
+  monitores** y se marca como `_NET_WM_WINDOW_TYPE_DESKTOP`. Se apila al fondo
+  (`StackMode::BELOW`), deja pasar el cursor y refresca a 10 fps. Una sola escena
+  32:9 mantiene el paisaje continuo entre monitores.
 - **Wayland**: usa `wlr-layer-shell` (capa `background`) con software rendering
   (`wl_shm`, Argb8888) vía `smithay-client-toolkit`. *(Compila; no probado en este
   entorno, que no tiene compositor Wayland.)*
 
-`Esc` para salir (X11); `kill` en Wayland.
+Sin argumento de hora, el fondo usa el **reloj local real** y lo actualiza en cada
+fotograma, así que el día/noche coincide con el mundo real. `Esc` para salir (X11);
+`kill` en Wayland.
 
 ### WebAssembly (navegador)
 

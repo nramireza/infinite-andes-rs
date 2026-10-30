@@ -35,9 +35,11 @@ cargo run --bin wallpaper -- andes          # X11: Esc para salir
 
 | Sesión | Integración | Estado |
 |--------|-------------|--------|
-| **X11** | Ventana sin bordes a pantalla completa con `_NET_WM_WINDOW_TYPE_DESKTOP` (EWMH), reafirmada tras el mapeo para quedar **detrás de los iconos** | En uso |
+| **X11** | Ventana *override-redirect* que cubre la **unión de todos los monitores** con `_NET_WM_WINDOW_TYPE_DESKTOP` (EWMH), apilada al fondo (`StackMode::BELOW`), cursor transparente y 10 fps | En uso |
 | **Wayland** | `wlr-layer-shell` (capa `background`) con software rendering (`wl_shm`, Argb8888) vía `smithay-client-toolkit` | Compila; **pendiente** de probar en un compositor real (wlroots) |
 
+- Sin argumento de hora, el reloj es el **local real** y se actualiza en cada fotograma:
+  el día/noche coincide con el mundo real.
 - Salir: `Esc` en X11; `kill` en Wayland.
 - El binario vive en [`crates/andes-native/src/bin/wallpaper.rs`](../crates/andes-native/src/bin/wallpaper.rs)
   (con el backend Wayland en `wallpaper/wayland.rs`).
