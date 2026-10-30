@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Cérvido robusto de patas cortas, orejas grandes y hocico oscuro; el macho lleva astas bifurcadas cortas. Pelaje pardo; crías moteadas. Silueta: cuerpo macizo con astas en horqueta.
+Cérvido robusto y de patas cortas, orejas grandes, hocico oscuro y pelaje pardo; el macho lleva astas cortas bifurcadas. Garganta y vientre más claros. Silueta: cuerpo macizo con horqueta.
 
 ## Notas
 

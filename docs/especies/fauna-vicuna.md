@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Camélido pequeño y grácil de pelaje fino beige, cuello largo y esbelto. Silueta: como el guanaco pero más menuda y erguida.
+Camélido pequeño y grácil de pelaje fino beige, cuello largo y esbelto, vientre blanco y cara más clara. Silueta: como el guanaco pero más menuda y erguida.
 
 ## Notas
 

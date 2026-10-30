@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Planta herbácea de hojas gigantes orbiculares de borde dentado y pecíolos gruesos, en roseta a ras de suelo húmedo. Silueta: gran paraguas de hojas.
+Planta herbácea de hojas gigantes orbiculares de borde dentado, pecíolos gruesos y espiga floral rojiza que emerge entre ellas, en roseta a ras de suelo húmedo. Silueta: gran paraguas de hojas con vara central.
 
 ## Notas
 

@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Gaviota grande de dorso negro y vientre blanco, pico y patas amarillos; planea sobre playa y mar. Silueta: alas en arco.
+Gaviota grande de dorso negro, vientre blanco, pico y patas amarillos; planea sobre playa y mar. Silueta: alas en arco.
 
 ## Notas
 

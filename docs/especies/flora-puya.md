@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Roseta basal de hojas rígidas y espinosas que despliega una gran inflorescencia alta; propia del paisaje árido. Silueta: roseta espinosa con vara floral.
+Roseta basal de hojas rígidas, espinosas y de punta ganchuda que despliega una inflorescencia alta y densa, verde-amarilla; propia del paisaje árido. Silueta: roseta espinosa con espiga floral.
 
 ## Notas
 

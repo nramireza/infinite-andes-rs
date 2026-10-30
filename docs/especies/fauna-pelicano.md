@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Ave marina grande de pico largo con bolsa y cuerpo gris-blanco; vuela en fila bordeando la costa. Silueta: pico prominente y alas anchas.
+Ave marina grande de cuerpo gris-pardo, cabeza y cuello blancos, pico largo con bolsa y alas oscuras; vuela en fila bordeando la costa. Silueta: pico prominente y alas anchas.
 
 ## Notas
 

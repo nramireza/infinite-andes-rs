@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Pingüino erguido de dorso negro y vientre blanco con banda pectoral, pico y patas oscuras con tonos naranja; nada con las aletas. Silueta: cuerpo en péndulo.
+Pingüino erguido de dorso negro, vientre blanco con banda pectoral negra, pico oscuro con base rosada y patas negras. Silueta: cuerpo en péndulo.
 
 ## Notas
 

@@ -530,6 +530,40 @@ mod tests {
     }
 
     #[test]
+    fn sprites_use_defined_colors_and_consistent_frames() {
+        for sp in SPECIES {
+            assert_eq!(sp.frames.len(), 2, "{} debe tener 2 frames", sp.name);
+            let dims: Vec<(usize, usize)> = sp
+                .frames
+                .iter()
+                .map(|f| {
+                    (
+                        f.iter().map(|r| r.chars().count()).max().unwrap_or(0),
+                        f.len(),
+                    )
+                })
+                .collect();
+            assert_eq!(
+                dims[0], dims[1],
+                "{} tiene frames de distinto tamaño",
+                sp.name
+            );
+            for row in sp.frames.iter().flat_map(|f| f.iter()) {
+                for ch in row.chars() {
+                    if ch == '.' || ch == ' ' {
+                        continue;
+                    }
+                    assert!(
+                        sp.palette.iter().any(|(c, _)| c.starts_with(ch)),
+                        "{} usa '{ch}' sin color en la paleta",
+                        sp.name
+                    );
+                }
+            }
+        }
+    }
+
+    #[test]
     fn place_fauna_draws() {
         let terrain = Terrain::new(SEED);
         let pal = get_palette(12.0, "clear", 1.0);

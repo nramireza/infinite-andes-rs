@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Palmera de tronco columnar con anillos y penacho apical de frondas pinnadas que arquean y caen. Silueta: columna coronada por frondas radiales.
+Palmera de tronco grueso con cicatrices romboidales, faldón de frondas secas y penacho apical de frondas pinnadas que arquean y caen. Silueta: columna coronada por frondas radiales.
 
 ## Notas
 

@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Conífera perenne muy alta y esbelta; tronco recto y visible, copa columnar estrecha de ramillas colgantes verde oscuro. Silueta: aguja alargada.
+Conífera perenne muy alta y esbelta; tronco recto de corteza rojiza y copa columnar estrecha, con ramillas colgantes verde oscuro. Silueta: aguja alargada.
 
 ## Notas
 

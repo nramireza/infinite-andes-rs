@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Zorro gris más pequeño y estilizado, orejas grandes y cola con punta oscura. Silueta: cánido menudo.
+Zorro gris pequeño y estilizado, orejas grandes, hocico blanco y cola con punta oscura. Silueta: cánido menudo.
 
 ## Notas
 

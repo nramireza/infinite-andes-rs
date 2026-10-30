@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Felino grande y esbelto de cuerpo largo, cola gruesa y patas fuertes; pelaje leonado uniforme. Silueta: perfil alargado con cola tendida.
+Felino grande y esbelto de cuerpo largo, cola gruesa y patas fuertes; pelaje leonado uniforme, hocico y pecho blancos. Silueta: perfil alargado con cola tendida.
 
 ## Notas
 

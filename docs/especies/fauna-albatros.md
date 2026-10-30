@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Ave marina de alas largas y rígidas, dorso negro y ceja negra sobre cabeza blanca; planea sobre el oleaje. Silueta: alas rectas y alargadas.
+Ave marina de alas largas y rígidas, cuerpo blanco, dorso negro, ceja negra y pico amarillento; planea sobre el oleaje. Silueta: alas rectas y alargadas.
 
 ## Notas
 

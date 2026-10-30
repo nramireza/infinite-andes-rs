@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Delfín endémico pequeño y robusto, sin pico, dorso gris oscuro y vientre claro; salta en grupos. Silueta: lomo curvo emergiendo.
+Delfín endémico pequeño y robusto, sin pico, dorso gris oscuro y vientre claro, aleta dorsal redondeada; salta en grupos. Silueta: lomo curvo emergiendo.
 
 ## Notas
 

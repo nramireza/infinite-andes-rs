@@ -352,3 +352,23 @@ siguiente número.
   apilado se reafirma cada segundo porque algunos eventos pueden volver a subir la ventana.
   Wayland mantiene el backend `wlr-layer-shell`; el límite de FPS podría hacerse configurable más
   adelante.
+
+## D-027 · Pasada de fidelidad de sprites de flora y fauna
+
+- **Fecha:** 2026-10-30
+- **Estado:** aceptada
+- **Decisión:** revisar los sprites de **todas las especies reales** (27 de flora y 26 de fauna)
+  contra su `porte` y su referencia, corrigiendo silueta, proporción, marcas y color. Se mantienen
+  las **dimensiones actuales** de las matrices de fauna y sus **2 fotogramas**, y no se tocan los
+  spawns, zonas, rareza, comportamiento ni el determinismo.
+- **Criterios aplicados:** color y marcas de diagnóstico (cabeza roja del cóndor, franjas del
+  chingue, banda pectoral del pingüino, pico/patas amarillos de la gaviota, vientre blanco de
+  camélidos, verde real de choroy/cachaña); siluetas de flora diferenciadas (alerce columnar,
+  ciprés afilado, mañío oscuro, palma con faldón, nalca con espiga, puya con espiga densa, copao
+  glauco); y primitivas de detalle condicionadas al tamaño.
+- **Motivo:** la galería de diagnóstico (D-022) mostró que varias especies compartían formas
+  genéricas o colores incorrectos, y que algunos rasgos del `porte` (D-024) no llegaban al sprite.
+- **Consecuencia:** cambia el aspecto de flora y fauna, no la semilla. Se añade un test que exige
+  que todos los caracteres de las matrices de fauna tengan color y que ambos frames coincidan en
+  tamaño. Se regeneran las fichas con `gen-species` y se actualiza la tabla de sprites de
+  [06 · Fauna](06-fauna.md).

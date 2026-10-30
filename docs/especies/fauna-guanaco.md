@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Camélido esbelto de cuello y patas largos, cabeza pequeña, pelaje leonado y vientre blanco. Silueta: cuello erguido en S suave.
+Camélido esbelto de cuello y patas largos, cabeza pequeña grisácea, dorso leonado y vientre blanco. Silueta: cuello erguido en S suave.
 
 ## Notas
 

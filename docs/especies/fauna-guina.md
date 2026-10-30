@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Felino pequeño y redondo, pelaje moteado y cola gruesa; hábitos nocturnos. Silueta: gato menudo de cabeza grande.
+Felino pequeño y redondo, cabeza grande, cola gruesa y pelaje pardo con manchas/roscas oscuras. Silueta: gato menudo de cola espesa.
 
 ## Notas
 

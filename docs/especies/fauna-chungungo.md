@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Nutria marina pequeña y alargada de pelaje pardo; nada y se asoma entre los roqueríos. Silueta: cuerpo bajo y estirado sobre el agua.
+Nutria marina pequeña y alargada, pelaje pardo oscuro y hocico con bigotes; nada y se asoma entre roqueríos. Silueta: cuerpo bajo y estirado sobre el agua.
 
 ## Notas
 

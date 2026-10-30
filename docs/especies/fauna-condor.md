@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Ave planeadora enorme de alas anchas y rígidas con primarias digitadas; cuerpo negro con collar blanco y cabeza calva rojiza, cola corta. Silueta: alas desplegadas en planeo.
+Ave planeadora enorme de alas muy anchas y rectangulares con primarias digitadas; cuerpo negro, collar blanco y cabeza/cuello desnudos rojizos. Los machos muestran coberteras blancas en el dorso del ala. Silueta: tabla de planeo con dedos en las puntas.
 
 ## Notas
 

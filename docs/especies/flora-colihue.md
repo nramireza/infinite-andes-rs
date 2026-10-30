@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Bambú nativo de cañas verdes delgadas con nudos marcados y follaje fino en penacho; crece en cañaverales densos. Silueta: varas verticales con nudos.
+Bambú nativo de cañas verdes delgadas con nudos marcados y penachos de hojas finas en la punta; crece en cañaverales densos. Silueta: macolla de varas verticales con nudos.
 
 ## Notas
 

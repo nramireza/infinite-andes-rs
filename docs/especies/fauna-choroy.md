@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Loro endémico de cuerpo verde y cola larga con pico grueso; vuela en bandadas ruidosas. Silueta: ave de cola larga en bandada.
+Loro endémico de cuerpo verde, cola larga rojiza y mandíbula superior muy alargada; vuela en bandadas ruidosas. Silueta: ave de cola larga.
 
 ## Notas
 

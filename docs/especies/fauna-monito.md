@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Marsupial diminuto de pelaje denso pardo-grís, orejas redondas y cola larga prensil. Silueta: bolita con cola.
+Marsupial diminuto de pelaje denso pardo-grís, orejas redondas y cola larga prensil. Silueta: bolita con cola rizada.
 
 ## Notas
 

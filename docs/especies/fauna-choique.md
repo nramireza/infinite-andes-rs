@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Ñandú petizo de cuello y patas largos y plumaje gris manchado; no vuela, corre. Silueta: ave ratites erguida.
+Ñandú petizo de cuello y patas largos, plumaje gris-pardo y puntas blancas en las alas; no vuela, corre. Silueta: ave ratites erguida.
 
 ## Notas
 

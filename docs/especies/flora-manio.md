@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Conífera austral de copa estrecha, cónica y oscura, con ramillas colgantes y tronco recto. Silueta: cono alargado oscuro.
+Conífera austral de copa estrecha y oscura, con ramillas colgantes y tronco recto; los mañíos hembra muestran receptáculos carnosos rojizos. Silueta: cono alargado oscuro.
 
 ## Notas
 

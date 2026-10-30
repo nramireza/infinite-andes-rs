@@ -14,11 +14,11 @@
 
 ## Descripción / porte
 
-Cactácea columnar (copao) de tallo grueso y acanalado con costillas, brazos laterales en candelabro y espinas; flores en el ápice. Silueta: columna vertical con uno o dos brazos.
+Cactácea columnar (copao) de tallo grueso, verde glauco y acanalado con costillas y espinas; brazos laterales en candelabro y flores blancas o rosadas en el ápice. Silueta: columna vertical con uno o dos brazos.
 
 ## Notas
 
-Columna con brazos y espinas.
+Columna con brazos, costillas y espinas; flor apical blanco-rosada.
 
 ## Referencia
 

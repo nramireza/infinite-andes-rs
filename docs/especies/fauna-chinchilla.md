@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Roedor redondeado de pelaje gris muy denso, orejas grandes y cola larga; ágil entre las rocas. Silueta: cuerpo esférico con orejas y cola.
+Roedor redondeado de pelaje gris muy denso, orejas grandes, ojos oscuros y cola larga. Silueta: cuerpo esférico con orejas y cola.
 
 ## Notas
 

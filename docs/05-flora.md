@@ -20,7 +20,7 @@ escala y contorno oscuro de 1 px (D-056 JS).
 | Araucaria / Pehuén | *Araucaria araucana* | Nativa (Chile/Argentina) | `araucaria` | Centro, Sur (precordillera, valle, costa) | 30–40 m | Árbol emblema; silueta de paraguas; la copa se bambolea. |
 | Lenga / Ñire | *Nothofagus pumilio / N. antarctica* | Nativa (Patagonia) | `lenga` | Centro, Sur, Patagonia, Austral (costa, precordillera, valle) | 15–25 m | Caducifolio: pierde hojas en otoño, queda desnudo en invierno y brota en primavera. |
 | Copihue | *Lapageria rosea* | Sí (Chile) | `copihue` | Centro, Sur (costa, valle) | trepadora (hasta ~10 m) | Enredadera y flor nacional; campanas rojas en primavera/verano. |
-| Copao | *Eulychnia acida* | Sí (Chile) | `cactus` | Altiplano, Norte (precordillera, valle, costa) | 3–7 m | Columna con brazos y espinas. |
+| Copao | *Eulychnia acida* | Sí (Chile) | `cactus` | Altiplano, Norte (precordillera, valle, costa) | 3–7 m | Columna con brazos, costillas y espinas; flor apical blanco-rosada. |
 | Alerce / Lahual | *Fitzroya cupressoides* | Nativa (Chile/Argentina) | `alerce` | Sur, Austral (precordillera, costa) | 40–45 m | Conífera alta y estrecha; en peligro. |
 | Nalca / Pangue | *Gunnera tinctoria* | Nativa (Chile/Argentina) | `nalca` | Sur, Austral (valle, costa) | 1,5–3 m (hojas) | Hojas gigantes junto al agua. |
 | Colihue / Quila | *Chusquea spp.* | Nativa (Chile/Argentina) | `colihue` | Sur, Patagonia, Austral (valle, costa) | 3–6 m | Cañaverales (bambú nativo). |
@@ -121,29 +121,27 @@ comparte la misma "copa genérica" (D-023):
 - **Araucaria**: tronco grueso y **despejado en la mitad inferior**, con **verticilos horizontales
   separados** (pisos tipo pagoda con huecos), ramas de **puntas caídas**, acículas espinosas y
   **conos** redondos sobre las ramas altas. Ya no es un cono de pino ni una copa redondeada.
-- **Alerce**: tronco recto visible y copa cónica estrecha con ramas colgantes.
+- **Alerce**: tronco recto de **corteza rojiza** y copa **columnar muy estrecha** con ramillas colgantes.
 - **Lenga**: copa **piramidal** (angosta arriba, ancha abajo), distinta del resto de Nothofagus.
 - **Coihue**: **copa ancha de tres lóbulos** sobre tronco recto con **horqueta**.
 - **Roble**: copa **estrecha y erguida** en huso; caducifolio (desnudo en invierno).
-- **Mañío**: **conífera austral oscura** con ramas colgantes (más estrecha que el alerce).
-- **Ciprés**: **columna cónica** de la precordillera.
+- **Mañío**: **conífera austral oscura** y estrecha con ramillas colgantes; los ejemplares hembra muestran receptáculos carnosos rojizos.
+- **Ciprés**: **columna cónica muy afilada** de la precordillera.
 - **Canelo**: copa **densa y alta** con **ápice puntiagudo** y flores blancas.
 - **Quillay**: **copa ancha y lobulada** sobre horqueta; flores blancas.
 - **Arrayán**: **tronco canela** alto y visible y copa menuda; flor blanca.
 - **Notro**: porte esbelto con **racimos de flores escarlata**.
-- **Litre, boldo y peumo**: copas redondas diferenciadas por **textura y corteza** (litre con tronco
-  moteado, boldo grisáceo de tronco corto, peumo oscuro con **frutos rojos** en otoño/invierno).
+- **Litre, boldo y peumo**: copas redondas diferenciadas por **textura, corteza y floración** (litre con tronco moteado, boldo grisáceo de tronco corto con **flores blancas**, peumo oscuro con **frutos rojos** en otoño/invierno).
   El **quillay** lleva corteza pálida; el **canelo**, corteza rojiza.
 - **Espino**: **matorral** de ramas en abanico con **espinas** y flores amarillas (no un árbol).
-- **Michay y chaura**: arbustos bajos y compactos con flores naranjas / bayas rosadas.
+- **Michay y chaura**: arbustos bajos y compactos; el michay con **espinas trífidas**, flores naranjas y bayas azuladas, la chaura con bayas rosadas.
 - **Maitén**: copa con **ramas lloronas** que caen.
-- **Copihue**: **enredadera** de tallo sinuoso con **campanas rojas colgantes**.
-- **Palma chilena**: tronco con anillos y **frondas pinnadas que arquean y caen** (copa redondeada).
-- **Copao / cactus**: **columna gruesa con costillas**, 1–2 **brazos en candelabro** que suben,
-  espinas y **flor apical**.
-- **Nalca**: roseta de **hojas orbiculares gigantes** de borde dentado sobre pecíolos gruesos.
-- **Colihue**: cañas con **nudos** y **penacho** de hojas en la punta.
-- **Puya**: **roseta espinosa** basal con **varas florales altas** en candelabro.
+- **Copihue**: **enredadera** de tallo sinuoso con hojas acorazonadas y **campanas rojas colgantes**.
+- **Palma chilena**: tronco grueso con cicatrices romboidales, **faldón de frondas secas** y **frondas pinnadas que arquean y caen** (copa redondeada).
+- **Copao / cactus**: **columna gruesa verde glauca con costillas**, 1–2 **brazos en candelabro** que suben, espinas y **flor apical blanco-rosada**.
+- **Nalca**: roseta de **hojas orbiculares gigantes** de borde dentado sobre pecíolos gruesos, con **espiga floral rojiza** entre las hojas.
+- **Colihue**: macolla de **cañas verdes con nudos** y **penachos** de hojas finas en la punta.
+- **Puya**: **roseta espinosa** basal con **inflorescencia alta y densa** verde-amarilla.
 - **Llareta**: **cojín hemisférico** verde-amarillento con bultos de rosetas.
 - **Amancay**: varillas con **umbela** de flores amarillas; **junquillo**: macolla de juncos.
 - **Bush / grass / crop / rock / flower**: genéricos con textura propia y **luz direccional**: mata

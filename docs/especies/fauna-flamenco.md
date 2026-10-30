@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Ave zancuda de cuello largo en S, patas finas y pico curvado hacia abajo; plumaje rosado con negro en las alas. Silueta: cuello en S y patas largas.
+Ave zancuda de cuello largo en S, patas finas y pico curvado hacia abajo; plumaje rosado pálido con plumas negras de vuelo. Silueta: cuello en S y patas largas.
 
 ## Notas
 

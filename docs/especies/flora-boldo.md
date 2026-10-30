@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Árbol siempreverde de copa redondeada, hojas aromáticas grisáceas y flores blancas; tronco corto.
+Árbol siempreverde de copa redondeada, hojas aromáticas grisáceas y flores blancas pequeñas; tronco corto.
 
 ## Notas
 

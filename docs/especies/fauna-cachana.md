@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Loro austral de cuerpo verde con vientre rojizo y cola larga; en bandadas. Silueta: como el choroy, con tonos rojizos.
+Loro austral de cuerpo verde, vientre y cara rojizos y cola larga; vuela en bandadas. Silueta: como el choroy con tonos rojizos.
 
 ## Notas
 

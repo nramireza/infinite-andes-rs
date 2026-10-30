@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Ave terrícola de pecho rojizo, dorso pardo oscuro y cola corta; salta en el sotobosque. Silueta: pajarito rechoncho.
+Ave terrícola rechoncha de dorso pardo oscuro, pecho rojizo y cola corta; salta en el sotobosque. Silueta: pajarito de cola alzada.
 
 ## Notas
 

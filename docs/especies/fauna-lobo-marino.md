@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Otárido grande de pelaje pardo; el macho desarrolla melena. Se asolea en roqueríos y nada cerca de la costa. Silueta: cuerpo robusto con aletas.
+Otárido grande de pelaje pardo; el macho desarrolla melena y cabeza voluminosa. Se asolea en roqueríos y nada cerca de la costa. Silueta: cuerpo robusto con aletas.
 
 ## Notas
 

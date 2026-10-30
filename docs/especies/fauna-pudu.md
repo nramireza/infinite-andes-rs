@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Cérvido diminuto y compacto, patas cortas, orejas redondeadas y hocico corto; astas mínimas. Silueta: cuerpo redondeado y bajo.
+Cérvido diminuto y compacto, patas cortas, orejas redondeadas y pelaje rojizo; astas mínimas. Silueta: cuerpo redondeado y bajo.
 
 ## Notas
 

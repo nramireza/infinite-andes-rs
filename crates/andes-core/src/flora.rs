@@ -630,7 +630,7 @@ pub fn draw_plant(
         "notro" => draw_notro(fb, x, base_y, size, pal, season, light),
         "espino" => draw_espino(fb, x, base_y, size, pal, season, light),
         "litre" => draw_litre(fb, x, base_y, size, pal, season, light),
-        "boldo" => draw_boldo(fb, x, base_y, size, pal, light),
+        "boldo" => draw_boldo(fb, x, base_y, size, pal, season, light),
         "peumo" => draw_peumo(fb, x, base_y, size, pal, season, light),
         "maiten" => draw_maiten(fb, x, base_y, size, pal, light),
         "cipres" => draw_cipres(fb, x, base_y, size, pal, light),
@@ -1059,7 +1059,12 @@ fn draw_cactus(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
     let top = base_y - h;
     let w = (size * 0.46).round().max(4.0) as i32;
     let half = w / 2;
-    let (hi, mid, sh) = crown_tone(pal, light);
+    // Verde glauco del copao: la paleta de bosque se apaga hacia el gris de roca.
+    let (hi0, mid0, sh0) = crown_tone(pal, light);
+    let haze = get(pal, "rock");
+    let hi = lerp_color(hi0, haze, 0.55);
+    let mid = lerp_color(mid0, haze, 0.50);
+    let sh = shade(lerp_color(sh0, haze, 0.35), -0.05);
     let lit = lit_left(light);
     let sand_d = get(pal, "sandD");
 
@@ -1121,14 +1126,14 @@ fn draw_cactus(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
         }
     }
 
-    // Flor en el ápice (el copao florece cerca de la punta).
-    dr(fb, x, top - 1, 1, 1, FLOWER_COLORS[3]);
-    dr(fb, x - 1, top - 2, 1, 1, FLOWER_COLORS[0]);
-    dr(fb, x + 1, top - 2, 1, 1, FLOWER_COLORS[0]);
+    // Flor en el ápice: el copao florece blanco-rosado cerca de la punta.
+    dr(fb, x, top - 1, 1, 1, [0xf4, 0xf0, 0xe6]);
+    dr(fb, x - 1, top - 2, 1, 1, [0xf2, 0xa0, 0xb8]);
+    dr(fb, x + 1, top - 2, 1, 1, [0xf2, 0xa0, 0xb8]);
     dr(fb, x, top - 2, 1, 1, [0xf7, 0xd9, 0x70]);
     if size >= 20.0 {
-        dr(fb, x - 2, top - 1, 1, 1, FLOWER_COLORS[0]);
-        dr(fb, x + 2, top - 1, 1, 1, FLOWER_COLORS[0]);
+        dr(fb, x - 2, top - 1, 1, 1, [0xf2, 0xa0, 0xb8]);
+        dr(fb, x + 2, top - 1, 1, 1, [0xf2, 0xa0, 0xb8]);
     }
 }
 
@@ -1138,7 +1143,8 @@ fn draw_alerce(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
     let h = (size * 1.12).round().max(12.0) as i32;
     let trunk_h = (size * 0.2).round().max(3.0) as i32;
     let top = base_y - h;
-    let trunk = get(pal, "trunk");
+    // Corteza rojiza y fibrosa del alerce.
+    let trunk = lerp_color(get(pal, "trunk"), [0x7a, 0x46, 0x38], 0.30);
     let trunk_w = (size * 0.08).round().clamp(2.0, 4.0) as i32;
     dr(
         fb,
@@ -1168,8 +1174,9 @@ fn draw_alerce(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
     let n = h - trunk_h;
     let tone = crown_tone(pal, light);
     let lit = lit_left(light);
-    let half_max = (size * 0.3).round().max(2.0) as i32;
-    crown_cone(fb, x, top, n, half_max, 0xa1e, tone, lit, false);
+    // Copa columnar muy estrecha, no un cono ancho.
+    let half_max = (size * 0.21).round().max(2.0) as i32;
+    crown_cone(fb, x, top, n, half_max, 0xa1e, tone, lit, true);
     // Ramillas colgantes en los bordes y ramas interiores.
     let (hi, mid, sh) = tone;
     for i in (1..n).step_by(2) {
@@ -1250,6 +1257,22 @@ fn draw_nalca(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
             }
         }
     }
+    // Espiga floral rojiza que emerge entre las hojas (nalca en flor).
+    let spike_h = (size * 0.9).round().max(5.0) as i32;
+    let sx = x + r((hash1(x, 0xaa13) - 0.5) * size * 0.35);
+    for j in 0..spike_h {
+        let c = if j % 3 == 0 {
+            [0x8e, 0x4a, 0x32]
+        } else {
+            [0x6a, 0x3a, 0x28]
+        };
+        dr(fb, sx, base_y - j, 1, 1, c);
+    }
+    for j in (spike_h / 3..spike_h).step_by(2) {
+        dr(fb, sx - 1, base_y - j, 1, 1, [0xa8, 0x6a, 0x4a]);
+        dr(fb, sx + 1, base_y - j, 1, 1, [0xa8, 0x6a, 0x4a]);
+    }
+    dr(fb, sx, base_y - spike_h - 1, 1, 1, [0xb8, 0x7a, 0x54]);
 }
 
 fn draw_colihue(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
@@ -1305,7 +1328,7 @@ fn draw_palma(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
     let trunk = get(pal, "trunk");
     let td = shade(trunk, -0.22);
     let tl = shade(trunk, 0.12);
-    let trunk_w = (size * 0.07).round().clamp(2.0, 4.0) as i32;
+    let trunk_w = (size * 0.10).round().clamp(2.0, 5.0) as i32;
     let (hi, mid, sh) = crown_tone(pal, light);
     dr(fb, x - (trunk_w >> 1), top, trunk_w, trunk_h, trunk);
     dr(fb, x + (trunk_w >> 1) - 1, top, 1, trunk_h, td);
@@ -1349,6 +1372,23 @@ fn draw_palma(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
             hi,
             sh,
         );
+    }
+    // Faldón de frondas secas colgando bajo la corona (sello de la palma chilena).
+    let skirt = (size * 0.12).round().max(2.0) as i32;
+    for k in 0..=(trunk_w + 2) {
+        let dx = k - (trunk_w + 2) / 2;
+        if dx.abs() == (trunk_w + 2) / 2 && k % 2 == 0 {
+            continue;
+        }
+        dr(
+            fb,
+            x + dx,
+            top + 1,
+            1,
+            skirt,
+            if k % 2 == 0 { sh } else { mid },
+        );
+        dr(fb, x + dx, top + 1 + skirt, 1, 1, shade(sh, -0.1));
     }
     // Cogollo y fibras del tronco.
     dr(fb, x - 1, top - 1, 3, 1, hi);
@@ -1557,7 +1597,7 @@ fn draw_copihue(
     let h = (size * 1.1).round().max(8.0) as i32;
     let top = base_y - h;
     let trunk = get(pal, "trunk");
-    let (hi, _, d) = crown_tone(pal, light);
+    let (hi, mid, d) = crown_tone(pal, light);
 
     // Tallo trepador sinuoso.
     let mut prev = x;
@@ -1578,10 +1618,14 @@ fn draw_copihue(
         let off = r(((base_y - ly) as f64 * 0.5).sin() * 2.0);
         let lx = x + off;
         let dir = if i % 2 == 0 { 1 } else { -1 };
-        dr(fb, lx + dir, ly, 2, 1, hi);
+        // Hoja acorazonada: dos lóbulos y punta inferior.
+        dr(fb, lx + dir, ly, 1, 1, hi);
+        dr(fb, lx + dir * 2, ly, 1, 1, hi);
+        dr(fb, lx + dir, ly + 1, 1, 1, d);
         if size >= 18.0 {
-            dr(fb, lx + dir, ly + 1, 1, 1, d);
             dr(fb, lx + dir * 2, ly - 1, 1, 1, hi);
+            dr(fb, lx + dir * 2, ly + 1, 1, 1, d);
+            dr(fb, lx + dir * 3, ly, 1, 1, mid);
         }
     }
     if season != 0 && season != 3 {
@@ -1632,6 +1676,18 @@ fn draw_michay(
         );
         if size >= 16.0 {
             dr(fb, x + dx / 2, base_y - h / 3, 1, 1, hi);
+        }
+    }
+    // Espinas trífidas del michay en las puntas de las ramas.
+    let thorn = lerp_color(get(pal, "trunk"), get(pal, "sand"), 0.45);
+    for k in 0..3 {
+        let bx = x + (k - 1) * (rx / 2);
+        let by = base_y - h / 3;
+        dr(fb, bx, by, 1, 1, thorn);
+        dr(fb, bx + 1, by - 1, 1, 1, thorn);
+        dr(fb, bx - 1, by - 1, 1, 1, thorn);
+        if size >= 18.0 {
+            dr(fb, bx, by - 2, 1, 1, thorn);
         }
     }
     // Arbusto denso: tres lóbulos bajos y apiñados.
@@ -1860,7 +1916,7 @@ fn draw_manio(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
     // Tono más oscuro (conífera austral).
     let tone = (shade(hi, -0.06), shade(mid, -0.10), shade(sh, -0.10));
     let lit = lit_left(light);
-    let half_max = (size * 0.26).round().max(2.0) as i32;
+    let half_max = (size * 0.22).round().max(2.0) as i32;
     crown_cone(fb, x, top, n, half_max, 0x3a17, tone, lit, true);
     // Ramas colgantes: puntitos que cuelgan del borde cada pocas filas.
     let (hi2, mid2, sh2) = tone;
@@ -1868,7 +1924,7 @@ fn draw_manio(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
         let t = (i + 1) as f64 / n as f64;
         let half = (half_max as f64 * t.powf(1.35)).round().max(1.0) as i32;
         let yy = top + i;
-        let droop = 2 + (n / 16).clamp(0, 2);
+        let droop = 2 + (n / 14).clamp(0, 3);
         dr(fb, x - half - 1, yy + 1, 1, droop, shade(mid2, -0.12));
         dr(fb, x + half + 1, yy + 1, 1, droop, shade(mid2, -0.12));
         if i % 5 == 0 {
@@ -2304,7 +2360,15 @@ fn draw_litre(
     }
 }
 
-fn draw_boldo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette, light: f64) {
+fn draw_boldo(
+    fb: &mut Framebuffer,
+    x: f64,
+    base_y: f64,
+    size: f64,
+    pal: &Palette,
+    season: i32,
+    light: f64,
+) {
     let x = r(x);
     let base_y = r(base_y);
     let h = (size * 0.92).round().max(8.0) as i32;
@@ -2361,6 +2425,19 @@ fn draw_boldo(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palett
                 1,
                 if i % 3 == 0 { hi2 } else { d },
             );
+        }
+    }
+    // Flores blancas pequeñas en primavera/verano.
+    if season == 0 || season == 3 {
+        let n = 2 + (size * 0.22).floor() as i32;
+        for i in 0..n {
+            let hh = hash1(i * 67 + x, 0xb03);
+            let fx = x + r((hh - 0.5) * rx as f64 * 1.5);
+            let fy = top + 1 + r(hash1(i * 71 + x, 0xb04) * (crown_h - 1).max(1) as f64);
+            dr(fb, fx, fy, 1, 1, [0xf4, 0xf0, 0xe6]);
+            if size >= 18.0 {
+                dr(fb, fx + 1, fy, 1, 1, [0xf7, 0xd9, 0x70]);
+            }
         }
     }
 }
@@ -2548,7 +2625,7 @@ fn draw_cipres(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palet
         x as u32,
     );
     let n = h - trunk_h;
-    let half_max = (size * 0.22).round().max(2.0) as i32;
+    let half_max = (size * 0.17).round().max(2.0) as i32;
     // Conífera columnar de la precordillera.
     let tone = crown_tone(pal, light);
     let lit = lit_left(light);
@@ -2583,26 +2660,33 @@ fn draw_puya(fb: &mut Framebuffer, x: f64, base_y: f64, size: f64, pal: &Palette
     if size >= 18.0 {
         dr(fb, x + 1, top, 1, sh_h, shade(mid, -0.15));
     }
-    let nbr = (3 + (size * 0.2) as i32).clamp(3, 8);
-    for j in 0..nbr {
-        let t = (j + 1) as f64 / (nbr + 1) as f64;
-        let by = top + r(t * sh_h as f64);
-        let bl = ((size * 0.4) * (1.0 - t * 0.6)).round().max(1.0) as i32;
-        for k in 1..=bl {
-            let yy = by - k / 2;
-            dr(fb, x + k, yy, 1, 1, mid);
-            dr(fb, x - k, yy, 1, 1, mid);
+    // Inflorescencia alta y densa: espiga verde-amarilla, no un candelabro abierto.
+    let spike_h = (sh_h as f64 * 0.52).round().max(4.0) as i32;
+    let spike_base = base_y - spike_h;
+    for j in 0..spike_h {
+        let yy = spike_base - j;
+        let t = j as f64 / spike_h as f64;
+        let half = (1.0 + t * size * 0.16).round().max(1.0) as i32;
+        dr(
+            fb,
+            x - half,
+            yy,
+            half * 2 + 1,
+            1,
+            if j % 2 == 0 { mid } else { hi },
+        );
+        for side in [-1i32, 1] {
+            let fx = x + side * (half + 1);
+            let fc = if (j + if side > 0 { 1 } else { 0 }) % 2 == 0 {
+                FLOWER_COLORS[1]
+            } else {
+                [0xe8, 0xe0, 0x9a]
+            };
+            dr(fb, fx, yy, 1, 1, fc);
         }
-        let fc = if j % 2 == 0 {
-            FLOWER_COLORS[1]
-        } else {
-            FLOWER_COLORS[0]
-        };
-        dr(fb, x + bl, by - bl / 2, 1, 1, fc);
-        dr(fb, x - bl, by - bl / 2, 1, 1, fc);
-        if size >= 18.0 {
-            dr(fb, x + bl + 1, by - bl / 2, 1, 1, [0xf7, 0xd9, 0x70]);
-            dr(fb, x - bl - 1, by - bl / 2, 1, 1, [0xf7, 0xd9, 0x70]);
+        if size >= 18.0 && j % 3 == 0 {
+            dr(fb, x - half - 2, yy, 1, 1, [0xf7, 0xd9, 0x70]);
+            dr(fb, x + half + 2, yy, 1, 1, [0xf7, 0xd9, 0x70]);
         }
     }
     for k in (0..sh_h).step_by(3) {

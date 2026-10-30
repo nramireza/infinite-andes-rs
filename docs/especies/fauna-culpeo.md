@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Zorro grande de hocico puntiagudo, patas rojizas y cola poblada con punta negra; dorso gris-pardo. Silueta: cánido de cola espesa.
+Zorro grande de hocico puntiagudo y orejas altas; dorso gris-pardo, cabeza, flancos y patas rojizos, cola poblada con punta negra. Silueta: cánido de cola espesa.
 
 ## Notas
 

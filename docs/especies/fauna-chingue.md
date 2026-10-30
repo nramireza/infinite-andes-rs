@@ -18,7 +18,7 @@
 
 ## Descripción / porte
 
-Mofeta de cuerpo alargado y patas cortas, pelaje negro con dos franjas blancas dorsales; hocico al suelo. Silueta: baja y alargada.
+Mofeta de cuerpo alargado y patas cortas, pelaje negro con dos franjas blancas dorsales que siguen hasta la cola; hocico al suelo. Silueta: baja y alargada.
 
 ## Notas
 
