@@ -1,12 +1,12 @@
 # Amancay (`amancay`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Amancay |
 | Nombre científico | *Alstroemeria aurea* |
-| Endémica de Chile | No (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `amancay` (flora) |
 | Zona / capa | Sur, Patagonia (valle, costa) |
 | Altura relativa (juego) | ×0.6 |

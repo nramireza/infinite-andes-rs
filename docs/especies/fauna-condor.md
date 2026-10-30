@@ -1,12 +1,12 @@
 # Cóndor (`condor`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Cóndor |
 | Nombre científico | *Vultur gryphus* |
-| Endémica de Chile | No (Andes) |
+| Origen / endemismo | No (Andes) |
 | Estado UICN | NT |
 | Tipo en código | `condor` (fauna) |
 | Movimiento | `fly` |

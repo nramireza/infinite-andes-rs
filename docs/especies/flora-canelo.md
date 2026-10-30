@@ -1,12 +1,12 @@
 # Canelo (`canelo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Canelo |
 | Nombre científico | *Drimys winteri* |
-| Endémica de Chile | No (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `canelo` (flora) |
 | Zona / capa | Sur, Patagonia, Austral (valle, costa, precordillera) |
 | Altura relativa (juego) | ×1.3 |

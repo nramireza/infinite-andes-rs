@@ -1,12 +1,12 @@
 # Quillay (`quillay`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Quillay |
 | Nombre científico | *Quillaja saponaria* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `quillay` (flora) |
 | Zona / capa | Centro, Sur (precordillera, valle, costa) |
 | Altura relativa (juego) | ×1 |

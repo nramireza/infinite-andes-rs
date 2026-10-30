@@ -1,12 +1,12 @@
 # Palma chilena (`palma`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Palma chilena |
 | Nombre científico | *Jubaea chilensis* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `palma` (flora) |
 | Zona / capa | Centro (valle, costa) |
 | Altura relativa (juego) | ×1.4 |

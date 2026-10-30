@@ -1,12 +1,12 @@
-# Copao / Cactus columnar (`cactus`)
+# Copao (`cactus`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
-| Nombre común | Copao / Cactus columnar |
-| Nombre científico | *Eulychnia spp.* |
-| Endémica de Chile | No |
+| Nombre común | Copao |
+| Nombre científico | *Eulychnia acida* |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `cactus` (flora) |
 | Zona / capa | Altiplano, Norte (precordillera, valle, costa) |
 | Altura relativa (juego) | ×1.2 |
@@ -22,7 +22,7 @@ Columna con brazos y espinas.
 
 ## Referencia
 
-- [Wikipedia](https://es.wikipedia.org/wiki/Eulychnia)
+- [Wikipedia](https://es.wikipedia.org/wiki/Eulychnia_acida)
 
 ## Referencias fotográficas
 

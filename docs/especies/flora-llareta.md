@@ -1,12 +1,12 @@
 # Llareta (`llareta`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Llareta |
 | Nombre científico | *Azorella compacta* |
-| Endémica de Chile | No (Chile/Perú/Bolivia) |
+| Origen / endemismo | Nativa (Altiplano de Chile/Perú/Bolivia) |
 | Tipo en código | `llareta` (flora) |
 | Zona / capa | Altiplano (precordillera) |
 | Altura relativa (juego) | ×0.4 |

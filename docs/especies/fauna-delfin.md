@@ -1,12 +1,12 @@
 # Delfín chileno (`delfin`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Delfín chileno |
 | Nombre científico | *Cephalorhynchus eutropia* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Estado UICN | NT |
 | Tipo en código | `delfin` (fauna) |
 | Movimiento | `swim` |

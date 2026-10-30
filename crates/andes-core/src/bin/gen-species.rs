@@ -210,7 +210,7 @@ fn flora_ficha(name: &str) -> String {
          |-------|-------|\n\
          | Nombre común | {common} |\n\
          | Nombre científico | {sci} |\n\
-         | Endémica de Chile | {endemism} |\n\
+         | Origen / endemismo | {endemism} |\n\
          | Tipo en código | `{name}` (flora) |\n\
          | Zona / capa | {zone} |\n\
          | Altura relativa (juego) | ×{height} |\n\
@@ -255,7 +255,7 @@ fn fauna_ficha(sp: &andes_core::fauna::SpeciesData) -> String {
          |-------|-------|\n\
          | Nombre común | {common} |\n\
          | Nombre científico | {sci} |\n\
-         | Endémica de Chile | {endemism} |\n\
+         | Origen / endemismo | {endemism} |\n\
          | Estado UICN | {iucn} |\n\
          | Tipo en código | `{name}` (fauna) |\n\
          | Movimiento | `{movement}` |\n\
@@ -292,7 +292,7 @@ fn fauna_ficha(sp: &andes_core::fauna::SpeciesData) -> String {
 
 fn flora_table() -> String {
     let mut rows = vec![
-        "| Nombre común | Nombre científico | Endémica | Tipo en código | Zona/capa | Altura real | Notas |".to_string(),
+        "| Nombre común | Nombre científico | Origen/endemismo | Tipo en código | Zona/capa | Altura real | Notas |".to_string(),
         "|--------------|-------------------|----------|----------------|-----------|-------------|-------|".to_string(),
     ];
     for e in FLORA {
@@ -381,7 +381,7 @@ fn weight_of(rarity: &str) -> f64 {
 
 fn fauna_objetivo_table() -> String {
     let mut rows = vec![
-        "| Nombre común | Nombre científico | Endémica | Capa/zona | Actividad | Comportamiento |"
+        "| Nombre común | Nombre científico | Origen/endemismo | Capa/zona | Actividad | Comportamiento |"
             .to_string(),
         "|--------------|-------------------|----------|-----------|-----------|----------------|"
             .to_string(),

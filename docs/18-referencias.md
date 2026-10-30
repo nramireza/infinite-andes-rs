@@ -1,6 +1,6 @@
 # 18 · Referencias
 
-> Estado: en progreso · Actualizado: 2026-10-14
+> Estado: en progreso · Actualizado: 2026-10-30
 
 Uso de **referencias reales como guía** para dibujar la flora y la fauna con fidelidad. Son
 **material de edición**: nunca se cargan en tiempo de ejecución (el sprite/la planta se dibuja en
@@ -22,6 +22,9 @@ Cada especie real declara en su registro (`flora_data.rs` / `fauna_data.rs`) dos
   vacío.
 - El artículo de Wikipedia debe existir y resolver (se verifica con un `curl` antes de fijarlo;
   se usa el **nombre científico** como título, que Wikipedia redirige a la página correcta).
+- El campo de **origen/endemismo** distingue `Sí (Chile)` (endémica estricta) de
+  `Nativa (Chile/Argentina)`, `Nativa (Patagonia)`, etc. (nativa compartida). El catálogo prioriza
+  las endémicas, pero conserva las especies emblemáticas del cono sur (D-025).
 
 Las **fotos PD/CC0** (Wikimedia Commons, PhyloPic, iNaturalist con filtro CC0) siguen en el campo
 `refs` como procedencia para la forma; no son obligatorias si el `wiki` + `porte` bastan, pero todas

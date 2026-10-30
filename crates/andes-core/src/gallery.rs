@@ -13,7 +13,7 @@ use crate::framebuffer::Framebuffer;
 use crate::palette::{get, shade, Palette, Rgb};
 
 const CHECK: i32 = 8;
-const FLORA_SIZES: [f64; 3] = [6.0, 10.0, 15.0];
+const FLORA_SIZES: [f64; 3] = [9.0, 18.0, 30.0];
 
 /// Rellena con un tablero de cuadros `c0`/`c1` de `CHECK` px.
 fn checker(fb: &mut Framebuffer, x0: i32, y0: i32, w: i32, h: i32, c0: Rgb, c1: Rgb) {
@@ -48,7 +48,7 @@ fn grid_fb(count: usize, cols: usize, cw: i32, ch: i32) -> Framebuffer {
 /// Hoja de flora: una celda por entrada de `FLORA`, con tres tallas por porte.
 pub fn flora_sheet(pal: &Palette, season: i32, cols: usize) -> Framebuffer {
     let cols = cols.max(1);
-    let (cw, ch) = (140, 56);
+    let (cw, ch) = (200, 96);
     let mut fb = grid_fb(flora::FLORA.len(), cols, cw, ch);
     let base = get(pal, "skyMid");
     let (c0, c1) = (shade(base, -0.05), shade(base, -0.22));
@@ -60,10 +60,10 @@ pub fn flora_sheet(pal: &Palette, season: i32, cols: usize) -> Framebuffer {
     for (i, e) in flora::FLORA.iter().enumerate() {
         let cx = (i % cols) as i32 * cw;
         let cy = (i / cols) as i32 * ch;
-        let gy = cy + ch - 14;
+        let gy = cy + ch - 16;
         fb.fill_rect(cx, gy + 1, cw, 1, ground, 0.6);
         for (j, sb) in FLORA_SIZES.iter().enumerate() {
-            let sx = cx + 8 + j as i32 * 44;
+            let sx = cx + 10 + j as i32 * 62;
             flora::draw_plant(
                 &mut fb,
                 sx as f64,
@@ -78,7 +78,7 @@ pub fn flora_sheet(pal: &Palette, season: i32, cols: usize) -> Framebuffer {
                 -0.6,
             );
         }
-        font::draw_text(&mut fb, e.name, cx + 3, cy + ch - 7, label, 1);
+        font::draw_text(&mut fb, e.name, cx + 3, cy + ch - 8, label, 1);
     }
     fb
 }

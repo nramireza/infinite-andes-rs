@@ -1,12 +1,12 @@
 # Puya (`puya`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Puya |
 | Nombre científico | *Puya chilensis* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `puya` (flora) |
 | Zona / capa | Altiplano, Norte (precordillera, costa) |
 | Altura relativa (juego) | ×0.9 |

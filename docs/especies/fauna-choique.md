@@ -1,12 +1,12 @@
 # Choique / Ñandú petizo (`choique`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Choique / Ñandú petizo |
 | Nombre científico | *Rhea pennata* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | NT |
 | Tipo en código | `choique` (fauna) |
 | Movimiento | `walk` |

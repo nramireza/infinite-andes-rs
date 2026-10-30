@@ -1,12 +1,12 @@
 # Güiña / Kodkod (`guina`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Güiña / Kodkod |
 | Nombre científico | *Leopardus guigna* |
-| Endémica de Chile | Sí (Chile/Argentina) |
+| Origen / endemismo | Sí (Chile/Argentina) |
 | Estado UICN | LC |
 | Tipo en código | `guina` (fauna) |
 | Movimiento | `hop` |

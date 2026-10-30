@@ -1,12 +1,12 @@
 # Zorro chilla (`chilla`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Zorro chilla |
 | Nombre científico | *Lycalopex griseus* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | LC |
 | Tipo en código | `chilla` (fauna) |
 | Movimiento | `walk` |

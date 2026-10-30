@@ -142,7 +142,7 @@ pub const LAYERS: [Layer; 6] = [
         rivers: None,
         fjords: None,
         darken: 0.0,
-        flora: Some(flora(84.0, 5.0, 10.0, 0.2, 1.0)),
+        flora: Some(flora(96.0, 9.0, 18.0, 0.2, 1.0)),
         fauna: Some(fauna(200.0, 0.3)),
     },
     Layer {
@@ -165,7 +165,7 @@ pub const LAYERS: [Layer; 6] = [
         rivers: Some(ch(1100.0, 0.45, 3.2, 7.0, 4.2)),
         fjords: Some(ch(64.0, 0.6, 5.0, 11.0, 5.0)),
         darken: 0.0,
-        flora: Some(flora(40.0, 5.0, 12.0, 0.75, 5.0)),
+        flora: Some(flora(50.0, 9.0, 22.0, 0.7, 4.0)),
         fauna: Some(fauna(150.0, 0.5)),
     },
     Layer {
@@ -188,7 +188,7 @@ pub const LAYERS: [Layer; 6] = [
         rivers: Some(ch(1500.0, 0.4, 2.1, 5.0, 4.5)),
         fjords: Some(ch(60.0, 0.62, 4.5, 8.0, 5.0)),
         darken: 0.0,
-        flora: Some(flora(44.0, 8.0, 18.0, 0.8, 4.0)),
+        flora: Some(flora(52.0, 14.0, 32.0, 0.7, 3.0)),
         fauna: Some(fauna(160.0, 0.55)),
     },
     Layer {
@@ -211,7 +211,7 @@ pub const LAYERS: [Layer; 6] = [
         rivers: None,
         fjords: None,
         darken: 0.0,
-        flora: Some(flora(50.0, 4.0, 8.0, 0.5, 3.0)),
+        flora: Some(flora(58.0, 7.0, 14.0, 0.5, 2.0)),
         fauna: Some(fauna(200.0, 0.3)),
     },
     Layer {

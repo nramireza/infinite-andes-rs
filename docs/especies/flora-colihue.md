@@ -1,12 +1,12 @@
 # Colihue / Quila (`colihue`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Colihue / Quila |
 | Nombre científico | *Chusquea spp.* |
-| Endémica de Chile | No |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `colihue` (flora) |
 | Zona / capa | Sur, Patagonia, Austral (valle, costa) |
 | Altura relativa (juego) | ×1.1 |

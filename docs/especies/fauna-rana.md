@@ -1,12 +1,12 @@
 # Rana de Darwin (`rana`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Rana de Darwin |
 | Nombre científico | *Rhinoderma darwinii* |
-| Endémica de Chile | Sí (Chile/Argentina) |
+| Origen / endemismo | Sí (Chile/Argentina) |
 | Estado UICN | EN |
 | Tipo en código | `rana` (fauna) |
 | Movimiento | `sit` |

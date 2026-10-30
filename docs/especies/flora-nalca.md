@@ -1,12 +1,12 @@
 # Nalca / Pangue (`nalca`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Nalca / Pangue |
 | Nombre científico | *Gunnera tinctoria* |
-| Endémica de Chile | Sí (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `nalca` (flora) |
 | Zona / capa | Sur, Austral (valle, costa) |
 | Altura relativa (juego) | ×0.9 |

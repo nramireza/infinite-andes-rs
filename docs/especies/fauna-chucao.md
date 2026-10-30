@@ -1,12 +1,12 @@
 # Chucao (`chucao`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Chucao |
 | Nombre científico | *Scelorchilus rubecula* |
-| Endémica de Chile | No (Chile/Argentina) |
+| Origen / endemismo | No (Chile/Argentina) |
 | Estado UICN | LC |
 | Tipo en código | `chucao` (fauna) |
 | Movimiento | `hop` |

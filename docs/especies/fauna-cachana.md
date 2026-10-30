@@ -1,12 +1,12 @@
 # Cachaña (`cachana`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Cachaña |
 | Nombre científico | *Enicognathus ferrugineus* |
-| Endémica de Chile | No (Patagonia) |
+| Origen / endemismo | No (Patagonia) |
 | Estado UICN | LC |
 | Tipo en código | `cachana` (fauna) |
 | Movimiento | `flock` |

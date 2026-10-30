@@ -1,6 +1,6 @@
 # Especies
 
-> Fichas generadas con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Fichas generadas con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 Una ficha por especie (flora y fauna), generada desde los registros `FLORA` y `SPECIES`
 (fuente única de identidad, zonas y metadata). Plantilla en [`../templates/especimen.md`](../templates/especimen.md).
@@ -10,7 +10,7 @@ Una ficha por especie (flora y fauna), generada desde los registros `FLORA` y `S
 - [Araucaria / Pehuén](flora-araucaria.md)
 - [Lenga / Ñire](flora-lenga.md)
 - [Copihue](flora-copihue.md)
-- [Copao / Cactus columnar](flora-cactus.md)
+- [Copao](flora-cactus.md)
 - [Alerce / Lahual](flora-alerce.md)
 - [Nalca / Pangue](flora-nalca.md)
 - [Colihue / Quila](flora-colihue.md)

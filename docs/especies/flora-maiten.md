@@ -1,12 +1,12 @@
 # Maitén (`maiten`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Maitén |
 | Nombre científico | *Maytenus boaria* |
-| Endémica de Chile | No (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `maiten` (flora) |
 | Zona / capa | Centro, Sur (valle) |
 | Altura relativa (juego) | ×1.1 |

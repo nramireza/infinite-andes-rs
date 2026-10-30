@@ -1,12 +1,12 @@
 # Puma (`puma`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Puma |
 | Nombre científico | *Puma concolor* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | LC (NT nacional) |
 | Tipo en código | `puma` (fauna) |
 | Movimiento | `walk` |

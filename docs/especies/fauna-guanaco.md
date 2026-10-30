@@ -1,12 +1,12 @@
 # Guanaco (`guanaco`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Guanaco |
 | Nombre científico | *Lama guanicoe* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | LC |
 | Tipo en código | `guanaco` (fauna) |
 | Movimiento | `walk` |

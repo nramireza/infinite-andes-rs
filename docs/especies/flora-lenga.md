@@ -1,12 +1,12 @@
 # Lenga / Ñire (`lenga`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Lenga / Ñire |
 | Nombre científico | *Nothofagus pumilio / N. antarctica* |
-| Endémica de Chile | No (Patagonia) |
+| Origen / endemismo | Nativa (Patagonia) |
 | Tipo en código | `lenga` (flora) |
 | Zona / capa | Centro, Sur, Patagonia, Austral (costa, precordillera, valle) |
 | Altura relativa (juego) | ×1.3 |

@@ -1,12 +1,12 @@
 # Boldo (`boldo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Boldo |
 | Nombre científico | *Peumus boldus* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `boldo` (flora) |
 | Zona / capa | Centro (precordillera, costa) |
 | Altura relativa (juego) | ×0.85 |

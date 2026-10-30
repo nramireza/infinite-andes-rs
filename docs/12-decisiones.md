@@ -313,3 +313,25 @@ siguiente número.
   con la galería, con tolerancia a cambios grandes por fidelidad. Los enlaces de Wikipedia se
   verifican (resuelven) antes de fijarse. La metadata de identidad se mantiene como **fuente de este
   repositorio**.
+
+## D-025 · Flora más grande, detallada y con criterio nativo/endémico
+
+- **Fecha:** 2026-10-30
+- **Estado:** aceptada
+- **Decisión:** agrandar los sprites de **toda la flora** ~1,8× (árboles de ~50–65 px en las capas
+  cercanas) y añadir un **pase de detalle** condicionado al tamaño: corteza, ramas interiores,
+  conos, bayas, racimos florales, espigas y motas de hoja. La escala se sube en los rangos
+  `min_size`–`max_size` de `terrain.rs` y se compensa bajando la densidad (`chunk_w` y `max_per`).
+  La **araucaria** se redibuja con tronco grueso despejado, verticilos horizontales separados,
+  puntas caídas y conos, en vez de una copa cónica genérica.
+- **Criterio de especies:** el catálogo se mantiene como **flora nativa/endémica del cono sur**;
+  se distinguen las endémicas estrictas (`Sí (Chile)`) de las nativas compartidas con Argentina,
+  Patagonia o el altiplano. Se precisa el copao como *Eulychnia acida* (endémica de Chile) y se
+  corrigen las etiquetas de endemismo de todas las fichas.
+- **Motivo:** los sprites eran pequeños (~25–35 px) y el detalle se perdía; además varias siluetas
+  no se leían como la especie real, en particular la araucaria. La galería de diagnóstico (D-022)
+  y el render completo mostraron que hacía falta más resolución de dibujo y una composición menos
+  densa.
+- **Consecuencia:** cambia el aspecto y la densidad de la flora, no la semilla ni el determinismo.
+  La galería usa tallas 9/18/30 en celdas de 200×96; los tests dibujan a tres tallas. Se regeneran
+  las fichas con `gen-species` (columna «Origen/endemismo») y se actualizan 05/08/18.

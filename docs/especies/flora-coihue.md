@@ -1,12 +1,12 @@
 # Coihue (`coihue`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Coihue |
 | Nombre científico | *Nothofagus dombeyi* |
-| Endémica de Chile | No (Patagonia) |
+| Origen / endemismo | Nativa (Patagonia) |
 | Tipo en código | `coihue` (flora) |
 | Zona / capa | Centro, Sur, Patagonia, Austral (valle, costa, precordillera) |
 | Altura relativa (juego) | ×1.7 |

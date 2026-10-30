@@ -1,12 +1,12 @@
 # Copihue (`copihue`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Copihue |
 | Nombre científico | *Lapageria rosea* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `copihue` (flora) |
 | Zona / capa | Centro, Sur (costa, valle) |
 | Altura relativa (juego) | ×1.1 |

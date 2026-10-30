@@ -1,12 +1,12 @@
 # Lobo marino común (`lobo-marino`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Lobo marino común |
 | Nombre científico | *Otaria flavescens* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | LC |
 | Tipo en código | `lobo-marino` (fauna) |
 | Movimiento | `swim` |

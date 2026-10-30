@@ -1,12 +1,12 @@
 # Michay (`michay`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Michay |
 | Nombre científico | *Berberis darwinii* |
-| Endémica de Chile | No (Patagonia) |
+| Origen / endemismo | Nativa (Patagonia) |
 | Tipo en código | `michay` (flora) |
 | Zona / capa | Centro, Sur, Patagonia (valle, costa, precordillera) |
 | Altura relativa (juego) | ×0.7 |

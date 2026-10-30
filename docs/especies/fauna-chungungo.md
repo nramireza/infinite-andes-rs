@@ -1,12 +1,12 @@
 # Chungungo (`chungungo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Chungungo |
 | Nombre científico | *Lontra felina* |
-| Endémica de Chile | Sí (Chile/Perú) |
+| Origen / endemismo | Sí (Chile/Perú) |
 | Estado UICN | EN |
 | Tipo en código | `chungungo` (fauna) |
 | Movimiento | `swim` |

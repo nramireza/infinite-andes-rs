@@ -1,12 +1,12 @@
 # Litre (`litre`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Litre |
 | Nombre científico | *Lithraea caustica* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `litre` (flora) |
 | Zona / capa | Centro (valle, costa) |
 | Altura relativa (juego) | ×0.75 |

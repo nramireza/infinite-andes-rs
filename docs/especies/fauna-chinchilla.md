@@ -1,12 +1,12 @@
 # Chinchilla de cola larga (`chinchilla`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Chinchilla de cola larga |
 | Nombre científico | *Chinchilla lanigera* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Estado UICN | EN |
 | Tipo en código | `chinchilla` (fauna) |
 | Movimiento | `hop` |

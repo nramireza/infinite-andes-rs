@@ -1,12 +1,12 @@
 # Peumo (`peumo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Peumo |
 | Nombre científico | *Cryptocarya alba* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Tipo en código | `peumo` (flora) |
 | Zona / capa | Centro, Sur (valle, costa) |
 | Altura relativa (juego) | ×1 |

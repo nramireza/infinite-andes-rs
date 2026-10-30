@@ -1,12 +1,12 @@
 # Pingüino de Humboldt (`pinguino`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Pingüino de Humboldt |
 | Nombre científico | *Spheniscus humboldti* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | VU |
 | Tipo en código | `pinguino` (fauna) |
 | Movimiento | `swim` |

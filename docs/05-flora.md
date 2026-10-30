@@ -1,6 +1,6 @@
 # 05 · Flora
 
-> Estado: estable · Actualizado: 2026-10-12
+> Estado: estable · Actualizado: 2026-10-30
 
 Implementado en [`crates/andes-core/src/flora.rs`](../crates/andes-core/src/flora.rs) (registro,
 dibujo y colocación) usando la paleta de [`palette.rs`](../crates/andes-core/src/palette.rs). La flora
@@ -15,39 +15,39 @@ escala y contorno oscuro de 1 px (D-056 JS).
 ## Especies representadas (actualmente)
 
 <!-- BEGIN:flora-tabla (generado con `cargo run -p andes-core --bin gen-species`) -->
-| Nombre común | Nombre científico | Endémica | Tipo en código | Zona/capa | Altura real | Notas |
+| Nombre común | Nombre científico | Origen/endemismo | Tipo en código | Zona/capa | Altura real | Notas |
 |--------------|-------------------|----------|----------------|-----------|-------------|-------|
-| Araucaria / Pehuén | *Araucaria araucana* | Sí (Chile/Argentina) | `araucaria` | Centro, Sur (precordillera, valle, costa) | 30–40 m | Árbol emblema; silueta de paraguas; la copa se bambolea. |
-| Lenga / Ñire | *Nothofagus pumilio / N. antarctica* | No (Patagonia) | `lenga` | Centro, Sur, Patagonia, Austral (costa, precordillera, valle) | 15–25 m | Caducifolio: pierde hojas en otoño, queda desnudo en invierno y brota en primavera. |
+| Araucaria / Pehuén | *Araucaria araucana* | Nativa (Chile/Argentina) | `araucaria` | Centro, Sur (precordillera, valle, costa) | 30–40 m | Árbol emblema; silueta de paraguas; la copa se bambolea. |
+| Lenga / Ñire | *Nothofagus pumilio / N. antarctica* | Nativa (Patagonia) | `lenga` | Centro, Sur, Patagonia, Austral (costa, precordillera, valle) | 15–25 m | Caducifolio: pierde hojas en otoño, queda desnudo en invierno y brota en primavera. |
 | Copihue | *Lapageria rosea* | Sí (Chile) | `copihue` | Centro, Sur (costa, valle) | trepadora (hasta ~10 m) | Enredadera y flor nacional; campanas rojas en primavera/verano. |
-| Copao / Cactus columnar | *Eulychnia spp.* | No | `cactus` | Altiplano, Norte (precordillera, valle, costa) | 3–7 m | Columna con brazos y espinas. |
-| Alerce / Lahual | *Fitzroya cupressoides* | Sí (Chile/Argentina) | `alerce` | Sur, Austral (precordillera, costa) | 40–45 m | Conífera alta y estrecha; en peligro. |
-| Nalca / Pangue | *Gunnera tinctoria* | Sí (Chile/Argentina) | `nalca` | Sur, Austral (valle, costa) | 1,5–3 m (hojas) | Hojas gigantes junto al agua. |
-| Colihue / Quila | *Chusquea spp.* | No | `colihue` | Sur, Patagonia, Austral (valle, costa) | 3–6 m | Cañaverales (bambú nativo). |
+| Copao | *Eulychnia acida* | Sí (Chile) | `cactus` | Altiplano, Norte (precordillera, valle, costa) | 3–7 m | Columna con brazos y espinas. |
+| Alerce / Lahual | *Fitzroya cupressoides* | Nativa (Chile/Argentina) | `alerce` | Sur, Austral (precordillera, costa) | 40–45 m | Conífera alta y estrecha; en peligro. |
+| Nalca / Pangue | *Gunnera tinctoria* | Nativa (Chile/Argentina) | `nalca` | Sur, Austral (valle, costa) | 1,5–3 m (hojas) | Hojas gigantes junto al agua. |
+| Colihue / Quila | *Chusquea spp.* | Nativa (Chile/Argentina) | `colihue` | Sur, Patagonia, Austral (valle, costa) | 3–6 m | Cañaverales (bambú nativo). |
 | Palma chilena | *Jubaea chilensis* | Sí (Chile) | `palma` | Centro (valle, costa) | 15–20 m | Tronco esbelto y frondas; en peligro. |
-| Coihue | *Nothofagus dombeyi* | No (Patagonia) | `coihue` | Centro, Sur, Patagonia, Austral (valle, costa, precordillera) | 35–45 m | Copa ancha y redondeada; tronco recto. |
-| Roble | *Nothofagus obliqua* | Sí (Chile/Argentina) | `roble` | Centro, Sur (valle, costa) | 25–35 m | Caducifolio; copa estrecha y erguida; pierde hojas en otoño. |
-| Michay | *Berberis darwinii* | No (Patagonia) | `michay` | Centro, Sur, Patagonia (valle, costa, precordillera) | 1–3 m | Arbusto espinoso; flores naranjas en primavera/verano. |
-| Chaura | *Gaultheria mucronata* | No (Patagonia) | `chaura` | Centro, Sur, Patagonia, Austral (costa, valle) | 0,5–1,5 m | Arbusto achaparrado con bayas blanco-rosadas; perenne. |
+| Coihue | *Nothofagus dombeyi* | Nativa (Patagonia) | `coihue` | Centro, Sur, Patagonia, Austral (valle, costa, precordillera) | 35–45 m | Copa ancha y redondeada; tronco recto. |
+| Roble | *Nothofagus obliqua* | Nativa (Chile/Argentina) | `roble` | Centro, Sur (valle, costa) | 25–35 m | Caducifolio; copa estrecha y erguida; pierde hojas en otoño. |
+| Michay | *Berberis darwinii* | Nativa (Patagonia) | `michay` | Centro, Sur, Patagonia (valle, costa, precordillera) | 1–3 m | Arbusto espinoso; flores naranjas en primavera/verano. |
+| Chaura | *Gaultheria mucronata* | Nativa (Patagonia) | `chaura` | Centro, Sur, Patagonia, Austral (costa, valle) | 0,5–1,5 m | Arbusto achaparrado con bayas blanco-rosadas; perenne. |
 | Quillay | *Quillaja saponaria* | Sí (Chile) | `quillay` | Centro, Sur (precordillera, valle, costa) | 10–15 m | Esclerófilo; flores blancas en primavera/verano. |
-| Mañío | *Podocarpus spp.* | No (Patagonia) | `manio` | Sur, Patagonia, Austral (valle, costa, precordillera) | 10–20 m | Conífera austral oscura y estrecha; perenne. |
-| Canelo | *Drimys winteri* | No (Chile/Argentina) | `canelo` | Sur, Patagonia, Austral (valle, costa, precordillera) | 15–20 m | Siempreverde de copa densa; flor blanca; árbol sagrado mapuche. |
-| Arrayán | *Luma apiculata* | No (Chile/Argentina) | `arrayan` | Sur, Patagonia, Austral (valle, costa) | 10–15 m | Tronco canela rojizo y copa menuda; flor blanca. |
-| Notro / Ciruelillo | *Embothrium coccineum* | No (Chile/Argentina) | `notro` | Sur, Patagonia, Austral (valle, costa) | 5–10 m | Ramilletes de flores rojas. |
+| Mañío | *Podocarpus spp.* | Nativa (Patagonia) | `manio` | Sur, Patagonia, Austral (valle, costa, precordillera) | 10–20 m | Conífera austral oscura y estrecha; perenne. |
+| Canelo | *Drimys winteri* | Nativa (Chile/Argentina) | `canelo` | Sur, Patagonia, Austral (valle, costa, precordillera) | 15–20 m | Siempreverde de copa densa; flor blanca; árbol sagrado mapuche. |
+| Arrayán | *Luma apiculata* | Nativa (Chile/Argentina) | `arrayan` | Sur, Patagonia, Austral (valle, costa) | 10–15 m | Tronco canela rojizo y copa menuda; flor blanca. |
+| Notro / Ciruelillo | *Embothrium coccineum* | Nativa (Chile/Argentina) | `notro` | Sur, Patagonia, Austral (valle, costa) | 5–10 m | Ramilletes de flores rojas. |
 | Arbusto genérico | — | — | `bush` | Altiplano, Norte, Centro, Sur, Patagonia, Austral (precordillera, valle, costa) | — | Bulto verde redondeado. |
 | Cultivos / campos | — | — | `crop` | Norte, Centro (valle) | — | Hileras de cultivo; refuerza el valle agrícola. |
 | Pasto / duna | — | — | `grass` | Altiplano, Norte, Centro, Sur, Patagonia, Austral (precordillera, valle, costa, playa) | — | Matas pequeñas de pasto. |
 | Rocas | — | — | `rock` | Altiplano, Norte, Centro, Sur, Patagonia, Austral (precordillera, valle, costa, playa) | — | Pedreros sueltos. |
-| Espino | *Acacia caven* | No (Chile/Argentina) | `espino` | Norte, Centro (valle, costa) | 2–4 m | Matorral espinoso del valle y la costa en clima seco; flores amarillas. |
+| Espino | *Acacia caven* | Nativa (Chile/Argentina) | `espino` | Norte, Centro (valle, costa) | 2–4 m | Matorral espinoso del valle y la costa en clima seco; flores amarillas. |
 | Litre | *Lithraea caustica* | Sí (Chile) | `litre` | Centro (valle, costa) | 3–8 m | Esclerófilo de copa redonda; savia irritante. |
 | Boldo | *Peumus boldus* | Sí (Chile) | `boldo` | Centro (precordillera, costa) | 5–12 m | Copa redondeada y aromática; hojas medicinales. |
 | Peumo | *Cryptocarya alba* | Sí (Chile) | `peumo` | Centro, Sur (valle, costa) | 10–18 m | Siempreverde denso del bosque esclerófilo. |
-| Maitén | *Maytenus boaria* | No (Chile/Argentina) | `maiten` | Centro, Sur (valle) | 6–15 m | Ramas colgantes que le dan un aire llorón. |
-| Ciprés de la cordillera | *Austrocedrus chilensis* | No (Chile/Argentina) | `cipres` | Centro, Sur (precordillera) | 10–20 m | Conífera columnar de la precordillera. |
+| Maitén | *Maytenus boaria* | Nativa (Chile/Argentina) | `maiten` | Centro, Sur (valle) | 6–15 m | Ramas colgantes que le dan un aire llorón. |
+| Ciprés de la cordillera | *Austrocedrus chilensis* | Nativa (Chile/Argentina) | `cipres` | Centro, Sur (precordillera) | 10–20 m | Conífera columnar de la precordillera. |
 | Puya | *Puya chilensis* | Sí (Chile) | `puya` | Altiplano, Norte (precordillera, costa) | 1–3 m (con el tallo) | Roseta espinosa del Norte y el altiplano. |
-| Llareta | *Azorella compacta* | No (Chile/Perú/Bolivia) | `llareta` | Altiplano (precordillera) | 0,3–0,5 m | Cojín compacto de la puna; crecimiento lentísimo. |
-| Amancay | *Alstroemeria aurea* | No (Chile/Argentina) | `amancay` | Sur, Patagonia (valle, costa) | 0,5–1 m | Flores amarillas de los claros del sur. |
-| Junquillo | *Juncus spp.* | No | `junquillo` | Centro, Sur, Patagonia, Austral (valle, costa) | 0,5–1 m | Juncos de humedales y bordes de agua. |
+| Llareta | *Azorella compacta* | Nativa (Altiplano de Chile/Perú/Bolivia) | `llareta` | Altiplano (precordillera) | 0,3–0,5 m | Cojín compacto de la puna; crecimiento lentísimo. |
+| Amancay | *Alstroemeria aurea* | Nativa (Chile/Argentina) | `amancay` | Sur, Patagonia (valle, costa) | 0,5–1 m | Flores amarillas de los claros del sur. |
+| Junquillo | *Juncus spp.* | Nativa (cosmopolita) | `junquillo` | Centro, Sur, Patagonia, Austral (valle, costa) | 0,5–1 m | Juncos de humedales y bordes de agua. |
 | Flor del desierto | — | — | `flower` | — | — | Parche del desierto florido; entra solo con la floración. |
 <!-- END:flora-tabla -->
 
@@ -99,13 +99,28 @@ parallax se conserva y, dentro de una capa, los árboles duplican a los arbustos
 En `flora_spawns` el `rng` se consume igual que antes (solo cambia el `size`, no la posición ni el
 tipo), de modo que el paisaje sigue siendo reproducible.
 
+Los rangos de píxeles por capa se subieron ~1,8× (D-025) para que haya espacio real de detalle; la
+densidad se redujo en consecuencia:
+
+| Capa | `min_size`–`max_size` | `chunk_w` | `max_per` |
+|------|-----------------------|-----------|-----------|
+| Precordillera | 9–18 | 96 | 1 |
+| Valle | 9–22 | 50 | 4 |
+| Costa | 14–32 | 52 | 3 |
+| Playa | 7–14 | 58 | 2 |
+
+Con el rango nuevo, un árbol grande ocupa ~50–65 px de alto y puede mostrar corteza, ramas
+secundarias, conos o racimos florales que a la escala anterior no cabían.
+
 ## Silueta y hábito
 
 Las funciones `draw_*` priorizan el **hábito real** de cada planta sobre el color (D-048 JS). La
 silueta es lo primero: debe reconocerse **sin color**. Cada árbol/arbusto tiene porte propio y ya no
 comparte la misma "copa genérica" (D-023):
 
-- **Araucaria**: tronco alto y recto con **copa de paraguas** y ramas punzantes por pisos.
+- **Araucaria**: tronco grueso y **despejado en la mitad inferior**, con **verticilos horizontales
+  separados** (pisos tipo pagoda con huecos), ramas de **puntas caídas**, acículas espinosas y
+  **conos** redondos sobre las ramas altas. Ya no es un cono de pino ni una copa redondeada.
 - **Alerce**: tronco recto visible y copa cónica estrecha con ramas colgantes.
 - **Lenga**: copa **piramidal** (angosta arriba, ancha abajo), distinta del resto de Nothofagus.
 - **Coihue**: **copa ancha de tres lóbulos** sobre tronco recto con **horqueta**.
@@ -132,15 +147,18 @@ comparte la misma "copa genérica" (D-023):
 - **Llareta**: **cojín hemisférico** verde-amarillento con bultos de rosetas.
 - **Amancay**: varillas con **umbela** de flores amarillas; **junquillo**: macolla de juncos.
 - **Bush / grass / crop / rock / flower**: genéricos con textura propia y **luz direccional**: mata
-  redondeada, briznas inclinadas, hileras de espigas, pedreros con faceta iluminada y corolas de
-  5 pétalos del desierto florido.
+  redondeada con ramillas, briznas separadas con espigas, hileras de cultivo con grano, pedreros con
+  grieta/faceta iluminada y corolas de 5+ pétalos del desierto florido.
 
 Los dibujos se apoyan en primitivas compartidas en `flora.rs` —`line` (troncos y ramas), `crown_blob`
-(copa redondeada irregular), `crown_cone` (coníferas/portes piramidales), `frond` (fronda arqueada) y
-`rosette` (estrella de hojas)— y **todas** reciben una **dirección de luz** (`light`, −1 izquierda …
-+1 derecha) derivada de la posición del sol/luna en pantalla, de modo que el lado iluminado se aclara
-y el sombrío se oscurece ([08 · Arte pixel](08-arte-pixel.md), D-023). El borde irregular sigue
-saliendo de `hash1` (determinista).
+(copa redondeada irregular), `crown_cone` (coníferas/portes piramidales), `frond` (fronda arqueada),
+`rosette` (estrella de hojas), `bark_marks` (vetas y nudos), `cone_fruit` (conos) y `crown_dapple`
+(motas de hoja)— y **todas** reciben una **dirección de luz** (`light`, −1 izquierda … +1 derecha)
+derivada de la posición del sol/luna en pantalla, de modo que el lado iluminado se aclara y el
+sombreado se oscurece ([08 · Arte pixel](08-arte-pixel.md), D-023). El borde irregular y los detalles
+salen de `hash1` (determinista). El detalle se activa por **umbrales de tamaño**: a tallas pequeñas
+manda la silueta limpia; a tallas medianas/grandes aparecen corteza, ramas interiores, conos, bayas y
+racimos florales.
 
 Para ver cada tipo aislado (tres tallas, sobre fondo a cuadros) usa la **galería de diagnóstico**:
 `cargo run -p andes-native --bin gallery` ([08 · Arte pixel](08-arte-pixel.md), D-022).
@@ -148,7 +166,10 @@ Para ver cada tipo aislado (tres tallas, sobre fondo a cuadros) usa la **galerí
 ## Referencias y porte
 
 Cada especie real de `flora_data.rs` declara `wiki` (artículo de **Wikipedia**, referencia estable) y
-`porte` (descripción fiel de la **silueta/hábito**, que es la especificación de dibujo). Las fichas de
+`porte` (descripción fiel de la **silueta/hábito**, que es la especificación de dibujo). El campo de
+endemismo distingue **«Sí (Chile)»** (endémica estricta) de **«Nativa (Chile/Argentina)»**,
+**«Nativa (Patagonia)»**, etc. (nativa compartida): el paisaje prioriza las endémicas, pero conserva
+las especies emblemáticas del cono sur. Las fichas de
 [`especies/`](especies/README.md) muestran ambas en las secciones *Descripción / porte* y
 *Referencia*. La silueta manda sobre el color: el dibujo debe reconocerse sin color y coincidir con el
 `porte` ([18 · Referencias](18-referencias.md), D-024).

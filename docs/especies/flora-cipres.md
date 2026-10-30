@@ -1,12 +1,12 @@
 # Ciprés de la cordillera (`cipres`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Ciprés de la cordillera |
 | Nombre científico | *Austrocedrus chilensis* |
-| Endémica de Chile | No (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `cipres` (flora) |
 | Zona / capa | Centro, Sur (precordillera) |
 | Altura relativa (juego) | ×1.6 |

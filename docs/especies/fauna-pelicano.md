@@ -1,12 +1,12 @@
 # Pelícano (`pelicano`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Pelícano |
 | Nombre científico | *Pelecanus thagus* |
-| Endémica de Chile | No (Chile/Perú) |
+| Origen / endemismo | No (Chile/Perú) |
 | Estado UICN | NT |
 | Tipo en código | `pelicano` (fauna) |
 | Movimiento | `fly` |

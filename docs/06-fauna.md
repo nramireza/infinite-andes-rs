@@ -145,7 +145,7 @@ y se refuerzan aves y zorros (`BLOOM_FAUNA`).
 ## Especies objetivo (endémicas / nativas de Chile)
 
 <!-- BEGIN:fauna-objetivo (generado con `cargo run -p andes-core --bin gen-species`) -->
-| Nombre común | Nombre científico | Endémica | Capa/zona | Actividad | Comportamiento |
+| Nombre común | Nombre científico | Origen/endemismo | Capa/zona | Actividad | Comportamiento |
 |--------------|-------------------|----------|-----------|-----------|----------------|
 | Cóndor | *Vultur gryphus* | No (Andes) | Altiplano, Norte, Centro, Sur, Patagonia, Austral (andes) | día | Ave símbolo de los Andes; planea lento con aleteo ocasional. |
 | Huemul | *Hippocamelus bisulcus* | Sí (Chile/Argentina) | Centro, Sur, Patagonia, Austral (precordillera, valle) | día | Ciervo andino en peligro; pastorea y deja huellas. |

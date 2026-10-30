@@ -1,12 +1,12 @@
 # Chaura (`chaura`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Chaura |
 | Nombre científico | *Gaultheria mucronata* |
-| Endémica de Chile | No (Patagonia) |
+| Origen / endemismo | Nativa (Patagonia) |
 | Tipo en código | `chaura` (flora) |
 | Zona / capa | Centro, Sur, Patagonia, Austral (costa, valle) |
 | Altura relativa (juego) | ×0.6 |

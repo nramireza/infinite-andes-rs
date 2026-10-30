@@ -1,12 +1,12 @@
 # Roble (`roble`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Roble |
 | Nombre científico | *Nothofagus obliqua* |
-| Endémica de Chile | Sí (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `roble` (flora) |
 | Zona / capa | Centro, Sur (valle, costa) |
 | Altura relativa (juego) | ×1.5 |

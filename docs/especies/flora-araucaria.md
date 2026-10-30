@@ -1,12 +1,12 @@
 # Araucaria / Pehuén (`araucaria`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Araucaria / Pehuén |
 | Nombre científico | *Araucaria araucana* |
-| Endémica de Chile | Sí (Chile/Argentina) |
+| Origen / endemismo | Nativa (Chile/Argentina) |
 | Tipo en código | `araucaria` (flora) |
 | Zona / capa | Centro, Sur (precordillera, valle, costa) |
 | Altura relativa (juego) | ×1.9 |
@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Conífera perenne de tronco recto y grueso que ramifica a varios metros del suelo. Copa ordenada en verticilos de ramas horizontales largas (unos 5 por piso) que forman pisos apilados tipo pagoda, de base ancha a ápice redondeado. Acículas duras verde oscuro espinosas (imbricadas) y conos femeninos redondos. Silueta: paraguas apilados sobre tronco desnudo.
+Conífera perenne de tronco recto y grueso, despejado en la mitad inferior y con base ensanchada. Copa en verticilos horizontales separados (pisos tipo pagoda con huecos entre ellos), ramas de puntas caídas y ápice redondeado en paraguas. Acículas duras verde oscuro espinosas (imbricadas) y conos femeninos redondos sobre las ramas altas. Silueta: paraguas apilados sobre un tronco desnudo.
 
 ## Notas
 

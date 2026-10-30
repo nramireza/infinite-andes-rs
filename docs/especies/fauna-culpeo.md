@@ -1,12 +1,12 @@
 # Zorro culpeo (`culpeo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Zorro culpeo |
 | Nombre científico | *Lycalopex culpaeus* |
-| Endémica de Chile | No (Sudamérica) |
+| Origen / endemismo | No (Sudamérica) |
 | Estado UICN | LC |
 | Tipo en código | `culpeo` (fauna) |
 | Movimiento | `walk` |

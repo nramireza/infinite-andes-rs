@@ -1,12 +1,12 @@
 # Flamenco chileno (`flamenco`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Flamenco chileno |
 | Nombre científico | *Phoenicopterus chilensis* |
-| Endémica de Chile | No |
+| Origen / endemismo | No |
 | Estado UICN | NT |
 | Tipo en código | `flamenco` (fauna) |
 | Movimiento | `walk` |

@@ -1,12 +1,12 @@
 # Choroy (`choroy`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-14
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
 
 | Campo | Valor |
 |-------|-------|
 | Nombre común | Choroy |
 | Nombre científico | *Enicognathus leptorhynchus* |
-| Endémica de Chile | Sí (Chile) |
+| Origen / endemismo | Sí (Chile) |
 | Estado UICN | LC |
 | Tipo en código | `choroy` (fauna) |
 | Movimiento | `flock` |

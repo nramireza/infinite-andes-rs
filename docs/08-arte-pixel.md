@@ -1,6 +1,6 @@
 # 08 · Arte pixel
 
-> Estado: estable · Actualizado: 2026-10-12
+> Estado: estable · Actualizado: 2026-10-30
 
 ## Resolución y escalado
 
@@ -60,9 +60,11 @@ testeable sin navegador. Todo se dibuja **nítido** (D-016): no hay cobertura fr
 - Los sprites son **matrices de píxeles en código** (filas de caracteres + mapa de paleta) y se
   dibujan con `fill_rect` en coordenadas enteras.
 - La flora es **procedural** (formas por bucles) en `flora.rs`; cada `draw_*` dibuja el hábito real
-  de la planta (copa de paraguas de la araucaria, frondas de la palma, candelabro del copao, roseta
-  de la nalca…) y el borde de las copas usa `hash1` para una silueta irregular determinista
-  (D-046, D-048 JS).
+  de la planta (verticilos de la araucaria, frondas de la palma, candelabro del copao, roseta de la
+  nalca…) y el borde de las copas usa `hash1` para una silueta irregular determinista
+  (D-046, D-048 JS). Desde D-025 los sprites son ~1,8× más grandes y el detalle aparece por
+  **umbrales de tamaño**: corteza (`bark_marks`), ramas interiores, conos (`cone_fruit`), bayas,
+  racimos florales y motas de hoja (`crown_dapple`).
 - La fauna (`fauna.rs`) usa matrices de caracteres mapeadas a una clave de `get_palette` (responde a
   hora y clima) o a un hex literal (p. ej. el flamenco o el pingüino). Ver D-010 (JS). Cada sprite
   recibe un **contorno oscuro de 1 px** automático (`OUTLINE` en `fauna.rs`) que despega el **bulto**
@@ -95,7 +97,8 @@ cargo run -p andes-native --bin gallery -- [hour] [weather] [season] [scale]
 # genera gallery-flora.png y gallery-fauna.png en el directorio actual
 ```
 
-- **Flora**: una celda por entrada de `FLORA`, con **tres tallas** por porte (`FLORA_SIZES`).
+- **Flora**: una celda por entrada de `FLORA`, con **tres tallas** por porte (`FLORA_SIZES`:
+  9, 18 y 30), en celdas de 200×96 px para dar cabida a los sprites grandes y a su detalle.
 - **Fauna**: una celda por especie, con **todos los frames** y su versión **volteada**.
 - Fondo a cuadros y rótulo (fuente 3×5 común en [`font.rs`](../crates/andes-core/src/font.rs));
   el binario la escala por **vecino más cercano** (×4 por defecto) para juzgar píxeles (D-022).
@@ -119,5 +122,5 @@ diferencias en los bordes de nube son esperadas. El criterio propio son snapshot
 
 - Portar a `pixel.rs` las utilidades restantes si el rasterizador las necesita.
 - Más variedad de siluetas de nube (hoy son la misma forma a distintas escalas).
-- **Reescribir las siluetas de flora** (hoy muchas comparten la misma copa) y afinar los sprites de
-  fauna (contorno, luz, frames), iterando con la galería de diagnóstico (D-022).
+- Afinar los sprites de fauna (contorno, luz, frames) iterando con la galería de diagnóstico
+  (D-022); la flora ya tiene siluetas propias, escala mayor y pase de detalle (D-025).
