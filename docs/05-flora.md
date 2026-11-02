@@ -118,17 +118,17 @@ Las funciones `draw_*` priorizan el **hábito real** de cada planta sobre el col
 silueta es lo primero: debe reconocerse **sin color**. Cada árbol/arbusto tiene porte propio y ya no
 comparte la misma "copa genérica" (D-023):
 
-- **Araucaria**: tronco grueso y **despejado en la mitad inferior**, con una copa **densa y
-  redondeada en domo**, formada por **pisos/verticilos solapados** (no una escalera de bandas
-  planas), ramas de **puntas espinosas** y **conos** redondos sobre las ramas altas. Ya no es un
-  pino navideño ni una copa redondeada genérica.
+- **Araucaria**: tronco grueso con anillos de corteza y **despejado en más de la mitad inferior**,
+  **ramas madres** visibles en la base de la copa y **domo aparasolado denso** de **verticilos
+  solapados** (sin huecos horizontales de lado a lado), puntas erguidas espinosas en candelabro y
+  **conos** redondos sobre las ramas altas.
 - **Alerce**: tronco recto de **corteza rojiza** y copa **columnar muy estrecha** con ramillas colgantes.
 - **Lenga**: copa **piramidal** (angosta arriba, ancha abajo), distinta del resto de Nothofagus.
 - **Coihue**: **copa ancha de tres lóbulos** sobre tronco recto con **horqueta**.
 - **Roble**: copa **estrecha y erguida** en huso; caducifolio (desnudo en invierno).
 - **Mañío**: **conífera austral oscura** y estrecha con ramillas colgantes; los ejemplares hembra muestran receptáculos carnosos rojizos.
 - **Ciprés**: **columna cónica muy afilada** de la precordillera.
-- **Canelo**: copa **densa y alta** con **ápice puntiagudo** y flores blancas.
+- **Canelo**: copa **piramidal-redondeada (ovada-cónica)** continua y densa, sin piezas sueltas, con follaje verde brillante, corteza pardo-rojiza y flores blancas con centro amarillo.
 - **Quillay**: **copa ancha y lobulada** sobre horqueta; flores blancas.
 - **Arrayán**: **tronco canela** alto y visible y copa menuda; flor blanca.
 - **Notro**: porte esbelto con **racimos de flores escarlata**.
@@ -137,8 +137,8 @@ comparte la misma "copa genérica" (D-023):
 - **Espino**: **matorral** de ramas en abanico con **espinas** y flores amarillas (no un árbol).
 - **Michay y chaura**: arbustos bajos y compactos; el michay con **espinas trífidas**, flores naranjas y bayas azuladas, la chaura con bayas rosadas.
 - **Maitén**: copa con **ramas lloronas** que caen.
-- **Copihue**: **enredadera** de tallo sinuoso con hojas acorazonadas y **campanas rojas colgantes**.
-- **Palma chilena**: tronco grueso con cicatrices romboidales, **faldón de frondas secas** y **frondas pinnadas que arquean y caen** (copa redondeada).
+- **Copihue**: **enredadera** de tallo sinuoso con nudos de hojas coriáceas y **campanas carmesí colgantes** bien separadas (cuello estrecho y boca acampanada de tres puntas, de a una o dos por nudo).
+- **Palma chilena**: tronco cilíndrico grueso grisáceo-pardo (estrechado bajo la corona) con cicatrices romboidales, **faldón ocre de frondas secas** y **penacho radial simétrico** de frondas pinnadas que arquean hacia ambos lados y en escorzo.
 - **Copao / cactus**: **columna gruesa verde glauca con costillas**, 1–2 **brazos en candelabro** que suben, espinas y **flor apical blanco-rosada**.
 - **Nalca**: roseta de **hojas orbiculares gigantes** de borde dentado sobre pecíolos gruesos, con **espiga floral rojiza** entre las hojas.
 - **Colihue**: macolla de **cañas verdes con nudos** y **penachos** de hojas finas en la punta.

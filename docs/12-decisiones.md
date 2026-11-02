@@ -374,3 +374,28 @@ siguiente número.
   color y que ambos frames coincidan en tamaño. Se regeneran las fichas con `gen-species`, se
   actualiza la tabla de sprites de [06 · Fauna](06-fauna.md) y la galería de diagnóstico se adapta
   al tamaño máximo de las nuevas matrices.
+
+## D-028 · Refinamiento visual de flora emblemática (lote F1: araucaria, copihue, canelo, palma)
+
+- **Fecha:** 2026-11-02
+- **Estado:** aceptada
+- **Decisión:** iterar con inspección ampliada de la galería de diagnóstico (×8) las cuatro especies
+  emblemáticas del lote F1 en `flora.rs`:
+  1. **Araucaria (`draw_araucaria`):** despejar el tronco en más de la mitad inferior, añadir ramas
+     madres visibles en la base de la copa y construir un **domo aparasolado macizo** de verticilos
+     solapados en el interior con puntas erguidas en candelabro en el borde.
+  2. **Copihue (`draw_copihue`):** separar las flores en nudos alternos (con par en el nudo superior
+     en tallas grandes) y dibujar cada **campana carmesí péndula** con cáliz, cuello estrecho y boca
+     acampanada de tres puntas para que no se fundan en una franja continua.
+  3. **Canelo (`draw_canelo`):** reemplazar la esfera con triángulo suelto por una **copa
+     piramidal-redondeada (ovada-cónica)** continua, follaje verde brillante y flores blancas
+     acotadas al perfil de la copa con hashes independientes en X e Y.
+  4. **Palma chilena (`draw_palma` y `frond`):** integrar la curvatura gravitatoria con el signo de
+     `theta` y añadir frondas en escorzo (`x_scale`) para que el penacho arquee simétricamente a
+     ambos lados, con faldón ocre de frondas secas y tronco grisáceo-pardo estrechado bajo la corona.
+- **Motivo:** al inspeccionar las celdas de la galería ampliadas se detectó que la araucaria parecía
+  una esfera rayada de tronco corto, las flores del copihue se superponían formando una banda rosada,
+  el canelo tenía el ápice y flores desconectados de la copa, y la palma curvaba todas sus frondas
+  hacia la derecha por sumar `+ t * 0.9` sin signo en `frond`.
+- **Consecuencia:** cambia únicamente el dibujo procedural de esas cuatro especies en `flora.rs`;
+  los spawns, alturas, pools y el determinismo del paisaje permanecen intactos.
