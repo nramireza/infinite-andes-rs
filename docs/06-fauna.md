@@ -49,32 +49,32 @@ gaviota) para tonos que la paleta no cubre.
 
 | Tipo | Tamaño (px) | Frames | Anclaje | Silueta / color |
 |------|-------------|--------|---------|-----------------|
-| `condor` | 16 × 7 | 2 | centro | alas anchas con primarias "digitadas", collar `snow`, cabeza/cuello rojizos |
-| `huemul` | 10 × 8 | 2 | pies | cuerpo robusto, orejas grandes, astas bifurcadas claras y garganta `snow` |
-| `pudu` | 8 × 7 | 2 | pies | ciervo diminuto, hocico corto, vientre claro |
-| `guina` | 9 × 5 | 2 | pies | felino pequeño, orejas redondas, manchas oscuras y cola espesa |
-| `puma` | 14 × 5 | 2 | pies | perfil alargado, hocico/pecho `snow`, cola tendida con punta oscura |
-| `culpeo` | 11 × 6 | 2 | pies | dorso gris-pardo, cabeza/patas rojizas y cola con punta `#2e2e38` |
-| `chilla` | 10 × 6 | 2 | pies | zorro gris menudo, orejas grandes y cola con punta oscura |
-| `guanaco` | 10 × 14 | 2 | pies | cuello y patas largos, dorso `sandD` y vientre `snow` |
-| `vicuna` | 8 × 12 | 2 | pies | camélido esbelto, pelaje `sand` y vientre `snow` |
-| `chingue` | 10 × 6 | 2 | pies | cuerpo negro `#20202a` con dos franjas `snow` y cola blanca |
-| `monito` | 9 × 6 | 2 | pies | marsupial diminuto, orejas redondas y cola prensil |
-| `chinchilla` | 9 × 6 | 2 | pies | roedor redondo, orejas grandes y cola larga `snowD` |
-| `choroy` | 10 × 7 | 2 | centro | loro verde, ala `floraD`, cola larga rojiza y pico oscuro |
-| `cachana` | 10 × 7 | 2 | centro | loro verde con vientre/cara rojizos y cola larga |
-| `flamenco` | 7 × 15 | 2 | pies | cuello en S, patas rosadas y plumas negras de vuelo |
-| `pinguino` | 7 × 10 | 2 | pies | dorso negro, vientre blanco, banda pectoral y base rosada del pico |
-| `chungungo` | 13 × 5 | 2 | pies | mustélido marino alargado, dorso oscuro y vientre claro |
-| `huillin` | 13 × 5 | 2 | pies | nutria de río alargada, pelaje pardo oscuro |
-| `choique` | 13 × 14 | 2 | pies | ñandú: cuello y patas largos, puntas blancas en las alas |
-| `chucao` | 8 × 7 | 2 | pies | pecho rojizo `#c0502a`, dorso pardo y cola corta |
-| `rana` | 6 × 5 | 2 | pies | triangular, hocico puntiagudo, pardo |
-| `lobo-marino` | 14 × 6 | 2 | pies | otárido robusto, cabeza voluminosa y aletas delanteras |
-| `delfin` | 14 × 6 | 2 | pies | lomo gris, vientre `snow`, aleta dorsal redondeada |
-| `gaviota` | 13 × 6 | 2 | centro | dorso negro, cuerpo blanco y pico/patas amarillos |
-| `albatros` | 15 × 6 | 2 | centro | alas largas, cuerpo blanco, dorso negro, ceja negra y pico amarillento |
-| `pelicano` | 14 × 6 | 2 | centro | cuerpo gris-pardo, cabeza blanca, pico largo con bolsa y alas oscuras |
+| `condor` | 28 × 11 | 2 | centro | alas anchas con primarias "digitadas", collar `snow`, cabeza/cuello rojizos |
+| `huemul` | 20 × 18 | 2 | pies | cuerpo robusto, orejas grandes, astas bifurcadas claras y garganta `snow` |
+| `pudu` | 16 × 14 | 2 | pies | ciervo diminuto, hocico corto, vientre claro |
+| `guina` | 18 × 11 | 2 | pies | felino pequeño, orejas redondas, manchas oscuras y cola espesa |
+| `puma` | 20 × 14 | 2 | pies | perfil alargado, hocico/pecho `snow`, cola tendida con punta oscura |
+| `culpeo` | 22 × 12 | 2 | pies | dorso gris-pardo, cabeza/patas rojizas y cola con punta `#2e2e38` |
+| `chilla` | 21 × 12 | 2 | pies | zorro gris menudo, orejas grandes y cola con punta oscura |
+| `guanaco` | 18 × 28 | 2 | pies | cuello y patas largos, dorso `sandD` y vientre `snow` |
+| `vicuna` | 15 × 26 | 2 | pies | camélido esbelto, pelaje `sand` y vientre `snow` |
+| `chingue` | 18 × 10 | 2 | pies | cuerpo negro `#20202a` con dos franjas `snow` y cola blanca |
+| `monito` | 16 × 11 | 2 | pies | marsupial diminuto, orejas redondas y cola prensil |
+| `chinchilla` | 16 × 11 | 2 | pies | roedor redondo, orejas grandes y cola larga `snowD` |
+| `choroy` | 20 × 14 | 2 | centro | loro verde, ala `floraD`, cola larga rojiza y pico oscuro |
+| `cachana` | 20 × 14 | 2 | centro | loro verde con vientre/cara rojizos y cola larga |
+| `flamenco` | 14 × 28 | 2 | pies | cuello en S, patas rosadas y plumas negras de vuelo |
+| `pinguino` | 13 × 18 | 2 | pies | dorso negro, vientre blanco, banda pectoral y base rosada del pico |
+| `chungungo` | 22 × 9 | 2 | pies | mustélido marino alargado, dorso oscuro y vientre claro |
+| `huillin` | 22 × 9 | 2 | pies | nutria de río alargada, pelaje pardo oscuro |
+| `choique` | 20 × 26 | 2 | pies | ñandú: cuello y patas largos, puntas blancas en las alas |
+| `chucao` | 15 × 12 | 2 | pies | pecho rojizo `#c0502a`, dorso pardo y cola corta |
+| `rana` | 11 × 9 | 2 | pies | triangular, hocico puntiagudo, pardo |
+| `lobo-marino` | 24 × 11 | 2 | pies | otárido robusto, cabeza voluminosa y aletas delanteras |
+| `delfin` | 24 × 10 | 2 | pies | lomo gris, vientre `snow`, aleta dorsal redondeada |
+| `gaviota` | 22 × 11 | 2 | centro | dorso negro, cuerpo blanco y pico/patas amarillos |
+| `albatros` | 28 × 11 | 2 | centro | alas largas, cuerpo blanco, dorso negro, ceja negra y pico amarillento |
+| `pelicano` | 24 × 11 | 2 | centro | cuerpo gris-pardo, cabeza blanca, pico largo con bolsa y alas oscuras |
 
 - Los caracteres de la matriz se mapean a **claves de `get_palette(hour, weather)`** (o a un hex
   literal), así que la fauna responde a la hora y al clima sin reescribir colores. El mapa por

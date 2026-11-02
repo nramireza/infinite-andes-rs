@@ -1,6 +1,6 @@
 # Chungungo (`chungungo`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-11-02
 
 | Campo | Valor |
 |-------|-------|
@@ -14,7 +14,7 @@
 | Rareza (juego) | rara |
 | Anclaje | pies |
 | Colocación | por chunk |
-| Sprite | 13×5 px · 2 frames |
+| Sprite | 22×9 px · 2 frames |
 
 ## Descripción / porte
 

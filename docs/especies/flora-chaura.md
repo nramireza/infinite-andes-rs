@@ -1,6 +1,6 @@
 # Chaura (`chaura`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-11-02
 
 | Campo | Valor |
 |-------|-------|

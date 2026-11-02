@@ -86,7 +86,15 @@ pub fn flora_sheet(pal: &Palette, season: i32, cols: usize) -> Framebuffer {
 /// Hoja de fauna: una celda por especie; arriba los frames, abajo volteados.
 pub fn fauna_sheet(pal: &Palette, cols: usize) -> Framebuffer {
     let cols = cols.max(1);
-    let (cw, ch) = (96, 52);
+    let (mut max_w, mut max_h) = (1, 1);
+    for sp in fauna::SPECIES {
+        if let Some((w, h)) = fauna::sprite_size(sp.name) {
+            max_w = max_w.max(w);
+            max_h = max_h.max(h);
+        }
+    }
+    let cw = (max_w * 2 + 16).max(96);
+    let ch = (max_h * 2 + 18).max(52);
     let mut fb = grid_fb(fauna::SPECIES.len(), cols, cw, ch);
     let base = get(pal, "skyMid");
     let (c0, c1) = (shade(base, -0.05), shade(base, -0.22));

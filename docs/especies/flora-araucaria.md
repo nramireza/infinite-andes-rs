@@ -1,6 +1,6 @@
 # Araucaria / Pehuén (`araucaria`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-11-02
 
 | Campo | Valor |
 |-------|-------|
@@ -14,7 +14,7 @@
 
 ## Descripción / porte
 
-Conífera perenne de tronco recto y grueso, despejado en la mitad inferior y con base ensanchada. Copa en verticilos horizontales separados (pisos tipo pagoda con huecos entre ellos), ramas de puntas caídas y ápice redondeado en paraguas. Acículas duras verde oscuro espinosas (imbricadas) y conos femeninos redondos sobre las ramas altas. Silueta: paraguas apilados sobre un tronco desnudo.
+Conífera perenne de tronco recto y grueso, despejado en la mitad inferior y con base ensanchada. Copa densa y redondeada en domo, formada por verticilos horizontales solapados (pisos tipo pagoda, sin huecos grandes entre ellos), ramas de puntas espinosas y ápice redondeado. Acículas duras verde oscuro espinosas (imbricadas) y conos femeninos redondos sobre las ramas altas. Silueta: domo oscuro sobre un tronco desnudo.
 
 ## Notas
 

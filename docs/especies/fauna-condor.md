@@ -1,6 +1,6 @@
 # Cóndor (`condor`)
 
-> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-10-30
+> Ficha generada con `cargo run -p andes-core --bin gen-species` · Actualizado: 2026-11-02
 
 | Campo | Valor |
 |-------|-------|
@@ -14,7 +14,7 @@
 | Rareza (juego) | común |
 | Anclaje | centro |
 | Colocación | por chunk |
-| Sprite | 16×7 px · 2 frames |
+| Sprite | 28×11 px · 2 frames |
 
 ## Descripción / porte
 

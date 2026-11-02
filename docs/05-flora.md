@@ -118,9 +118,10 @@ Las funciones `draw_*` priorizan el **hábito real** de cada planta sobre el col
 silueta es lo primero: debe reconocerse **sin color**. Cada árbol/arbusto tiene porte propio y ya no
 comparte la misma "copa genérica" (D-023):
 
-- **Araucaria**: tronco grueso y **despejado en la mitad inferior**, con **verticilos horizontales
-  separados** (pisos tipo pagoda con huecos), ramas de **puntas caídas**, acículas espinosas y
-  **conos** redondos sobre las ramas altas. Ya no es un cono de pino ni una copa redondeada.
+- **Araucaria**: tronco grueso y **despejado en la mitad inferior**, con una copa **densa y
+  redondeada en domo**, formada por **pisos/verticilos solapados** (no una escalera de bandas
+  planas), ramas de **puntas espinosas** y **conos** redondos sobre las ramas altas. Ya no es un
+  pino navideño ni una copa redondeada genérica.
 - **Alerce**: tronco recto de **corteza rojiza** y copa **columnar muy estrecha** con ramillas colgantes.
 - **Lenga**: copa **piramidal** (angosta arriba, ancha abajo), distinta del resto de Nothofagus.
 - **Coihue**: **copa ancha de tres lóbulos** sobre tronco recto con **horqueta**.

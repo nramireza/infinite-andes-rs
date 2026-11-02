@@ -687,71 +687,53 @@ fn draw_araucaria(
         dr(fb, cx + (trunk_w >> 1) + k, base_y - 1 - k, 1, 1 + k, td);
     }
 
-    // Copa en verticilos horizontales: pisos separados, base ancha y ápice
-    // redondeado. El tronco asoma entre piso y piso.
-    let apex = top + r(h as f64 * 0.04);
-    let crown_bottom = base_y - r(h as f64 * 0.34);
-    let tiers = (h / 8).clamp(4, 7);
-    let base_half = (size * 0.5).round().max(3.0) as i32;
-    let span = (crown_bottom - apex).max(1);
-    let thick = if h >= 38 { 2 } else { 1 };
+    // Copa densa y redondeada, en pisos/verticilos que se solapan (no una
+    // escalera de bandas planas). La araucaria adulta muestra un domo oscuro
+    // con ramas horizontales y puntas espinosas, no un pino navideño.
+    let apex = top + r(h as f64 * 0.03);
+    let crown_bottom = base_y - r(h as f64 * 0.36);
+    let tiers = (h / 7).clamp(4, 8);
+    let base_half = (size * 0.55).round().max(4.0) as i32;
+    let span = (crown_bottom - apex).max(4);
+    let band = (h as f64 / tiers as f64 * 0.72).round().max(1.0) as i32;
+    // Perfil de domo/paraguas: ancho máximo al centro, redondeado arriba y abajo.
+    let crown_cy = apex as f64 + span as f64 * 0.50;
+    let crown_ry = (span as f64 * 0.52).max(1.0);
 
     for t in 0..tiers {
-        let f = t as f64 / (tiers - 1).max(1) as f64; // 0 = ápice, 1 = base
-        let yy = apex + r(f * span as f64);
-        let half = (base_half as f64 * (0.24 + 0.76 * f)).round().max(1.0) as i32;
-        let droop = (1 + t / 2).clamp(1, 3);
-
-        for &sgn in &[-1i32, 1] {
-            if h < 26 {
-                // A poca resolución el piso se lee como banda continua.
-                dr(fb, cx.min(cx + sgn * half), yy, half + 1, thick, mid);
-                dr(fb, cx.min(cx + sgn * half), yy + thick, half + 1, 1, sh);
+        let f = t as f64 / (tiers - 1).max(1) as f64; // 0 = base, 1 = ápice
+        let yy = crown_bottom - r(f * span as f64);
+        let dy = (yy as f64 - crown_cy) / crown_ry;
+        let prof = (1.0 - dy * dy).max(0.0).sqrt();
+        let width = base_half as f64 * (0.28 + 0.72 * prof);
+        let rx = width.round().max(2.0) as i32;
+        let ry = (band as f64 * (0.95 - 0.35 * f)).round().max(1.0) as i32;
+        crown_blob(fb, cx, yy, rx, ry, 0xa70 + t as u32, (hi, mid, sh), lit);
+        // Sombra de verticilo: separa los pisos sin dejar huecos.
+        dr(fb, cx - rx + 1, yy + ry, (rx * 2 - 1).max(1), 1, sh);
+        // Puntas de rama espinosas: erizan el borde del domo.
+        for side in [-1i32, 1] {
+            let ex = cx + side * rx;
+            let spike = if (t + if side > 0 { 1 } else { 0 }) % 2 == 0 {
+                hi
             } else {
-                // A mayor resolución, ramas separadas con huecos de tronco.
-                let nb = (4 + t / 2).clamp(4, 7);
-                for b in 0..nb {
-                    let f0 = 0.08 + 0.92 * b as f64 / nb as f64;
-                    let f1 = 0.08 + 0.92 * (b + 1) as f64 / nb as f64;
-                    let x0 = cx + sgn * r(half as f64 * f0);
-                    let x1 = cx + sgn * r(half as f64 * f1);
-                    let (xa, xb) = if x0 < x1 { (x0, x1) } else { (x1, x0) };
-                    dr(fb, xa, yy, (xb - xa).max(1), thick, mid);
-                    if thick > 1 {
-                        dr(fb, xa, yy + 1, (xb - xa).max(1), 1, sh);
-                    }
-                    // Penacho espinoso en la punta de la rama.
-                    dr(fb, x1, yy - 1, 1, 1, hi);
-                    dr(fb, x1, yy + thick, 1, droop, sh);
-                    if hash1(x1 * 3 + yy * 7 + b, 0xa7b) < 0.45 {
-                        dr(fb, x1 - sgn, yy + thick + 1, 1, 1, mid);
-                    }
-                }
+                sh
+            };
+            dr(fb, ex, yy - 1, 1, 2, mid);
+            dr(fb, ex + side, yy - 2, 1, 2, spike);
+            dr(fb, ex + side * 2, yy - 1, 1, 1, mid);
+            if t % 2 == 0 {
+                dr(fb, ex + side, yy + 1, 1, 2, sh);
             }
-            // Puntas caídas, sello de la araucaria.
-            dr(fb, cx + sgn * half, yy + thick, 1, droop + 1, mid);
-            dr(fb, cx + sgn * (half - 1), yy + thick, 1, droop, sh);
-        }
-
-        // Luz direccional sobre el piso, con acículas claras y oscuras.
-        if lit {
-            dr(fb, cx - half + 1, yy - 1, half, 1, hi);
-        } else {
-            dr(fb, cx + 1, yy - 1, half, 1, hi);
-        }
-        let dabs = (half * 2).clamp(2, 16);
-        for k in 0..dabs {
-            let hh = hash1(cx * 7 + yy * 13 + k, 0xa7a);
-            let px = cx - half + 1 + r(hh * (half * 2 - 2).max(1) as f64);
-            let py = yy + if hh < 0.45 { 0 } else { thick };
-            dr(fb, px, py, 1, 1, if (k + t) % 3 == 0 { sh } else { hi });
         }
     }
 
-    // Ápice redondeado y algo espinoso.
-    dr(fb, cx - 2, apex - 1, 5, 2, mid);
-    dr(fb, cx - 1, apex - 2, 3, 1, hi);
-    dr(fb, cx, apex - 3, 1, 1, hi);
+    // Ápice redondeado y espinoso.
+    let apex_rx = (base_half as f64 * 0.30).round().max(2.0) as i32;
+    crown_blob(fb, cx, apex + 1, apex_rx, 2, 0xa7f, (hi, mid, sh), lit);
+    dr(fb, cx - 1, apex - 1, 1, 1, hi);
+    dr(fb, cx + 1, apex - 1, 1, 1, hi);
+    dr(fb, cx, apex - 2, 1, 1, hi);
 
     // Conos femeninos redondos sobre ramas altas.
     if h >= 30 {
