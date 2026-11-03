@@ -399,3 +399,38 @@ siguiente número.
   hacia la derecha por sumar `+ t * 0.9` sin signo en `frond`.
 - **Consecuencia:** cambia únicamente el dibujo procedural de esas cuatro especies en `flora.rs`;
   los spawns, alturas, pools y el determinismo del paisaje permanecen intactos.
+
+## D-029 · Diferenciación de siluetas de árboles esclerófilos, mirtáceas, arbustos y genéricos (lotes F2 y F3)
+
+- **Fecha:** 2026-11-02
+- **Estado:** aceptada
+- **Decisión:** redibujar en `flora.rs` las especies de copa redondeada del lote F2 (`quillay`,
+  `arrayan`, `litre`, `boldo`, `peumo`) y los arbustos, arbolitos y genéricos del lote F3 (`michay`,
+  `chaura`, `notro`, `espino`, `bush`, `grass`) para que cada uno tenga silueta propia y acote sus
+  flores, frutos y espinas:
+  1. **Quillay (`draw_quillay`):** tronco gris-pálido con **horqueta en Y visible** que sostiene
+     tres lóbulos globosos de follaje verde claro brillante y flores blancas estrelladas.
+  2. **Arrayán (`draw_arrayan`):** **troncos multicaules y sinuosos color canela-anaranjado** con
+     manchas blancas de descamación y 2–3 copas menudas redondeadas separadas con flores blancas.
+  3. **Litre (`draw_litre`):** silueta **achaparrada y ancha** en dos cojines asimétricos sobre
+     tronco corto levemente inclinado de corteza oscura moteada y follaje coriáceo contrastado.
+  4. **Boldo (`draw_boldo`):** **tronco muy corto** y copa abullonada de tres domos en tono
+     verde-grisáceo ceniciento con inflorescencias blanco-amarillas estratificadas.
+  5. **Peumo (`draw_peumo`):** tronco grueso oscuro con ensanche basal y **copa umbría de doble
+     piso** (faldón ancho + cúpula) en verde oscuro profundo con drupas rojas repartidas.
+  6. **Michay y chaura (`draw_michay`, `draw_chaura`):** el michay dibuja sus **espinas trífidas**
+     después del follaje para que ericen el borde, con base ancha y racimos naranjas colgantes /
+     bayas azuladas; la chaura forma un **cojín rastrero bajo** con bayas blanco-rosadas interiores.
+  7. **Notro y espino (`draw_notro`, `draw_espino`):** el notro pasa a tres columnas ascendentes de
+     follaje sobre varas finas coronadas por racimos escarlata; el espino desacopla los hashes X/Y
+     de sus pompones amarillos (antes alineados en diagonal) y añade almohadillas bipinnadas y
+     legumbres (`cavenes`) en otoño/invierno.
+  8. **Genéricos (`draw_bush`, `draw_grass`):** `bush` invierte los lóbulos para ser ancho en la
+     base y abovedado arriba; `grass` abre las briznas en abanico desde la macolla (3/5/7 briznas
+     según talla) en vez de formar un bloque rectangular.
+- **Motivo:** en la galería ampliada los cinco árboles de F2 compartían un óvalo genérico sobre un
+  palo recto, las espinas trífidas del michay quedaban tapadas por los `crown_blob`, el espino
+  alineaba sus flores en una diagonal por reutilizar el mismo hash en X e Y, y `bush`/`grass`
+  formaban ladrillos rectangulares a tallas chicas/medianas.
+- **Consecuencia:** cambia el dibujo procedural en `flora.rs`, sin alterar spawns, zonas ni
+  determinismo.

@@ -129,13 +129,17 @@ comparte la misma "copa genérica" (D-023):
 - **Mañío**: **conífera austral oscura** y estrecha con ramillas colgantes; los ejemplares hembra muestran receptáculos carnosos rojizos.
 - **Ciprés**: **columna cónica muy afilada** de la precordillera.
 - **Canelo**: copa **piramidal-redondeada (ovada-cónica)** continua y densa, sin piezas sueltas, con follaje verde brillante, corteza pardo-rojiza y flores blancas con centro amarillo.
-- **Quillay**: **copa ancha y lobulada** sobre horqueta; flores blancas.
-- **Arrayán**: **tronco canela** alto y visible y copa menuda; flor blanca.
-- **Notro**: porte esbelto con **racimos de flores escarlata**.
-- **Litre, boldo y peumo**: copas redondas diferenciadas por **textura, corteza y floración** (litre con tronco moteado, boldo grisáceo de tronco corto con **flores blancas**, peumo oscuro con **frutos rojos** en otoño/invierno).
-  El **quillay** lleva corteza pálida; el **canelo**, corteza rojiza.
-- **Espino**: **matorral** de ramas en abanico con **espinas** y flores amarillas (no un árbol).
-- **Michay y chaura**: arbustos bajos y compactos; el michay con **espinas trífidas**, flores naranjas y bayas azuladas, la chaura con bayas rosadas.
+- **Quillay**: tronco gris-pálido con **horqueta en Y visible** bajo una **copa globosa de tres lóbulos** verde claro brillante y flores blancas estrelladas.
+- **Arrayán**: **troncos multicaules y sinuosos color canela-anaranjado** con manchas blancas de descamación y **2–3 copas menudas redondeadas** separadas con flores blancas de mirto.
+- **Notro**: arbolito esbelto de **varas ascendentes** con tres columnas de follaje lanceolado coronadas por **racimos densos de flores rojas escarlata**.
+- **Litre, boldo y peumo**: diferenciados en **silueta, tronco y follaje**:
+  - **Litre**: porte **achaparrado y ancho** (más ancho que alto) en dos cojines asimétricos sobre tronco corto inclinado de corteza gris oscura moteada y follaje coriáceo de alto contraste.
+  - **Boldo**: **tronco muy corto** arropado por una copa **abullonada de tres domos** en verde-grisáceo ceniciento con flores blancas y amarillas repartidas dentro del contorno.
+  - **Peumo**: tronco grueso y oscuro con ensanche basal y **copa amplia, densa y verde oscuro profundo** en dos pisos (faldón bajo + cúpula) con **drupas rojas («peumos»)** bien distribuidas.
+- **Espino**: **matorral** de ramas tortuosas en abanico con **espinas estipulares blancas**, almohadillas de follaje bipinnado, **pompones amarillo-dorados** en primavera/verano y legumbres oscuras (`cavenes`) en otoño/invierno.
+- **Michay y chaura**: arbustos diferenciados en porte:
+  - **Michay**: mata densa más ancha en la base con **espinas trífidas** visibles erizando el borde, **racimos naranjas colgantes** en primavera/verano y bayas azul-violáceas en otoño/invierno.
+  - **Chaura**: **cojín rastrero y tendido** de follaje oscuro coriáceo con **bayas globosas blanco-rosadas** todo el año.
 - **Maitén**: copa con **ramas lloronas** que caen.
 - **Copihue**: **enredadera** de tallo sinuoso con nudos de hojas coriáceas y **campanas carmesí colgantes** bien separadas (cuello estrecho y boca acampanada de tres puntas, de a una o dos por nudo).
 - **Palma chilena**: tronco cilíndrico grueso grisáceo-pardo (estrechado bajo la corona) con cicatrices romboidales, **faldón ocre de frondas secas** y **penacho radial simétrico** de frondas pinnadas que arquean hacia ambos lados y en escorzo.
@@ -146,8 +150,8 @@ comparte la misma "copa genérica" (D-023):
 - **Llareta**: **cojín hemisférico** verde-amarillento con bultos de rosetas.
 - **Amancay**: varillas con **umbela** de flores amarillas; **junquillo**: macolla de juncos.
 - **Bush / grass / crop / rock / flower**: genéricos con textura propia y **luz direccional**: mata
-  redondeada con ramillas, briznas separadas con espigas, hileras de cultivo con grano, pedreros con
-  grieta/faceta iluminada y corolas de 5+ pétalos del desierto florido.
+  redondeada ancha en la base y abovedada al centro (`bush`), macolla de briznas en abanico con espiguillas (`grass`), hileras de cultivo con grano (`crop`), pedreros con
+  grieta/faceta iluminada (`rock`) y corolas de 5+ pétalos del desierto florido (`flower`).
 
 Los dibujos se apoyan en primitivas compartidas en `flora.rs` —`line` (troncos y ramas), `crown_blob`
 (copa redondeada irregular), `crown_cone` (coníferas/portes piramidales), `frond` (fronda arqueada),
